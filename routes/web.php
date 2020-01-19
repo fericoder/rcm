@@ -18,7 +18,8 @@ Route::get('/contact', 'AppController@contact')->name('app.contact');
 Route::get('/services', 'AppController@services')->name('app.services');
 
 
-Route::namespace('Dashboard')->prefix('dashboard')->middleware('auth')->group(function () {
-    Route::get('index', 'DashboardController@index')->name('dashboard.index');
+// Add middleware auth
+Route::namespace('Dashboard')->prefix('dashboard')->group(function () {
+    Route::get('index', 'IndexController@index')->name('dashboard.index');
 
 });
