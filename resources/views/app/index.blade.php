@@ -22,30 +22,19 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            <div class="elementor-element elementor-element-8e66ba8 elementor-absolute elementor-hidden-phone elementor-widget elementor-widget-image" data-id="8e66ba8" data-element_type="widget" data-settings="{&quot;_position&quot;:&quot;absolute&quot;}" data-widget_type="image.default">
-                                                                <div class="elementor-widget-container">
-                                                                </div>
-                                                            </div>
                                                             <div class="elementor-element-custom_font_size elementor-element-custom_font_weight elementor-element elementor-element-acd46a8 elementor-widget elementor-widget-text-editor" data-id="acd46a8" data-element_type="widget" data-widget_type="text-editor.default">
                                                                 <div class="elementor-widget-container">
                                                                     <div class="elementor-text-editor elementor-clearfix">
-                                                                        <h5 class="borj-right">خوش آمدید</h5></div>
+                                                                        <h5 class="borj-right">شرکت ....</h5></div>
                                                                 </div>
                                                             </div>
                                                             <div class="elementor-element-custom_font_size elementor-element-custom_font_size_mobile elementor-element-custom_line_height elementor-element-custom_line_height_mobile elementor-element elementor-element-6333c9e elementor-widget elementor-widget-text-editor" data-id="6333c9e" data-element_type="widget" data-widget_type="text-editor.default">
                                                                 <div class="elementor-widget-container">
                                                                     <div class="elementor-text-editor elementor-clearfix">
-                                                                        <h1 class="borj-right">راهکارهای<br />کلیدی <span style="color: #675ae8;">مدیریت برج</span></h1></div>
+                                                                        <h3 class="borj-right">ارایه دهنده<br />راهکار های <span style="color: #675ae8;">مدیریت مجتمع مسکونی</span></h3></div>
                                                                 </div>
                                                             </div>
-                                                            <div class="elementor-element elementor-element-3c7a99d elementor-widget elementor-widget-text-editor" data-id="3c7a99d" data-element_type="widget" data-widget_type="text-editor.default">
-                                                                <div class="elementor-widget-container">
-                                                                    <div class="elementor-text-editor elementor-clearfix">
-                                                                        <p>           تسریع در محاسبه عملیات مالی برج
-                                                                        </p>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
+
                                                             <div class="elementor-element elementor-element-03b5bad elementor-widget elementor-widget-spacer" data-id="03b5bad" data-element_type="widget" data-widget_type="spacer.default">
                                                                 <div class="elementor-widget-container">
                                                                     <div class="elementor-spacer">
@@ -167,7 +156,7 @@
                                                             </div>
                                                             <div class="elementor-element elementor-element-0d4c234 elementor-widget elementor-widget-heading" data-id="0d4c234" data-element_type="widget" data-widget_type="heading.default">
                                                                 <div class="elementor-widget-container">
-                                                                    <h2 class="elementor-heading-title elementor-size-default">قابلیت های شرکت ... در یک نگاه</h2></div>
+                                                                    <h2 class="elementor-heading-title elementor-size-default">خدمات های شرکت ... در یک نگاه</h2></div>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -192,8 +181,8 @@
                                                                         <figure class="gt3-core-imagebox-img"><img width="280" height="240" src="/app/assets/img/img_box_01.png" class="attachment-full size-full" alt="" title="img_box_01" /></figure>
                                                                         <div class="gt3-core-imagebox-content">
                                                                             <div class="gt3-core-imagebox-title">
-                                                                                <h5 class="gt3-core-imagebox-title">نرم افزار جامع مدیریت</h5></div>
-                                                                            <p class="gt3-core-imagebox-description"> توضیحات  توضیحات  توضیحات  توضیحات  توضیحات  توضیحات  توضیحات  توضیحات  توضیحات  توضیحات  توضیحات </p>
+                                                                                <h5 class="gt3-core-imagebox-title">مدیریت اجرایی و نگهداری</h5></div>
+                                                                            <p class="gt3-core-imagebox-description"> مدیریت اجرایی و نگهداری تاسیسات مجتمع ها، همواره دغدغه ای اساسی برای تیم مدیریتی بوده که شرکت ... به تیم مدیریت کمک مینماید.  </p>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -207,11 +196,13 @@
                                                             <div class="elementor-element elementor-element-9027017 elementor-position-top elementor-vertical-align-top elementor-widget elementor-widget-gt3-core-imagebox" data-id="9027017" data-element_type="widget" data-widget_type="gt3-core-imagebox.default">
                                                                 <div class="elementor-widget-container">
                                                                     <div class="gt3-core-imagebox-wrapper elementor-image_icon-position-default">
-                                                                        <figure class="gt3-core-imagebox-img"><img width="270" height="240" src="/app/assets/img/img_box_02.png" class="attachment-full size-full" alt="" title="img_box_02" /></figure>
+                                                                        <figure class="gt3-core-imagebox-img"><img width="270" height="240" src="/app/assets/img/img_box_07.png" class="attachment-full size-full" alt="" title="img_box_02" /></figure>
                                                                         <div class="gt3-core-imagebox-content">
                                                                             <div class="gt3-core-imagebox-title">
                                                                                 <h5 class="gt3-core-imagebox-title">تامین نیروی انسانی</h5></div>
-                                                                            <p class="gt3-core-imagebox-description"> توضیحات  توضیحات  توضیحات  توضیحات  توضیحات  توضیحات  توضیحات  توضیحات  توضیحات  توضیحات </p>
+                                                                            <p class="gt3-core-imagebox-description">
+                                                                                 تامین نيروي انساني يكي از خدمات اصلی شرکت ... بوده که وظیفه گزینش واستخدام و توجیه وآموزش نیروی انسانی را بر عهده دارد. اهميت و جايگاه منحصر به فرد نيروي انساني در موقعيت رقابتي هر سازمان هر صاحب نظري را بر آن مي دارد كه در مقوله مزيت رقابتي به تامین نيروي انساني به عنوان با ارزش ترين سرمايه سازماني نگاه كند.
+                                                                            </p>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -225,11 +216,13 @@
                                                             <div class="elementor-element elementor-element-b5ab241 elementor-position-top elementor-vertical-align-top elementor-widget elementor-widget-gt3-core-imagebox" data-id="b5ab241" data-element_type="widget" data-widget_type="gt3-core-imagebox.default">
                                                                 <div class="elementor-widget-container">
                                                                     <div class="gt3-core-imagebox-wrapper elementor-image_icon-position-default">
-                                                                        <figure class="gt3-core-imagebox-img"><img width="366" height="240" src="/app/assets/img/img_box_03.png" class="attachment-full size-full" alt="" title="img_box_03" /></figure>
+                                                                        <figure class="gt3-core-imagebox-img"><img width="366" height="240" src="/app/assets/img/img_box_02.png" class="attachment-full size-full" alt="" title="img_box_03" /></figure>
                                                                         <div class="gt3-core-imagebox-content">
                                                                             <div class="gt3-core-imagebox-title">
-                                                                                <h5 class="gt3-core-imagebox-title">مدیریت اجرایی و نگهداری</h5></div>
-                                                                            <p class="gt3-core-imagebox-description"> توضیحات  توضیحات  توضیحات  توضیحات  توضیحات  توضیحات  توضیحات  توضیحات  توضیحات  توضیحات </p>
+                                                                                <h5 class="gt3-core-imagebox-title">سامانه تحت وب مدیریت </h5></div>
+                                                                            <p class="gt3-core-imagebox-description">
+                                                                                یکپارچگی اطلاعات جهت تصمیم سازی، شفاف سازی فرآیندها، هزینه ها و درآمدها ، کاهش سیکل زمانی ارتباطات متقابل بین ساکنین و مدیریت، دسترسی سریع به گزارشات و آمارهای لازم، تنها دلایل اصلی لزوم استفاده از سامانه تحت وب مدیریت مجتمع مسکونی ... میباشد.
+                                                                            </p>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -264,15 +257,10 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            <div class="elementor-element-custom_font_size elementor-element-custom_font_weight elementor-element elementor-element-e134f4a elementor-widget elementor-widget-text-editor" data-id="e134f4a" data-element_type="widget" data-widget_type="text-editor.default">
-                                                                <div class="elementor-widget-container">
-                                                                    <div class="elementor-text-editor elementor-clearfix">
-                                                                        <h5>درباره سامانه</h5></div>
-                                                                </div>
-                                                            </div>
+
                                                             <div class="elementor-element elementor-element-7ce3db6 elementor-widget elementor-widget-heading" data-id="7ce3db6" data-element_type="widget" data-widget_type="heading.default">
                                                                 <div class="elementor-widget-container">
-                                                                    <h2 class="elementor-heading-title elementor-size-default">قابلیت های کلی <br> سامانه یکپارچه مدیریت برج</h2></div>
+                                                                    <h2 class="elementor-heading-title elementor-size-default">قابلیت های کلی  سامانه یکپارچه مدیریت مجتمع مسکونی</h2></div>
                                                             </div>
                                                             <div class="elementor-element elementor-element-0f47419 elementor-widget elementor-widget-spacer" data-id="0f47419" data-element_type="widget" data-widget_type="spacer.default">
                                                                 <div class="elementor-widget-container">
@@ -284,24 +272,25 @@
                                                             <div class="elementor-element-custom_font_size elementor-element-custom_line_height elementor-element elementor-element-fb805cb elementor-widget elementor-widget-text-editor" data-id="fb805cb" data-element_type="widget" data-widget_type="text-editor.default">
                                                                 <div class="elementor-widget-container">
                                                                     <div class="elementor-text-editor elementor-clearfix">
-                                                                        <p> توضیحات  توضیحات  توضیحات  توضیحات  توضیحات  توضیحات  توضیحات  توضیحات  توضیحات  توضیحات  توضیحات  توضیحات  توضیحات  توضیحات  توضیحات  توضیحات  توضیحات  توضیحات  توضیحات  توضیحات  توضیحات  توضیحات  توضیحات  توضیحات  توضیحات  توضیحات  توضیحات  توضیحات  توضیحات  توضیحات  توضیحات  توضیحات  توضیحات  توضیحات  توضیحات  توضیحات  توضیحات  توضیحات  توضیحات  توضیحات  توضیحات  توضیحات  توضیحات  توضیحات  توضیحات  توضیحات  توضیحات  توضیحات  توضیحات </p>
+                                                                        <ul style="direction: rtl">
+                                                                            <li>اطلاعات پایه</li>
+                                                                            <li>مدیریت مالکین و ساکنین </li>
+                                                                            <li>مدیریت حسابداری </li>
+                                                                            <li>مدیریت درآمد ها و هزینه ها  </li>
+                                                                            <li>رای گیری و نظرسنجی </li>
+                                                                            <li>درخواست هاو ارتباط دو طرفه </li>
+                                                                            <li>مدیریت اطلاعات و قراردادهای پیمانکاران  </li>
+                                                                            <li>خدمات رفاهی  </li>
+                                                                            <li>مدیریت مستندات   </li>
+                                                                            <li>بانک اطلاعات منابع تامین کالا و خدمات   </li>
+                                                                            <li>ماژول تعمیرات و نگهداری   </li>
+                                                                        </ul>
+
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            <div class="elementor-element elementor-element-39dffa4 elementor-widget elementor-widget-spacer" data-id="39dffa4" data-element_type="widget" data-widget_type="spacer.default">
-                                                                <div class="elementor-widget-container">
-                                                                    <div class="elementor-spacer">
-                                                                        <div class="elementor-spacer-inner"></div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="elementor-element elementor-element-eb91ccd elementor-widget elementor-widget-text-editor" data-id="eb91ccd" data-element_type="widget" data-widget_type="text-editor.default">
-                                                                <div class="elementor-widget-container">
-                                                                    <div class="elementor-text-editor elementor-clearfix">
-                                                                        <p> توضیحات مکمل  توضیحات مکمل  توضیحات مکمل  توضیحات مکمل  توضیحات مکمل  توضیحات مکمل  توضیحات مکمل  توضیحات مکمل  توضیحات مکمل  توضیحات مکمل  توضیحات مکمل  توضیحات مکمل  توضیحات مکمل  توضیحات مکمل  توضیحات مکمل </p>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
+
+
                                                             <div class="elementor-element elementor-element-fe4084a elementor-widget elementor-widget-spacer" data-id="fe4084a" data-element_type="widget" data-widget_type="spacer.default">
                                                                 <div class="elementor-widget-container">
                                                                     <div class="elementor-spacer">
@@ -513,24 +502,31 @@
                                                                                             </div>
                                                                                         </div>
                                                                                     </div>
-                                                                                    <div class="elementor-element-custom_font_size elementor-element-custom_font_weight elementor-element elementor-element-129f18d elementor-widget elementor-widget-text-editor" data-id="129f18d" data-element_type="widget" data-widget_type="text-editor.default">
-                                                                                        <div class="elementor-widget-container">
-                                                                                            <div class="elementor-text-editor elementor-clearfix">
-                                                                                                <h5>سامانه برج</h5></div>
-                                                                                        </div>
-                                                                                    </div>
+
                                                                                     <div class="elementor-element elementor-element-d87280c elementor-widget elementor-widget-heading" data-id="d87280c" data-element_type="widget" data-widget_type="heading.default">
                                                                                         <div class="elementor-widget-container">
-                                                                                            <h2 class="elementor-heading-title elementor-size-default">مزایا و اهداف <br>سامانه برج </h2></div>
+                                                                                            <h2 class="elementor-heading-title elementor-size-default">مزایا و اهداف سامانه </h2></div>
                                                                                     </div>
-                                                                                    <div class="elementor-element elementor-element-a37f395 elementor-widget elementor-widget-text-editor" data-id="a37f395" data-element_type="widget" data-widget_type="text-editor.default">
+
+                                                                                    <div class="elementor-element elementor-element-7c9d6fc elementor-widget elementor-widget-spacer" data-id="7c9d6fc" data-element_type="widget" data-widget_type="spacer.default">
                                                                                         <div class="elementor-widget-container">
-                                                                                            <div class="elementor-text-editor elementor-clearfix">
-                                                                                                <p>کاهش سیکل زمانی ارتباطات متقابل بین ساکنین و مدیریت </p>
+                                                                                            <div class="elementor-spacer">
+                                                                                                <div class="elementor-spacer-inner"></div>
                                                                                             </div>
                                                                                         </div>
                                                                                     </div>
-                                                                                    <div class="elementor-element elementor-element-7c9d6fc elementor-widget elementor-widget-spacer" data-id="7c9d6fc" data-element_type="widget" data-widget_type="spacer.default">
+                                                                                    <div class="elementor-element elementor-element-44819a1 elementor-position-left elementor-vertical-align-top elementor-widget elementor-widget-gt3-core-imagebox" data-id="44819a1" data-element_type="widget" data-widget_type="gt3-core-imagebox.default">
+                                                                                        <div class="elementor-widget-container">
+                                                                                            <div class="gt3-core-imagebox-wrapper elementor-image_icon-position-default">
+                                                                                                <figure class="gt3-core-imagebox-img"><img width="70" height="70" src="/app/assets/img/chek_g.png" class="attachment-full size-full" alt="" title="chek_b" /></figure>
+                                                                                                <div class="gt3-core-imagebox-content">
+                                                                                                    <p class="gt3-core-imagebox-description">شفاف سازی فرآیندها، هزینه ها و درآمدها
+                                                                                                    </p>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="elementor-element elementor-element-be90126 elementor-widget elementor-widget-spacer" data-id="be90126" data-element_type="widget" data-widget_type="spacer.default">
                                                                                         <div class="elementor-widget-container">
                                                                                             <div class="elementor-spacer">
                                                                                                 <div class="elementor-spacer-inner"></div>
@@ -542,8 +538,7 @@
                                                                                             <div class="gt3-core-imagebox-wrapper elementor-image_icon-position-default">
                                                                                                 <figure class="gt3-core-imagebox-img"><img width="70" height="70" src="/app/assets/img/chek_b.png" class="attachment-full size-full" alt="" title="chek_b" /></figure>
                                                                                                 <div class="gt3-core-imagebox-content">
-                                                                                                    <p class="gt3-core-imagebox-description">شفاف سازی فرآیندها، هزینه ها و درآمدها
-                                                                                                    </p>
+                                                                                                    <p class="gt3-core-imagebox-description">کاهش سیکل زمانی ارتباطات متقابل بین ساکنین و مدیریت</p>
                                                                                                 </div>
                                                                                             </div>
                                                                                         </div>
@@ -560,12 +555,13 @@
                                                                                             <div class="gt3-core-imagebox-wrapper elementor-image_icon-position-default">
                                                                                                 <figure class="gt3-core-imagebox-img"><img width="70" height="70" src="/app/assets/img/chek_o.png" class="attachment-full size-full" alt="" title="chek_o" /></figure>
                                                                                                 <div class="gt3-core-imagebox-content">
-                                                                                                    <p class="gt3-core-imagebox-description">دسترسی سریع به گزارشات و آمارهای لازم
-                                                                                                    </p>
+                                                                                                    <p class="gt3-core-imagebox-description">دسترسی سریع به گزارشات و آمارهای لازم</p>
                                                                                                 </div>
                                                                                             </div>
                                                                                         </div>
                                                                                     </div>
+
+
                                                                                     <div class="elementor-element elementor-element-be90126 elementor-widget elementor-widget-spacer" data-id="be90126" data-element_type="widget" data-widget_type="spacer.default">
                                                                                         <div class="elementor-widget-container">
                                                                                             <div class="elementor-spacer">
@@ -578,12 +574,61 @@
                                                                                             <div class="gt3-core-imagebox-wrapper elementor-image_icon-position-default">
                                                                                                 <figure class="gt3-core-imagebox-img"><img width="70" height="70" src="/app/assets/img/chek_g.png" class="attachment-full size-full" alt="" title="chek_g" /></figure>
                                                                                                 <div class="gt3-core-imagebox-content">
-                                                                                                    <p class="gt3-core-imagebox-description">دسترسی سریع به گزارشات و آمارهای لازم
+                                                                                                    <p class="gt3-core-imagebox-description">صرفه جویی در هزینه ها
+
                                                                                                     </p>
                                                                                                 </div>
                                                                                             </div>
                                                                                         </div>
                                                                                     </div>
+
+
+
+
+
+                                                                                    <div class="elementor-element elementor-element-be90126 elementor-widget elementor-widget-spacer" data-id="be90126" data-element_type="widget" data-widget_type="spacer.default">
+                                                                                        <div class="elementor-widget-container">
+                                                                                            <div class="elementor-spacer">
+                                                                                                <div class="elementor-spacer-inner"></div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="elementor-element elementor-element-70afe4c elementor-position-left elementor-vertical-align-top elementor-widget elementor-widget-gt3-core-imagebox" data-id="70afe4c" data-element_type="widget" data-widget_type="gt3-core-imagebox.default">
+                                                                                        <div class="elementor-widget-container">
+                                                                                            <div class="gt3-core-imagebox-wrapper elementor-image_icon-position-default">
+                                                                                                <figure class="gt3-core-imagebox-img"><img width="70" height="70" src="/app/assets/img/chek_b.png" class="attachment-full size-full" alt="" title="chek_g" /></figure>
+                                                                                                <div class="gt3-core-imagebox-content">
+                                                                                                    <p class="gt3-core-imagebox-description">نظارت همگانی بصورت برخط توسط کلیه مالکین و ساکنین
+                                                                                                    </p>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+
+
+
+
+                                                                                    <div class="elementor-element elementor-element-be90126 elementor-widget elementor-widget-spacer" data-id="be90126" data-element_type="widget" data-widget_type="spacer.default">
+                                                                                        <div class="elementor-widget-container">
+                                                                                            <div class="elementor-spacer">
+                                                                                                <div class="elementor-spacer-inner"></div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="elementor-element elementor-element-70afe4c elementor-position-left elementor-vertical-align-top elementor-widget elementor-widget-gt3-core-imagebox" data-id="70afe4c" data-element_type="widget" data-widget_type="gt3-core-imagebox.default">
+                                                                                        <div class="elementor-widget-container">
+                                                                                            <div class="gt3-core-imagebox-wrapper elementor-image_icon-position-default">
+                                                                                                <figure class="gt3-core-imagebox-img"><img width="70" height="70" src="/app/assets/img/chek_o.png" class="attachment-full size-full" alt="" title="chek_g" /></figure>
+                                                                                                <div class="gt3-core-imagebox-content">
+                                                                                                    <p class="gt3-core-imagebox-description">تسریع در محاسبه عملیات مالی
+                                                                                                    </p>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+
+
+
                                                                                     <div class="elementor-element elementor-element-1e6bc15 elementor-widget elementor-widget-spacer" data-id="1e6bc15" data-element_type="widget" data-widget_type="spacer.default">
                                                                                         <div class="elementor-widget-container">
                                                                                             <div class="elementor-spacer">
@@ -924,12 +969,12 @@
                                                             </div>
                                                             <div class="elementor-element elementor-element-3b015b9 elementor-widget elementor-widget-heading" data-id="3b015b9" data-element_type="widget" data-widget_type="heading.default">
                                                                 <div class="elementor-widget-container">
-                                                                    <h2 class="elementor-heading-title elementor-size-default">عضویت رایگان</h2></div>
+                                                                    <h2 class="elementor-heading-title elementor-size-default">مشاوره رایگان</h2></div>
                                                             </div>
                                                             <div class="elementor-element elementor-element-9052be1 elementor-widget elementor-widget-text-editor" data-id="9052be1" data-element_type="widget" data-widget_type="text-editor.default">
                                                                 <div class="elementor-widget-container">
                                                                     <div class="elementor-text-editor elementor-clearfix">
-                                                                        <p> توضیحات  توضیحات  توضیحات  توضیحات  توضیحات  توضیحات  توضیحات  توضیحات  توضیحات  توضیحات  توضیحات  توضیحات  توضیحات </p>
+                                                                        <p> با تکمیل فرم ذیل، کارشناسان ما در کمترین زمان با شما تماس گرفته و پاسخگوی سوالات شما در زمینه خدمات شرکت .... و سامانه تحت وب مدیریت مجتمع مسکونی هستند  </p>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -945,15 +990,14 @@
                                                                                 <input type="hidden" name="_wpcf7_unit_tag" value="wpcf7-f958-p91-o2" />
                                                                                 <input type="hidden" name="_wpcf7_container_post" value="91" />
                                                                             </div>
-                                                                            <div class="row home2_form">
-                                                                                <div class="span6"><span class="wpcf7-form-control-wrap your-name "><input type="text" name="your-name" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required borj-text" aria-required="true" aria-invalid="false" placeholder="نام و نام خانوادگی خود را وارد کنید*" /></span></div>
-                                                                                <div class="span6"><span class="wpcf7-form-control-wrap your-email"><input type="email" name="your-email" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-email wpcf7-validates-as-required wpcf7-validates-as-email borj-text" aria-required="true" aria-invalid="false" placeholder="آدرس ایمیل*" /></span></div>
-                                                                                <div class="span6"><span class="wpcf7-form-control-wrap your-name"><input type="text" name="your-name" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required borj-text" aria-required="true" aria-invalid="false" placeholder="شماره تماس" /></span></div>
-                                                                                <div class="span6"><span class="wpcf7-form-control-wrap your-email"><input type="email" name="your-email" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-email wpcf7-validates-as-required wpcf7-validates-as-email borj-text" aria-required="true" aria-invalid="false" placeholder="سایت اینترنتی
-" /></span></div>
+                                                                            <div  class="row home2_form">
+                                                                                <div class="span6"><span class="wpcf7-form-control-wrap your-name"><input style="font-family: iranyekan!important;" type="text" name="your-name" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required borj-text" aria-required="true" aria-invalid="false" placeholder="شماره تماس * " /></span></div>
+                                                                                <div class="span6"><span class="wpcf7-form-control-wrap your-name "><input style="font-family: iranyekan!important;" type="text" name="your-name" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required borj-text" aria-required="true" aria-invalid="false" placeholder=" نام و نام خانوادگی *" /></span></div>
+                                                                                <div class="span6"><span class="wpcf7-form-control-wrap your-email"><input style="font-family: iranyekan!important;" type="email" name="your-email" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-email wpcf7-validates-as-required wpcf7-validates-as-email borj-text" aria-required="true" aria-invalid="false" placeholder="آدرس ایمیل  " /></span></div>
+                                                                                <div class="span6"><span class="wpcf7-form-control-wrap your-email"><input style="font-family: iranyekan!important;" type="email" name="your-email" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-email wpcf7-validates-as-required wpcf7-validates-as-email borj-text" aria-required="true" aria-invalid="false" placeholder="نام مجتمع " /></span></div>
                                                                                 <div class="span12">
 
-                                                                                    <input type="submit"value="کلیک کنید" class="wpcf7-form-control wpcf7-submit" />
+                                                                                    <input type="submit"value="ارسال فرم" class="wpcf7-form-control wpcf7-submit" />
                                                                                 </div>
                                                                             </div>
                                                                             <div class="wpcf7-response-output wpcf7-display-none"></div>

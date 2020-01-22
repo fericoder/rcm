@@ -15,8 +15,21 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name');
-            $table->string('email')->unique();
+            $table->string('fName');
+            $table->string('lName');
+            $table->string('code')->nullable();
+            $table->unsignedInteger('complex_id');
+            $table->unsignedInteger('area')->nullable();
+            $table->unsignedInteger('charge')->nullable();
+            $table->string('mobile1');
+            $table->string('mobile2')->nullable();
+            $table->string('phone1')->nullable();
+            $table->string('phone2')->nullable();
+            $table->enum('userType', ['superAdmin', 'admin', 'boardMember', '']);
+            $table->enum('userStatus', ['enable', 'disable'])->default('enable');
+            $table->enum('propertyStatus', ['resident', 'empty']);
+            $table->enum('residentType', ['owner', 'tenant']);
+            $table->string('email')->unique()->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();

@@ -23,3 +23,7 @@ Route::namespace('Dashboard')->prefix('dashboard')->group(function () {
     Route::get('index', 'IndexController@index')->name('dashboard.index');
 
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
