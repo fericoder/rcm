@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Dashboard;
 
-use App\Complex;
+use App\Ticket;
 use Illuminate\Http\Request;
 
-class ComplexController extends Controller
+class TicketController extends \App\Http\Controllers\Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class ComplexController extends Controller
      */
     public function index()
     {
-        //
+        return view('dashboard.tickets');
     }
 
     /**
@@ -41,10 +41,10 @@ class ComplexController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Complex  $complex
+     * @param  \App\Ticket  $ticket
      * @return \Illuminate\Http\Response
      */
-    public function show(Complex $complex)
+    public function show(Ticket $ticket)
     {
         //
     }
@@ -52,10 +52,10 @@ class ComplexController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Complex  $complex
+     * @param  \App\Ticket  $ticket
      * @return \Illuminate\Http\Response
      */
-    public function edit(Complex $complex)
+    public function edit(Ticket $ticket)
     {
         //
     }
@@ -64,10 +64,10 @@ class ComplexController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Complex  $complex
+     * @param  \App\Ticket  $ticket
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Complex $complex)
+    public function update(Request $request, Ticket $ticket)
     {
         //
     }
@@ -75,10 +75,10 @@ class ComplexController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Complex  $complex
+     * @param  \App\Ticket  $ticket
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Complex $complex)
+    public function destroy(Ticket $ticket)
     {
         //
     }

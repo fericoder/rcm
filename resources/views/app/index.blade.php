@@ -1,5 +1,17 @@
 @extends('app.layouts.master')
 @section('content')
+    <style>
+        .price_item_suffix-elementor{
+            font-family: Byekan!important;
+        }
+        .price_item_prefix-elementor{
+            font-family: Byekan!important;
+
+        }
+        .gt3_price_item-cost-elementor{
+            font-family: Byekan!important;
+        }
+    </style>
 <div class="site_wrapper fadeOnLoad">
     <div class="main_wrapper">
         <div class="container container-sidebar_none">
@@ -12,10 +24,36 @@
                                     <section class="elementor-element elementor-element-156460a elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-id="156460a" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
                                         <div class="elementor-container elementor-column-gap-default">
                                             <div class="elementor-row borj-ltr">
+
+                                                <div class="elementor-element elementor-element-37bd82e elementor-column elementor-col-50 elementor-top-column" data-id="37bd82e" data-element_type="column">
+                                                    <div class="elementor-column-wrap  elementor-element-populated">
+                                                        <div class="elementor-widget-wrap">
+                                                            <div class="elementor-element elementor-element-3ace9e7 elementor-widget elementor-widget-spacer" data-id="3ace9e7" data-element_type="widget" data-widget_type="spacer.default">
+                                                                <div class="elementor-widget-container">
+                                                                    <div class="elementor-spacer">
+                                                                        <div class="elementor-spacer-inner"></div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="elementor-element elementor-element-6ee0ac4 elementor-widget elementor-widget-image" data-id="6ee0ac4" data-element_type="widget" data-widget_type="image.default">
+                                                                <div class="elementor-widget-container">
+                                                                    <div class="elementor-image"> <img width="500" height="704" src="/app/assets/img/19728.png" class="attachment-full size-full" alt="" /></div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="elementor-element elementor-element-7fc22dc elementor-absolute elementor-widget__width-initial elementor-widget-mobile__width-initial elementor-widget-tablet__width-initial elementor-widget elementor-widget-html" data-id="7fc22dc" data-element_type="widget" data-settings="{&quot;_position&quot;:&quot;absolute&quot;}" data-widget_type="html.default">
+                                                                <div class="elementor-widget-container">
+                                                                    <svg class="gt3_scene" width="1358" height="1089" viewBox="0 0 1358 1089" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                        <path d="M1357.57 464.94C1357.57 605.537 1180.32 1063.16 848.987 1088.34C505.565 1088.34 591.877 719.737 426.004 719.737C311.195 719.737 0 831.507 0 525.037C0 218.566 368.288 0.336304 674.758 0.336304C981.229 0.336304 1357.57 158.47 1357.57 464.94Z" pathdata:id="M1327.69 407.038C1453.16 719.87 1026.05 867.562 886.751 887.972C718.767 912.585 719.959 1194.25 149.288 1044.21C-22.7324 998.981 -67.3856 669.892 129.448 556.46C430.919 307.123 366.792 0 672.243 0C1043.63 0 1186.16 123.236 1327.69 407.038Z;M1250.82 306.118C1358.28 603.562 1417.67 800.41 1204.92 966.209C878.44 1220.63 372.011 1022.67 180.607 859.357C-25.7275 683.307 -92.3833 166.222 180.611 15.9239C365.814 -86.0403 410.735 333.574 677.093 370.975C1011.17 417.885 1122.28 59.6984 1250.82 306.118Z" fill="#F9F8FF" /> </svg>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
                                                 <div class="elementor-element elementor-element-0a87759 elementor-column elementor-col-50 elementor-top-column" data-id="0a87759" data-element_type="column">
                                                     <div class="elementor-column-wrap  elementor-element-populated">
                                                         <div class="elementor-widget-wrap">
-                                                            <div class="elementor-element elementor-element-e822f3e elementor-widget elementor-widget-spacer" data-id="e822f3e" data-element_type="widget" data-widget_type="spacer.default">
+                                                            <div style="height: 250px!important;" class="elementor-element elementor-element-e822f3e elementor-widget elementor-widget-spacer" data-id="e822f3e" data-element_type="widget" data-widget_type="spacer.default">
                                                                 <div class="elementor-widget-container">
                                                                     <div class="elementor-spacer">
                                                                         <div class="elementor-spacer-inner"></div>
@@ -25,13 +63,13 @@
                                                             <div class="elementor-element-custom_font_size elementor-element-custom_font_weight elementor-element elementor-element-acd46a8 elementor-widget elementor-widget-text-editor" data-id="acd46a8" data-element_type="widget" data-widget_type="text-editor.default">
                                                                 <div class="elementor-widget-container">
                                                                     <div class="elementor-text-editor elementor-clearfix">
-                                                                        <h5 class="borj-right">شرکت ....</h5></div>
+                                                                        <h5 style="direction: rtl" class="borj-right">شرکت ....</h5></div>
                                                                 </div>
                                                             </div>
                                                             <div class="elementor-element-custom_font_size elementor-element-custom_font_size_mobile elementor-element-custom_line_height elementor-element-custom_line_height_mobile elementor-element elementor-element-6333c9e elementor-widget elementor-widget-text-editor" data-id="6333c9e" data-element_type="widget" data-widget_type="text-editor.default">
                                                                 <div class="elementor-widget-container">
                                                                     <div class="elementor-text-editor elementor-clearfix">
-                                                                        <h3 class="borj-right">ارایه دهنده<br />راهکار های <span style="color: #675ae8;">مدیریت مجتمع مسکونی</span></h3></div>
+                                                                        <h3 class="borj-right">  ارایه دهنده راهکار های<br /> <span style="color: #675ae8;">مدیریت مجتمع مسکونی</span></h3></div>
                                                                 </div>
                                                             </div>
 
@@ -65,7 +103,7 @@
                                                                                     <div class="gt3-core-button--alignment_inline elementor-element elementor-element-42d950f elementor-widget elementor-widget-gt3-core-button" data-id="42d950f" data-element_type="widget" data-widget_type="gt3-core-button.default">
                                                                                         <div class="elementor-widget-container ">
                                                                                             <div class="gt3_module_button_elementor size_custom alignment_inline button_icon_none hover_type5 rounded">
-                                                                                                <a class="button_size_elementor_custom alignment_inline border_icon_none hover_type5 btn_icon_position_left" href="#"> <span class="gt3_module_button__container"> <span class="elementor_gt3_btn_text">ورود</span> <span class="gt3_module_button__cover front"></span> <span class="gt3_module_button__cover back"></span> </span>
+                                                                                                <a class="button_size_elementor_custom alignment_inline border_icon_none hover_type5 btn_icon_position_left" href="/login"> <span class="gt3_module_button__container"> <span class="elementor_gt3_btn_text">ورود</span> <span class="gt3_module_button__cover front"></span> <span class="gt3_module_button__cover back"></span> </span>
                                                                                                 </a>
                                                                                             </div>
                                                                                         </div>
@@ -103,30 +141,8 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="elementor-element elementor-element-37bd82e elementor-column elementor-col-50 elementor-top-column" data-id="37bd82e" data-element_type="column">
-                                                    <div class="elementor-column-wrap  elementor-element-populated">
-                                                        <div class="elementor-widget-wrap">
-                                                            <div class="elementor-element elementor-element-3ace9e7 elementor-widget elementor-widget-spacer" data-id="3ace9e7" data-element_type="widget" data-widget_type="spacer.default">
-                                                                <div class="elementor-widget-container">
-                                                                    <div class="elementor-spacer">
-                                                                        <div class="elementor-spacer-inner"></div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="elementor-element elementor-element-6ee0ac4 elementor-widget elementor-widget-image" data-id="6ee0ac4" data-element_type="widget" data-widget_type="image.default">
-                                                                <div class="elementor-widget-container">
-                                                                    <div class="elementor-image"> <img width="758" height="704" src="wp-content/uploads/sites/64/2019/09/home1_img_1.png" class="attachment-full size-full" alt="" srcset="https://livewp.site/wp/md/ewebot/wp-content/uploads/sites/64/2019/09/home1_img_1.png 758w, https://livewp.site/wp/md/ewebot/wp-content/uploads/sites/64/2019/09/home1_img_1-300x279.png 300w" sizes="(max-width: 758px) 100vw, 758px" title="Marketing" /></div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="elementor-element elementor-element-7fc22dc elementor-absolute elementor-widget__width-initial elementor-widget-mobile__width-initial elementor-widget-tablet__width-initial elementor-widget elementor-widget-html" data-id="7fc22dc" data-element_type="widget" data-settings="{&quot;_position&quot;:&quot;absolute&quot;}" data-widget_type="html.default">
-                                                                <div class="elementor-widget-container">
-                                                                    <svg class="gt3_scene" width="1358" height="1089" viewBox="0 0 1358 1089" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                                        <path d="M1357.57 464.94C1357.57 605.537 1180.32 1063.16 848.987 1088.34C505.565 1088.34 591.877 719.737 426.004 719.737C311.195 719.737 0 831.507 0 525.037C0 218.566 368.288 0.336304 674.758 0.336304C981.229 0.336304 1357.57 158.47 1357.57 464.94Z" pathdata:id="M1327.69 407.038C1453.16 719.87 1026.05 867.562 886.751 887.972C718.767 912.585 719.959 1194.25 149.288 1044.21C-22.7324 998.981 -67.3856 669.892 129.448 556.46C430.919 307.123 366.792 0 672.243 0C1043.63 0 1186.16 123.236 1327.69 407.038Z;M1250.82 306.118C1358.28 603.562 1417.67 800.41 1204.92 966.209C878.44 1220.63 372.011 1022.67 180.607 859.357C-25.7275 683.307 -92.3833 166.222 180.611 15.9239C365.814 -86.0403 410.735 333.574 677.093 370.975C1011.17 417.885 1122.28 59.6984 1250.82 306.118Z" fill="#F9F8FF" /> </svg>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
+
+
                                             </div>
                                         </div>
                                     </section>
@@ -148,15 +164,10 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            <div class="elementor-element-custom_font_size elementor-element-custom_font_weight elementor-element elementor-element-7e425ed elementor-widget elementor-widget-text-editor" data-id="7e425ed" data-element_type="widget" data-widget_type="text-editor.default">
-                                                                <div class="elementor-widget-container">
-                                                                    <div class="elementor-text-editor elementor-clearfix">
-                                                                        <h5>سامانه برج</h5></div>
-                                                                </div>
-                                                            </div>
+
                                                             <div class="elementor-element elementor-element-0d4c234 elementor-widget elementor-widget-heading" data-id="0d4c234" data-element_type="widget" data-widget_type="heading.default">
                                                                 <div class="elementor-widget-container">
-                                                                    <h2 class="elementor-heading-title elementor-size-default">خدمات های شرکت ... در یک نگاه</h2></div>
+                                                                    <h2 class="elementor-heading-title elementor-size-default">خدمات شرکت ... در یک نگاه</h2></div>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -182,7 +193,7 @@
                                                                         <div class="gt3-core-imagebox-content">
                                                                             <div class="gt3-core-imagebox-title">
                                                                                 <h5 class="gt3-core-imagebox-title">مدیریت اجرایی و نگهداری</h5></div>
-                                                                            <p class="gt3-core-imagebox-description"> مدیریت اجرایی و نگهداری تاسیسات مجتمع ها، همواره دغدغه ای اساسی برای تیم مدیریتی بوده که شرکت ... به تیم مدیریت کمک مینماید.  </p>
+                                                                            <p class="gt3-core-imagebox-description"> مدیریت اجرایی و نگهداری تاسیسات مجتمع ها، همواره دغدغه ای اساسی برای تیم مدیریتی بوده. مدیریت نگهداری و تعمیرات ، وظیفه کنترل و تخصیص منابع سازمان را بر عهده دارد، به نحوی که این اطمینان حاصل گردد که زمان و هزینه‌های سازمان به طور کارا و کافی، در جهت فعالیت‌های نگهداری و تعمیرات مصرف گردد و از هدر رفتن منابع جلوگیری شود.</p>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -221,7 +232,7 @@
                                                                             <div class="gt3-core-imagebox-title">
                                                                                 <h5 class="gt3-core-imagebox-title">سامانه تحت وب مدیریت </h5></div>
                                                                             <p class="gt3-core-imagebox-description">
-                                                                                یکپارچگی اطلاعات جهت تصمیم سازی، شفاف سازی فرآیندها، هزینه ها و درآمدها ، کاهش سیکل زمانی ارتباطات متقابل بین ساکنین و مدیریت، دسترسی سریع به گزارشات و آمارهای لازم، تنها دلایل اصلی لزوم استفاده از سامانه تحت وب مدیریت مجتمع مسکونی ... میباشد.
+                                                                                یکپارچگی اطلاعات جهت تصمیم سازی، شفاف سازی فرآیندها، شفاف سازی هزینه ها و درآمدها ، کاهش سیکل زمانی ارتباطات متقابل بین ساکنین و مدیریت، دسترسی سریع به گزارشات و آمارهای لازم، تنها دلایل اصلی لزوم استفاده از سامانه تحت وب مدیریت مجتمع مسکونی ... میباشد.
                                                                             </p>
                                                                         </div>
                                                                     </div>
@@ -260,7 +271,7 @@
 
                                                             <div class="elementor-element elementor-element-7ce3db6 elementor-widget elementor-widget-heading" data-id="7ce3db6" data-element_type="widget" data-widget_type="heading.default">
                                                                 <div class="elementor-widget-container">
-                                                                    <h2 class="elementor-heading-title elementor-size-default">قابلیت های کلی  سامانه یکپارچه مدیریت مجتمع مسکونی</h2></div>
+                                                                    <h2 style="font-size: 22px" class="elementor-heading-title elementor-size-default">قابلیت های کلی  سامانه یکپارچه مدیریت مجتمع مسکونی</h2></div>
                                                             </div>
                                                             <div class="elementor-element elementor-element-0f47419 elementor-widget elementor-widget-spacer" data-id="0f47419" data-element_type="widget" data-widget_type="spacer.default">
                                                                 <div class="elementor-widget-container">
@@ -291,28 +302,8 @@
                                                             </div>
 
 
-                                                            <div class="elementor-element elementor-element-fe4084a elementor-widget elementor-widget-spacer" data-id="fe4084a" data-element_type="widget" data-widget_type="spacer.default">
-                                                                <div class="elementor-widget-container">
-                                                                    <div class="elementor-spacer">
-                                                                        <div class="elementor-spacer-inner"></div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="gt3-core-button--alignment_left elementor-element elementor-element-78baa9e elementor-widget elementor-widget-gt3-core-button" data-id="78baa9e" data-element_type="widget" data-widget_type="gt3-core-button.default">
-                                                                <div class="elementor-widget-container">
-                                                                    <div class="gt3_module_button_elementor size_custom alignment_left button_icon_none hover_type5 rounded">
-                                                                        <a class="button_size_elementor_custom alignment_left border_icon_none hover_type5 btn_icon_position_left" href="#"> <span class="gt3_module_button__container"> <span class="elementor_gt3_btn_text">درباره ما</span> <span class="gt3_module_button__cover front"></span> <span class="gt3_module_button__cover back"></span> </span>
-                                                                        </a>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="elementor-element elementor-element-2f8cfaa elementor-widget elementor-widget-spacer" data-id="2f8cfaa" data-element_type="widget" data-widget_type="spacer.default">
-                                                                <div class="elementor-widget-container">
-                                                                    <div class="elementor-spacer">
-                                                                        <div class="elementor-spacer-inner"></div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
+
+
                                                         </div>
                                                     </div>
                                                 </div>
@@ -335,12 +326,12 @@
                                                             <div class="elementor-element-custom_font_size elementor-element-custom_font_weight elementor-element elementor-element-449e80d elementor-widget elementor-widget-text-editor" data-id="449e80d" data-element_type="widget" data-widget_type="text-editor.default">
                                                                 <div class="elementor-widget-container">
                                                                     <div class="elementor-text-editor elementor-clearfix">
-                                                                        <h5>خدمات دیگر ما</h5></div>
+                                                                        <h5>خدمات دیگر شرکت ...</h5></div>
                                                                 </div>
                                                             </div>
                                                             <div class="elementor-element elementor-element-69db597 elementor-widget elementor-widget-heading" data-id="69db597" data-element_type="widget" data-widget_type="heading.default">
                                                                 <div class="elementor-widget-container">
-                                                                    <h2 class="elementor-heading-title elementor-size-default">چگونه می توانیم کمک کنیم؟
+                                                                    <h2 class="elementor-heading-title elementor-size-default">چگونه می توانیم به شما کمک کنیم؟
                                                                     </h2></div>
                                                             </div>
                                                             <section class="elementor-element elementor-element-772652f elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-inner-section" data-id="772652f" data-element_type="section">
@@ -352,11 +343,10 @@
                                                                                     <div class="elementor-element elementor-element-0d0cb62 elementor-position-top elementor-vertical-align-top elementor-widget elementor-widget-gt3-core-imagebox" data-id="0d0cb62" data-element_type="widget" data-widget_type="gt3-core-imagebox.default">
                                                                                         <div class="elementor-widget-container">
                                                                                             <div class="gt3-core-imagebox-wrapper elementor-image_icon-position-default">
-                                                                                                <figure class="gt3-core-imagebox-img"><img width="226" height="194" src="/app/assets/img/img_box_04.png" class="attachment-full size-full" alt="" title="img_box_04" /></figure>
+                                                                                                <figure class="gt3-core-imagebox-img"><img width="226" height="194" src="/app/assets/img/img_box_07.png" class="attachment-full size-full" alt="" title="img_box_04" /></figure>
                                                                                                 <div class="gt3-core-imagebox-content">
                                                                                                     <div class="gt3-core-imagebox-title">
                                                                                                         <h5 class="gt3-core-imagebox-title">تامین نیروی انسانی</h5></div>
-                                                                                                    <p class="gt3-core-imagebox-description"> توضیحات  توضیحات  توضیحات  توضیحات  توضیحات  توضیحات  توضیحات  توضیحات </p>
                                                                                                 </div>
                                                                                             </div>
                                                                                         </div>
@@ -370,11 +360,10 @@
                                                                                     <div class="elementor-element elementor-element-47e0651 elementor-position-top elementor-vertical-align-top elementor-widget elementor-widget-gt3-core-imagebox" data-id="47e0651" data-element_type="widget" data-widget_type="gt3-core-imagebox.default">
                                                                                         <div class="elementor-widget-container">
                                                                                             <div class="gt3-core-imagebox-wrapper elementor-image_icon-position-default">
-                                                                                                <figure class="gt3-core-imagebox-img"><img width="210" height="194" src="/app/assets/img/img_box_05.png" class="attachment-full size-full" alt="" title="img_box_05" /></figure>
+                                                                                                <figure class="gt3-core-imagebox-img"><img width="210" height="194" src="/app/assets/img/img_box_20_1.png" class="attachment-full size-full" alt="" title="img_box_05" /></figure>
                                                                                                 <div class="gt3-core-imagebox-content">
                                                                                                     <div class="gt3-core-imagebox-title">
                                                                                                         <h5 class="gt3-core-imagebox-title">امور حقوقی</h5></div>
-                                                                                                    <p class="gt3-core-imagebox-description"> توضیحات  توضیحات  توضیحات  توضیحات  توضیحات  توضیحات  توضیحات  توضیحات </p>
                                                                                                 </div>
                                                                                             </div>
                                                                                         </div>
@@ -392,7 +381,6 @@
                                                                                                 <div class="gt3-core-imagebox-content">
                                                                                                     <div class="gt3-core-imagebox-title">
                                                                                                         <h5 class="gt3-core-imagebox-title">تعمییر و نگهداری</h5></div>
-                                                                                                    <p class="gt3-core-imagebox-description"> توضیحات  توضیحات  توضیحات  توضیحات  توضیحات  توضیحات  توضیحات  توضیحات </p>
                                                                                                 </div>
                                                                                             </div>
                                                                                         </div>
@@ -416,7 +404,6 @@
                                                                                                 <div class="gt3-core-imagebox-content">
                                                                                                     <div class="gt3-core-imagebox-title">
                                                                                                         <h5 class="gt3-core-imagebox-title">فضای سبز</h5></div>
-                                                                                                    <p class="gt3-core-imagebox-description"> توضیحات  توضیحات  توضیحات  توضیحات  توضیحات  توضیحات  توضیحات  توضیحات </p>
                                                                                                 </div>
                                                                                             </div>
                                                                                         </div>
@@ -434,7 +421,6 @@
                                                                                                 <div class="gt3-core-imagebox-content">
                                                                                                     <div class="gt3-core-imagebox-title">
                                                                                                         <h5 class="gt3-core-imagebox-title">مدیریت مالی</h5></div>
-                                                                                                    <p class="gt3-core-imagebox-description"> توضیحات  توضیحات  توضیحات  توضیحات  توضیحات  توضیحات  توضیحات  توضیحات </p>
                                                                                                 </div>
                                                                                             </div>
                                                                                         </div>
@@ -452,7 +438,6 @@
                                                                                                 <div class="gt3-core-imagebox-content">
                                                                                                     <div class="gt3-core-imagebox-title">
                                                                                                         <h5 class="gt3-core-imagebox-title">بازسازی و زیبا سازی</h5></div>
-                                                                                                    <p class="gt3-core-imagebox-description"> توضیحات  توضیحات  توضیحات  توضیحات  توضیحات  توضیحات  توضیحات  توضیحات </p>
                                                                                                 </div>
                                                                                             </div>
                                                                                         </div>
@@ -629,28 +614,9 @@
 
 
 
-                                                                                    <div class="elementor-element elementor-element-1e6bc15 elementor-widget elementor-widget-spacer" data-id="1e6bc15" data-element_type="widget" data-widget_type="spacer.default">
-                                                                                        <div class="elementor-widget-container">
-                                                                                            <div class="elementor-spacer">
-                                                                                                <div class="elementor-spacer-inner"></div>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                    <div class="gt3-core-button--alignment_left elementor-element elementor-element-75b223f elementor-widget elementor-widget-gt3-core-button" data-id="75b223f" data-element_type="widget" data-widget_type="gt3-core-button.default">
-                                                                                        <div class="elementor-widget-container">
-                                                                                            <div class="gt3_module_button_elementor size_custom alignment_left button_icon_none hover_type5 rounded">
-                                                                                                <a class="button_size_elementor_custom alignment_left border_icon_none hover_type5 btn_icon_position_left" href="#"> <span class="gt3_module_button__container"> <span class="elementor_gt3_btn_text">بیشتر بخوانید</span> <span class="gt3_module_button__cover front"></span> <span class="gt3_module_button__cover back"></span> </span>
-                                                                                                </a>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                    <div class="elementor-element elementor-element-62c558c elementor-widget elementor-widget-spacer" data-id="62c558c" data-element_type="widget" data-widget_type="spacer.default">
-                                                                                        <div class="elementor-widget-container">
-                                                                                            <div class="elementor-spacer">
-                                                                                                <div class="elementor-spacer-inner"></div>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
+
+
+
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -700,7 +666,7 @@
                                                             </div>
                                                             <div class="elementor-element elementor-element-488574e elementor-widget elementor-widget-heading" data-id="488574e" data-element_type="widget" data-widget_type="heading.default">
                                                                 <div class="elementor-widget-container">
-                                                                    <h2 class="elementor-heading-title elementor-size-default">بهترین راه حل ها برای مشتریان
+                                                                    <h2 class="elementor-heading-title elementor-size-default">بهترین راه حل ها برای مدیران
                                                                     </h2></div>
                                                             </div>
                                                         </div>
@@ -726,16 +692,16 @@
                                                                                             <div class="gt3_pricebox_module_wrapper type1">
                                                                                                 <div class="gt3_price_item-elementor">
                                                                                                     <div class="gt3_price_item_wrapper-elementor">
-                                                                                                        <div class="gt3_price_item-cost-elementor"> <span class="price_item_prefix-elementor">تومان</span>24<span class="price_item_suffix-elementor">50</span> <span class="inner_circle"></span> <span class="inner_2_circles"></span></div>
+                                                                                                        <div class="gt3_price_item-cost-elementor"> <span class="price_item_prefix-elementor">تومان</span>24<span class="price_item_suffix-elementor">500</span> <span class="inner_circle"></span> <span class="inner_2_circles"></span></div>
                                                                                                         <div class="gt3_item_cost_wrapper">
                                                                                                             <div class="price_item_title-elementor">
                                                                                                                 <h3>پلن پایه</h3></div>
                                                                                                         </div>
                                                                                                         <div class="gt3_price_item_body-elementor">
                                                                                                             <div class="items_text-price">
-                                                                                                                <p style="text-align: center">استراتژی و تحقیق</p>
-                                                                                                                <p style="text-align: center">کسب و کار و تجزیه و تحلیل مالی</p>
-                                                                                                                <p style="text-align: center">بهینه سازی سایت</p>
+                                                                                                                <p style="text-align: center">سامانه تحت وب</p>
+                                                                                                                <p style="text-align: center">مدیریت اجرایی و نگهداری</p>
+                                                                                                                <p style="text-align: center">تامین نیروی انسانی</p>
                                                                                                             </div>
                                                                                                             <div class="price_button-elementor">
                                                                                                                 <a href="#" class="shortcode_button button_size_normal bordered"> <span class="gt3_module_button__container"> <span class="gt3_price_button__text">شروع کنید</span> <span class="gt3_module_button__cover front"></span> <span class="gt3_module_button__cover back"></span> </span>
@@ -758,16 +724,16 @@
                                                                                             <div class="gt3_pricebox_module_wrapper type1">
                                                                                                 <div class="gt3_price_item-elementor">
                                                                                                     <div class="gt3_price_item_wrapper-elementor">
-                                                                                                        <div class="gt3_price_item-cost-elementor"> <span class="price_item_prefix-elementor">تومان</span>59<span class="price_item_suffix-elementor">90</span> <span class="inner_circle"></span> <span class="inner_2_circles"></span></div>
+                                                                                                        <div class="gt3_price_item-cost-elementor"> 59<span class="price_item_suffix-elementor">900</span><span class="price_item_prefix-elementor">تومان</span> <span class="inner_circle"></span> <span class="inner_2_circles"></span></div>
                                                                                                         <div class="gt3_item_cost_wrapper">
                                                                                                             <div class="price_item_title-elementor">
                                                                                                                 <h3>پلن استاندارد</h3></div>
                                                                                                         </div>
                                                                                                         <div class="gt3_price_item_body-elementor">
                                                                                                             <div class="items_text-price">
-                                                                                                                <p style="text-align: center">استراتژی و تحقیق</p>
-                                                                                                                <p style="text-align: center">کسب و کار و تجزیه و تحلیل مالی</p>
-                                                                                                                <p style="text-align: center">بهینه سازی سایت</p>
+                                                                                                                <p style="text-align: center">سامانه تحت وب</p>
+                                                                                                                <p style="text-align: center">مدیریت اجرایی و نگهداری</p>
+                                                                                                                <p style="text-align: center">تامین نیروی انسانی</p>
                                                                                                             </div>
                                                                                                             <div class="price_button-elementor">
                                                                                                                 <a href="#" class="shortcode_button button_size_normal bordered"> <span class="gt3_module_button__container"> <span class="gt3_price_button__text">شروع کنید</span> <span class="gt3_module_button__cover front"></span> <span class="gt3_module_button__cover back"></span> </span>
@@ -791,16 +757,16 @@
                                                                                             <div class="gt3_pricebox_module_wrapper type1">
                                                                                                 <div class="gt3_price_item-elementor">
                                                                                                     <div class="gt3_price_item_wrapper-elementor">
-                                                                                                        <div class="gt3_price_item-cost-elementor"> <span class="price_item_prefix-elementor">تومان</span>89<span class="price_item_suffix-elementor">50</span> <span class="inner_circle"></span> <span class="inner_2_circles"></span></div>
+                                                                                                        <div class="gt3_price_item-cost-elementor"> 89<span class="price_item_suffix-elementor">500</span><span class="price_item_prefix-elementor">تومان</span> <span class="inner_circle"></span> <span class="inner_2_circles"></span></div>
                                                                                                         <div class="gt3_item_cost_wrapper">
                                                                                                             <div class="price_item_title-elementor">
                                                                                                                 <h3>پلن جایزه</h3></div>
                                                                                                         </div>
                                                                                                         <div class="gt3_price_item_body-elementor">
                                                                                                             <div class="items_text-price">
-                                                                                                                <p style="text-align: center">استراتژی و تحقیق</p>
-                                                                                                                <p style="text-align: center">کسب و کار و تجزیه و تحلیل مالی</p>
-                                                                                                                <p style="text-align: center">بهینه سازی سایت</p>
+                                                                                                                <p style="text-align: center">سامانه تحت وب</p>
+                                                                                                                <p style="text-align: center">مدیریت اجرایی و نگهداری</p>
+                                                                                                                <p style="text-align: center">تامین نیروی انسانی</p>
                                                                                                             </div>
                                                                                                             <div class="price_button-elementor">
                                                                                                                 <a href="#" class="shortcode_button button_size_normal bordered"> <span class="gt3_module_button__container"> <span class="gt3_price_button__text">شروع کنید</span> <span class="gt3_module_button__cover front"></span> <span class="gt3_module_button__cover back empty_border_color"></span> </span>
@@ -829,7 +795,7 @@
                                                                                             <div class="gt3_pricebox_module_wrapper type1">
                                                                                                 <div class="gt3_price_item-elementor">
                                                                                                     <div class="gt3_price_item_wrapper-elementor">
-                                                                                                        <div class="gt3_price_item-cost-elementor"> <span class="price_item_prefix-elementor">تومان</span>89<span class="price_item_suffix-elementor">50</span> <span class="inner_circle"></span> <span class="inner_2_circles"></span></div>
+                                                                                                        <div class="gt3_price_item-cost-elementor"> 89<span class="price_item_suffix-elementor">500</span><span class="price_item_prefix-elementor">تومان</span> <span class="inner_circle"></span> <span class="inner_2_circles"></span></div>
                                                                                                         <div class="gt3_item_cost_wrapper">
                                                                                                             <div class="price_item_title-elementor">
                                                                                                                 <h3>پلن پایه
@@ -837,9 +803,9 @@
                                                                                                         </div>
                                                                                                         <div class="gt3_price_item_body-elementor">
                                                                                                             <div class="items_text-price">
-                                                                                                                <p style="text-align: center">استراتژی و تحقیق</p>
-                                                                                                                <p style="text-align: center">کسب و کار و تجزیه و تحلیل مالی</p>
-                                                                                                                <p style="text-align: center">بهینه سازی سایت</p>
+                                                                                                                <p style="text-align: center">سامانه تحت وب</p>
+                                                                                                                <p style="text-align: center">مدیریت اجرایی و نگهداری</p>
+                                                                                                                <p style="text-align: center">تامین نیروی انسانی</p>
                                                                                                             </div>
                                                                                                             <div class="price_button-elementor">
                                                                                                                 <a href="#" class="shortcode_button button_size_normal bordered"> <span class="gt3_module_button__container"> <span class="gt3_price_button__text">شروع کنید</span> <span class="gt3_module_button__cover front"></span> <span class="gt3_module_button__cover back"></span> </span>
@@ -863,16 +829,16 @@
                                                                                             <div class="gt3_pricebox_module_wrapper type1">
                                                                                                 <div class="gt3_price_item-elementor">
                                                                                                     <div class="gt3_price_item_wrapper-elementor">
-                                                                                                        <div class="gt3_price_item-cost-elementor"> <span class="price_item_prefix-elementor">تومان</span>299<span class="price_item_suffix-elementor">90</span> <span class="inner_circle"></span> <span class="inner_2_circles"></span></div>
+                                                                                                        <div class="gt3_price_item-cost-elementor"> 299<span class="price_item_suffix-elementor">900</span> <span style="font-size: 14px" class="price_item_prefix-elementor">تومان</span><span class="inner_circle"></span> <span class="inner_2_circles"></span></div>
                                                                                                         <div class="gt3_item_cost_wrapper">
                                                                                                             <div class="price_item_title-elementor">
                                                                                                                 <h3>پلن استاندارد</h3></div>
                                                                                                         </div>
                                                                                                         <div class="gt3_price_item_body-elementor">
                                                                                                             <div class="items_text-price">
-                                                                                                                <p style="text-align: center">استراتژی و تحقیق</p>
-                                                                                                                <p style="text-align: center">کسب و کار و تجزیه و تحلیل مالی</p>
-                                                                                                                <p style="text-align: center">بهینه سازی سایت</p>
+                                                                                                                <p style="text-align: center">سامانه تحت وب</p>
+                                                                                                                <p style="text-align: center">مدیریت اجرایی و نگهداری</p>
+                                                                                                                <p style="text-align: center">تامین نیروی انسانی</p>
                                                                                                             </div>
                                                                                                             <div class="price_button-elementor">
                                                                                                                 <a href="#" class="shortcode_button button_size_normal bordered"> <span class="gt3_module_button__container"> <span class="gt3_price_button__text">شروع کنید</span> <span class="gt3_module_button__cover front"></span> <span class="gt3_module_button__cover back"></span> </span>
@@ -895,16 +861,16 @@
                                                                                             <div class="gt3_pricebox_module_wrapper type1">
                                                                                                 <div class="gt3_price_item-elementor">
                                                                                                     <div class="gt3_price_item_wrapper-elementor">
-                                                                                                        <div class="gt3_price_item-cost-elementor"> <span class="price_item_prefix-elementor">تومان</span>599<span class="price_item_suffix-elementor">50</span> <span class="inner_circle"></span> <span class="inner_2_circles"></span></div>
+                                                                                                        <div class="gt3_price_item-cost-elementor"> 599<span class="price_item_suffix-elementor">500</span><span class="price_item_prefix-elementor">تومان</span> <span class="inner_circle"></span> <span class="inner_2_circles"></span></div>
                                                                                                         <div class="gt3_item_cost_wrapper">
                                                                                                             <div class="price_item_title-elementor">
-                                                                                                                <h3>پلن جایزه</h3></div>
+                                                                                                                <h3>پلن حرفه ای</h3></div>
                                                                                                         </div>
                                                                                                         <div class="gt3_price_item_body-elementor">
                                                                                                             <div class="items_text-price">
-                                                                                                                <p style="text-align: center">استراتژی و تحقیق</p>
-                                                                                                                <p style="text-align: center">کسب و کار و تجزیه و تحلیل مالی</p>
-                                                                                                                <p style="text-align: center">بهینه سازی سایت</p>
+                                                                                                                <p style="text-align: center">سامانه تحت وب</p>
+                                                                                                                <p style="text-align: center">مدیریت اجرایی و نگهداری</p>
+                                                                                                                <p style="text-align: center">تامین نیروی انسانی</p>
                                                                                                             </div>
                                                                                                             <div class="price_button-elementor">
                                                                                                                 <a href="#" class="shortcode_button button_size_normal bordered"> <span class="gt3_module_button__container"> <span class="gt3_price_button__text">شروع کنید</span> <span class="gt3_module_button__cover front"></span> <span class="gt3_module_button__cover back"></span> </span>
@@ -996,7 +962,6 @@
                                                                                 <div class="span6"><span class="wpcf7-form-control-wrap your-email"><input style="font-family: iranyekan!important;" type="email" name="your-email" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-email wpcf7-validates-as-required wpcf7-validates-as-email borj-text" aria-required="true" aria-invalid="false" placeholder="آدرس ایمیل  " /></span></div>
                                                                                 <div class="span6"><span class="wpcf7-form-control-wrap your-email"><input style="font-family: iranyekan!important;" type="email" name="your-email" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-email wpcf7-validates-as-required wpcf7-validates-as-email borj-text" aria-required="true" aria-invalid="false" placeholder="نام مجتمع " /></span></div>
                                                                                 <div class="span12">
-
                                                                                     <input type="submit"value="ارسال فرم" class="wpcf7-form-control wpcf7-submit" />
                                                                                 </div>
                                                                             </div>

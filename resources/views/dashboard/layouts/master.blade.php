@@ -135,12 +135,12 @@
                 <div id="kt_aside_menu" class="kt-aside-menu " data-ktmenu-vertical="1" data-ktmenu-scroll="1" data-ktmenu-dropdown-timeout="500">
 
                     <ul class="kt-menu__nav ">
-                        <li class="kt-menu__item  kt-menu__item--active" aria-haspopup="true"><a href="index.html" class="kt-menu__link "><span class="kt-menu__link-icon">
+                        <li class="kt-menu__item  {{ request()->routeIs('dashboard.index') ? 'kt-menu__item--active' : ''  }}" aria-haspopup="true"><a href="{{ route('dashboard.index') }}" class="kt-menu__link "><span class="kt-menu__link-icon">
             <i class="fa fa-chart-bar"></i>
           </span><span class="kt-menu__link-text">داشبورد اصلی</span></a></li>
 
-                        <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true" data-ktmenu-submenu-toggle="hover">
-                            <a href="malekin&sakenin.html" class="kt-menu__link"><span class="kt-menu__link-icon"><i class="fa fa-users"></i></span><span class="kt-menu__link-text">مدیریت مالکین و ساکنین</span></a>
+                        <li class="kt-menu__item  {{ request()->routeIs('units.index') ? 'kt-menu__item--active' : ''  }}" aria-haspopup="true" data-ktmenu-submenu-toggle="hover">
+                            <a href="{{ route('units.index') }}" class="kt-menu__link"><span class="kt-menu__link-icon"><i class="fa fa-users"></i></span><span class="kt-menu__link-text">مدیریت مالکین و ساکنین</span></a>
                             <div class="kt-menu__submenu "><span class="kt-menu__arrow"></span>
                                 <ul class="kt-menu__subnav">
                                     <li class="kt-menu__item  kt-menu__item--parent" aria-haspopup="true"><span class="kt-menu__link"><span class="kt-menu__link-text">مدیریت مالکین و ساکنین</span></span>
@@ -154,54 +154,41 @@
               "></i></span><span class="kt-menu__link-text">هیات مدیره</span><i class="kt-menu__ver-arrow la la-angle-right"></i></a>
                             <div class="kt-menu__submenu "><span class="kt-menu__arrow"></span>
                                 <ul class="kt-menu__subnav">
-                                    <li class="kt-menu__item  kt-menu__item--parent" aria-haspopup="true"><span class="kt-menu__link"><span class="kt-menu__link-text">صورت جلسات</span></span>
-                                    </li>
 
                                     <li class="kt-menu__item " aria-haspopup="true">
-                                        <a href="soratJalase.html" class="kt-menu__link ">
-                                            <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">صورت جلسات</span></a></li>
-                                    <li class="kt-menu__item " aria-haspopup="true"><a href="mosavabat.html" class="kt-menu__link"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">مصوبات</span></a>
+                                        <a href="{{ route('proceedings.index') }}" class="kt-menu__link ">
+                                            <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">صورت جلسات</span>
+                                        </a>
+                                    </li>
+                                    <li class="kt-menu__item " aria-haspopup="true">
+                                        <a href="{{ route('enactments.index') }}" class="kt-menu__link ">
+                                            <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">مصوبات</span>
+                                        </a>
+                                    </li>
+
+
                                 </ul>
                             </div>
                         </li>
                         <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true" data-ktmenu-submenu-toggle="hover"><a href="javascript:;" class="kt-menu__link kt-menu__toggle"><span class="kt-menu__link-icon"><i class="fa fa-money-bill-alt"></i></span><span class="kt-menu__link-text">حسابداری</span><i class="kt-menu__ver-arrow la la-angle-right"></i></a>
                             <div class="kt-menu__submenu "><span class="kt-menu__arrow"></span>
                                 <ul class="kt-menu__subnav">
-                                    <li class="kt-menu__item  kt-menu__item--parent" aria-haspopup="true"><span class="kt-menu__link"><span class="kt-menu__link-text">Subheaders</span></span>
-                                    </li>
-                                    <li class="kt-menu__item " aria-haspopup="true"><a href="hazineha.html" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">هزینه ها</span></a></li>
-                                    <li class="kt-menu__item " aria-haspopup="true"><a href="darAmadha.html" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">درآمدها</span></a></li>
-                                    <li class="kt-menu__item " aria-haspopup="true"><a href="sharzh.html" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">شارژ</span></a></li>
+                                    <li class="kt-menu__item  kt-menu__item--parent" aria-haspopup="true"><span class="kt-menu__link"><span class="kt-menu__link-text">حسابداری</span></span></li>
+                                    <li class="kt-menu__item " aria-haspopup="true"><a href="{{ route('costs.index') }}" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">هزینه ها</span></a></li>
+                                    <li class="kt-menu__item " aria-haspopup="true"><a href="{{ route('incomes.index') }}" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">درآمدها</span></a></li>
+                                    <li class="kt-menu__item " aria-haspopup="true"><a href="{{ route('charge.index') }}" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">مدیریت شارژ</span></a></li>
 
                                 </ul>
                             </div>
                         </li>
-                        <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true" data-ktmenu-submenu-toggle="hover"><a href="javascript:;" class="kt-menu__link kt-menu__toggle"><span class="kt-menu__link-icon"><i class="fa fa-tasks"></i></span><span class="kt-menu__link-text">قراردادها</span><i class="kt-menu__ver-arrow la la-angle-right"></i></a>
-                            <div class="kt-menu__submenu "><span class="kt-menu__arrow"></span>
-                                <ul class="kt-menu__subnav">
-                                    <li class="kt-menu__item  kt-menu__item--parent" aria-haspopup="true"><span class="kt-menu__link"><span class="kt-menu__link-text">General</span></span>
-                                    </li>
-                                    <li class="kt-menu__item " aria-haspopup="true"><a href="darAmadha.html" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">درآمدی</span></a></li>
-                                    <li class="kt-menu__item " aria-haspopup="true"><a href="layout/general/minimized-aside.html" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">هزینه ای</span></a></li>
+                        <li class="kt-menu__item  " aria-haspopup="true" ><a href="{{ route('contracts.index') }}" class="kt-menu__link "><span class="kt-menu__link-icon"><i class="fa fa-tasks"></i></span><span class="kt-menu__link-text">قرارداد ها</span></a></li>
+                        <li class="kt-menu__item " aria-haspopup="true"><a href="{{ route('maintenances.index') }}" class="kt-menu__link "><span class="kt-menu__link-icon"><i class="fa fa-wrench"></i></span><span class="kt-menu__link-text">تعمییرات و نگهداری</span></a></li>
 
-                                </ul>
-                            </div>
-                        </li>
-                        <li class="kt-menu__item " aria-haspopup="true"><a href="builder.html" class="kt-menu__link "><span class="kt-menu__link-icon"><i class="fa fa-wrench"></i></span><span class="kt-menu__link-text">تعمییرات و نگهداری</span></a></li>
-
-                        <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true" data-ktmenu-submenu-toggle="hover"><a href="javascript:;" class="kt-menu__link kt-menu__toggle"><span class="kt-menu__link-icon"><i class="fa fa-lock"></i></span><span class="kt-menu__link-text">نظارت و امنیت</span></a>
-                            <div class="kt-menu__submenu "><span class="kt-menu__arrow"></span>
-                                <ul class="kt-menu__subnav">
-                                    <li class="kt-menu__item  kt-menu__item--parent" aria-haspopup="true"><span class="kt-menu__link"><span class="kt-menu__link-text">Forms</span></span>
-                                    </li>
-
-                                </ul>
-                            </div>
-                        </li>
+                        <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true" ><a href="javascript:;" class="kt-menu__link kt-menu__toggle"><span class="kt-menu__link-icon"><i class="fa fa-lock"></i></span><span class="kt-menu__link-text">نظارت و امنیت</span></a></li>
                         <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true" data-ktmenu-submenu-toggle="hover"><a href="javascript:;" class="kt-menu__link kt-menu__toggle"><span class="kt-menu__link-icon"><i class="fa fa-mug-hot"></i></span><span class="kt-menu__link-text">خدمات رفاهی</span><i class="kt-menu__ver-arrow la la-angle-right"></i></a>
                             <div class="kt-menu__submenu "><span class="kt-menu__arrow"></span>
                                 <ul class="kt-menu__subnav">
-                                    <li class="kt-menu__item  kt-menu__item--parent" aria-haspopup="true"><span class="kt-menu__link"><span class="kt-menu__link-text">KTDatatable</span></span>
+                                    <li class="kt-menu__item  kt-menu__item--parent" aria-haspopup="true"><span class="kt-menu__link"><span class="kt-menu__link-text">خدمات رفاهی</span></span>
                                     </li>
                                     <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true" data-ktmenu-submenu-toggle="hover"><a href="javascript:;" class="kt-menu__link kt-menu__toggle"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">پارکینگ مهمان</span></a>
 
@@ -223,27 +210,13 @@
                                 </ul>
                             </div>
                         </li>
-                        <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true" data-ktmenu-submenu-toggle="hover"><a href="javascript:;" class="kt-menu__link kt-menu__toggle"><span class="kt-menu__link-icon"><i class="fa fa-envelope-open-text
-              "></i></span><span class="kt-menu__link-text">نظرسنجی</span></i></a>
-                            <div class="kt-menu__submenu "><span class="kt-menu__arrow"></span>
-                                <ul class="kt-menu__subnav">
-                                    <li class="kt-menu__item  kt-menu__item--parent" aria-haspopup="true"><span class="kt-menu__link"><span class="kt-menu__link-text">Datatables.net</span></span>
-                                    </li>
-
-
-                                </ul>
-                            </div>
-                        </li>
-                        <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true" data-ktmenu-submenu-toggle="hover"><a href="darkhastha.html" class="kt-menu__link"><span class="kt-menu__link-icon"><i class="fa fa-pencil-alt"></i></span><span class="kt-menu__link-text">درخواست ها</span></a>
-                            <div class="kt-menu__submenu "><span class="kt-menu__arrow"></span>
-
-                            </div>
-                        </li>
+                        <li class="kt-menu__item " aria-haspopup="true" ><a href="{{ route('votes.index') }}" class="kt-menu__link "><span class="kt-menu__link-icon"><i class="fa fa-envelope-open-text"></i></span><span class="kt-menu__link-text">نظرسنجی</span></i></a></li>
+                        <li class="kt-menu__item" aria-haspopup="true" ><a href="{{ route('tickets.index') }}" class="kt-menu__link"><span class="kt-menu__link-icon"><i class="fa fa-pencil-alt"></i></span><span class="kt-menu__link-text">درخواست ها</span></a></li>
 
                         <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true" data-ktmenu-submenu-toggle="hover"><a href="javascript:;" class="kt-menu__link kt-menu__toggle"><span class="kt-menu__link-icon"><i class="fa fa-user-tie"></i></span><span class="kt-menu__link-text">مدیریت سیستم</span><i class="kt-menu__ver-arrow la la-angle-right"></i></a>
                             <div class="kt-menu__submenu "><span class="kt-menu__arrow"></span>
                                 <ul class="kt-menu__subnav">
-                                    <li class="kt-menu__item  kt-menu__item--parent" aria-haspopup="true"><span class="kt-menu__link"><span class="kt-menu__link-text">Base</span></span>
+                                    <li class="kt-menu__item  kt-menu__item--parent" aria-haspopup="true"><span class="kt-menu__link"><span class="kt-menu__link-text">مدیریت سیستم</span></span>
                                     </li>
                                     <li class="kt-menu__item " aria-haspopup="true"><a href="elanha.html" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">اعلان ها</span></a></li>
                                     <li class="kt-menu__item " aria-haspopup="true"><a href="mojavez.html" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">مجوزها</span></a></li>
@@ -279,7 +252,7 @@
                     <div class="kt-header-menu-wrapper" id="kt_header_menu_wrapper">
 
                         <div id="kt_header_menu" class="kt-header-menu kt-header-menu-mobile  kt-header-menu--layout-default ">
-                            <div class="kt-subheader__main">
+                            <div style="padding-top: 10px" class="kt-subheader__main">
 
                                 <h3 class="kt-subheader__title mr-3"> سیستم مدیریت مجتمع مسکونی</h3>
                                 <span class="kt-subheader__separator kt-subheader__separator--v"></span>
@@ -1107,90 +1080,10 @@
 
 
 
-                            <div class="tab-pane" id="kt_widget11_tab2_content">
-                                <!--begin::Widget 11-->
-                                <div class="kt-widget11">
-                                    <div class="table-responsive">
-                                        <table class="table">
-                                            <thead>
-                                            <tr>
-                                                <td style="width:1%">#</td>
-                                                <td style="width:40%">Application</td>
-                                                <td style="width:14%">Sales</td>
-                                                <td style="width:15%">Change</td>
-                                                <td style="width:15%">Status</td>
-                                                <td style="width:15%" class="kt-align-right">Total</td>
-                                            </tr>
-                                            </thead>
-                                            <tbody>
-                                            <tr>
-                                                <td>
-                                                    <label class="kt-checkbox kt-checkbox--single">
-                                                        <input type="checkbox"><span></span>
-                                                    </label>
-                                                </td>
-                                                <td>
-                                                    <span class="kt-widget11__title">Loop</span>
-                                                    <span class="kt-widget11__sub">CRM System</span>
-                                                </td>
-                                                <td>19,200</td>
-                                                <td>$63</td>
-                                                <td><span class="kt-badge kt-badge--inline kt-badge--danger">pending</span></td>
-                                                <td class="kt-align-right kt-font-brand  kt-font-bold">$23,740</td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <label class="kt-checkbox kt-checkbox--single"><input type="checkbox"><span></span></label>
-                                                </td>
-                                                <td>
-                                                    <span class="kt-widget11__title">Selto</span>
-                                                    <span class="kt-widget11__sub">Powerful Website Builder</span>
-                                                </td>
-                                                <td>24,310</td>
-                                                <td>$39</td>
-                                                <td><span class="kt-badge kt-badge--inline kt-badge--success">new</span></td>
-                                                <td class="kt-align-right kt-font-success  kt-font-bold">$46,010</td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <label class="kt-checkbox kt-checkbox--single"><input type="checkbox"><span></span></label>
-                                                </td>
-                                                <td>
-                                                    <span class="kt-widget11__title">Jippo</span>
-                                                    <span class="kt-widget11__sub">The Best Selling App</span>
-                                                </td>
-                                                <td>9,076</td>
-                                                <td>$105</td>
-                                                <td><span class="kt-badge kt-badge--inline kt-badge--brand">approved</span></td>
-                                                <td class="kt-align-right kt-font-danger kt-font-bold">$15,800</td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <label class="kt-checkbox kt-checkbox--single"><input type="checkbox"><span></span></label>
-                                                </td>
-                                                <td>
-                                                    <span class="kt-widget11__title">Verto</span>
-                                                    <span class="kt-widget11__sub">Web Development Tool</span>
-                                                </td>
-                                                <td>11,094</td>
-                                                <td>$16</td>
-                                                <td><span class="kt-badge kt-badge--inline kt-badge--info">done</span></td>
-                                                <td class="kt-align-right kt-font-warning kt-font-bold">$8,520</td>
-                                            </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                    <div class="kt-widget11__action kt-align-right">
-                                        <button type="button" class="btn btn-label-success btn-bold btn-sm">Generate Report</button>
-                                    </div>
-                                </div>
-                                <!--end::Widget 11-->
-                            </div>
+
                             <!--end::tab 2 content-->
                             <!--begin::tab 3 content-->
-                            <div class="tab-pane" id="kt_widget11_tab3_content">
 
-                            </div>
                             <!--end::tab 3 content-->
                         </div>
                         <!--End::Tab Content-->
@@ -2180,6 +2073,9 @@
 <!--begin::Page Scripts(used by this page) -->
 <script src="/dashboard/assets/js/pages/dashboard.js" type="text/javascript"></script>
 <!--end::Page Scripts -->
+
+@yield('footerScripts')
+
 </body>
 <!-- end::Body -->
 

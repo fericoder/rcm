@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateComplexesTable extends Migration
+class CreateVotesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,8 @@ class CreateComplexesTable extends Migration
      */
     public function up()
     {
-        Schema::create('complexes', function (Blueprint $table) {
+        Schema::create('votes', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name');
-            $table->text('address');
-            $table->unsignedInteger('units');
-            $table->enum('type', ['normal', 'multiBlock'])->default('normal');
             $table->timestamps();
         });
     }
@@ -30,6 +26,6 @@ class CreateComplexesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('complexes');
+        Schema::dropIfExists('votes');
     }
 }

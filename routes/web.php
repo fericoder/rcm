@@ -21,6 +21,17 @@ Route::get('/services', 'AppController@services')->name('app.services');
 // Add middleware auth
 Route::namespace('Dashboard')->prefix('dashboard')->group(function () {
     Route::get('index', 'IndexController@index')->name('dashboard.index');
+    Route::resource('units', 'UnitController');
+    Route::resource('proceedings', 'ProceedingController');
+    Route::resource('enactments', 'EnactmentController');
+    Route::resource('costs', 'CostController');
+    Route::resource('incomes', 'IncomeController');
+    Route::get('charge', 'ChargeController@index')->name('charge.index');
+    Route::resource('invoices', 'InvoiceController');
+    Route::resource('contracts', 'ContractController');
+    Route::resource('maintenances', 'MaintenanceController');
+    Route::resource('votes', 'VoteController');
+    Route::resource('tickets', 'TicketController');
 
 });
 

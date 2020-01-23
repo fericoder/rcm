@@ -180,21 +180,9 @@
                         <div class="gt3_header_builder_component gt3_header_builder_menu_component">
                             <nav class="main-menu main_menu_container">
                                 <ul id="menu-main-menu" class="menu">
-                                    <li id="menu-item-1474" class="menu-item menu-item-type-custom menu-item-object-custom  menu-item-has-children menu-item-1474"><a href="#contact">تماس باما</a>
-
-                                    </li>
-                                    <li id="menu-item-1475" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1475"><a href="#services">خدمات ما</a>
-
-                                    </li>
-                                    <li id="menu-item-1535" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1535"><a href="#">راهنما</a>
-
-                                    </li>
-                                    <li id="menu-item-1478" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1478"><a href="#">ورود به پنل</a>
-
-                                    </li>
-                                    <li id="menu-item-1479" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1479"><a href="#">ورود به پنل</a>
-
-                                    </li>
+                                    <li id="menu-item-1474" class="menu-item menu-item-type-custom menu-item-object-custom  menu-item-has-children menu-item-1474"><a href="#contact">تماس باما</a></li>
+                                    <li id="menu-item-1475" class="menu-item menu-item-type-custom menu-item-object-custom  menu-item-1475"><a href="/services">خدمات ما</a></li>
+                                    <li id="menu-item-1478" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1478"><a href="#">ورود به پنل</a></li></li>
                                     <li id="menu-item-1503" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1478 current-menu-ancestor current-menu-parent"><a href="contast-us/index.html"><span>صفحه اصلی</span></a></li>
                                 </ul>
                             </nav>
@@ -702,7 +690,6 @@
                             <div class="textwidget">
                                 <p><img class="alignnone size-full wp-image-1456" src="/app/assets/img/logo_retinablack.png" alt="" width="149" height="48" /></p>
                                 <p>با استفاده از سامانه برج تمامی پرداخت ها از طریق پیامک به دست شما میرسد
-                                    <br /> <a class="gt3_icon_link gt3_custom_color" style="font-size: 18px; color: #00aced; margin-right: 8px; margin-top: 22px;" href="#" target="_blank" rel="noopener noreferrer" data-color="#00aced" data-hover-color="#00aced"><i class="fa fa-twitter"> </i></a> <a class="gt3_icon_link gt3_custom_color" style="font-size: 18px; color: #3b5998; margin-right: 13px; margin-top: 22px;" href="#" target="_blank" rel="noopener noreferrer" data-color="#3b5998" data-hover-color="#3b5998"><i class="fa fa-facebook"> </i></a><a class="gt3_icon_link gt3_custom_color" style="font-size: 18px; color: #f04b3f; margin-right: 9px; margin-top: 22px;" href="#" target="_blank" rel="noopener noreferrer" data-color="#f04b3f" data-hover-color="#f04b3f"><i class="fa fa-google-plus"> </i></a> <a class="gt3_icon_link gt3_custom_color" style="font-size: 18px; color: #cb2027; margin-right: 10px; margin-top: 22px;" href="#" target="_blank" rel="noopener noreferrer" data-color="#cb2027" data-hover-color="#cb2027"><i class="fa fa-pinterest-p"> </i></a> <a class="gt3_icon_link gt3_custom_color" style="font-size: 18px; color: #007bb6; margin-right: 15px; margin-top: 22px;" href="#" target="_blank" rel="noopener noreferrer" data-color="#007bb6" data-hover-color="#007bb6"><i class="fa fa-linkedin"> </i></a></p>
                             </div>
                         </div>
                     </div>
@@ -711,13 +698,9 @@
                             <h4 class="widget-title">تماس باما</h4>
                             <div class="textwidget">
 
-                                <p><a class="gt3_icon_link gt3_custom_color" style="font-size: 18px;color: #5747e4;margin-right: 9px" href="#" target="_blank" rel="noopener noreferrer" data-color="#5747e4" data-hover-color="#f47215"> 44512563 021</a><i class="fa fa-phone" style="font-weight: bold"></i></p>
-
-                                <p><a class="gt3_icon_link gt3_custom_color" style="font-size: 18px;color: #5747e4;margin-right: 5px;margin-top: -7px" href="#" target="_blank" rel="noopener noreferrer" data-color="#5747e4" data-hover-color="#f47215"> @borj</a><i class="fa fa-envelope"> </i></p>
-
-
-                                <p>
-                                    <a class="gt3_icon_link gt3_custom_color" style="font-size: 17px;margin-top: 7px;margin-left: 27px;margin-bottom: 20px;float: left" href="#" target="_blank" rel="noopener noreferrer" data-color="#5747e4" data-hover-color="#f47215"> تهران، خیابان 196، پلاک 45 </a>  <img class="alignnone" src="/app/assets/img/map_point.png" alt="" width="12" height="17"></p>
+                                <p><a class="gt3_icon_link gt3_custom_color" style="font-size: 18px;color: #5747e4;margin-right: 9px" href="#" target="_blank" rel="noopener noreferrer" data-color="#5747e4" data-hover-color="#f47215"> 22323233</a><i class="fa fa-phone" style="font-weight: bold"></i></p>
+                                <p><a class="gt3_icon_link gt3_custom_color" style="font-size: 18px;color: #5747e4;margin-right: 5px;margin-top: -7px" href="#" target="_blank" rel="noopener noreferrer" data-color="#5747e4" data-hover-color="#f47215">Info@Borj.com</a><i class="fa fa-envelope"> </i></p>
+                                <p><a class="gt3_icon_link gt3_custom_color" style="font-size: 17px;margin-top: 7px;margin-left: 27px;margin-bottom: 20px;float: left" href="#" target="_blank" rel="noopener noreferrer" data-color="#5747e4" data-hover-color="#f47215"> تهران، میدان المپیک </a>  <img class="alignnone" src="/app/assets/img/map_point.png" alt="" width="12" height="17"></p>
                             </div>
                         </div>
                     </div>
@@ -741,7 +724,8 @@
                             <div class="menu-community-container">
                                 <ul id="menu-community" class="menu">
                                     <li id="menu-item-1485" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1485"><a href="#">قوانین و مقررات</a></li>
-                                    <li id="menu-item-1486" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1486"><a href="#">خدمات ما</a></li>
+                                    <li id="menu-item-1486" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1486"><a href="#">خدمات اداری و مدیریتی</a></li>
+                                    <li id="menu-item-1486" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1486"><a href="#">سامانه مدیریت وب</a></li>
                                     <li id="menu-item-1487" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1487"><a href="#">درباره ما</a></li>
                                     <li id="menu-item-1488" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1488"><a href="#">راهنما</a></li>
                                     <li id="menu-item-1489" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1489"><a href="#">آموزش</a></li>

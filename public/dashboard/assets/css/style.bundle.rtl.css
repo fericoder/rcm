@@ -43203,7 +43203,7 @@ th>.kt-radio.kt-radio--single {
 
 .kt-subheader .kt-subheader__main .btn:not(.dropdown-toggle-split) {
     margin-right: 0;
-    margin-left: .5rem
+    margin-left: .5rem;
 }
 
 .kt-subheader .kt-subheader__main .kt-subheader__mobile-toggle {
@@ -52238,7 +52238,7 @@ body {
 
 @media (min-width:1025px) {
     .kt-content {
-        padding: 25px 0
+        padding: 0 0
     }
     .kt-content.kt-content--fit-top {
         padding-top: 0
