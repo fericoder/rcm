@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Dashboard;
 
+use App\Http\Requests\ProceedingRequest;
 use App\Proceeding;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,8 @@ class ProceedingController extends \App\Http\Controllers\Controller
      */
     public function index()
     {
-        return view('dashboard.proceedings');
+        $proceedings = Proceeding::where('complex_id', \Auth::user()->complex_id)->get();
+        return view('dashboard.proceedings', compact('proceedings'));
     }
 
     /**
@@ -33,9 +35,22 @@ class ProceedingController extends \App\Http\Controllers\Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ProceedingRequest $request)
     {
-        //
+        $file = $this->uploadFile($request->file);
+        $complex_id = \Auth::user()->complex->id;
+        $date =substr($request->date,0,10);
+
+        $proceeding = new Proceeding;
+        $proceeding->date = date('Y-m-d H:i:s', (int)$date);
+        $proceeding->type = $request->type;
+        $proceeding->number = $request->number;
+        $proceeding->file = $file;
+        $proceeding->complex_id = $complex_id;
+        $proceeding->save();
+
+        alert()->success('انجام شد', 'صورتجلسه با موفقیت اضافه شد.');
+        return redirect()->back();
     }
 
     /**

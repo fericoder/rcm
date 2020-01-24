@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers\Dashboard;
 
+use App\Proceeding;
 use App\Enactment;
+use App\Http\Requests\EnactmentRequest;
+use App\User;
 use Illuminate\Http\Request;
 
 class EnactmentController extends \App\Http\Controllers\Controller
@@ -14,7 +17,10 @@ class EnactmentController extends \App\Http\Controllers\Controller
      */
     public function index()
     {
-        return view('dashboard.enactments');
+        $users = User::where('complex_id', \Auth::user()->complex_id)->get();
+        $proceedings = Proceeding::where('complex_id', \Auth::user()->complex_id)->get();
+        $enactments = Enactment::where('complex_id', \Auth::user()->complex_id)->get();
+        return view('dashboard.enactments', compact('enactments', 'proceedings', 'users'));
     }
 
     /**
@@ -33,9 +39,23 @@ class EnactmentController extends \App\Http\Controllers\Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(EnactmentRequest $request)
     {
-        //
+
+        $complex_id = \Auth::user()->complex->id;
+        $deadline =substr($request->deadline,0,10);
+
+        $enactment = new Enactment;
+        $enactment->complex_id = $complex_id;
+        $enactment->proceeding_id = $request->proceeding_id;
+        $enactment->number = $request->number;
+        $enactment->description = $request->description;
+        $enactment->user_id = $request->user_id;
+        $enactment->deadline = date('Y-m-d H:i:s', (int)$deadline);
+        $enactment->save();
+
+        alert()->success('انجام شد', 'مصوبه با موفقیت اضافه شد.');
+        return redirect()->back();
     }
 
     /**

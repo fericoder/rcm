@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\Dashboard;
 
+use App\Http\Requests\VoteRequest;
 use App\Vote;
+use App\VoteOption;
 use Illuminate\Http\Request;
 
 class VoteController extends \App\Http\Controllers\Controller
@@ -14,7 +16,7 @@ class VoteController extends \App\Http\Controllers\Controller
      */
     public function index()
     {
-        return view('dashboard.votes');
+        return view('dashboard.votes.index');
     }
 
     /**
@@ -24,7 +26,7 @@ class VoteController extends \App\Http\Controllers\Controller
      */
     public function create()
     {
-        //
+        return view('dashboard.votes.create');
     }
 
     /**
@@ -33,9 +35,19 @@ class VoteController extends \App\Http\Controllers\Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(VoteRequest $request)
     {
-        //
+        $vote = new Vote;
+        $vote->title = $request->title;
+        $vote->question = $request->question;
+        $vote->user_id = \Auth::user()->id;
+        $vote->complex_id = \Auth::user()->complex_id;
+        $vote->save();
+
+        $vote->voteOptions()->associate([$request->options]);
+
+        alert()->success('انجام شد', 'نظرسنجی با موفقیت اضافه شد.');
+        return redirect()->route('votes.index');
     }
 
     /**

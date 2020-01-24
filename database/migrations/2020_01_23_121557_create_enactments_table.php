@@ -15,6 +15,13 @@ class CreateEnactmentsTable extends Migration
     {
         Schema::create('enactments', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->unsignedInteger('complex_id');
+            $table->unsignedInteger('proceeding_id');
+            $table->unsignedInteger('number');
+            $table->text('description');
+            $table->unsignedInteger('user_id');
+            $table->timestamp('deadline')->default(now())->nullable();
+            $table->text('resualt')->nullable();
             $table->timestamps();
         });
     }

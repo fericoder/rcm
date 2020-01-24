@@ -1,4 +1,4 @@
-@extends('dashboard.layouts.master')
+@extends('dashboard.layouts.master', [ 'title' => 'صورتجلسات'])
 
 
 @section('content')
@@ -6,20 +6,82 @@
     <link href="assets/plugins/custom/datatables/datatables.bundle.rtl.css" rel="stylesheet" type="text/css" />
 
 
+    <!-- Modal -->
+    <div class="modal fade" id="add" tabindex="-1" role="dialog" aria-labelledby="add" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="add">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modall">افزودن صورتجلسه</h5>
+                    <button type="button" class="close " data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="{{ route('proceedings.store') }}" method="post" enctype="multipart/form-data">
+                    @csrf
+
+                <div class="modal-body">
+                    <div class="form-group row">
+                        <div class="col-lg-6">
+                            <label>تاریخ جلسه:</label>
+                            <input class="form-control dp" >
+                            <input type="hidden" name="date" class="observer" >
+                        </div>
+                        <div class="col-lg-6">
+                            <label class="">نوع جلسه:</label>
+
+                            <div class="kt-input-icon">
+                                <select name="type" class="form-control" id="type">
+                                    <option value="هیات مدیره">هیات مدیره</option>
+                                    <option value="مجمع">مجمع</option>
+                                    <option value="سایر">سایر</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-lg-6">
+                            <label>شماره جلسه:</label>
+                            <div class="kt-input-icon">
+                                <input type="text" name="number" class="form-control" placeholder="مثال: ۱۰۱ ">
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <label class="">فایل:</label>
+                            <div class="kt-input-icon">
+                                <input type="file" name="file" class="form-control" >
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-success btn-wide btn-elevate btn-elevate-air">افزودن صورتجلسه</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">انصراف</button>
+                </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!--end::Modal-->
+
+
+
+
     <div class="row">
         <div class="col-lg-12">
             <div class="kt-portlet kt-portlet--mobile">
                 <div class="kt-portlet__head">
                     <div class="kt-portlet__head-label">
-                        <h3 class="kt-portlet__head-title borj-color">
-                            صورت جلسات                       </h3>
+                        <h3 class="kt-portlet__head-title borj-color">صورتجلسات</h3>
+                        <button data-toggle="modal" data-target=" #add" style="margin-right: 20px;font-size: 13px" type="button" class="btn btn-success btn-wide btn-elevate btn-elevate-air">افزودن صورت جلسه</button>
                     </div>
 
                     <div style="" class="kt-portlet__head-toolbar">
-
                         <div class="kt-portlet__head-toolbar-wrapper">
                             <div class="dropdown dropdown-inline">
-                                <button type="button" class="btn btn-brand btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <button  style="font-size: 14px;" type="button" class="btn btn-brand btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <i class="la la-plus"></i> ابزار ها و خروجی ها
                                 </button>
                                 <div class="dropdown-menu dropdown-menu-right">
@@ -66,36 +128,44 @@
 
                 </div>
                 <div class="kt-portlet__body">
-                    <!--begin: Datatable -->
+
+                    @if(count($errors) > 0 )
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            <ul class="p-0 m-0" style="list-style: none;">
+                                @foreach($errors->all() as $error)
+                                    <li>{{$error}}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                @endif
+
+
+                <!--begin: Datatable -->
                     <table style="font-family: iranyekan; width: 100%;" class="table table-striped table-bordered table-hover table-checkable display nowrap" id="m_table_2">
                         <thead style="font-family: BYekan">
                         <tr>
-                            <th>ردیف</th>
-                            <th>تاریخ جلسه</th>
                             <th>شماره جلسه</th>
-                            <th>مشاهده مصوبات</th>
-                            <th>header</th>
-                            <th>header</th>
-                            <th>header</th>
-                            <th>header</th>
-                            <th>header</th>
-                            <th>header</th>
+                            <th>تاریخ جلسه</th>
+                            <th>مشاهده فایل</th>
+                            <th>حذف | ویرایش</th>
                         </tr>
                         </thead>
                         <tbody>
 
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
+                        @foreach ($proceedings as $proceeding)
+                            <tr>
+                                <td>{{ $proceeding->number }}</td>
+                                <td>{{ $proceeding->date }}</td>
+                                <td><a target="_blank" href="{{ $proceeding->file }}"> <i class="fa fa-file-alt"></i> </a></td>
+                                <td>
+                                    <a href="" data-id="" class="m-portlet__nav-link btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill button" title="حذف"> <i style="color: darkred" class="fa fa-times"></i> </a>
+                                    <a href="" class="m-portlet__nav-link btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill" title="ویرایش"> <i style="color: green" class="la la-edit"></i> </a>
+                                </td>
+                            </tr>
+                        @endforeach
 
                         </tbody>
 
@@ -162,4 +232,17 @@
 
 
     </script>
+
+    <link rel="stylesheet" href="/dashboard/assets/css/persian-datepicker.min.css"/>
+    <script src="/dashboard/assets/js/persian-date.min.js"></script>
+    <script src="/dashboard/assets/js/persian-datepicker.min.js"></script>
+    <script src="/dashboard/assets/js/persian-date.min.js" type="text/javascript"></script>
+    <script>
+        $(document).ready(function() {
+            $(".dp").pDatepicker({
+                altField: '.observer'
+            });
+        });
+    </script>
+
 @stop

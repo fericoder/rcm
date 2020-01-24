@@ -1,4 +1,4 @@
-@extends('dashboard.layouts.master')
+@extends('dashboard.layouts.master', ['title' => 'مدیریت هزینه ها'])
 
 
 @section('content')
@@ -86,7 +86,7 @@
                         </div>
                     </div>
                     <div class="kt-portlet__body">
-                        <div id="chartdiv"></div>
+                        <div style="height: 380px;" id="costsHeading"></div>
                     </div>
                 </div>
             </div>
@@ -100,12 +100,12 @@
                     <div class="kt-portlet__head">
                         <div class="kt-portlet__head-label">
                             <h3 class="kt-portlet__head-title borj-color">
-                                هزینه ها بر اساس سرفصل <small>(ریال)</small>
+                                هزینه ها در بازه های زمانی ماهانه <small>(ریال)</small>
                             </h3>
                         </div>
                     </div>
                     <div class="kt-portlet__body">
-                        <div style="font-family: iranyekan!important" id="container"></div>
+                        <div style="font-family: iranyekan!important; width: 100%" id="costsMonthly"></div>
                     </div>
                 </div>
             </div>
@@ -189,15 +189,11 @@
                                     <th>تاریخ</th>
                                     <th>مستندات</th>
                                     <th>حذف</th>
-                                    <th>header</th>
-                                    <th>header</th>
                                 </tr>
                                 </thead>
                                 <tbody>
 
                                 <tr>
-                                    <td></td>
-                                    <td></td>
                                     <td></td>
                                     <td></td>
                                     <td></td>
@@ -225,7 +221,7 @@
                     <div class="kt-portlet__head">
                         <div class="kt-portlet__head-label">
                             <h3 class="kt-portlet__head-title borj-color">
-                                هزینه ها بر اساس سرفصل <small>(ریال)</small>
+                                سرفصل های هزینه
                             </h3>
                         </div>
 
@@ -286,27 +282,11 @@
                             <tr>
                                 <th>نام سرفصل هزینه</th>
                                 <th>کد سرفصل هزینه</th>
-                                <th>header</th>
-                                <th>header</th>
-                                <th>header</th>
-                                <th>header</th>
-                                <th>header</th>
-                                <th>header</th>
-                                <th>header</th>
-                                <th>header</th>
                             </tr>
                             </thead>
                             <tbody>
 
                             <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
                                 <td></td>
                                 <td></td>
                             </tr>
@@ -358,7 +338,7 @@
         // Themes end
 
         // Create chart instance
-        var chart = am4core.create("chartdiv", am4charts.PieChart);
+        var chart = am4core.create("costsHeading", am4charts.PieChart);
         chart.rtl = true;
         // Add data
         chart.data = [ {
@@ -412,7 +392,7 @@
     <script>
 
         // Create the chart
-        Highcharts.chart('container', {
+        Highcharts.chart('costsMonthly', {
             colors: ['#6996da','#a26bd9','#806bd9','#6bb8da','rgb(156, 99, 212)', '#4572A7', '#84d6f4', '#80699B', '#3D96AE', '#DB843D', '#92A8CD', '#A47D7C', '#B5CA92'],
 
             chart: {

@@ -1,145 +1,187 @@
-@extends('dashboard.layouts.master')
+@extends('dashboard.layouts.master', ['title' => 'داشبورد اصلی'])
 
 
 @section('content')
 
+    <style>
+        th,td{
+            vertical-align: middle!important;
+        }
+    </style>
+    <div class="kt-portlet">
+        <div class="kt-portlet__body  kt-portlet__body--fit">
+            <div class="row row-no-padding row-col-separator-lg">
 
-    <div class="row">
-        <div class="col-xl-4 col-lg-4">
-            <!--begin:: Widgets/Daily Sales-->
-            <div class="kt-portlet kt-portlet--height-fluid">
-                <div class="kt-widget14">
-                    <div class="kt-widget14__header kt-margin-b-30">
-                        <h2 class="kt-widget14__title"><i class="fa fa-wallet kt-font-danger"></i>
-                            بدهی سررسید شده شما
-                        </h2>
-                        <h1 class="font-large-1 text-bold-300 text-danger float-right kt-font-bold borj-font mt-5">0 ریال</h1>
+                <div class="col-md-12 col-lg-6 col-xl-6">
+                    <!--begin::New Orders-->
+                    <div class="kt-widget24">
+                        <div class="kt-widget24__details">
+                            <div class="kt-widget24__info">
+                                <h4 class="kt-widget24__title">
+                                    <i class="fa fa-wallet kt-font-danger mr-2"></i>
+                                    بدهی سررسید شده شما
+                                </h4>
+                                <span class="kt-widget24__desc">
+					            مربوط به تمامی صورتحساب ها
+					        </span>
+                            </div>
+                            <h1 class="font-large-1 text-bold-300 text-danger float-right kt-font-bold borj-font mt-5">0 ریال</h1>
+                        </div>
+
+                        <div class="progress progress--sm">
+                            <div class="progress-bar kt-bg-danger" role="progressbar" style="width: 100%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+
+                        <div class="kt-widget24__action pt-2">
+						<span class="kt-widget24__change kt-font-brand">
+							جهت مشاهده لیست تمامی صورتحساب ها اینجا کلیک کنید
+						</span>
+                        </div>
                     </div>
-
-
-                    <div class="alert alert-outline-danger alert-dismissible fade show" role="alert">
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        </button>
-                        <strong>توجه! </strong><hr>
-                        <h5>
-
-                            جهت پرداخت آنلاین بدهی کلیک کنید
-                        </h5>
-                    </div>
-
+                    <!--end::New Orders-->
                 </div>
-            </div>
-            <!--end:: Widgets/Daily Sales-->    </div>
-        <div class="col-xl-4 col-lg-4">
-            <!--begin:: Widgets/Profit Share-->
-            <div class="kt-portlet kt-portlet--height-fluid">
-                <div class="kt-widget14">
-                    <div class="kt-widget14__header">
 
 
+
+                <div class="col-md-12 col-lg-6 col-xl-6">
+                    <!--begin::New Users-->
+                    <div class="kt-widget24">
+                        <div class="kt-widget24__details">
+                            <div class="kt-widget24__info">
+                                <h4 class="kt-widget24__title">
+                                    <i class="fa fa-vote-yea kt-font-success mr-2"></i>
+                                    پرداختی این ماه شما
+                                </h4>
+                                <span class="kt-widget24__desc">
+					            فقط این ماه
+					        </span>
+                            </div>
+
+                            <h1 class="font-large-1 text-bold-300 text-success float-right kt-font-bold borj-font mt-5">5681900 ریال</h1>
+                        </div>
+
+                        <div class="progress progress--sm">
+                            <div class="progress-bar kt-bg-success" role="progressbar" style="width: 100%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+
+                        <div class="kt-widget24__action pt-2">
+						<span class="kt-widget24__change kt-font-brand">
+							جهت مشاهده لیست تمامی صورتحساب ها اینجا کلیک کنید
+						</span>
+                        </div>
                     </div>
-                    <div class="kt-portlet kt-portlet--head-noborder kt-portlet--height-fluid ">
+                    <!--end::New Users-->
+                </div>
 
-                        <div class="kt-portlet__body kt-portlet__body--fluid kt-portlet__body--fit">
-                            <div class="kt-widget4 kt-widget4--sticky">
-                                <div class="kt-widget4__items kt-portlet__space-x kt-margin-t-15">
-                                    <div class="kt-widget4__item">
-                                        <div class="kt-widget4__pic kt-widget4__pic--logo">
-                                            <img src="/metronic/themes/metronic/theme/default/demo2/dist//dashboard/assets/media/client-logos/logo3.png" alt="">
-                                        </div>
-                                        <div class="kt-widget4__info">
+            </div>
+        </div>
+    </div>
 
-                                            <h5 class="kt-widget4__text">
-                                                نام و نام خانوادگی مالک:
-                                            </h5>
-                                        </div>
-                                        <span class="kt-widget4__number kt-font-brand kt-font-bold">احمد رحمانی</span>
-                                    </div>
 
-                                    <div class="kt-widget4__item">
-                                        <div class="kt-widget4__pic kt-widget4__pic--logo">
-                                            <img src="/metronic/themes/metronic/theme/default/demo2/dist//dashboard/assets/media/client-logos/logo1.png" alt="">
-                                        </div>
-                                        <div class="kt-widget4__info">
+    <div class="kt-portlet">
+        <div class="kt-portlet__body">
+            <div class="kt-widget kt-widget--user-profile-3">
+                <div class="kt-widget__top">
+                    <div class="kt-widget__media">
+                        <img src="https://pngimage.net/wp-content/uploads/2018/06/no-avatar-png-3.png" alt="image">
+                    </div>
+                    <div class="kt-widget__pic kt-widget__pic--danger kt-font-danger kt-font-bolder kt-font-light kt-hidden">
+                        JM
+                    </div>
+                    <div class="kt-widget__content">
+                        <div class="kt-widget__head">
+                            <div class="kt-widget__user">
+                                <a href="#" class="kt-widget__username">
+                                    احمد رحمانی
+                                </a>
+                                <span class="kt-badge kt-badge--bolder kt-badge kt-badge--inline kt-badge--unified-success">مالک</span>
+                            </div>
 
-                                            <h5 class="kt-widget4__text">
-                                                کد واحد:
-                                            </h5>
-                                        </div>
-                                        <span class="kt-widget4__number kt-font-success kt-font-bold borj-font">E201</span>
-                                    </div>
+                            <div class="kt-widget__action">
+                                <a href="#" class="btn btn-label-brand btn-sm btn-upper">Contact</a>
+                            </div>
+                        </div>
 
-                                    <div class="kt-widget4__item">
-                                        <div class="kt-widget4__pic kt-widget4__pic--logo">
-                                            <img src="/metronic/themes/metronic/theme/default/demo2/dist//dashboard/assets/media/client-logos/logo4.png" alt="">
-                                        </div>
-                                        <div class="kt-widget4__info">
+                        <div style="direction: ltr" class="kt-widget__subhead">
+                            <a href="#">09121010328 <i class="flaticon2-phone"></i> </a>
+                            <a href="#">rahmani@rieco.ir <i class="flaticon2-new-email"></i> </a>
+                            <a href="#">E201<i class="flaticon2-calendar-3"></i></a>
+                            <a href="#"> برج شرقی، طبقه20، واحد1 <i class="flaticon2-placeholder"></i></a>
+                        </div>
 
-                                            <h5 class="kt-widget4__text borj-font">
-                                                برج شرقی، طبقه20، واحد1
-                                            </h5>
-                                        </div>
-                                        <span class="kt-widget4__number kt-font-danger kt-font-bold borj-font">E/20/1</span>
-                                    </div>
+                        <div class="kt-widget__info">
+                            <div class="kt-widget__desc">
+                                به سامانه برج المپیک خوش آمدید.
+                            </div>
+                            <div class="kt-widget__progress">
+                                <div class="kt-widget__text">
+                                    Goals
                                 </div>
-                                <div class="kt-widget4__chart kt-margin-t-15"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
-
+                                <div class="progress" style="height: 5px;width: 100%;">
+                                    <div class="progress-bar kt-bg-success" role="progressbar" style="width: 65%;" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                                <div class="kt-widget__stats">
+                                    45%
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <!--end:: Widgets/Profit Share-->    </div>
-        <div class="col-xl-4 col-lg-4">
-            <!--begin:: Widgets/Revenue Change-->
-            <div class="kt-portlet kt-portlet--height-fluid">
-                <div class="kt-widget14">
-                    <div class="kt-widget14__header">
-                        <h3 class="kt-widget14__title"><i class="fa fa-vote-yea kt-font-success"></i>
-                            پرداختی این ماه شما
-                        </h3>
-                        <h1 class="font-large-1 text-bold-300 text-success float-right kt-font-bold borj-font mt-5">5681900 ریال</h1>
+                <div class="kt-widget__bottom kt-hidden">
+                    <div class="kt-widget__item">
+                        <div class="kt-widget__icon">
+                            <i class="flaticon-piggy-bank"></i>
+                        </div>
+                        <div class="kt-widget__details">
+                            <span class="kt-widget__title">Earnings</span>
+                            <span class="kt-widget__value"><span>$</span>249,500</span>
+                        </div>
                     </div>
 
-                    <div class="alert alert-outline-success" role="alert">
-                        <strong>توجه!</strong><hr>
-                        <h5>
-                            جهت مشاهده کل پرداختی ها کلیک کنید
-                        </h5>
+                    <div class="kt-widget__item">
+                        <div class="kt-widget__icon">
+                            <i class="flaticon-confetti"></i>
+                        </div>
+                        <div class="kt-widget__details">
+                            <span class="kt-widget__title">Expances</span>
+                            <span class="kt-widget__value"><span>$</span>164,700</span>
+                        </div>
+                    </div>
+
+                    <div class="kt-widget__item">
+                        <div class="kt-widget__icon">
+                            <i class="flaticon-pie-chart"></i>
+                        </div>
+                        <div class="kt-widget__details">
+                            <span class="kt-widget__title">Net</span>
+                            <span class="kt-widget__value"><span>$</span>782,300</span>
+                        </div>
+                    </div>
+
+                    <div class="kt-widget__item">
+                        <div class="kt-widget__icon">
+                            <i class="flaticon-file-2"></i>
+                        </div>
+                        <div class="kt-widget__details">
+                            <span class="kt-widget__title">73 Tasks</span>
+                            <a href="#" class="kt-widget__value kt-font-brand">View</a>
+                        </div>
+                    </div>
+
+                    <div class="kt-widget__item">
+                        <div class="kt-widget__icon">
+                            <i class="flaticon-chat-1"></i>
+                        </div>
+                        <div class="kt-widget__details">
+                            <span class="kt-widget__title">648 Comments</span>
+                            <a href="#" class="kt-widget__value kt-font-brand">View</a>
+                        </div>
                     </div>
 
 
-
                 </div>
-            </div>
-
-
-
-            <!--end:: Widgets/Revenue Change-->
-        </div>
-    </div>
-
-    <div class="accordion accordion-solid accordion-toggle-plus mb-5" id="accordionExample6">
-        <div class="card">
-            <div class="card-header" id="headingOne6">
-                <div class="card-title" data-toggle="collapse" data-target="#collapseOne6" aria-expanded="true" aria-controls="collapseOne6"><h5>
-                        <i class="fa fa-handshake mr-3 borj-size"></i>جناب آقای/خانم احمد رحمانی، به سامانه برج المپیک خوش آمدید.</h5>
-                </div>
-            </div>
-            <div id="collapseOne6" class="collapse show" aria-labelledby="headingOne6" data-parent="#accordionExample6" style="">
-                <div class="card-body">
-
-                    در این صفحه میتوانید ضمن مشاهده تمامی پرداخت ها، بدهی های سررسید شده را مشاهده و نسبت به پرداخت با استفاده از درگاه آنلاین بانک اقدام نمایید. همچنین امکان شرکت در نظرسنجی ها، ارسال درخواست ها، انتقادات و پیشنهادات به مدیریت و هیئت مدیره برج فراهم است و میتوانید تمامی درآمدها و هزینه های برج در ماژول های دیگر این سامانه مشاهده نمایید.
-
-                </div>
-
             </div>
         </div>
-
-
-
-
     </div>
 
 
@@ -195,14 +237,14 @@
                                         <table class="table table-bordered table-striped borj-font">
                                             <thead>
                                             <tr>
-                                                <th> نام و نام خانوادگی</th>
+                                                <th style="min-width: 150px;"> نام و نام خانوادگی</th>
                                                 <th>برج</th>
                                                 <th>طبقه</th>
                                                 <th>کد واحد</th>
-                                                <th>کد پارکینگ</th>
+                                                <th style="min-width: 100px;">کد پارکینگ</th>
                                                 <th>کد انباری</th>
-                                                <th>متراژ واحد</th>
-                                                <th>متراژ تراس روباز</th>
+                                                <th style="min-width: 80px;">متراژ واحد</th>
+                                                <th style="min-width: 100px;">متراژ تراس روباز</th>
                                                 <th> مبلغ شارژ ماهیانه</th>
                                                 <th>شماره همراه</th>
                                                 <th>تلفن منزل1</th>

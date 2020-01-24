@@ -10,4 +10,10 @@ class Complex extends Model
     {
         return $this->hasMany('App\User');
     }
+
+    public function votes()
+    {
+        return $this->hasMany('App\Vote');
+    }
+
 }

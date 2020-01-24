@@ -1,4 +1,4 @@
-@extends('dashboard.layouts.master')
+@extends('dashboard.layouts.master', ['title' => 'مصوبات'])
 
 
 @section('content')
@@ -6,8 +6,85 @@
     <link href="assets/plugins/custom/datatables/datatables.bundle.rtl.css" rel="stylesheet" type="text/css" />
 
 
-        <div class="kt-portlet">
+    <!-- Modal -->
+    <div class="modal fade" id="add" tabindex="-1" role="dialog" aria-labelledby="add" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="add">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modall">افزودن مصوبه</h5>
+                    <button type="button" class="close " data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="{{ route('enactments.store') }}" method="post" enctype="multipart/form-data">
+                    @csrf
 
+                    <div class="modal-body">
+                        <div class="form-group row">
+                            <div class="col-lg-6">
+                                <label>انتخاب صورتجلسه:</label>
+                                <div class="kt-input-icon">
+
+                                <select style="direction: rtl; text-align: right;width: 100%;" class="form-control m-select2" id="m_select2_1" name="proceeding_id">
+                                  @foreach ($proceedings as $proceeding)
+                                        <option value="{{ $proceeding->id }}">{{ $proceeding->number . '|' . $proceeding->date }}</option>
+                                    @endforeach
+                                </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <label class="">اقدام کننده:</label>
+
+                                <div class="kt-input-icon">
+                                    <select style="direction: rtl; text-align: right;width: 100%;" class="form-control m-select2" id="m_select2_2" name="user_id">
+                                        @foreach ($users as $user)
+                                            <option value="{{ $user->id }}">{{ $user->fName . ' ' . $user->lName }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-lg-6">
+                                <label>شماره مصوبه:</label>
+                                <div class="kt-input-icon">
+                                    <input type="text" name="number" class="form-control" placeholder="مثال: ۱ ">
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <label class="">مهلت اقدام:</label>
+                                <div class="kt-input-icon">
+                                    <input class="form-control dp" >
+                                    <input type="hidden" name="deadline" class="observer" >
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-lg-12">
+                                <label>شرح مصوبه:</label>
+                                <div class="kt-input-icon">
+                                    <textarea name="description" class="form-control" id="" cols="30" rows="5"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-success btn-wide btn-elevate btn-elevate-air">افزودن مصوبه</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">انصراف</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    </div>
+
+
+    <!--end::Modal-->
+
+        <div class="kt-portlet">
             <div class="kt-portlet__body">
                 <div class="kt-pricing-1">
                     <div class="kt-pricing-1__items row">
@@ -75,6 +152,7 @@
                             <h3 class="kt-portlet__head-title borj-color">
                                 مصوبات هیات مدیره
                             </h3>
+                            <button data-toggle="modal" data-target=" #add" style="margin-right: 20px;font-size: 13px" type="button" class="btn btn-success btn-wide btn-elevate btn-elevate-air">افزودن مصوبه</button>
                         </div>
 
                         <div style="" class="kt-portlet__head-toolbar">
@@ -128,7 +206,21 @@
 
                     </div>
                     <div class="kt-portlet__body">
-                        <!--begin: Datatable -->
+
+                        @if(count($errors) > 0 )
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                                <ul class="p-0 m-0" style="list-style: none;">
+                                    @foreach($errors->all() as $error)
+                                        <li>{{$error}}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                    @endif
+
+                    <!--begin: Datatable -->
                         <table style="font-family: iranyekan; width: 100%;" class="table table-striped table-bordered table-hover table-checkable display nowrap" id="m_table_2">
                             <thead style="font-family: BYekan">
                             <tr>
@@ -140,24 +232,27 @@
                                 <th>اقدام کننده</th>
                                 <th>مهلت اقدام</th>
                                 <th>نتیجه</th>
-                                <th>header</th>
-                                <th>header</th>
+                                <th>حذف | ویرایش</th>
                             </tr>
                             </thead>
                             <tbody>
 
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
+                            @foreach ($enactments as $enactment)
+                                <tr>
+                                    <td>{{ $enactment->number }}</td>
+                                    <td>{{ $enactment->proceeding->date }}</td>
+                                    <td>{{ $enactment->proceeding->number }}</td>
+                                    <td>{{ $enactment->proceeding->type }}</td>
+                                    <td>{{ $enactment->description }}</td>
+                                    <td>{{ $enactment->user->fName . ' ' . $enactment->user->lName }}</td>
+                                    <td>{{ $enactment->deadline }}</td>
+                                    <td>{{ $enactment->resualt }}</td>
+                                    <td>
+                                        <a href="" data-id="" class="m-portlet__nav-link btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill button" title="حذف"> <i style="color: darkred" class="fa fa-times"></i> </a>
+                                        <a href="" class="m-portlet__nav-link btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill" title="ویرایش"> <i style="color: green" class="la la-edit"></i> </a>
+                                    </td>
+                                </tr>
+                            @endforeach
 
                             </tbody>
 
@@ -182,14 +277,7 @@
                         </div>
                     </div>
                     <div class="kt-portlet__body">
-
-
-                        <figure class="highcharts-figure">
-                            <div id="container"></div>
-                        </figure>
-
-
-
+                        <div id="container"></div>
                     </div>
                 </div>
             </div>
@@ -207,12 +295,7 @@
                         </div>
                     </div>
                     <div class="kt-portlet__body">
-
-
-
-                        <figure class="highcharts-figure">
                             <div id="container2"></div>
-                        </figure>
                     </div>
                 </div>
             </div>
@@ -225,92 +308,10 @@
 
 
 @section('footerScripts')
-    <script src="https://www.amcharts.com/lib/4/core.js"></script>
-    <script src="https://www.amcharts.com/lib/4/charts.js"></script>
-    <script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
-    <script src="https://code.highcharts.com/highcharts.js"></script>
-    <script src="https://code.highcharts.com/modules/data.js"></script>
     <script src="https://code.highcharts.com/modules/drilldown.js"></script>
-    <script src="https://code.highcharts.com/modules/exporting.js"></script>
-    <script src="https://code.highcharts.com/modules/export-data.js"></script>
-    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
-    <script src="assets/plugins/custom/datatables/datatables.bundle.js" type="text/javascript"></script>
-    <script src="assets/js/pages/crud/datatables/extensions/buttons.js" type="text/javascript"></script>
 
 
-    <script>
 
-        /**
-         * ---------------------------------------
-         * This demo was created using amCharts 4.
-         *
-         * For more information visit:
-         * https://www.amcharts.com/
-         *
-         * Documentation is available at:
-         * https://www.amcharts.com/docs/v4/
-         * ---------------------------------------
-         */
-
-        // Themes begin
-        am4core.useTheme(am4themes_animated);
-        // Themes end
-
-        // Create chart instance
-        var chart = am4core.create("chartdiv", am4charts.PieChart);
-        chart.rtl = true;
-        // Add data
-        chart.data = [ {
-            "hazine": "نیروی انسانی",
-            "mablaq": 501.9
-        }, {
-            "hazine": "نگهداری تاسیسات",
-            "mablaq": 301.9
-        }, {
-            "hazine": "نگهداری آسانسورها",
-            "mablaq": 201.1
-        }, {
-            "hazine": "آب، برق و گاز مصرفی",
-            "mablaq": 165.8
-        }, {
-            "hazine": "نگهداری فضای سبز",
-            "mablaq": 139.9
-        }, {
-            "hazine": "انواع بیمه های مورد نیاز",
-            "mablaq": 128.3
-        }, {
-            "hazine": "سرویس و نگهداری ژنراتور",
-            "mablaq": 99
-        }, {
-            "hazine": "اقلام مصرفی",
-            "mablaq": 60
-        }, {
-            "hazine": "اقلام شوینده",
-            "mablaq": 50
-        },{
-            "hazine": "آنتن مرکزی",
-            "mablaq": 50},{
-            "hazine": "سایر هزینه ها",
-            "mablaq": 50} ];
-
-        // Add and configure Series
-        var pieSeries = chart.series.push(new am4charts.PieSeries());
-        pieSeries.dataFields.value = "mablaq";
-        pieSeries.dataFields.category = "hazine";
-        pieSeries.slices.template.stroke = am4core.color("#fff");
-        pieSeries.slices.template.strokeWidth = 2;
-        pieSeries.slices.template.strokeOpacity = 1;
-
-        // This creates initial animation
-        pieSeries.hiddenState.properties.opacity = 1;
-        pieSeries.hiddenState.properties.endAngle = -90;
-        pieSeries.hiddenState.properties.startAngle = -90;
-
-    </script>
-
-    <script>
-
-    </script>
     <script>
         var DatatablesExtensionButtons = {
             init: function () {
@@ -967,6 +968,19 @@
                     }
                 ]
             }
+        });
+    </script>
+    <script src="/dashboard/assets/js/select2.js" type="text/javascript"></script>
+
+    <link rel="stylesheet" href="/dashboard/assets/css/persian-datepicker.min.css"/>
+    <script src="/dashboard/assets/js/persian-date.min.js"></script>
+    <script src="/dashboard/assets/js/persian-datepicker.min.js"></script>
+    <script src="/dashboard/assets/js/persian-date.min.js" type="text/javascript"></script>
+    <script>
+        $(document).ready(function() {
+            $(".dp").pDatepicker({
+                altField: '.observer'
+            });
         });
     </script>
 

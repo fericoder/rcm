@@ -1,4 +1,4 @@
-@extends('dashboard.layouts.master')
+@extends('dashboard.layouts.master', ['title' => 'مدیریت قرارداد ها'])
 
 
 @section('content')

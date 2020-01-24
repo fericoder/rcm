@@ -8,6 +8,13 @@ use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
+
+    public function complex()
+    {
+        return $this->belongsTo('App\Complex');
+    }
+
+
     use Notifiable;
 
     /**

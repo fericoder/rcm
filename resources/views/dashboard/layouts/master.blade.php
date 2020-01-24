@@ -8,8 +8,8 @@
 
 <head>
     <meta charset="utf-8" />
+    <title> داشبورد برج | {{ $title }}</title>
 
-    <title>داشبورد برج</title>
     <meta name="description" content="Updates and statistics">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -32,38 +32,40 @@
     <link href="/dashboard/assets/css/skins/header/menu/light.rtl.css" rel="stylesheet" type="text/css" />
     <link href="/dashboard/assets/css/skins/brand/dark.rtl.css" rel="stylesheet" type="text/css" />
     <link href="/dashboard/assets/css/skins/aside/dark.rtl.css" rel="stylesheet" type="text/css" />
+
     <!--end::Layout Skins -->
-
-    <link rel="shortcut icon" href="https://keenthemes.com/metronic/themes/metronic/theme/default/demo1/dist//dashboard/assets/media/logos/favicon.ico" />
-
-    <!-- Hotjar Tracking Code for keenthemes.com -->
-    <script>
-        (function(h, o, t, j, a, r) {
-            h.hj = h.hj || function() {
-                (h.hj.q = h.hj.q || []).push(arguments)
-            };
-            h._hjSettings = {
-                hjid: 1070954,
-                hjsv: 6
-            };
-            a = o.getElementsByTagName('head')[0];
-            r = o.createElement('script');
-            r.async = 1;
-            r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv;
-            a.appendChild(r);
-        })(window, document, 'https://static.hotjar.com/c/hotjar-', '.js?sv=');
-    </script>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-37564768-1"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-
-        function gtag() {
-            dataLayer.push(arguments);
+    <style>
+        .dataTables_wrapper{
+            font-size: 15px;
         }
-        gtag('js', new Date());
-        gtag('config', 'UA-37564768-1');
-    </script>
+        th,tr,td{
+            text-align: center;
+        }
+        .page-link{
+            font-family: BYekan!important;
+        }
+        .dataTables_info{
+            font-family: BYekan!important;
+        }
+        .custom-select{
+            font-family: BYekan!important;
+        }
+        .btn > .dropdown-inline{
+            font-size: 18px;
+        }
+        span,p,div,label,input{
+            font-size: 14px!important;
+        }
+        .kt-menu__link-text{
+            font-size: 16px!important;
+        }
+        .select2-search__field{
+            text-align: right!important;
+            direction: rtl!important;
+        }
+    </style>
+@yield('headerScripts')
+
 </head>
 <!-- end::Head -->
 
@@ -177,6 +179,7 @@
                                     <li class="kt-menu__item " aria-haspopup="true"><a href="{{ route('costs.index') }}" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">هزینه ها</span></a></li>
                                     <li class="kt-menu__item " aria-haspopup="true"><a href="{{ route('incomes.index') }}" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">درآمدها</span></a></li>
                                     <li class="kt-menu__item " aria-haspopup="true"><a href="{{ route('charge.index') }}" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">مدیریت شارژ</span></a></li>
+                                    <li class="kt-menu__item " aria-haspopup="true"><a href="{{ route('charge.index') }}" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">پرداختی ها</span></a></li>
 
                                 </ul>
                             </div>
@@ -210,7 +213,17 @@
                                 </ul>
                             </div>
                         </li>
-                        <li class="kt-menu__item " aria-haspopup="true" ><a href="{{ route('votes.index') }}" class="kt-menu__link "><span class="kt-menu__link-icon"><i class="fa fa-envelope-open-text"></i></span><span class="kt-menu__link-text">نظرسنجی</span></i></a></li>
+
+                        <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true" data-ktmenu-submenu-toggle="hover"><a href="javascript:;" class="kt-menu__link kt-menu__toggle"><span class="kt-menu__link-icon"><i class="fa fa-envelope-open-text"></i></span><span class="kt-menu__link-text">نظرسنجی</span><i class="kt-menu__ver-arrow la la-angle-right"></i></a>
+                            <div class="kt-menu__submenu "><span class="kt-menu__arrow"></span>
+                                <ul class="kt-menu__subnav">
+                                    <li class="kt-menu__item  kt-menu__item--parent" aria-haspopup="true"><span class="kt-menu__link"><span class="kt-menu__link-text">نظرسنجی</span></span></li>
+                                    <li class="kt-menu__item " aria-haspopup="true"><a href="{{ route('votes.index') }}" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">مدیریت نظرسنجی ها</span></a></li>
+                                    <li class="kt-menu__item " aria-haspopup="true"><a href="{{ route('votes.create') }}" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">افزودن نظرسنجی</span></a></li>
+                                </ul>
+                            </div>
+                        </li>
+
                         <li class="kt-menu__item" aria-haspopup="true" ><a href="{{ route('tickets.index') }}" class="kt-menu__link"><span class="kt-menu__link-icon"><i class="fa fa-pencil-alt"></i></span><span class="kt-menu__link-text">درخواست ها</span></a></li>
 
                         <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true" data-ktmenu-submenu-toggle="hover"><a href="javascript:;" class="kt-menu__link kt-menu__toggle"><span class="kt-menu__link-icon"><i class="fa fa-user-tie"></i></span><span class="kt-menu__link-text">مدیریت سیستم</span><i class="kt-menu__ver-arrow la la-angle-right"></i></a>
@@ -256,7 +269,7 @@
 
                                 <h3 class="kt-subheader__title mr-3"> سیستم مدیریت مجتمع مسکونی</h3>
                                 <span class="kt-subheader__separator kt-subheader__separator--v"></span>
-                                <h3 class="kt-subheader__title">داشبورد اصلی</h3>
+                                <h3 class="kt-subheader__title">{{ $title }}</h3>
 
                             </div>
                         </div>
@@ -1067,7 +1080,6 @@
 
 
 
-                        <div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid">
 
 
 
@@ -1084,8 +1096,6 @@
                             <!--end::tab 2 content-->
                             <!--begin::tab 3 content-->
 
-                            <!--end::tab 3 content-->
-                        </div>
                         <!--End::Tab Content-->
                     </div>
                 </div>
@@ -2064,16 +2074,20 @@
 <script src="/dashboard/assets/js/scripts.bundle.js" type="text/javascript"></script>
 <!--end::Global Theme Bundle -->
 
-<!--begin::Page Vendors(used by this page) -->
-<script src="/dashboard/assets/plugins/custom/fullcalendar/fullcalendar.bundle.js" type="text/javascript"></script>
-<script src="http://maps.google.com/maps/api/js?key=AIzaSyBTGnKT7dt597vo9QgeQ7BFhvSRP4eiMSM" type="text/javascript"></script>
-<script src="/dashboard/assets/plugins/custom/gmaps/gmaps.js" type="text/javascript"></script>
-<!--end::Page Vendors -->
 
-<!--begin::Page Scripts(used by this page) -->
-<script src="/dashboard/assets/js/pages/dashboard.js" type="text/javascript"></script>
-<!--end::Page Scripts -->
+<script src="/dashboard/assets/plugins/custom/datatables/datatables.bundle.js" type="text/javascript"></script>
+<script src="/dashboard/assets/js/pages/crud/datatables/extensions/buttons.js" type="text/javascript"></script>
 
+<script src="/dashboard/assets/plugins/custom/highcharts/highcharts.js"></script>
+<script src="/dashboard/assets/plugins/custom/highcharts/exporting.js"></script>
+<script src="/dashboard/assets/plugins/custom/highcharts/export-data.js"></script>
+<script src="/dashboard/assets/plugins/custom/highcharts/accessibility.js"></script>
+<script src="/dashboard/assets/plugins/custom/highcharts/highcharts-more.js"></script>
+<script src="/dashboard/assets/plugins/custom/highcharts/solid-gauge.js"></script>
+
+<script src="/dashboard/assets/js/sweetalert.min.js"></script>
+
+@include('sweet::alert')
 @yield('footerScripts')
 
 </body>
