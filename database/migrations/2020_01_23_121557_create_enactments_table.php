@@ -22,6 +22,7 @@ class CreateEnactmentsTable extends Migration
             $table->unsignedInteger('user_id');
             $table->timestamp('deadline')->default(now())->nullable();
             $table->text('resualt')->nullable();
+            $table->enum('status', ['انجام شده', 'درحال انجام', 'معلق', 'لغو شده', 'بررسی نشده'])->default('بررسی نشده');
             $table->timestamps();
         });
     }

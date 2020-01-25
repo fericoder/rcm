@@ -92,7 +92,7 @@
                     <div style="" class="kt-portlet__head-toolbar">
                         <div class="kt-portlet__head-toolbar-wrapper">
                             <div class="dropdown dropdown-inline">
-                                <button type="button" class="btn btn-brand btn-sm" data-toggle="dropdown"
+                                <button style="font-size: 14px" type="button" class="btn btn-brand btn-sm" data-toggle="dropdown"
                                         aria-haspopup="true" aria-expanded="false">
                                     <i class="la la-plus"></i> ابزار ها و خروجی ها
                                 </button>
@@ -141,38 +141,28 @@
                 </div>
                 <div class="kt-portlet__body">
                     <!--begin: Datatable -->
-                        <table style="font-family: iranyekan; width: 100%;"
-                               class="table table-striped table-bordered table-hover table-checkable display nowrap"
-                               id="m_table_2">
+                        <table style="font-family: iranyekan; width: 100%;" class="table table-striped table-bordered table-hover  display nowrap table-responsive" id="m_table_2">
                             <thead style="font-family: BYekan">
                             <tr>
-                                <th>نام و نام خانوادگی</th>
+                                <th style="min-width: 150px">نام و نام خانوادگی</th>
                                 <th>برج</th>
                                 <th>طبقه</th>
-                                <th>شماره واحد</th>
-                                <th>کد سیستمی واحد</th>
+                                <th>واحد</th>
+                                <th style="min-width: 120px">کد سیستمی واحد</th>
                                 <th>کد پارکینگ</th>
-                                <th>کد انباری</th>
                                 <th>متراژ واحد</th>
-                                <th>مبلغ شارژ ماهیانه</th>
-                                <th>شماره همراه</th>
-                                <th>تلفن منزل</th>
-                                <th>نام مستاجر</th>
-                                <th>تلفن همراه مستاجر</th>
-                                <th>وضعیت سکونت</th>
-                                <th>تاریخ اسکان</th>
-                                <th>اخطار حق شارژ</th>
-                                <th>اخطار عدم رعایت اساسنامه</th>
-                                <th>تاریخ بروزرسانی اطلاعات</th>
+                                <th style="min-width: 150px">مبلغ شارژ ماهیانه</th>
+                                <th style="min-width: 120px">شماره همراه</th>
+                                <th style="min-width: 120px">تلفن منزل</th>
+                                <th style="min-width: 150px">نام مستاجر</th>
+                                <th style="min-width: 150px">تلفن همراه مستاجر</th>
+                                <th style="min-width: 150px">وضعیت سکونت</th>
+                                <th style="min-width: 150px">مشاهده جزییات</th>
                             </tr>
                             </thead>
                             <tbody>
 
                             <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
@@ -205,7 +195,7 @@
                 <div class="kt-portlet__head">
                     <div class="kt-portlet__head-label">
                         <h3 class="kt-portlet__head-title borj-color">
-
+                            پراکندگی ساکنین
                         </h3>
                     </div>
                 </div>
@@ -214,7 +204,6 @@
 
                     <figure class="highcharts-figure">
                         <div id="container"></div>
-
                     </figure>
 
 
@@ -228,7 +217,7 @@
                 <div class="kt-portlet__head">
                     <div class="kt-portlet__head-label">
                         <h3 class="kt-portlet__head-title ">
-
+                            وضعیت سکونت واحد ها
                         </h3>
                     </div>
                 </div>
@@ -307,6 +296,7 @@
 
         // Build the chart
         Highcharts.chart('container', {
+            colors: ['#6996da','#a26bd9','#806bd9','#6bb8da','#6874d9', '#4572A7', '#89A54E', '#80699B', '#3D96AE', '#DB843D', '#92A8CD', '#A47D7C', '#B5CA92'],
             chart: {
                 plotBackgroundColor: null,
                 plotBorderWidth: null,
@@ -335,28 +325,16 @@
                 }
             },
             series: [{
-                name: 'Brands',
+                name: 'ساکن',
                 colorByPoint: true,
                 data: [{
-                    name: 'Chrome',
-                    y: 61.41,
+                    name: 'مالک',
+                    y: 61,
                     sliced: true,
                     selected: true
                 }, {
-                    name: 'Internet Explorer',
-                    y: 11.84
-                }, {
-                    name: 'Firefox',
-                    y: 10.85
-                }, {
-                    name: 'Edge',
-                    y: 4.67
-                }, {
-                    name: 'Safari',
-                    y: 4.18
-                }, {
-                    name: 'Other',
-                    y: 7.05
+                    name: 'مستاجر',
+                    y: 11
                 }]
             }]
         });

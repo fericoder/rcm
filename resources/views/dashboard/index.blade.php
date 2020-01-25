@@ -77,109 +77,19 @@
         </div>
     </div>
 
+    <div class="alert alert-light alert-elevate" role="alert">
+        <div class="alert-icon"><i class="flaticon-information kt-font-brand"></i></div>
+        <div class="alert-text">
+            {{ \Auth::user()->fName . ' ' . \Auth::user()->lName }} <span class="kt-badge kt-badge--bolder kt-badge kt-badge--inline kt-badge--unified-success">(مالک)</span>
+            ،
+            به سامانه مدیریت مجتمع مسکونی خوش آمدید.
+            در این صفحه میتوانید ضمن مشاهده تمامی پرداخت ها، بدهی های سررسید شده را مشاهده و نسبت به پرداخت با استفاده از درگاه آنلاین بانک اقدام نمایید. همچنین امکان شرکت در نظرسنجی ها، ارسال درخواست ها، انتقادات و پیشنهادات به مدیریت و هیئت مدیره برج فراهم است و میتوانید تمامی درآمدها و هزینه های برج در ماژول های دیگر این سامانه مشاهده نمایید.
 
-    <div class="kt-portlet">
-        <div class="kt-portlet__body">
-            <div class="kt-widget kt-widget--user-profile-3">
-                <div class="kt-widget__top">
-                    <div class="kt-widget__media">
-                        <img src="https://pngimage.net/wp-content/uploads/2018/06/no-avatar-png-3.png" alt="image">
-                    </div>
-                    <div class="kt-widget__pic kt-widget__pic--danger kt-font-danger kt-font-bolder kt-font-light kt-hidden">
-                        JM
-                    </div>
-                    <div class="kt-widget__content">
-                        <div class="kt-widget__head">
-                            <div class="kt-widget__user">
-                                <a href="#" class="kt-widget__username">
-                                    احمد رحمانی
-                                </a>
-                                <span class="kt-badge kt-badge--bolder kt-badge kt-badge--inline kt-badge--unified-success">مالک</span>
-                            </div>
-
-                            <div class="kt-widget__action">
-                                <a href="#" class="btn btn-label-brand btn-sm btn-upper">Contact</a>
-                            </div>
-                        </div>
-
-                        <div style="direction: ltr" class="kt-widget__subhead">
-                            <a href="#">09121010328 <i class="flaticon2-phone"></i> </a>
-                            <a href="#">rahmani@rieco.ir <i class="flaticon2-new-email"></i> </a>
-                            <a href="#">E201<i class="flaticon2-calendar-3"></i></a>
-                            <a href="#"> برج شرقی، طبقه20، واحد1 <i class="flaticon2-placeholder"></i></a>
-                        </div>
-
-                        <div class="kt-widget__info">
-                            <div class="kt-widget__desc">
-                                به سامانه برج المپیک خوش آمدید.
-                            </div>
-                            <div class="kt-widget__progress">
-                                <div class="kt-widget__text">
-                                    Goals
-                                </div>
-                                <div class="progress" style="height: 5px;width: 100%;">
-                                    <div class="progress-bar kt-bg-success" role="progressbar" style="width: 65%;" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                                <div class="kt-widget__stats">
-                                    45%
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="kt-widget__bottom kt-hidden">
-                    <div class="kt-widget__item">
-                        <div class="kt-widget__icon">
-                            <i class="flaticon-piggy-bank"></i>
-                        </div>
-                        <div class="kt-widget__details">
-                            <span class="kt-widget__title">Earnings</span>
-                            <span class="kt-widget__value"><span>$</span>249,500</span>
-                        </div>
-                    </div>
-
-                    <div class="kt-widget__item">
-                        <div class="kt-widget__icon">
-                            <i class="flaticon-confetti"></i>
-                        </div>
-                        <div class="kt-widget__details">
-                            <span class="kt-widget__title">Expances</span>
-                            <span class="kt-widget__value"><span>$</span>164,700</span>
-                        </div>
-                    </div>
-
-                    <div class="kt-widget__item">
-                        <div class="kt-widget__icon">
-                            <i class="flaticon-pie-chart"></i>
-                        </div>
-                        <div class="kt-widget__details">
-                            <span class="kt-widget__title">Net</span>
-                            <span class="kt-widget__value"><span>$</span>782,300</span>
-                        </div>
-                    </div>
-
-                    <div class="kt-widget__item">
-                        <div class="kt-widget__icon">
-                            <i class="flaticon-file-2"></i>
-                        </div>
-                        <div class="kt-widget__details">
-                            <span class="kt-widget__title">73 Tasks</span>
-                            <a href="#" class="kt-widget__value kt-font-brand">View</a>
-                        </div>
-                    </div>
-
-                    <div class="kt-widget__item">
-                        <div class="kt-widget__icon">
-                            <i class="flaticon-chat-1"></i>
-                        </div>
-                        <div class="kt-widget__details">
-                            <span class="kt-widget__title">648 Comments</span>
-                            <a href="#" class="kt-widget__value kt-font-brand">View</a>
-                        </div>
-                    </div>
-
-
-                </div>
+            <div style="direction: ltr;margin: 20px;" class="kt-widget__subhead">
+                <a style="margin: 30px;" href="#">09121010328 <i class="flaticon2-phone"></i> </a>
+                <a style="margin: 30px;" href="#">rahmani@rieco.ir <i class="flaticon2-new-email"></i> </a>
+                <a style="margin: 30px;" href="#">E201<i class="flaticon2-calendar-3"></i></a>
+                <a style="margin: 30px;" href="#"> برج شرقی ، طبقه ۲۰ ، واحد ۱ <i class="flaticon2-placeholder"></i></a>
             </div>
         </div>
     </div>
@@ -189,11 +99,11 @@
         <div class="col-lg-12">
 
             <div class="kt-portlet kt-portlet--mobile">
-                <div class="kt-portlet__head bg-primary">
+                <div class="kt-portlet__head">
                     <div class="kt-portlet__head-label">
-                        <h5 class="kt-portlet__head-title"><i class="fa fa-home mr-2"></i>
+                        <h3 style="color: #48465b" class="kt-portlet__head-title"><i style="color: #74788d" class="fa fa-home mr-2"></i>
                             اطلاعات واحد شما
-                        </h5>
+                        </h3>
                     </div>
                 </div>
                 <div class="kt-portlet__body">
@@ -244,21 +154,15 @@
                                                 <th style="min-width: 100px;">کد پارکینگ</th>
                                                 <th>کد انباری</th>
                                                 <th style="min-width: 80px;">متراژ واحد</th>
-                                                <th style="min-width: 100px;">متراژ تراس روباز</th>
-                                                <th> مبلغ شارژ ماهیانه</th>
+                                                <th style="min-width: 130px;">متراژ تراس روباز</th>
+                                                <th style="min-width: 120px;" > شارژ ماهیانه</th>
                                                 <th>شماره همراه</th>
                                                 <th>تلفن منزل1</th>
                                                 <th>تلفن منزل2</th>
-                                                <th>پلاک خودرو1</th>
-                                                <th>نوع خودرو1</th>
-                                                <th>رنگ خودرو1</th>
-                                                <th>پلاک خودرو2</th>
-                                                <th>نوع خودرو2</th>
-                                                <th>رنگ خودرو2</th>
-                                                <th>نام مستاجر</th>
-                                                <th>تلفن همراه مستاجر</th>
-                                                <th>وضعیت سکونت</th>
-                                                <th>تاریخ اسکان</th>
+                                                <th style="min-width: 150px;">نام مستاجر</th>
+                                                <th style="min-width: 150px;">تلفن همراه مستاجر</th>
+                                                <th style="min-width: 120px;">وضعیت سکونت</th>
+                                                <th style="min-width: 100px;">تاریخ اسکان</th>
 
                                             </tr>
                                             </thead>
@@ -276,12 +180,6 @@
                                                 <td>09121010328</td>
                                                 <td>40445649</td>
                                                 <td>40445644</td>
-                                                <td>15م 125_ایران44</td>
-                                                <td>تویوتا کرونا</td>
-                                                <td>سفید</td>
-                                                <td>32ه315_ ایران99</td>
-                                                <td>هیوندای آی30</td>
-                                                <td>سفید</td>
                                                 <td>_</td>
                                                 <td>_</td>
                                                 <td>ساکن</td>
@@ -291,7 +189,7 @@
 
                                             </tbody>
                                         </table>
-
+                                        <span class="mt-2">درصورت وجود مغایرت اطلاعات فوق، میتوانید در قسمت درخواست ها، درخواست خودرا مبنی بر تغییر اطلاعات درج نمایید.</span>
                                     </div>
                                 </div>
                             </div>
@@ -700,8 +598,8 @@
         </div>
     </div>
 
-    <div class="kt-portlet">
-        <div class="kt-portlet__head bg-success">
+    <div style="max-height: 400px; overflow: scroll" class="kt-portlet">
+        <div class="kt-portlet__head">
             <div class="kt-portlet__head-label">
                 <h3 class="kt-portlet__head-title"><i class="fa fa-file-alt mr-2 borj-size"></i>
                     تابلو اعلانات
@@ -724,274 +622,218 @@
 
             <div class="tab-content">
                 <div class="tab-pane active" id="kt_tabs_3_1" role="tabpanel">
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
 
-
-                    <div class="kt-portlet__body">
-                        <div class="tab-content">
-                            <div class="tab-pane active" id="kt_widget3_tab1_content">
-                                <!--Begin::Timeline 3 -->
-                                <div class="kt-timeline-v3">
-                                    <div class="kt-timeline-v3__items">
-
-
-
-                                        <div class="kt-timeline-v3__item kt-timeline-v3__item--success">
-                                            <span class="kt-timeline-v3__item-time  borj-font">12:00</span>
-                                            <div class="kt-timeline-v3__item-desc">
-                                      <span class="kt-timeline-v3__item-text">
-                                        اضافه شده توسط:
-                                      </span><br>
-                                                <span class="kt-timeline-v3__item-user-name">
-
-
-                                      </span>
-                                            </div>
-                                        </div>
-
+                    <div  class="kt-portlet__body">
+                        <div class="kt-notification kt-notification--fit">
+                            <a href="#" class="kt-notification__item">
+                                <div class="kt-notification__item-icon">
+                                    <i class="flaticon2-bell kt-font-brand"></i>
+                                </div>
+                                <div class="kt-notification__item-details">
+                                    <div  class="kt-notification__item-title">
+                                        لطفا نسبت به پرداخت شارژ دیماه از طریق درگاه اقدام نمایید.
+                                    </div>
+                                    <div class="kt-notification__item-time">
+                                       ۲ روز پیش | علی رحمانی
                                     </div>
                                 </div>
-                                <!--End::Timeline 3 -->
-                            </div>
-                            <div class="tab-pane" id="kt_widget3_tab2_content">
-                                <!--Begin::Timeline 3 -->
-                                <div class="kt-timeline-v3">
-                                    <div class="kt-timeline-v3__items">
-
-
-
-                                        <div class="kt-timeline-v3__item kt-timeline-v3__item--success">
-                                            <span class="kt-timeline-v3__item-time kt-font-success  borj-font">12:00</span>
-                                            <div class="kt-timeline-v3__item-desc">
-                                      <span class="kt-timeline-v3__item-text">
-                                        اضافه شده توسط:
-                                      </span><br>
-                                                <span class="kt-timeline-v3__item-user-name">
-
-                                      </span>
-                                            </div>
-                                        </div>
-
-
+                            </a>
+                            <a href="#" class="kt-notification__item">
+                                <div class="kt-notification__item-icon">
+                                    <i class="flaticon2-bell kt-font-brand"></i>
+                                </div>
+                                <div class="kt-notification__item-details">
+                                    <div class="kt-notification__item-title">
+                                        لطفا نسبت به پرداخت شارژ دیماه از طریق درگاه اقدام نمایید.
+                                    </div>
+                                    <div class="kt-notification__item-time">
+                                        ۲ روز پیش | علی رحمانی
                                     </div>
                                 </div>
-                                <!--End::Timeline 3 -->
-                            </div>
+                            </a>
+                            <a href="#" class="kt-notification__item">
+                                <div class="kt-notification__item-icon">
+                                    <i class="flaticon2-bell kt-font-brand"></i>
+                                </div>
+                                <div class="kt-notification__item-details">
+                                    <div class="kt-notification__item-title">
+                                        لطفا نسبت به پرداخت شارژ دیماه از طریق درگاه اقدام نمایید.
+                                    </div>
+                                    <div class="kt-notification__item-time">
+                                        ۲ روز پیش | علی رحمانی
+                                    </div>
+                                </div>
+                            </a>
+
+
                         </div>
+
                     </div>
+
+
+
                 </div>
 
                 <div class="tab-pane" id="kt_tabs_3_3" role="tabpanel">
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged
+
+
+                    <div  class="kt-portlet__body">
+                        <div class="kt-notification kt-notification--fit">
+                            <a href="#" class="kt-notification__item">
+                                <div class="kt-notification__item-icon">
+                                    <i class="flaticon2-bell kt-font-brand"></i>
+                                </div>
+                                <div class="kt-notification__item-details">
+                                    <div  class="kt-notification__item-title">
+                                        لطفا نسبت به پرداخت شارژ دیماه از طریق درگاه اقدام نمایید.
+                                    </div>
+                                    <div class="kt-notification__item-time">
+                                        ۲ روز پیش | علی رحمانی
+                                    </div>
+                                </div>
+                            </a>
+                            <a href="#" class="kt-notification__item">
+                                <div class="kt-notification__item-icon">
+                                    <i class="flaticon2-bell kt-font-brand"></i>
+                                </div>
+                                <div class="kt-notification__item-details">
+                                    <div class="kt-notification__item-title">
+                                        لطفا نسبت به پرداخت شارژ دیماه از طریق درگاه اقدام نمایید.
+                                    </div>
+                                    <div class="kt-notification__item-time">
+                                        ۲ روز پیش | علی رحمانی
+                                    </div>
+                                </div>
+                            </a>
+
+
+                        </div>
+
+                    </div>
+
                 </div>
             </div>
         </div>
     </div>
 
     <div class="row">
-        <div class=col-lg-4>
-
-            <div class="kt-portlet kt-portlet--height-fluid">
-                <div class="kt-portlet__body">
-                    <div class="kt-widget kt-widget--user-profile-3">
-                        <div class="kt-widget__top">
-
-                            <div class="kt-widget__pic kt-widget__pic--danger kt-font-danger kt-font-boldest kt-font-light kt-hidden">
-                                JM
-                            </div>
-                            <div class="kt-widget__content">
-                                <div class="kt-widget__head">
-                                    <h3 class="kt-widget__username"><i class="flaticon2-correct"></i>
-                                        بدهی سررسید شده شما
-
-                                    </h3>
-
-                                    <div class="kt-widget__action">
-                                        <button type="button" class="btn btn-primary btn-sm btn-icon"><i class="la la-arrows"></i></button>
-                                        <button type="button" class="btn btn-primary btn-sm btn-icon"><i class="flaticon2-delete"></i></button>
-                                    </div>
-                                </div>
-
-                                <h5 class="kt-widget__subhead">
-                                    <a href="#"><i class="fa fa-credit-card kt-font-danger mt-5"></i>پرداخت بدهی به صورت آنلاین</a>
-                                    <br>
-                                    <a href="#"><i class="fa fa-file-alt kt-font-danger mt-4"></i>مشاهده لیست کامل بدهی ها </a>
-
-                                </h5>
-
-                                <div class="kt-widget__info">
-
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="kt-widget__bottom">
-                            <div class="kt-widget__item">
-                                <div class="kt-widget__icon">
-                                    <i class="flaticon-coins"></i>
-                                </div>
-                                <div class="kt-widget__details">
-                                    <span class="kt-widget__title">مبلغ (ریال)</span>
-                                    <span class="kt-widget__value borj-font">2,549,500</span>
-                                </div>
-                            </div>
-
-                            <div class="kt-widget__item">
-                                <div class="kt-widget__icon">
-                                    <i class="flaticon-info"></i>
-                                </div>
-                                <div class="kt-widget__details">
-                                    <span class="kt-widget__title">بابت</span>
-                                    <span class="kt-widget__value borj-font">بدهی تا پایان دی ماه 1398</span>
-                                </div>
-                            </div>
-
-                            <div class="kt-widget__item">
-                                <div class="kt-widget__icon">
-                                    <i class="flaticon-chat-1"></i>
-                                </div>
-                                <div class="kt-widget__details">
-                                    <span class="kt-widget__title">کد صورتحساب</span>
-                                    <span class="kt-widget__value kt-font-primary">CH-E201-139809-end</span>
-                                </div>
-                            </div>
-
-                            <div class="kt-widget__item">
-                                <div class="kt-widget__icon">
-                                    <i class="flaticon-time-2"></i>
-                                </div>
-                                <div class="kt-widget__details">
-                                    <span class="kt-widget__title">تاریخ سررسید</span>
-                                    <span class="kt-widget__value kt-font-brand kt-font-danger borj-font">1398/9/30</span>
-                                </div>
-                            </div>
-
-
-
-                            <div class="kt-widget__item">
-
-                                <div class="kt-widget__details">
-                                    <div class="kt-section__content kt-section__content--solid">
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
-
-        <div class="col-lg-8">
-
-
-            <div class="kt-portlet kt-portlet--tabs kt-portlet--height-fluid">
+        <div class="col-xl-12">
+            <!--begin:: Widgets/New Users-->
+            <div class="kt-portlet kt-portlet--mobile">
                 <div class="kt-portlet__head">
                     <div class="kt-portlet__head-label">
                         <h3 class="kt-portlet__head-title">
-                            Sales Reports
+                            <i class="fa fa-wallet kt-font-danger mr-2"></i>
+                            صورتحساب های پرداخت نشده واحد شما
                         </h3>
-                    </div>
-                    <div class="kt-portlet__head-toolbar">
-                        <ul class="nav nav-tabs nav-tabs-line nav-tabs-bold nav-tabs-line-brand" role="tablist">
-                            <li class="nav-item">
-                                <a class="nav-link active" data-toggle="tab" href="#kt_widget11_tab1_content" role="tab">
-                                    Last Month
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#kt_widget11_tab2_content" role="tab">
-                                    All Time
-                                </a>
-                            </li>
-                        </ul>
                     </div>
                 </div>
                 <div class="kt-portlet__body">
-                    <!--Begin::Tab Content-->
-                    <div class="tab-content">
-                        <!--begin::tab 1 content-->
-                        <div class="tab-pane active" id="kt_widget11_tab1_content">
-                            <!--begin::Widget 11-->
-                            <div class="kt-widget11">
-                                <div class="table-responsive">
-                                    <table class="table">
-                                        <thead>
-                                        <tr>
-                                            <td style="width:1%">#</td>
-                                            <td style="width:40%">Application</td>
-                                            <td style="width:14%">Sales</td>
-                                            <td style="width:15%">Change</td>
-                                            <td style="width:15%">Status</td>
-                                            <td style="width:15%" class="kt-align-right">Total</td>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        <tr>
-                                            <td>
-                                                <label class="kt-checkbox kt-checkbox--single">
-                                                    <input type="checkbox"><span></span>
-                                                </label>
-                                            </td>
-                                            <td>
-                                                <a href="#" class="kt-widget11__title">Loop</a>
-                                                <span class="kt-widget11__sub">CRM System</span>
-                                            </td>
-                                            <td>19,200</td>
-                                            <td>$63</td>
-                                            <td><span class="kt-badge kt-badge--inline kt-badge--brand">new</span></td>
-                                            <td class="kt-align-right kt-font-brand kt-font-bold">$34,740</td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <label class="kt-checkbox kt-checkbox--single"><input type="checkbox"><span></span></label>
-                                            </td>
-                                            <td>
-                                                <a href="#" class="kt-widget11__title">Selto</a>
-                                                <span class="kt-widget11__sub">Powerful Website Builder</span>
-                                            </td>
-                                            <td>24,310</td>
-                                            <td>$39</td>
-                                            <td><span class="kt-badge kt-badge--inline kt-badge--success">approved</span></td>
-                                            <td class="kt-align-right kt-font-brand kt-font-bold">$46,010</td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <label class="kt-checkbox kt-checkbox--single"><input type="checkbox"><span></span></label>
-                                            </td>
-                                            <td>
-                                                <a href="#" class="kt-widget11__title">Jippo</a>
-                                                <span class="kt-widget11__sub">The Best Selling App</span>
-                                            </td>
-                                            <td>9,076</td>
-                                            <td>$105</td>
-                                            <td><span class="kt-badge kt-badge--inline kt-badge--warning">pending</span></td>
-                                            <td class="kt-align-right kt-font-brand kt-font-bold">$67,800</td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <label class="kt-checkbox kt-checkbox--single"><input type="checkbox"><span></span></label>
-                                            </td>
-                                            <td>
-                                                <a href="#" class="kt-widget11__title">Verto</a>
-                                                <span class="kt-widget11__sub">Web Development Tool</span>
-                                            </td>
-                                            <td>11,094</td>
-                                            <td>$16</td>
-                                            <td><span class="kt-badge kt-badge--inline kt-badge--danger">on hold</span></td>
-                                            <td class="kt-align-right kt-font-brand kt-font-bold">$18,520</td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <div class="kt-widget11__action kt-align-right">
-                                    <button type="button" class="btn btn-label-brand btn-bold btn-sm">Import Report</button>
-                                </div>
-                            </div>
-                            <!--end::Widget 11-->
-                        </div>
-                        <!--end::tab 1 content-->
+                    <div class="table-responsive">
+                        <table class="table table-striped table-bordered table-hover">
+                            <thead class="thead-light">
+                            <tr>
+                                <th style="min-width: 120px;">لینک پرداخت</th>
+                                <th style="min-width: 180px;">بابت</th>
+                                <th style="min-width: 140px;">مبلغ</th>
+                                <th style="min-width: 150px;">کد</th>
+                                <th style="min-width: 170px; direction: ltr">تاریخ ایجاد صورتحساب</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <th scope="row"><a style="font-size: 16px" href="#" class="btn btn-sm btn-label-danger btn-bold"><i class="fa fa-credit-card"></i> پرداخت </a></th>
+                                <td>بدهی تا پایان دی ۱۳۹۸</td>
+                                <td>۱,۴۴۴,۳۱۳ ریال</td>
+                                <td>CH-E۲۰۱-۱۳۹۸۰۸</td>
+                                <td>۱۳۹۸-۰۶-۰۲ ۰۳:۰۵:۲۱	</td>
+                            </tr>
+                            <tr>
+                                <th scope="row"><a style="font-size: 16px" href="#" class="btn btn-sm btn-label-danger btn-bold"><i class="fa fa-credit-card"></i> پرداخت </a></th>
+                                <td>بدهی تا پایان دی ۱۳۹۸</td>
+                                <td>۱,۴۴۴,۳۱۳ ریال</td>
+                                <td>CH-E۲۰۱-۱۳۹۸۰۸</td>
+                                <td>۱۳۹۸-۰۶-۰۲ ۰۳:۰۵:۲۱	</td>
+                            </tr>
+                            <tr>
+                                <th scope="row"><a style="font-size: 16px" href="#" class="btn btn-sm btn-label-danger btn-bold"><i class="fa fa-credit-card"></i> پرداخت </a></th>
+                                <td>بدهی تا پایان دی ۱۳۹۸</td>
+                                <td>۱,۴۴۴,۳۱۳ ریال</td>
+                                <td>CH-E۲۰۱-۱۳۹۸۰۸</td>
+                                <td>۱۳۹۸-۰۶-۰۲ ۰۳:۰۵:۲۱	</td>
+                            </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!--end:: Widgets/New Users-->
+        </div>
+
+    </div>
+
+
+
+    <div class="row">
+        <div class="col-xl-12">
+            <!--begin:: Widgets/New Users-->
+            <div class="kt-portlet kt-portlet--mobile">
+                <div class="kt-portlet__head">
+                    <div class="kt-portlet__head-label">
+                        <h3 class="kt-portlet__head-title">
+                            <i class="fa fa-vote-yea kt-font-success mr-2"></i>
+                            صورتحساب های پرداخت شده واحد شما
+                        </h3>
+                    </div>
+                </div>
+                <div class="kt-portlet__body">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-bordered table-hover">
+                            <thead class="thead-light">
+                            <tr>
+                                <th style="min-width: 170px;">لینک پرداخت</th>
+                                <th style="min-width: 180px;">بابت</th>
+                                <th style="min-width: 140px;">مبلغ</th>
+                                <th style="min-width: 150px;">کد</th>
+                                <th style="min-width: 170px; direction: ltr">تاریخ ایجاد صورتحساب</th>
+                                <th style="min-width: 170px; direction: ltr">تاریخ پرداخت</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <th scope="row"><a style="font-size: 16px" href="#" class="btn btn-sm btn-label-success btn-bold"><i class="fa fa-credit-card"></i> پرداخت شده </a></th>
+                                <td>بدهی تا پایان دی ۱۳۹۸</td>
+                                <td>۱,۴۴۴,۳۱۳ ریال</td>
+                                <td>CH-E۲۰۱-۱۳۹۸۰۸</td>
+                                <td>۱۳۹۸-۰۶-۰۲ ۰۳:۰۵:۲۱	</td>
+                                <td>۱۳۹۸-۰۶-۰۲ ۰۳:۰۵:۲۱	</td>
+                            </tr>
+                            <tr>
+                                <th scope="row"><a style="font-size: 16px" href="#" class="btn btn-sm btn-label-success btn-bold"><i class="fa fa-credit-card"></i> پرداخت شده </a></th>
+                                <td>بدهی تا پایان دی ۱۳۹۸</td>
+                                <td>۱,۴۴۴,۳۱۳ ریال</td>
+                                <td>CH-E۲۰۱-۱۳۹۸۰۸</td>
+                                <td>۱۳۹۸-۰۶-۰۲ ۰۳:۰۵:۲۱	</td>
+                                <td>۱۳۹۸-۰۶-۰۲ ۰۳:۰۵:۲۱	</td>
+                            </tr>
+                            <tr>
+                                <th scope="row"><a style="font-size: 16px" href="#" class="btn btn-sm btn-label-success btn-bold"><i class="fa fa-credit-card"></i> پرداخت شده </a></th>
+                                <td>بدهی تا پایان دی ۱۳۹۸</td>
+                                <td>۱,۴۴۴,۳۱۳ ریال</td>
+                                <td>CH-E۲۰۱-۱۳۹۸۰۸</td>
+                                <td>۱۳۹۸-۰۶-۰۲ ۰۳:۰۵:۲۱	</td>
+                                <td>۱۳۹۸-۰۶-۰۲ ۰۳:۰۵:۲۱	</td>
+                            </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!--end:: Widgets/New Users-->
+        </div>
+
+    </div>
 
 @endsection

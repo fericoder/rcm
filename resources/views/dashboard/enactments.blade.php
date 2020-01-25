@@ -159,7 +159,7 @@
 
                             <div class="kt-portlet__head-toolbar-wrapper">
                                 <div class="dropdown dropdown-inline">
-                                    <button type="button" class="btn btn-brand btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <button style="font-size: 14px" type="button" class="btn btn-brand btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         <i class="la la-plus"></i> ابزار ها و خروجی ها
                                     </button>
                                     <div class="dropdown-menu dropdown-menu-right">
@@ -231,6 +231,7 @@
                                 <th>شرح مصوبه</th>
                                 <th>اقدام کننده</th>
                                 <th>مهلت اقدام</th>
+                                <th>وضعیت</th>
                                 <th>نتیجه</th>
                                 <th>حذف | ویرایش</th>
                             </tr>
@@ -240,12 +241,13 @@
                             @foreach ($enactments as $enactment)
                                 <tr>
                                     <td>{{ $enactment->number }}</td>
-                                    <td>{{ $enactment->proceeding->date }}</td>
+                                    <td style="font-family: BYekan; direction: ltr">{{ jdate($enactment->proceeding->date) }}</td>
                                     <td>{{ $enactment->proceeding->number }}</td>
                                     <td>{{ $enactment->proceeding->type }}</td>
                                     <td>{{ $enactment->description }}</td>
                                     <td>{{ $enactment->user->fName . ' ' . $enactment->user->lName }}</td>
-                                    <td>{{ $enactment->deadline }}</td>
+                                    <td style="font-family: BYekan; direction: ltr">{{ jdate($enactment->deadline) }}</td>
+                                    <td>{{ $enactment->status }}</td>
                                     <td>{{ $enactment->resualt }}</td>
                                     <td>
                                         <a href="" data-id="" class="m-portlet__nav-link btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill button" title="حذف"> <i style="color: darkred" class="fa fa-times"></i> </a>
@@ -394,19 +396,33 @@
                 series: {
                     dataLabels: {
                         enabled: true,
-                        format: '{point.name}: {point.y:.1f}%'
+                        format: '\u202B' + '{point.name}: {point.y:.1f}%', // \u202B is RLE char for RTL support
+                        enabled: true,
+                        y: -5, //Optional
+                        style: {
+                            fontSize: '13px',
+                            fontFamily: 'tahoma',
+                            textShadow: false, //bug fixed IE9 and EDGE
+                        },
+                        useHTML: true,
                     }
                 }
             },
 
             tooltip: {
+                useHTML: true,
+                style: {
+                    fontSize: '13px',
+                    fontFamily: 'tahoma',
+                    direction: 'rtl',
+                },
                 headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
-                pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:.2f}%</b> of total<br/>'
+                pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:.2f}%</b> از کل<br/>'
             },
 
             series: [
                 {
-                    name: "Browsers",
+                    name: "names",
                     colorByPoint: true,
                     data: [
                         {
@@ -695,188 +711,96 @@
                 series: {
                     dataLabels: {
                         enabled: true,
-                        format: '{point.name}: {point.y:.1f}%'
+                        format: '\u202B' + '{point.name}: {point.y:.1f}%', // \u202B is RLE char for RTL support
+                        enabled: true,
+                        y: -5, //Optional
+                        style: {
+                            fontSize: '13px',
+                            fontFamily: 'tahoma',
+                            textShadow: false, //bug fixed IE9 and EDGE
+                        },
+                        useHTML: true,
                     }
                 }
             },
 
             tooltip: {
+                useHTML: true,
+                style: {
+                    fontSize: '13px',
+                    fontFamily: 'tahoma',
+                    direction: 'rtl',
+                },
                 headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
-                pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:.2f}%</b> of total<br/>'
+                pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:.2f}%</b> از کل<br/>'
             },
 
             series: [
                 {
-                    name: "Browsers",
+                    name: "Status",
                     colorByPoint: true,
                     data: [
                         {
-                            name: "Chrome",
+                            name: "بررسی نشده",
                             y: 62.74,
-                            drilldown: "Chrome"
+                            drilldown: "1"
                         },
                         {
-                            name: "Firefox",
+                            name: "درحال انجام",
                             y: 10.57,
-                            drilldown: "Firefox"
+                            drilldown: "2"
                         },
                         {
-                            name: "Internet Explorer",
+                            name: "انجام شده",
                             y: 7.23,
-                            drilldown: "Internet Explorer"
+                            drilldown: "3"
                         },
                         {
-                            name: "Safari",
+                            name: "معلق",
                             y: 5.58,
-                            drilldown: "Safari"
+                            drilldown: "4"
                         },
                         {
-                            name: "Edge",
+                            name: "لغو شده",
                             y: 4.02,
-                            drilldown: "Edge"
+                            drilldown: "5"
                         },
-                        {
-                            name: "Opera",
-                            y: 1.92,
-                            drilldown: "Opera"
-                        },
-                        {
-                            name: "Other",
-                            y: 7.62,
-                            drilldown: null
-                        }
                     ]
                 }
             ],
             drilldown: {
                 series: [
                     {
-                        name: "Chrome",
-                        id: "Chrome",
+                        name: "بررسی نشده",
+                        id: "1",
                         data: [
                             [
                                 "v65.0",
                                 0.1
                             ],
                             [
-                                "v64.0",
-                                1.3
-                            ],
-                            [
-                                "v63.0",
-                                53.02
-                            ],
-                            [
-                                "v62.0",
-                                1.4
-                            ],
-                            [
-                                "v61.0",
-                                0.88
-                            ],
-                            [
-                                "v60.0",
-                                0.56
-                            ],
-                            [
-                                "v59.0",
-                                0.45
-                            ],
-                            [
-                                "v58.0",
-                                0.49
-                            ],
-                            [
-                                "v57.0",
-                                0.32
-                            ],
-                            [
-                                "v56.0",
-                                0.29
-                            ],
-                            [
-                                "v55.0",
-                                0.79
-                            ],
-                            [
-                                "v54.0",
-                                0.18
-                            ],
-                            [
-                                "v51.0",
-                                0.13
-                            ],
-                            [
-                                "v49.0",
-                                2.16
-                            ],
-                            [
-                                "v48.0",
-                                0.13
-                            ],
-                            [
-                                "v47.0",
-                                0.11
-                            ],
-                            [
-                                "v43.0",
-                                0.17
-                            ],
-                            [
-                                "v29.0",
-                                0.26
+                                "v65.0",
+                                0.1
                             ]
                         ]
                     },
                     {
-                        name: "Firefox",
-                        id: "Firefox",
+                        name: "درحال انجام",
+                        id: "2",
                         data: [
                             [
                                 "v58.0",
                                 1.02
                             ],
                             [
-                                "v57.0",
-                                7.36
-                            ],
-                            [
-                                "v56.0",
-                                0.35
-                            ],
-                            [
-                                "v55.0",
-                                0.11
-                            ],
-                            [
-                                "v54.0",
+                                "v65.0",
                                 0.1
-                            ],
-                            [
-                                "v52.0",
-                                0.95
-                            ],
-                            [
-                                "v51.0",
-                                0.15
-                            ],
-                            [
-                                "v50.0",
-                                0.1
-                            ],
-                            [
-                                "v48.0",
-                                0.31
-                            ],
-                            [
-                                "v47.0",
-                                0.12
                             ]
-                        ]
+                            ]
                     },
                     {
-                        name: "Internet Explorer",
-                        id: "Internet Explorer",
+                        name: "انجام شده",
+                        id: "3",
                         data: [
                             [
                                 "v11.0",
@@ -897,8 +821,8 @@
                         ]
                     },
                     {
-                        name: "Safari",
-                        id: "Safari",
+                        name: "معلق",
+                        id: "4",
                         data: [
                             [
                                 "v11.0",
@@ -927,8 +851,8 @@
                         ]
                     },
                     {
-                        name: "Edge",
-                        id: "Edge",
+                        name: "لغو شده",
+                        id: "5",
                         data: [
                             [
                                 "v16",
@@ -945,24 +869,6 @@
                             [
                                 "v13",
                                 0.1
-                            ]
-                        ]
-                    },
-                    {
-                        name: "Opera",
-                        id: "Opera",
-                        data: [
-                            [
-                                "v50.0",
-                                0.96
-                            ],
-                            [
-                                "v49.0",
-                                0.82
-                            ],
-                            [
-                                "v12.1",
-                                0.14
                             ]
                         ]
                     }
