@@ -131,7 +131,7 @@
                         </div>
                     </div>
                     <div class="kt-portlet__body">
-                        <div style="font-family: iranyekan!important" id="container"></div>
+                        <div style="font-family: iranyekan!important; width: 100%;" id="container00"></div>
                     </div>
                 </div>
             </div>
@@ -213,23 +213,32 @@
                                 <th>تاریخ</th>
                                 <th>مستندات</th>
                                 <th>حذف</th>
-                                <th>header</th>
-                                <th>header</th>
+
                             </tr>
                             </thead>
                             <tbody>
 
                             <tr>
+                                <td>شارژ ماهیانه</td>
+                                <td>شارژ ماهیانه احمد رحمانی</td>
+                                <td class="borj-font">520,000</td>
                                 <td></td>
                                 <td></td>
+                                <td class="borj-font">1397/12/21</td>
                                 <td></td>
                                 <td></td>
+
+                            </tr>
+                            <tr>
+                                <td>شارژ ماهیانه</td>
+                                <td class="borj-font">شارژ ماهیانه طبقه6 واحد16</td>
+                                <td class="borj-font">144,000</td>
+                                <td>نقدی</td>
+                                <td class="borj-font">f6u16</td>
+                                <td class="borj-font">1397/12/9</td>
                                 <td></td>
                                 <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+
                             </tr>
 
                             </tbody>
@@ -335,7 +344,7 @@
     <script>
 
         // Create the chart
-        Highcharts.chart('container', {
+        Highcharts.chart('container00', {
             colors: ['#6996da','#a26bd9','#806bd9','#6bb8da','rgb(156, 99, 212)', '#4572A7', '#84d6f4', '#80699B', '#3D96AE', '#DB843D', '#92A8CD', '#A47D7C', '#B5CA92'],
 
             chart: {
