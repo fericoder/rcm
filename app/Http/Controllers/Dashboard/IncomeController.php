@@ -14,7 +14,7 @@ class IncomeController extends \App\Http\Controllers\Controller
      */
     public function index()
     {
-        return view('dashboard.incomes');
+        return view('dashboard.accounting.incomes');
     }
 
     /**

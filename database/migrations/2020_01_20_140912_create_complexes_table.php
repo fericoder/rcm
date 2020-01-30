@@ -16,8 +16,8 @@ class CreateComplexesTable extends Migration
         Schema::create('complexes', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
-            $table->text('address');
-            $table->unsignedInteger('units');
+            $table->text('address')->nullable();
+            $table->unsignedInteger('units')->nullable();
             $table->enum('type', ['normal', 'multiBlock'])->default('normal');
             $table->timestamps();
         });

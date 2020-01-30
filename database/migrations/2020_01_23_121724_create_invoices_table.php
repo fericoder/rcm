@@ -15,6 +15,12 @@ class CreateInvoicesTable extends Migration
     {
         Schema::create('invoices', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->unsignedInteger('amount');
+            $table->string('for');
+            $table->string('code');
+            $table->unsignedInteger('user_id');
+            $table->unsignedInteger('complex_id');
+            $table->enum('status', ['notPaid', 'paid'])->default('notPaid');
             $table->timestamps();
         });
     }

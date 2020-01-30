@@ -180,10 +180,12 @@
                         <div class="gt3_header_builder_component gt3_header_builder_menu_component">
                             <nav class="main-menu main_menu_container">
                                 <ul id="menu-main-menu" class="menu">
-                                    <li id="menu-item-1474" class="menu-item menu-item-type-custom menu-item-object-custom  menu-item-has-children menu-item-1474"><a href="#contact">تماس باما</a></li>
-                                    <li id="menu-item-1475" class="menu-item menu-item-type-custom menu-item-object-custom  menu-item-1475"><a href="/services">خدمات ما</a></li>
-                                    <li id="menu-item-1478" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1478"><a href="#">ورود به پنل</a></li></li>
-                                    <li id="menu-item-1503" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1478 current-menu-ancestor current-menu-parent"><a href="contast-us/index.html"><span>صفحه اصلی</span></a></li>
+                                    <li id="menu-item-1474" class="menu-item menu-item-type-custom menu-item-object-custom  menu-item-1474"><a href="#contact">تماس باما</a></li>
+                                    <li id="menu-item-1478" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1478"><a href="/login">ورود</a></li></li>
+                                    <li id="menu-item-1478" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1478"><a href="/login">عضویت</a></li></li>
+                                    <li id="menu-item-1475" class="menu-item menu-item-type-custom menu-item-object-custom  menu-item-1475"><a href="#features">قابلیت های سامانه</a></li>
+                                    <li id="menu-item-1475" class="menu-item menu-item-type-custom menu-item-object-custom  menu-item-1475"><a href="#services">خدمات شرکت</a></li>
+                                    <li id="menu-item-1503" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1478 current-menu-ancestor current-menu-parent"><a href="/"><span>صفحه اصلی</span></a></li>
                                 </ul>
                             </nav>
                             <div class="mobile-navigation-toggle">
@@ -209,56 +211,18 @@
                         <div class="gt3_header_builder_component gt3_header_builder_menu_component">
                             <nav class="main-menu main_menu_container">
                                 <ul id="menu-main-menu-1" class="menu">
-                                    <li class="menu-item menu-item-type-custom menu-item-object-custom current-menu-ancestor current-menu-parent menu-item-has-children menu-item-1474"><a href="#"><span>تماس باما</span></a>
-
-                                    </li>
-                                    <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1475"><a href="#"><span>خدمات ما</span></a>
-
-                                    </li>
-                                    <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1535"><a href="#">راهنما</a>
-
-                                    </li>
-                                    <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1478"><a href="#">ورود به پنل</a>
-
-                                    </li>
-                                    <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1479"><a href="#"><span>ورود به پنل</span></a>
-                                        <ul class="sub-menu">
-                                            <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1512"><a href="shop/index.html"><span>راهنما</span></a></li>
-                                            <li class="menu-item menu-item-type-post_type menu-item-object-product menu-item-2324"><a href="product/search-engine-for-growth/index.html"><span>خدمات ما</span></a></li>
-                                        </ul>
-                                    </li>
-                                    <li ><a href="contast-us/index.html"><span>تماس باما</span></a></li>
+                                    <li id="menu-item-1474" class="menu-item menu-item-type-custom menu-item-object-custom  menu-item-1474"><a href="#contact">تماس باما</a></li>
+                                    <li id="menu-item-1478" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1478"><a href="/login">ورود</a></li></li>
+                                    <li id="menu-item-1478" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1478"><a href="/login">عضویت</a></li></li>
+                                    <li id="menu-item-1475" class="menu-item menu-item-type-custom menu-item-object-custom  menu-item-1475"><a href="#features">قابلیت های سامانه</a></li>
+                                    <li id="menu-item-1475" class="menu-item menu-item-type-custom menu-item-object-custom  menu-item-1475"><a href="#services">خدمات شرکت</a></li>
+                                    <li id="menu-item-1503" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1478 current-menu-ancestor current-menu-parent"><a href="/"><span>صفحه اصلی</span></a></li>
                                 </ul>
                             </nav>
-                            <div class="mobile-navigation-toggle">
-
-                            </div>
                         </div>
                     </div>
                 </div>
-                <div class='middle_right__tablet right header_side--custom-align header_side---align header_side'>
-                    <div class='header_side_container'>
-                        <div class="gt3_header_builder_component gt3_header_builder_search_component">
-                            <div class="header_search">
-                                <div class="header_search__container">
-                                    <div class="header_search__icon"><i></i></div>
-                                    <div class="header_search__inner">
-                                        <div class="gt3_search_form__wrapper">
-                                            <form role="search" method="get" class="search_form gt3_search_form" action="https://livewp.site/wp/md/ewebot/">
-                                                <label for="search-form-5df38976d4762">Search</label>
-                                                <input class="search_text" id="search-form-5df38976d4762" type="text" name="s" placeholder="Search">
-                                                <input class="search_submit" type="submit" value="Search">
-                                            </form>
-                                        </div>
-                                        <div class="header_search__inner_cover"></div>
-                                        <div class="header_search__inner_close"><i class="header_search__search_close_icon"></i></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="gt3_header_builder_component gt3_header_builder_burger_sidebar_component"><i class="burger_sidebar_icon"><span class="first"></span><span class="second"></span><span class="third"></span></i></div>
-                    </div>
-                </div>
+                <
             </div>
         </div>
         <div class='gt3_header_builder__section gt3_header_builder__section--middle__mobile gt3_header_builder__section--hide_on_tablet gt3_header_builder__section--show_on_mobile'>
@@ -275,25 +239,12 @@
                         <div class="gt3_header_builder_component gt3_header_builder_menu_component">
                             <nav class="main-menu main_menu_container">
                                 <ul id="menu-main-menu-2" class="menu">
-                                    <li class="menu-item menu-item-type-custom menu-item-object-custom current-menu-ancestor current-menu-parent menu-item-has-children menu-item-1474"><a href="#">تماس باما</a>
-
-                                    </li>
-                                    <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1475"><a href="#">خدمات ما</a>
-
-                                    </li>
-                                    <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1535"><a href="#">راهنما</a>
-
-                                    </li>
-                                    <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1478"><a href="#">ورود به پنل</a>
-
-                                    </li>
-                                    <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1479"><a href="#">ورود به پنل</a>
-                                        <ul class="sub-menu">
-                                            <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1512"><a href="shop/index.html"><span>All Products</span></a></li>
-                                            <li class="menu-item menu-item-type-post_type menu-item-object-product menu-item-2324"><a href="product/search-engine-for-growth/index.html"><span>Single Products</span></a></li>
-                                        </ul>
-                                    </li>
-                                    <li ><a href="contast-us/index.html"><span></span></a></li>
+                                    <li id="menu-item-1474" class="menu-item menu-item-type-custom menu-item-object-custom  menu-item-1474"><a href="#contact">تماس باما</a></li>
+                                    <li id="menu-item-1478" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1478"><a href="/login">ورود</a></li></li>
+                                    <li id="menu-item-1478" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1478"><a href="/login">عضویت</a></li></li>
+                                    <li id="menu-item-1475" class="menu-item menu-item-type-custom menu-item-object-custom  menu-item-1475"><a href="#features">قابلیت های سامانه</a></li>
+                                    <li id="menu-item-1475" class="menu-item menu-item-type-custom menu-item-object-custom  menu-item-1475"><a href="#services">خدمات شرکت</a></li>
+                                    <li id="menu-item-1503" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1478 current-menu-ancestor current-menu-parent"><a href="/"><span>صفحه اصلی</span></a></li>
                                 </ul>
                             </nav>
                             <div class="mobile-navigation-toggle">
@@ -322,25 +273,13 @@
                             <div class="gt3_header_builder_component gt3_header_builder_menu_component">
                                 <nav class="main-menu main_menu_container">
                                     <ul id="menu-main-menu-3" class="menu">
-                                        <li class="menu-item menu-item-type-custom menu-item-object-custom current-menu-ancestor current-menu-parent menu-item-has-children menu-item-1474"><a href="#">تماس باما</a>
+                                        <li id="menu-item-1474" class="menu-item menu-item-type-custom menu-item-object-custom  menu-item-1474"><a href="#contact">تماس باما</a></li>
+                                        <li id="menu-item-1478" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1478"><a href="/login">ورود</a></li></li>
+                                        <li id="menu-item-1478" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1478"><a href="/login">عضویت</a></li></li>
+                                        <li id="menu-item-1475" class="menu-item menu-item-type-custom menu-item-object-custom  menu-item-1475"><a href="#features">قابلیت های سامانه</a></li>
+                                        <li id="menu-item-1475" class="menu-item menu-item-type-custom menu-item-object-custom  menu-item-1475"><a href="#services">خدمات شرکت</a></li>
+                                        <li id="menu-item-1503" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1478 current-menu-ancestor current-menu-parent"><a href="/"><span>صفحه اصلی</span></a></li>
 
-                                        </li>
-                                        <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1475"><a href="#">خدمات ما</a>
-
-                                        </li>
-                                        <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1535"><a href="#">راهنما</a>
-
-                                        </li>
-                                        <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1478"><a href="#">ورود به پنل</a>
-
-                                        </li>
-                                        <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1479"><a href="#">ورود به پنل</a>
-                                            <ul class="sub-menu">
-                                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1512"><a href="shop/index.html"><span>All Products</span></a></li>
-                                                <li class="menu-item menu-item-type-post_type menu-item-object-product menu-item-2324"><a href="product/search-engine-for-growth/index.html"><span>Single Products</span></a></li>
-                                            </ul>
-                                        </li>
-                                        <li ><a href="contast-us/index.html"><span></span></a></li>
                                     </ul>
                                 </nav>
                                 <div class="mobile-navigation-toggle">
@@ -366,25 +305,13 @@
                             <div class="gt3_header_builder_component gt3_header_builder_menu_component">
                                 <nav class="main-menu main_menu_container">
                                     <ul id="menu-main-menu-4" class="menu">
-                                        <li class="menu-item menu-item-type-custom menu-item-object-custom current-menu-ancestor current-menu-parent menu-item-has-children menu-item-1474"><a href="#">تماس باما</a>
+                                        <li id="menu-item-1474" class="menu-item menu-item-type-custom menu-item-object-custom  menu-item-1474"><a href="#contact">تماس باما</a></li>
+                                        <li id="menu-item-1478" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1478"><a href="/login">ورود</a></li></li>
+                                        <li id="menu-item-1478" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1478"><a href="/login">عضویت</a></li></li>
+                                        <li id="menu-item-1475" class="menu-item menu-item-type-custom menu-item-object-custom  menu-item-1475"><a href="#features">قابلیت های سامانه</a></li>
+                                        <li id="menu-item-1475" class="menu-item menu-item-type-custom menu-item-object-custom  menu-item-1475"><a href="#services">خدمات شرکت</a></li>
+                                        <li id="menu-item-1503" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1478 current-menu-ancestor current-menu-parent"><a href="/"><span>صفحه اصلی</span></a></li>
 
-                                        </li>
-                                        <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1475"><a href="#">خدمات ما</a>
-
-                                        </li>
-                                        <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1535"><a href="#">راهنما</a>
-
-                                        </li>
-                                        <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1478"><a href="#">ورود به پنل</a>
-
-                                        </li>
-                                        <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1479"><a href="#">ورود به پنل</a>
-                                            <ul class="sub-menu">
-                                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1512"><a href="shop/index.html"><span>All Products</span></a></li>
-                                                <li class="menu-item menu-item-type-post_type menu-item-object-product menu-item-2324"><a href="product/search-engine-for-growth/index.html"><span>Single Products</span></a></li>
-                                            </ul>
-                                        </li>
-                                        <li ><a href="contast-us/index.html"><span></span></a></li>
                                     </ul>
                                 </nav>
                                 <div class="mobile-navigation-toggle">
@@ -393,29 +320,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class='middle_right__tablet right header_side--custom-align header_side---align header_side'>
-                        <div class='header_side_container'>
-                            <div class="gt3_header_builder_component gt3_header_builder_search_component">
-                                <div class="header_search">
-                                    <div class="header_search__container">
-                                        <div class="header_search__icon"><i></i></div>
-                                        <div class="header_search__inner">
-                                            <div class="gt3_search_form__wrapper">
-                                                <form role="search" method="get" class="search_form gt3_search_form" action="https://livewp.site/wp/md/ewebot/">
-                                                    <label for="search-form-5df38976d73c0">Search</label>
-                                                    <input class="search_text" id="search-form-5df38976d73c0" type="text" name="s" placeholder="Search">
-                                                    <input class="search_submit" type="submit" value="Search">
-                                                </form>
-                                            </div>
-                                            <div class="header_search__inner_cover"></div>
-                                            <div class="header_search__inner_close"><i class="header_search__search_close_icon"></i></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="gt3_header_builder_component gt3_header_builder_burger_sidebar_component"><i class="burger_sidebar_icon"><span class="first"></span><span class="second"></span><span class="third"></span></i></div>
-                        </div>
-                    </div>
+
                 </div>
             </div>
             <div class='gt3_header_builder__section gt3_header_builder__section--middle__mobile gt3_header_builder__section--hide_on_tablet gt3_header_builder__section--show_on_mobile'>
@@ -432,25 +337,13 @@
                             <div class="gt3_header_builder_component gt3_header_builder_menu_component">
                                 <nav class="main-menu main_menu_container">
                                     <ul id="menu-main-menu-5" class="menu">
-                                        <li class="menu-item menu-item-type-custom menu-item-object-custom current-menu-ancestor current-menu-parent menu-item-has-children menu-item-1474"><a href="#">تماس باما</a>
+                                        <li id="menu-item-1474" class="menu-item menu-item-type-custom menu-item-object-custom  menu-item-1474"><a href="#contact">تماس باما</a></li>
+                                        <li id="menu-item-1478" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1478"><a href="/login">ورود</a></li></li>
+                                        <li id="menu-item-1478" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1478"><a href="/login">عضویت</a></li></li>
+                                        <li id="menu-item-1475" class="menu-item menu-item-type-custom menu-item-object-custom  menu-item-1475"><a href="#features">قابلیت های سامانه</a></li>
+                                        <li id="menu-item-1475" class="menu-item menu-item-type-custom menu-item-object-custom  menu-item-1475"><a href="#services">خدمات شرکت</a></li>
+                                        <li id="menu-item-1503" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1478 current-menu-ancestor current-menu-parent"><a href="/"><span>صفحه اصلی</span></a></li>
 
-                                        </li>
-                                        <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1475"><a href="#">خدمات ما</a>
-
-                                        </li>
-                                        <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1535"><a href="#">راهنما</a>
-
-                                        </li>
-                                        <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1478"><a href="#">ورود به پنل</a>
-
-                                        </li>
-                                        <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1479"><a href="#">ورود به پنل</a>
-                                            <ul class="sub-menu">
-                                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1512"><a href="shop/index.html"><span>All Products</span></a></li>
-                                                <li class="menu-item menu-item-type-post_type menu-item-object-product menu-item-2324"><a href="product/search-engine-for-growth/index.html"><span>Single Products</span></a></li>
-                                            </ul>
-                                        </li>
-                                        <li ><a href="contast-us/index.html"><span></span></a></li>
                                     </ul>
                                 </nav>
                                 <div class="mobile-navigation-toggle">
@@ -474,29 +367,13 @@
                         </li>
                         <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1475"><a href="#">خدمات ما</a>
                             <ul class="sub-menu">
-                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1508"><a href="about-us/index.html"><span>درباره ما</span></a></li>
-                                <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-2318"><a href="#"><span>FAQ</span></a>
-                                    <ul class="sub-menu">
-                                        <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1502"><a href="faq/index.html"><span>FAQ Variant I</span></a></li>
-                                        <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1501"><a href="faq-2/index.html"><span>FAQ Variant II</span></a></li>
-                                    </ul>
-                                </li>
-                                <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-3168"><a href="#"><span>Our Case Studies</span></a>
+                                <li id="menu-item-1474" class="menu-item menu-item-type-custom menu-item-object-custom  menu-item-1474"><a href="#contact">تماس باما</a></li>
+                                <li id="menu-item-1478" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1478"><a href="/login">ورود</a></li></li>
+                                <li id="menu-item-1478" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1478"><a href="/login">عضویت</a></li></li>
+                                <li id="menu-item-1475" class="menu-item menu-item-type-custom menu-item-object-custom  menu-item-1475"><a href="#features">قابلیت های سامانه</a></li>
+                                <li id="menu-item-1475" class="menu-item menu-item-type-custom menu-item-object-custom  menu-item-1475"><a href="#services">خدمات شرکت</a></li>
+                                <li id="menu-item-1503" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1478 current-menu-ancestor current-menu-parent"><a href="/"><span>صفحه اصلی</span></a></li>
 
-                                </li>
-                                <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1535"><a href="#">راهنما</a>
-
-                                </li>
-                                <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1478"><a href="#">ورود به پنل</a>
-
-                                </li>
-                                <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1479"><a href="#">ورود به پنل</a>
-                                    <ul class="sub-menu">
-                                        <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1512"><a href="shop/index.html"><span>All Products</span></a></li>
-                                        <li class="menu-item menu-item-type-post_type menu-item-object-product menu-item-2324"><a href="product/search-engine-for-growth/index.html"><span>Single Products</span></a></li>
-                                    </ul>
-                                </li>
-                                <li ><a href="contast-us/index.html"><span></span></a></li>
                             </ul>
                 </nav>
             </div>
@@ -514,12 +391,13 @@
             <div id="categories-3" class="widget gt3_widget open widget_categories">
                 <h4 class="widget-title">منو</h4>
                 <ul>
-                    <li class="cat-item cat-item-16"><a href="category/branding/index.html">صفحه اصلی</a></li>
-                    <li class="cat-item cat-item-17"><a href="category/marketing/index.html">ورود به پنل</a></li>
-                    <li class="cat-item cat-item-18"><a href="category/optimization/index.html">راهنما</a></li>
-                    <li class="cat-item cat-item-19"><a href="category/planing/index.html">درباره ما</a></li>
-                    <li class="cat-item cat-item-20"><a href="category/seo/index.html">تماس باما</a></li>
-                    <li class="cat-item cat-item-21"><a href="category/web/index.html">خدمات ما</a></li>
+                    <li id="menu-item-1474" class="menu-item menu-item-type-custom menu-item-object-custom  menu-item-1474"><a href="#contact">تماس باما</a></li>
+                    <li id="menu-item-1478" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1478"><a href="/login">ورود</a></li></li>
+                    <li id="menu-item-1478" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1478"><a href="/login">عضویت</a></li></li>
+                    <li id="menu-item-1475" class="menu-item menu-item-type-custom menu-item-object-custom  menu-item-1475"><a href="#features">قابلیت های سامانه</a></li>
+                    <li id="menu-item-1475" class="menu-item menu-item-type-custom menu-item-object-custom  menu-item-1475"><a href="#services">خدمات شرکت</a></li>
+                    <li id="menu-item-1503" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1478 current-menu-ancestor current-menu-parent"><a href="/"><span>صفحه اصلی</span></a></li>
+
                 </ul>
             </div>
             <div id="text-5" class="widget gt3_widget open widget_text">
@@ -618,25 +496,7 @@
                         padding-left: 4px;
                     }
                 </style>
-                <div id="mc_signup">
-                    <form method="post" action="#mc_signup" id="mc_signup_form">
-                        <input type="hidden" id="mc_submit_type" name="mc_submit_type" value="html" />
-                        <input type="hidden" name="mcsf_action" value="mc_submit_signup_form" />
-                        <input type="hidden" id="_mc_submit_signup_form_nonce" name="_mc_submit_signup_form_nonce" value="bb76c865aa" />
-                        <div class="mc_form_inside">
-                            <div class="updated" id="mc_message"></div>
-                            <!-- /mc_message -->
 
-                            <!-- /mc_merge_var -->
-                            <div class="mc_signup_submit">
-                                <input type="submit" name="mc_signup_submit" id="bazgasht" value="بازگشت به صفحه اصلی" class="button" />
-                            </div>
-                            <!-- /mc_signup_submit -->
-                        </div>
-                        <!-- /mc_form_inside -->
-                    </form>
-                    <!-- /mc_signup_form -->
-                </div>
                 <!-- /mc_signup_container -->
             </div>
 

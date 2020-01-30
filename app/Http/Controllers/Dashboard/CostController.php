@@ -14,7 +14,7 @@ class CostController extends \App\Http\Controllers\Controller
      */
     public function index()
     {
-        return view('dashboard.costs');
+        return view('dashboard.accounting.costs');
     }
 
     /**

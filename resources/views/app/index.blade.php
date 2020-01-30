@@ -26,7 +26,7 @@
                                             <div class="elementor-row borj-ltr">
 
                                                 <div class="elementor-element elementor-element-37bd82e elementor-column elementor-col-50 elementor-top-column" data-id="37bd82e" data-element_type="column">
-                                                    <div class="elementor-column-wrap  elementor-element-populated">
+                                                    <div style="padding-top: 50px" class="elementor-column-wrap  elementor-element-populated">
                                                         <div class="elementor-widget-wrap">
                                                             <div class="elementor-element elementor-element-3ace9e7 elementor-widget elementor-widget-spacer" data-id="3ace9e7" data-element_type="widget" data-widget_type="spacer.default">
                                                                 <div class="elementor-widget-container">
@@ -37,7 +37,7 @@
                                                             </div>
                                                             <div class="elementor-element elementor-element-6ee0ac4 elementor-widget elementor-widget-image" data-id="6ee0ac4" data-element_type="widget" data-widget_type="image.default">
                                                                 <div class="elementor-widget-container">
-                                                                    <div class="elementor-image"> <img width="500" height="704" src="/app/assets/img/19728.png" class="attachment-full size-full" alt="" /></div>
+                                                                    <div class="elementor-image"> <img style="    min-width: 600px;" src="/app/assets/img/2904600.png" class="attachment-full size-full" alt="" /></div>
                                                                 </div>
                                                             </div>
                                                             <div class="elementor-element elementor-element-7fc22dc elementor-absolute elementor-widget__width-initial elementor-widget-mobile__width-initial elementor-widget-tablet__width-initial elementor-widget elementor-widget-html" data-id="7fc22dc" data-element_type="widget" data-settings="{&quot;_position&quot;:&quot;absolute&quot;}" data-widget_type="html.default">
@@ -53,7 +53,7 @@
                                                 <div class="elementor-element elementor-element-0a87759 elementor-column elementor-col-50 elementor-top-column" data-id="0a87759" data-element_type="column">
                                                     <div class="elementor-column-wrap  elementor-element-populated">
                                                         <div class="elementor-widget-wrap">
-                                                            <div style="height: 250px!important;" class="elementor-element elementor-element-e822f3e elementor-widget elementor-widget-spacer" data-id="e822f3e" data-element_type="widget" data-widget_type="spacer.default">
+                                                            <div style="height: 220px!important;" class="elementor-element elementor-element-e822f3e elementor-widget elementor-widget-spacer" data-id="e822f3e" data-element_type="widget" data-widget_type="spacer.default">
                                                                 <div class="elementor-widget-container">
                                                                     <div class="elementor-spacer">
                                                                         <div class="elementor-spacer-inner"></div>
@@ -63,7 +63,7 @@
                                                             <div class="elementor-element-custom_font_size elementor-element-custom_font_weight elementor-element elementor-element-acd46a8 elementor-widget elementor-widget-text-editor" data-id="acd46a8" data-element_type="widget" data-widget_type="text-editor.default">
                                                                 <div class="elementor-widget-container">
                                                                     <div class="elementor-text-editor elementor-clearfix">
-                                                                        <h5 style="direction: rtl" class="borj-right">شرکت ....</h5></div>
+                                                                        <h5 style="direction: rtl" class="borj-right">شرکت سامانه پرداز</h5></div>
                                                                 </div>
                                                             </div>
                                                             <div class="elementor-element-custom_font_size elementor-element-custom_font_size_mobile elementor-element-custom_line_height elementor-element-custom_line_height_mobile elementor-element elementor-element-6333c9e elementor-widget elementor-widget-text-editor" data-id="6333c9e" data-element_type="widget" data-widget_type="text-editor.default">
@@ -146,7 +146,7 @@
                                             </div>
                                         </div>
                                     </section>
-                                    <section class="elementor-element elementor-element-1076f8e elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-id="1076f8e" data-element_type="section">
+                                    <section id="services" class="elementor-element elementor-element-1076f8e elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section" data-id="1076f8e" data-element_type="section">
                                         <div class="elementor-container elementor-column-gap-default">
                                             <div class="elementor-row">
                                                 <div class="elementor-element elementor-element-c52e9bd elementor-column elementor-col-33 elementor-top-column" data-id="c52e9bd" data-element_type="column">
@@ -167,7 +167,7 @@
 
                                                             <div class="elementor-element elementor-element-0d4c234 elementor-widget elementor-widget-heading" data-id="0d4c234" data-element_type="widget" data-widget_type="heading.default">
                                                                 <div class="elementor-widget-container">
-                                                                    <h2 class="elementor-heading-title elementor-size-default">خدمات شرکت ... در یک نگاه</h2></div>
+                                                                    <h3 class="elementor-heading-title elementor-size-default">خدمات شرکت سامانه پرداز در یک نگاه</h3></div>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -212,7 +212,7 @@
                                                                             <div class="gt3-core-imagebox-title">
                                                                                 <h5 class="gt3-core-imagebox-title">تامین نیروی انسانی</h5></div>
                                                                             <p class="gt3-core-imagebox-description">
-                                                                                 تامین نيروي انساني يكي از خدمات اصلی شرکت ... بوده که وظیفه گزینش واستخدام و توجیه وآموزش نیروی انسانی را بر عهده دارد. اهميت و جايگاه منحصر به فرد نيروي انساني در موقعيت رقابتي هر سازمان هر صاحب نظري را بر آن مي دارد كه در مقوله مزيت رقابتي به تامین نيروي انساني به عنوان با ارزش ترين سرمايه سازماني نگاه كند.
+                                                                                 تامین نيروي انساني يكي از خدمات اصلی شرکت سامانه پرداز بوده که وظیفه گزینش واستخدام و توجیه وآموزش نیروی انسانی را بر عهده دارد. اهميت و جايگاه منحصر به فرد نيروي انساني در موقعيت رقابتي هر سازمان هر صاحب نظري را بر آن مي دارد كه در مقوله مزيت رقابتي به تامین نيروي انساني به عنوان با ارزش ترين سرمايه سازماني نگاه كند.
                                                                             </p>
                                                                         </div>
                                                                     </div>
@@ -244,7 +244,7 @@
                                             </div>
                                         </div>
                                     </section>
-                                    <section class="elementor-element elementor-element-102e618 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section borj-ltr" data-id="102e618" data-element_type="section">
+                                    <section id="features" class="elementor-element elementor-element-102e618 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section borj-ltr" data-id="102e618" data-element_type="section">
                                         <div class="elementor-container elementor-column-gap-extended">
                                             <div class="elementor-row ml-5">
                                                 <div class="elementor-element elementor-element-c839eff elementor-column elementor-col-50 elementor-top-column" data-id="c839eff" data-element_type="column">
@@ -326,7 +326,7 @@
                                                             <div class="elementor-element-custom_font_size elementor-element-custom_font_weight elementor-element elementor-element-449e80d elementor-widget elementor-widget-text-editor" data-id="449e80d" data-element_type="widget" data-widget_type="text-editor.default">
                                                                 <div class="elementor-widget-container">
                                                                     <div class="elementor-text-editor elementor-clearfix">
-                                                                        <h5>خدمات دیگر شرکت ...</h5></div>
+                                                                        <h5>خدمات دیگر شرکت سامانه پرداز</h5></div>
                                                                 </div>
                                                             </div>
                                                             <div class="elementor-element elementor-element-69db597 elementor-widget elementor-widget-heading" data-id="69db597" data-element_type="widget" data-widget_type="heading.default">
@@ -895,7 +895,7 @@
                                             </div>
                                         </div>
                                     </section>
-                                    <section class="elementor-element elementor-element-44b7950 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section borj-ltr" data-id="44b7950" data-element_type="section">
+                                    <section id="contact" class="elementor-element elementor-element-44b7950 elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-top-section borj-ltr" data-id="44b7950" data-element_type="section">
                                         <div class="elementor-container elementor-column-gap-extended">
                                             <div class="elementor-row">
                                                 <div class="elementor-element elementor-element-6d1b22d elementor-column elementor-col-50 elementor-top-column" data-id="6d1b22d" data-element_type="column">
@@ -929,7 +929,7 @@
                                                             <div class="elementor-element-custom_font_size elementor-element-custom_font_weight elementor-element elementor-element-5683383 elementor-widget elementor-widget-text-editor" data-id="5683383" data-element_type="widget" data-widget_type="text-editor.default">
                                                                 <div class="elementor-widget-container">
                                                                     <div class="elementor-text-editor elementor-clearfix">
-                                                                        <h5>فرم
+                                                                        <h5>فرم تماس باما
                                                                         </h5></div>
                                                                 </div>
                                                             </div>
@@ -940,7 +940,7 @@
                                                             <div class="elementor-element elementor-element-9052be1 elementor-widget elementor-widget-text-editor" data-id="9052be1" data-element_type="widget" data-widget_type="text-editor.default">
                                                                 <div class="elementor-widget-container">
                                                                     <div class="elementor-text-editor elementor-clearfix">
-                                                                        <p> با تکمیل فرم ذیل، کارشناسان ما در کمترین زمان با شما تماس گرفته و پاسخگوی سوالات شما در زمینه خدمات شرکت .... و سامانه تحت وب مدیریت مجتمع مسکونی هستند  </p>
+                                                                        <p> با تکمیل فرم ذیل، کارشناسان ما در کمترین زمان با شما تماس گرفته و پاسخگوی سوالات شما در زمینه خدمات شرکت سامانه پرداز و سامانه تحت وب مدیریت مجتمع مسکونی هستند  </p>
                                                                     </div>
                                                                 </div>
                                                             </div>

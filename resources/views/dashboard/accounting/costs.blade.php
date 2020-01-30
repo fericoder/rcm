@@ -7,10 +7,8 @@
 
 
         <div class="kt-portlet">
-
             <div class="row">
                 <div class="col-lg-7 border-right-blue-grey border-right-lighten-5">
-
                     <div class="kt-widget24">
                         <div class="kt-widget24__details">
                             <div class="kt-widget24__info">
@@ -121,6 +119,7 @@
                         <div class="kt-portlet__head-label">
                             <h3 class="kt-portlet__head-title borj-color">
                                 هزینه ها بر اساس سرفصل <small>(ریال)</small>
+                                <button data-toggle="modal" data-target=" #add" style="margin-right: 20px;font-size: 13px" type="button" class="btn btn-success btn-wide btn-elevate btn-elevate-air">افزودن هزینه</button>
                             </h3>
                         </div>
 
@@ -128,7 +127,7 @@
 
                             <div class="kt-portlet__head-toolbar-wrapper">
                                 <div class="dropdown dropdown-inline">
-                                    <button type="button" class="btn btn-brand btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <button style="font-size: 14px" type="button" class="btn btn-brand btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         <i class="la la-plus"></i> ابزار ها و خروجی ها
                                     </button>
                                     <div class="dropdown-menu dropdown-menu-right">
@@ -243,13 +242,14 @@
                             <h3 class="kt-portlet__head-title borj-color">
                                 سرفصل های هزینه
                             </h3>
+                            <button data-toggle="modal" data-target=" #add" style="margin-right: 20px;font-size: 13px" type="button" class="btn btn-success btn-wide btn-elevate btn-elevate-air">افزودن سرفصل هزینه</button>
                         </div>
 
                         <div style="" class="kt-portlet__head-toolbar">
 
                             <div class="kt-portlet__head-toolbar-wrapper">
                                 <div class="dropdown dropdown-inline">
-                                    <button type="button" class="btn btn-brand btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <button style="font-size: 14px" type="button" class="btn btn-brand btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         <i class="la la-plus"></i> ابزار ها و خروجی ها
                                     </button>
                                     <div class="dropdown-menu dropdown-menu-right">

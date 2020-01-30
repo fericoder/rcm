@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Dashboard;
 
+use App\Http\Requests\InvoiceUpdateRequest;
 use App\Invoice;
 use Illuminate\Http\Request;
 
@@ -46,7 +47,6 @@ class InvoiceController extends \App\Http\Controllers\Controller
      */
     public function show(Invoice $invoice)
     {
-        //
     }
 
     /**
@@ -57,7 +57,7 @@ class InvoiceController extends \App\Http\Controllers\Controller
      */
     public function edit(Invoice $invoice)
     {
-        //
+        return view('dashboard.invoices.edit', compact('invoice'));
     }
 
     /**
@@ -67,9 +67,16 @@ class InvoiceController extends \App\Http\Controllers\Controller
      * @param  \App\Invoice  $invoice
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Invoice $invoice)
+    public function update(InvoiceUpdateRequest $request, Invoice $invoice)
     {
-        //
+        $invoice->for = $request->for;
+        $invoice->amount = $request->amount;
+        $invoice->for = $request->for;
+        $invoice->status = $request->status;
+        $invoice->save();
+
+        alert()->success('تغییر صورتحساب انجام شد.', 'انجام شد');
+        return redirect()->back();
     }
 
     /**

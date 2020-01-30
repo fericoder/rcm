@@ -11,24 +11,48 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        \DB::table('users')->insert([
-            'fName' => 'علی',
-            'lName' => 'رحمانی',
-            'code' => '16',
-            'complex_id' => 1,
-            'area' => 114,
-            'charge' => 600000,
-            'mobile1' => '09201010328',
-            'phone1' => '22948281',
-            'userType' => 'superAdmin',
-            'userStatus' => 'enable',
-            'propertyStatus' => 'resident',
-            'residentType' => 'owner',
-            'email' => 'rahmani@rieco.ir',
-            'password' => bcrypt('0212202'),
-            'residentType' => 'owner',
-            'created_at' => now(),
-        ]);
+        if (($handle = fopen ( public_path () . '/csv/olyusers.csv', 'r' )) !== FALSE) {
 
+            while ( ($data = fgetcsv ( $handle, 10000, ',' )) !== FALSE ) {
+
+
+                $fullName = trim($data[0]);
+                $tower = trim($data[1]);
+                $floor = trim($data[2]);
+                $unit = trim($data[3]);
+                $area = trim($data[4]);
+                $charge = trim($data[5]);
+                $mobile1 = trim($data[6]);
+                $phone1 = trim($data[7]);
+                $phone2 = trim($data[8]);
+                $code = trim($data[9]);
+
+
+                DB::table('users')->insert(
+                    [
+
+                        [
+                            'fullName' => $fullName,
+                            'tower' => $tower,
+                            'floor' => $floor,
+                            'unit' => $unit,
+                            'code' => $code,
+                            'area' => $area,
+                            'complex_id' => 1,
+                            'charge' => $charge,
+                            'mobile1' => $mobile1,
+                            'phone1' => $phone1,
+                            'phone2' => $phone2,
+
+                            'password' => bcrypt('123456'),
+                            'created_at' => now(),
+                        ],
+                    ]
+                );
+
+            }
+
+            fclose ( $handle );
+        }
     }
 }

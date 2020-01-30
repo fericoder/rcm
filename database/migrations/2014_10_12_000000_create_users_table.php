@@ -15,20 +15,21 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('fName');
-            $table->string('lName');
+            $table->string('fullName');
+            $table->string('tower')->nullable();
+            $table->string('floor');
+            $table->string('unit');
             $table->string('code')->nullable();
             $table->unsignedInteger('complex_id');
-            $table->unsignedInteger('area')->nullable();
+            $table->float('area')->nullable();
             $table->unsignedInteger('charge')->nullable();
-            $table->string('mobile1');
-            $table->string('mobile2')->nullable();
+            $table->string('mobile');
             $table->string('phone1')->nullable();
             $table->string('phone2')->nullable();
-            $table->enum('userType', ['superAdmin', 'admin', 'boardMember', '']);
+            $table->enum('userType', ['superAdmin', 'admin', 'boardMember', 'user'])->default('user');
             $table->enum('userStatus', ['enable', 'disable'])->default('enable');
-            $table->enum('propertyStatus', ['resident', 'empty']);
-            $table->enum('residentType', ['owner', 'tenant']);
+            $table->enum('propertyStatus', ['resident', 'empty'])->nullable();
+            $table->enum('residentType', ['owner', 'tenant'])->nullable();
             $table->string('email')->unique()->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');

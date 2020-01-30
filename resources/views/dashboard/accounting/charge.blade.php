@@ -3,6 +3,11 @@
 
 @section('content')
 
+    <style>
+        .kt-widget1__item{
+            padding-top: 0px!important;
+        }
+    </style>
     <link href="assets/plugins/custom/datatables/datatables.bundle.rtl.css" rel="stylesheet" type="text/css" />
 
 
@@ -17,7 +22,7 @@
                                     <h4 class="kt-widget1__title">مجموع واریزی های امروز</h4>
                                     <span class="kt-widget1__desc">(ریال)</span>
                                 </div>
-                                <h1 class="kt-widget1__number kt-font-brand borj-font">0</h1>
+                                <h1 class="kt-widget1__number kt-font-brand borj-font">{{ number_format($invoices->where('updated_at', '>=', \Carbon\Carbon::today()->toDateString())->where('status', 'paid')->sum('amount')) }}</h1>
                             </div>
 
 
@@ -34,7 +39,7 @@
                                     <h4 class="kt-widget1__title">مجموع واریزی های دیروز</h4>
                                     <span class="kt-widget1__desc">(ریال)</span>
                                 </div>
-                                <h1 class="kt-widget1__number kt-font-danger borj-font">131,235,652</h1>
+                                <h1 class="kt-widget1__number kt-font-danger borj-font">{{ number_format($invoices->where('updated_at', '>=', \Carbon\Carbon::yesterday()->toDateString())->where('updated_at', '<', \Carbon\Carbon::today()->toDateString())->where('status', 'paid')->sum('amount')) }}</h1>
                             </div>
 
 
@@ -51,7 +56,7 @@
                                     <h4 class="kt-widget1__title">مجموع واریزی های این ماه:</h4>
                                     <span class="kt-widget1__desc">(ریال)</span>
                                 </div>
-                                <h1 class="kt-widget1__number kt-font-success borj-font">472,940,933</h1>
+                                <h1 class="kt-widget1__number kt-font-success borj-font">{{ number_format($invoices->where('updated_at', '>=', \Carbon\Carbon::today()->subDays(jdate()->now()->getDay()-1)->toDateString())->where('status', 'paid')->sum('amount')) }}</h1>
                             </div>
 
 
@@ -65,89 +70,14 @@
 
         <div class="alert alert-solid-warning"  role="alert">
             <div class="alert-icon"><i class="fa fa-chart-pie"></i></div>
-            <h3 class="alert-text borj-font text-dark">مجموع بدهی شارژ سررسید شده تا پایان آذر ماه 98: (ریال)
+            <h3 class="alert-text borj-font text-dark">مجموع بدهی شارژ سررسید شده تا پایان
+                {{ jdate()->now()->format('%B %Y') }}
             </h3>
             <h1 class="alert-text"> </h1>
-            <h1 class="alert-text borj-font text-warning"> 4,856,900,074 </h1>
+            <h1 class="alert-text borj-font text-warning"> {{ number_format($invoices->where('status', 'notPaid')->sum('amount')) }}
+            ریال</h1>
         </div>
 
-        <div class="kt-portlet kt-portlet--mobile">
-            <div class="kt-portlet__head  bg-primary">
-                <div class="kt-portlet__head-label">
-                    <h3 class="kt-portlet__head-title">
-                        مشاهده وضعیت واریزی بر اساس هر واحد
-
-                    </h3>
-                </div>
-            </div>
-
-            <div class="kt-portlet__body">
-                <h4 class="kt-portlet__head-title text-dark mb-5">
-                    جهت مشاهده وضعیت شارژ، واحد مورد نظر را انتخاب نمایید.</h4>
-
-                <div class=" col-lg-4 col-md-9 col-sm-12">
-                    <select class="form-control kt-select2 borj-font" id="kt_select2_1" name="param">
-                        <option value="AK">سیاوش بدری_W12</option>
-                        <option value="HI">Hawaii</option>
-                        <option value="CA">California</option>
-                        <option value="NV">Nevada</option>
-                        <option value="OR">Oregon</option>
-                        <option value="WA">Washington</option>
-                        <option value="AZ">Arizona</option>
-                        <option value="CO">Colorado</option>
-                        <option value="ID">Idaho</option>
-                        <option value="MT">Montana</option>
-                        <option value="NE">Nebraska</option>
-                        <option value="NM">New Mexico</option>
-                        <option value="ND">North Dakota</option>
-                        <option value="UT">Utah</option>
-                        <option value="WY">Wyoming</option>
-                        <option value="AL">Alabama</option>
-                        <option value="AR">Arkansas</option>
-                        <option value="IL">Illinois</option>
-                        <option value="IA">Iowa</option>
-                        <option value="KS">Kansas</option>
-                        <option value="KY">Kentucky</option>
-                        <option value="LA">Louisiana</option>
-                        <option value="MN">Minnesota</option>
-                        <option value="MS">Mississippi</option>
-                        <option value="MO">Missouri</option>
-                        <option value="OK">Oklahoma</option>
-                        <option value="SD">South Dakota</option>
-                        <option value="TX">Texas</option>
-                        <option value="TN">Tennessee</option>
-                        <option value="WI">Wisconsin</option>
-                        <option value="CT">Connecticut</option>
-                        <option value="DE">Delaware</option>
-                        <option value="FL">Florida</option>
-                        <option value="GA">Georgia</option>
-                        <option value="IN">Indiana</option>
-                        <option value="ME">Maine</option>
-                        <option value="MD">Maryland</option>
-                        <option value="MA">Massachusetts</option>
-                        <option value="MI">Michigan</option>
-                        <option value="NH">New Hampshire</option>
-                        <option value="NJ">New Jersey</option>
-                        <option value="NY">New York</option>
-                        <option value="NC">North Carolina</option>
-                        <option value="OH">Ohio</option>
-                        <option value="PA">Pennsylvania</option>
-                        <option value="RI">Rhode Island</option>
-                        <option value="SC">South Carolina</option>
-                        <option value="VT">Vermont</option>
-                        <option value="VA">Virginia</option>
-                        <option value="WV">West Virginia</option>
-                    </select>
-                </div>
-
-                <div class=" col-lg-6 col-md-9 col-sm-12">
-                    <button type="button" class="btn btn-primary btn-wide btn-elevate btn-elevate-air mt-5" data-toggle="modal" data-target=" #modall"><i class="fa fa-plus-circle"></i>مشاهده وضعیت شارژ واحد </button>
-
-
-
-                </div>
-            </div>
-        </div>
 
 
         <div class="row">
@@ -156,7 +86,7 @@
                     <div class="kt-portlet__head">
                         <div class="kt-portlet__head-label">
                             <h3 class="kt-portlet__head-title borj-color">
-                                هزینه ها بر اساس سرفصل <small>(ریال)</small>
+                                لیست ریز واریزی ها از طریق درگاه اینترنتی سامانه
                             </h3>
                         </div>
 
@@ -164,7 +94,7 @@
 
                             <div class="kt-portlet__head-toolbar-wrapper">
                                 <div class="dropdown dropdown-inline">
-                                    <button type="button" class="btn btn-brand btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <button style="font-size: 14px" type="button" class="btn btn-brand btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         <i class="la la-plus"></i> ابزار ها و خروجی ها
                                     </button>
                                     <div class="dropdown-menu dropdown-menu-right">
@@ -216,32 +146,23 @@
                             <thead style="font-family: BYekan">
                             <tr>
                                 <th>تاریخ</th>
-                                <th>مبلغ</th>
+                                <th>مبلغ (ریال)</th>
                                 <th>کد واحد</th>
                                 <th>نام و نام خانوادگی</th>
                                 <th>بابت</th>
-                                <th>header</th>
-                                <th>header</th>
-                                <th>header</th>
-                                <th>header</th>
-                                <th>header</th>
                             </tr>
                             </thead>
                             <tbody>
 
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-
+                            @foreach ($invoices->where('status', 'paid')->take(1000) as $invoice)
+                                <tr>
+                                    <td style="font-fami!important; direction: ltr">{{ jdate($invoice->updated_at) }}</td>
+                                    <td style="font-family: BYekan!important;"> {{ number_format($invoice->amount) }} </td>
+                                    <td>{{ $invoice->user->code }}</td>
+                                    <td>{{ $invoice->user->fullName }}</td>
+                                    <td>{{ $invoice->for }}</td>
+                                </tr>
+                            @endforeach
                             </tbody>
 
                         </table>
@@ -259,7 +180,7 @@
                     <div class="kt-portlet__head">
                         <div class="kt-portlet__head-label">
                             <h3 class="kt-portlet__head-title borj-color">
-                                هزینه ها بر اساس سرفصل <small>(ریال)</small>
+                                لیست بدهی واحد ها<small>(به ترتیب بدهکار ترین)</small>
                             </h3>
                         </div>
 
@@ -267,7 +188,7 @@
 
                             <div class="kt-portlet__head-toolbar-wrapper">
                                 <div class="dropdown dropdown-inline">
-                                    <button type="button" class="btn btn-brand btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <button style="font-size: 14px" type="button" class="btn btn-brand btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         <i class="la la-plus"></i> ابزار ها و خروجی ها
                                     </button>
                                     <div class="dropdown-menu dropdown-menu-right">
@@ -322,28 +243,19 @@
                                 <th>کد واحد</th>
                                 <th>نام مالک</th>
                                 <th>شماره موبایل</th>
-                                <th>header</th>
-                                <th>header</th>
-                                <th>header</th>
-                                <th>header</th>
-                                <th>header</th>
-                                <th>header</th>
                             </tr>
                             </thead>
                             <tbody>
 
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
+                            @foreach ($invoices->where('status', 'notPaid')->groupBy('user_id') as $invoice)
+                                <tr>
+                                    <td style="font-family: BYekan!important;"> {{ number_format($invoice->sum('amount')) }} </td>
+                                    <td> {{ $invoice->first()->user->code  }} </td>
+                                    <td> {{ $invoice->first()->user->fullName  }} </td>
+                                    <td style="font-family: BYekan!important;"> {{ $invoice->first()->user->mobile  }} </td>
+                                </tr>
+
+                            @endforeach
 
                             </tbody>
 
@@ -380,9 +292,10 @@
                 f = $("#m_table_1").DataTable({
 
                         scrollY:"",scrollX:!0,scrollCollapse:!0,
-                        responsive: !0,
+                        responsive: !0, order: ['0', 'desc'],
 
-                        buttons: ["print", "copyHtml5", "excelHtml5", "csvHtml5", "pdfHtml5"],
+
+                    buttons: ["print", "copyHtml5", "excelHtml5", "csvHtml5", "pdfHtml5"],
                     }
                 ),
                     $("#export_print").on("click", function (e) {
@@ -414,7 +327,7 @@
                 t = $("#m_table_2").DataTable({
 
                         scrollY:"",scrollX:!0,scrollCollapse:!0,
-                        responsive: !0,
+                        responsive: !0, order: ['0', 'desc'],
 
                         buttons: ["print", "copyHtml5", "excelHtml5", "csvHtml5", "pdfHtml5"],
                     }
@@ -458,6 +371,7 @@
 
     </script>
 
+    <script src="/dashboard/assets/js/select2.js" type="text/javascript"></script>
 
 
 

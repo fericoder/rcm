@@ -36829,7 +36829,7 @@ body.rtl .elementor-91 .elementor-element.elementor-element-8e66ba8 {
 }
 
 .elementor-91 .elementor-element.elementor-element-42d950f.elementor-widget-gt3-core-button .gt3_module_button_elementor.size_custom .hover_type5 .gt3_module_button__container {
-    padding: 13px 27px 13px 27px
+    padding: 7px 18px 9px 14px;
 }
 
 .elementor-91 .elementor-element.elementor-element-42d950f.elementor-widget-gt3-core-button .gt3_module_button_elementor.size_custom .hover_type4 {
@@ -47401,7 +47401,7 @@ ul.wp-block-latest-posts li:before {
     text-rendering: auto;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    margin-right: 10px
+    margin-left: 10px
 }
 .widget.main_footer ul li:before {
     color: inherit

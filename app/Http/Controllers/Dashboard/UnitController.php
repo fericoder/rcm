@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers\Dashboard;
 
+use App\Invoice;
+use App\User;
+use App\Warning;
 use Illuminate\Http\Request;
 
 class UnitController extends \App\Http\Controllers\Controller
@@ -13,7 +16,8 @@ class UnitController extends \App\Http\Controllers\Controller
      */
     public function index()
     {
-        return view('dashboard.units');
+        $units = User::where('complex_id', \Auth::user()->complex_id)->get();
+        return view('dashboard.units.index', compact('units'));
     }
 
     /**
@@ -45,7 +49,10 @@ class UnitController extends \App\Http\Controllers\Controller
      */
     public function show($id)
     {
-        //
+        $unit = User::where('id', $id)->first();
+        $invoices = Invoice::where('user_id', $id)->get();
+        $warnings = Warning::all();
+        return view('dashboard.units.show', compact('unit', 'invoices', 'warnings'));
     }
 
     /**

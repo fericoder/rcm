@@ -24,7 +24,7 @@
 
                         <div class="kt-pricing-1__btn">
                             <h1 class="text-primary borj-font">
-                                347
+                                {{ $units->count() }}
                             </h1>
                         </div>
                     </div>
@@ -141,43 +141,45 @@
                 </div>
                 <div class="kt-portlet__body">
                     <!--begin: Datatable -->
-                        <table style="font-family: iranyekan; width: 100%;" class="table table-striped table-bordered table-hover  display nowrap table-responsive" id="m_table_2">
+                        <table style="font-family: iranyekan; width: 100%;" class="table table-striped table-bordered table-hover  display nowrap " id="m_table_2">
                             <thead style="font-family: BYekan">
                             <tr>
                                 <th style="min-width: 150px">نام و نام خانوادگی</th>
                                 <th>برج</th>
                                 <th>طبقه</th>
                                 <th>واحد</th>
-                                <th style="min-width: 120px">کد سیستمی واحد</th>
-                                <th>کد پارکینگ</th>
-                                <th>متراژ واحد</th>
-                                <th style="min-width: 150px">مبلغ شارژ ماهیانه</th>
-                                <th style="min-width: 120px">شماره همراه</th>
-                                <th style="min-width: 120px">تلفن منزل</th>
+                                <th>کد</th>
+                                <th style="min-width: 90px; font-family: Byekan!important;">متراژ واحد</th>
+                                <th style="min-width: 150px;font-family: Byekan!important;">مبلغ شارژ ماهیانه</th>
+                                <th style="min-width: 120px;font-family: Byekan!important;">شماره همراه</th>
+                                <th style="min-width: 120px;font-family: Byekan!important;">تلفن منزل</th>
                                 <th style="min-width: 150px">نام مستاجر</th>
-                                <th style="min-width: 150px">تلفن همراه مستاجر</th>
-                                <th style="min-width: 150px">وضعیت سکونت</th>
-                                <th style="min-width: 150px">مشاهده جزییات</th>
+                                <th style="min-width: 150px;font-family: Byekan!important;">تلفن همراه مستاجر</th>
+                                <th style="min-width: 150px;font-family: Byekan!important;">وضعیت سکونت</th>
+                                <th style="min-width: 150px;font-family: Byekan!important;">مشاهده جزییات</th>
                             </tr>
                             </thead>
                             <tbody>
 
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
+                            @foreach ($units as $unit)
+                                <tr>
+                                    <td>{{ $unit->fullName }}</td>
+                                    <td>{{ $unit->tower }}</td>
+                                    <td style="font-family: BYekan">{{ $unit->floor }}</td>
+                                    <td style="font-family: BYekan">{{ $unit->unit }}</td>
+                                    <td >{{ $unit->code }}</td>
+                                    <td style="font-family: BYekan">{{ $unit->area }}</td>
+                                    <td style="font-family: BYekan">{{ $unit->charge }}</td>
+                                    <td style="font-family: BYekan">{{ $unit->mobile }}</td>
+                                    <td style="font-family: BYekan">{{ $unit->phone1 }}</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                    <td><a href="{{ route('units.show', $unit->id) }}"><i class="flaticon-reply"></i></a></td>
+
+                                </tr>
+                            @endforeach
+
 
                             </tbody>
                         </table>

@@ -25,7 +25,7 @@
 					            مربوط به تمامی صورتحساب ها
 					        </span>
                             </div>
-                            <h1 class="font-large-1 text-bold-300 text-danger float-right kt-font-bold borj-font mt-5">0 ریال</h1>
+                            <h1 class="font-large-1 text-bold-300 text-danger float-right kt-font-bold borj-font mt-5">{{ number_format(\Auth::user()->invoices->where('status', 'notPaid')->sum('amount')) }} ریال </h1>
                         </div>
 
                         <div class="progress progress--sm">
@@ -57,7 +57,7 @@
 					        </span>
                             </div>
 
-                            <h1 class="font-large-1 text-bold-300 text-success float-right kt-font-bold borj-font mt-5">5681900 ریال</h1>
+                            <h1 class="font-large-1 text-bold-300 text-success float-right kt-font-bold borj-font mt-5">{{ number_format(\Auth::user()->invoices->where('status', 'paid')->where('created_at', '>=', \Carbon\Carbon::today()->subDays(jdate()->now()->getDay()-1)->toDateString())->sum('amount')) }} ریال</h1>
                         </div>
 
                         <div class="progress progress--sm">
@@ -77,20 +77,13 @@
         </div>
     </div>
 
-    <div class="alert alert-light alert-elevate" role="alert">
+    <div style="display: none;" id="description" class="alert alert-light alert-elevate" role="alert">
         <div class="alert-icon"><i class="flaticon-information kt-font-brand"></i></div>
         <div class="alert-text">
-            {{ \Auth::user()->fName . ' ' . \Auth::user()->lName }} <span class="kt-badge kt-badge--bolder kt-badge kt-badge--inline kt-badge--unified-success">(مالک)</span>
+            {{ \Auth::user()->fullName }} <span class="kt-badge kt-badge--bolder kt-badge kt-badge--inline kt-badge--unified-success">(واحد {{ \Auth::user()->code }} )</span>
             ،
             به سامانه مدیریت مجتمع مسکونی خوش آمدید.
             در این صفحه میتوانید ضمن مشاهده تمامی پرداخت ها، بدهی های سررسید شده را مشاهده و نسبت به پرداخت با استفاده از درگاه آنلاین بانک اقدام نمایید. همچنین امکان شرکت در نظرسنجی ها، ارسال درخواست ها، انتقادات و پیشنهادات به مدیریت و هیئت مدیره برج فراهم است و میتوانید تمامی درآمدها و هزینه های برج در ماژول های دیگر این سامانه مشاهده نمایید.
-
-            <div style="direction: ltr;margin: 20px;" class="kt-widget__subhead">
-                <a style="margin: 30px;" href="#">09121010328 <i class="flaticon2-phone"></i> </a>
-                <a style="margin: 30px;" href="#">rahmani@rieco.ir <i class="flaticon2-new-email"></i> </a>
-                <a style="margin: 30px;" href="#">E201<i class="flaticon2-calendar-3"></i></a>
-                <a style="margin: 30px;" href="#"> برج شرقی ، طبقه ۲۰ ، واحد ۱ <i class="flaticon2-placeholder"></i></a>
-            </div>
         </div>
     </div>
 
@@ -104,6 +97,7 @@
                         <h3 style="color: #48465b" class="kt-portlet__head-title"><i style="color: #74788d" class="fa fa-home mr-2"></i>
                             اطلاعات واحد شما
                         </h3>
+                        <button id="show" style="margin-right: 20px; font-size: 14px" type="button" class="btn btn-sm btn-outline-success">مشاهده توضیحات</button>
                     </div>
                 </div>
                 <div class="kt-portlet__body">
@@ -150,40 +144,30 @@
                                                 <th style="min-width: 150px;"> نام و نام خانوادگی</th>
                                                 <th>برج</th>
                                                 <th>طبقه</th>
-                                                <th>کد واحد</th>
-                                                <th style="min-width: 100px;">کد پارکینگ</th>
-                                                <th>کد انباری</th>
+                                                <th> واحد</th>
+                                                <th> کد سیستمی واحد</th>
                                                 <th style="min-width: 80px;">متراژ واحد</th>
-                                                <th style="min-width: 130px;">متراژ تراس روباز</th>
                                                 <th style="min-width: 120px;" > شارژ ماهیانه</th>
                                                 <th>شماره همراه</th>
-                                                <th>تلفن منزل1</th>
-                                                <th>تلفن منزل2</th>
-                                                <th style="min-width: 150px;">نام مستاجر</th>
-                                                <th style="min-width: 150px;">تلفن همراه مستاجر</th>
+                                                <th>تلفن منزل</th>
                                                 <th style="min-width: 120px;">وضعیت سکونت</th>
-                                                <th style="min-width: 100px;">تاریخ اسکان</th>
+                                                <th style="min-width: 120px;">نوع ساکن</th>
 
                                             </tr>
                                             </thead>
                                             <tbody>
                                             <tr>
-                                                <th scope="row">احمد رحمانی</th>
-                                                <td>شرقی</td>
-                                                <td>20</td>
-                                                <td>E/20/1</td>
-                                                <td>E_2/37</td>
-                                                <td>E_2/17</td>
-                                                <td>162.34</td>
-                                                <td>0</td>
-                                                <td>5681900</td>
-                                                <td>09121010328</td>
-                                                <td>40445649</td>
-                                                <td>40445644</td>
-                                                <td>_</td>
-                                                <td>_</td>
-                                                <td>ساکن</td>
-                                                <td>تاریخ سکونت</td>
+                                                <th scope="row">{{ \Auth::user()->fullName  }}</th>
+                                                <td>{{ \Auth::user()->tower }}</td>
+                                                <td>{{ \Auth::user()->floor }}</td>
+                                                <td>{{ \Auth::user()->unit }}</td>
+                                                <td>{{ \Auth::user()->code }}</td>
+                                                <td>{{ \Auth::user()->area }}</td>
+                                                <td>{{ number_format(\Auth::user()->charge) }}</td>
+                                                <td>{{ \Auth::user()->mobile }}</td>
+                                                <td>{{ \Auth::user()->phone1 }}</td>
+                                                <td>{{ \Auth::user()->propertyStatus == null || \Auth::user()->propertyStatus == 'empty' ? 'خالی' : 'ساکن' }} </td>
+                                                <td>{{ \Auth::user()->residentType == null || \Auth::user()->residentType == 'empty' ? 'مالک' : 'مستاجر' }}</td>
                                             </tr>
 
 
@@ -735,33 +719,22 @@
                             <tr>
                                 <th style="min-width: 120px;">لینک پرداخت</th>
                                 <th style="min-width: 180px;">بابت</th>
-                                <th style="min-width: 140px;">مبلغ</th>
+                                <th style="min-width: 140px;">مبلغ (ریال) </th>
                                 <th style="min-width: 150px;">کد</th>
                                 <th style="min-width: 170px; direction: ltr">تاریخ ایجاد صورتحساب</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <th scope="row"><a style="font-size: 16px" href="#" class="btn btn-sm btn-label-danger btn-bold"><i class="fa fa-credit-card"></i> پرداخت </a></th>
-                                <td>بدهی تا پایان دی ۱۳۹۸</td>
-                                <td>۱,۴۴۴,۳۱۳ ریال</td>
-                                <td>CH-E۲۰۱-۱۳۹۸۰۸</td>
-                                <td>۱۳۹۸-۰۶-۰۲ ۰۳:۰۵:۲۱	</td>
-                            </tr>
-                            <tr>
-                                <th scope="row"><a style="font-size: 16px" href="#" class="btn btn-sm btn-label-danger btn-bold"><i class="fa fa-credit-card"></i> پرداخت </a></th>
-                                <td>بدهی تا پایان دی ۱۳۹۸</td>
-                                <td>۱,۴۴۴,۳۱۳ ریال</td>
-                                <td>CH-E۲۰۱-۱۳۹۸۰۸</td>
-                                <td>۱۳۹۸-۰۶-۰۲ ۰۳:۰۵:۲۱	</td>
-                            </tr>
-                            <tr>
-                                <th scope="row"><a style="font-size: 16px" href="#" class="btn btn-sm btn-label-danger btn-bold"><i class="fa fa-credit-card"></i> پرداخت </a></th>
-                                <td>بدهی تا پایان دی ۱۳۹۸</td>
-                                <td>۱,۴۴۴,۳۱۳ ریال</td>
-                                <td>CH-E۲۰۱-۱۳۹۸۰۸</td>
-                                <td>۱۳۹۸-۰۶-۰۲ ۰۳:۰۵:۲۱	</td>
-                            </tr>
+                            @foreach (\Auth::user()->invoices->where('status', 'notPaid') as $invoice)
+                                <tr>
+                                    <th scope="row"><a style="font-size: 16px" href="#" class="btn btn-sm btn-label-danger btn-bold"><i class="fa fa-credit-card"></i> پرداخت </a></th>
+                                    <td>{{ $invoice->for }}</td>
+                                    <td style="font-family: BYekan!important;">{{ number_format($invoice->amount) }}</td>
+                                    <td>{{ $invoice->code }}</td>
+                                    <td style="direction: ltr; font-family: BYekan!important;"> {{ jdate($invoice->created_at) }} </td>
+                                </tr>
+                            @endforeach
+
 
                             </tbody>
                         </table>
@@ -794,37 +767,23 @@
                             <tr>
                                 <th style="min-width: 170px;">لینک پرداخت</th>
                                 <th style="min-width: 180px;">بابت</th>
-                                <th style="min-width: 140px;">مبلغ</th>
+                                <th style="min-width: 140px;">مبلغ (ریال) </th>
                                 <th style="min-width: 150px;">کد</th>
                                 <th style="min-width: 170px; direction: ltr">تاریخ ایجاد صورتحساب</th>
                                 <th style="min-width: 170px; direction: ltr">تاریخ پرداخت</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <th scope="row"><a style="font-size: 16px" href="#" class="btn btn-sm btn-label-success btn-bold"><i class="fa fa-credit-card"></i> پرداخت شده </a></th>
-                                <td>بدهی تا پایان دی ۱۳۹۸</td>
-                                <td>۱,۴۴۴,۳۱۳ ریال</td>
-                                <td>CH-E۲۰۱-۱۳۹۸۰۸</td>
-                                <td>۱۳۹۸-۰۶-۰۲ ۰۳:۰۵:۲۱	</td>
-                                <td>۱۳۹۸-۰۶-۰۲ ۰۳:۰۵:۲۱	</td>
-                            </tr>
-                            <tr>
-                                <th scope="row"><a style="font-size: 16px" href="#" class="btn btn-sm btn-label-success btn-bold"><i class="fa fa-credit-card"></i> پرداخت شده </a></th>
-                                <td>بدهی تا پایان دی ۱۳۹۸</td>
-                                <td>۱,۴۴۴,۳۱۳ ریال</td>
-                                <td>CH-E۲۰۱-۱۳۹۸۰۸</td>
-                                <td>۱۳۹۸-۰۶-۰۲ ۰۳:۰۵:۲۱	</td>
-                                <td>۱۳۹۸-۰۶-۰۲ ۰۳:۰۵:۲۱	</td>
-                            </tr>
-                            <tr>
-                                <th scope="row"><a style="font-size: 16px" href="#" class="btn btn-sm btn-label-success btn-bold"><i class="fa fa-credit-card"></i> پرداخت شده </a></th>
-                                <td>بدهی تا پایان دی ۱۳۹۸</td>
-                                <td>۱,۴۴۴,۳۱۳ ریال</td>
-                                <td>CH-E۲۰۱-۱۳۹۸۰۸</td>
-                                <td>۱۳۹۸-۰۶-۰۲ ۰۳:۰۵:۲۱	</td>
-                                <td>۱۳۹۸-۰۶-۰۲ ۰۳:۰۵:۲۱	</td>
-                            </tr>
+                            @foreach (\Auth::user()->invoices->where('status', 'paid') as $invoice)
+                                <tr>
+                                    <th scope="row"><a style="font-size: 16px" href="#" class="btn btn-sm btn-label-success btn-bold"><i class="fa fa-vote-yea"></i> پرداخت شده </a></th>
+                                    <td>{{ $invoice->for }}</td>
+                                    <td style="font-family: BYekan!important;">{{ number_format($invoice->amount) }}</td>
+                                    <td>{{ $invoice->code }}</td>
+                                    <td style="direction: ltr; font-family: BYekan!important;"> {{ jdate($invoice->created_at) }} </td>
+                                    <td style="direction: ltr; font-family: BYekan!important;"> {{ jdate($invoice->updated_at) }} </td>
+                                </tr>
+                            @endforeach
 
                             </tbody>
                         </table>
@@ -837,3 +796,11 @@
     </div>
 
 @endsection
+
+@section('footerScripts')
+    <script>
+        $("#show").click(function () {
+            $("#description").toggle('slow');
+        });
+    </script>
+@stop

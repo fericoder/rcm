@@ -14,7 +14,7 @@
                     <div class="kt-portlet__head">
                         <div class="kt-portlet__head-label">
                             <h3 class="kt-portlet__head-title borj-color">
-                                هزینه ها بر اساس سرفصل <small>(ریال)</small>
+                                لیست قرارداد های منعقد شده
                             </h3>
                         </div>
 
@@ -22,7 +22,7 @@
 
                             <div class="kt-portlet__head-toolbar-wrapper">
                                 <div class="dropdown dropdown-inline">
-                                    <button type="button" class="btn btn-brand btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <button style="font-size: 14px" type="button" class="btn btn-brand btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         <i class="la la-plus"></i> ابزار ها و خروجی ها
                                     </button>
                                     <div class="dropdown-menu dropdown-menu-right">
@@ -73,23 +73,19 @@
                         <table style="font-family: iranyekan; width: 100%;" class="table table-striped table-bordered table-hover table-checkable display nowrap" id="m_table_2">
                             <thead style="font-family: BYekan">
                             <tr>
-                                <th>header</th>
-                                <th>header</th>
-                                <th>header</th>
-                                <th>header</th>
-                                <th>header</th>
-                                <th>header</th>
-                                <th>header</th>
-                                <th>header</th>
-                                <th>header</th>
-                                <th>header</th>
+                                <th>ردیف</th>
+                                <th>نام قرارداد</th>
+                                <th>نوع قرارداد</th>
+                                <th>توضیحات</th>
+                                <th>پیمانکار</th>
+                                <th>تاریخ شروع</th>
+                                <th>تاریخ پایان</th>
+                                <th>تغییرات</th>
                             </tr>
                             </thead>
                             <tbody>
 
                             <tr>
-                                <td></td>
-                                <td></td>
                                 <td></td>
                                 <td></td>
                                 <td></td>

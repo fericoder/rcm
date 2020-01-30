@@ -2027,8 +2027,7 @@ pre code {
 }
 
 .table-striped tbody tr:nth-of-type(odd) {
-  font-size: 17px;
-    background-color: #f7f8fa
+    background-color: #f7f8fa;
 }
 
 .table-hover tbody tr:hover {

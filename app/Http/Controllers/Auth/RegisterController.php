@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
-use App\Providers\RouteServiceProvider;
+use App\Complex;
 use App\User;
-use Illuminate\Foundation\Auth\RegistersUsers;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Foundation\Auth\RegistersUsers;
 
 class RegisterController extends Controller
 {
@@ -29,7 +29,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    protected $redirectTo = '/dashboard/configuration';
 
     /**
      * Create a new controller instance.
@@ -50,9 +50,11 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'fullNameReg' => ['required', 'max:25'],
+            'mobileReg' => ['nullable', 'numeric', 'digits:11','unique:users,mobile'],
+            'complex_nameReg' => ['required', 'string', 'min:3','max:50'],
+            'emailReg' => ['required', 'string', 'email', 'max:255', 'unique:users,email'],
+            'passwordReg' => ['required', 'string', 'min:4', 'confirmed'],
         ]);
     }
 
@@ -64,10 +66,17 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $complex = Complex::create([
+            'name' => $data['complex_nameReg'],
+        ]);
+
+
         return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
+            'fullName' => $data['fullNameReg'],
+            'mobile' => $data['mobileReg'],
+            'complex_id' => $complex->id,
+            'email' => $data['emailReg'],
+            'password' => Hash::make($data['passwordReg']),
         ]);
     }
 }

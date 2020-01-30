@@ -70,8 +70,8 @@
                                     <form class="kt-form" method="POST" action="{{ route('login') }}">
                                         @csrf
                                         <div class="form-group">
-                                            <input style="text-align: center"   class="form-control @error('email') is-invalid @enderror" type="text"  value="{{ old('email') }}" placeholder="آدرس ایمیل" name="email"  >
-                                            @error('email')
+                                            <input style="text-align: center"   class="form-control @error('mobile') is-invalid @enderror" type="text"  value="{{ old('mobile') }}" placeholder="شماره موبایل" name="mobile"  >
+                                            @error('mobile')
                                             <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -142,8 +142,10 @@
                                             @enderror
 
                                         </div>
+
+
                                         <div class="form-group">
-                                            <input style="direction: rtl" value="{{ old('mobileReg') }}" class="form-control  @error('mobileReg') is-invalid @enderror" type="text" placeholder="مثال: ۰۹۲۰۱۰۰۰۰۰۰" required name="mobileReg" autocomplete="off">
+                                            <input style="direction: rtl" value="{{ old('mobileReg') }}" class="form-control  @error('mobileReg') is-invalid @enderror" type="text" placeholder="شماره موبایل" required name="mobileReg" autocomplete="off">
                                             @error('mobileReg')
                                             <script>
                                                 $(window).on('load', function() {
@@ -154,8 +156,24 @@
                                                    <strong>{{ $message }}</strong>
                                                  </span>
                                             @enderror
-
                                         </div>
+
+
+                                        <div class="form-group">
+                                            <input style="direction: rtl" value="{{ old('complex_nameReg') }}" class="form-control  @error('complex_nameReg') is-invalid @enderror" type="text" placeholder="نام مجتمع مسکونی" required name="complex_nameReg" autocomplete="off">
+                                            @error('complex_nameReg')
+                                            <script>
+                                                $(window).on('load', function() {
+                                                    $("#showSignUp").trigger("click");
+                                                });
+                                            </script>
+                                            <span class="invalid-feedback" role="alert">
+                                                   <strong>{{ $message }}</strong>
+                                                 </span>
+                                            @enderror
+                                        </div>
+
+
                                         <div class="form-group">
                                             <input style="direction: rtl" class="form-control  @error('passwordReg') is-invalid @enderror" type="password" placeholder="رمز عبور" required name="passwordReg">
                                             @error('passwordReg')

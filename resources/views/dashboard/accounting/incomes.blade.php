@@ -140,105 +140,115 @@
 
 
 
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="kt-portlet kt-portlet--mobile">
-                    <div class="kt-portlet__head ">
-                        <div class="kt-portlet__head-label">
-                            <h3 class="kt-portlet__head-title borj-color">
-                                لیست درآمد های ثبت شده
-                            </h3>
-                        </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="kt-portlet kt-portlet--mobile">
+                <div class="kt-portlet__head">
+                    <div class="kt-portlet__head-label">
+                        <h3 class="kt-portlet__head-title borj-color">
+                            درآمد ها بر اساس سرفصل <small>(ریال)</small>
+                            <button data-toggle="modal" data-target=" #add" style="margin-right: 20px;font-size: 13px" type="button" class="btn btn-success btn-wide btn-elevate btn-elevate-air">افزودن درآمد</button>
+                        </h3>
+                    </div>
 
-                        <div style="" class="kt-portlet__head-toolbar">
+                    <div style="" class="kt-portlet__head-toolbar">
 
-                            <div class="kt-portlet__head-toolbar-wrapper">
-                                <div class="dropdown dropdown-inline">
-                                    <button type="button" class="btn btn-brand btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <i class="la la-plus"></i> ابزار ها و خروجی ها
-                                    </button>
-                                    <div class="dropdown-menu dropdown-menu-right">
-                                        <ul class="kt-nav">
-                                            <li class="kt-nav__section kt-nav__section--first">
-                                                <span class="kt-nav__section-text">انواع خروجی ها</span>
-                                            </li>
-                                            <li class="kt-nav__item">
-                                                <a href="#" class="kt-nav__link" id="export_print">
-                                                    <i class="kt-nav__link-icon la la-print"></i>
-                                                    <span class="kt-nav__link-text">چاپ</span>
-                                                </a>
-                                            </li>
-                                            <li class="kt-nav__item">
-                                                <a href="#" class="kt-nav__link" id="export_copy">
-                                                    <i class="kt-nav__link-icon la la-copy"></i>
-                                                    <span class="kt-nav__link-text">کپی</span>
-                                                </a>
-                                            </li>
-                                            <li class="kt-nav__item">
-                                                <a href="#" class="kt-nav__link" id="export_excel">
-                                                    <i class="kt-nav__link-icon la la-file-excel-o"></i>
-                                                    <span class="kt-nav__link-text">اکسل</span>
-                                                </a>
-                                            </li>
-                                            <li class="kt-nav__item">
-                                                <a href="#" class="kt-nav__link" id="export_csv">
-                                                    <i class="kt-nav__link-icon la la-file-text-o"></i>
-                                                    <span class="kt-nav__link-text">CSV</span>
-                                                </a>
-                                            </li>
-                                            <li class="kt-nav__item">
-                                                <a href="#" class="kt-nav__link" id="export_pdf">
-                                                    <i class="kt-nav__link-icon la la-file-pdf-o"></i>
-                                                    <span class="kt-nav__link-text">PDF</span>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
+                        <div class="kt-portlet__head-toolbar-wrapper">
+                            <div class="dropdown dropdown-inline">
+                                <button style="font-size: 14px" type="button" class="btn btn-brand btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="la la-plus"></i> ابزار ها و خروجی ها
+                                </button>
+                                <div class="dropdown-menu dropdown-menu-right">
+                                    <ul class="kt-nav">
+                                        <li class="kt-nav__section kt-nav__section--first">
+                                            <span class="kt-nav__section-text">انواع خروجی ها</span>
+                                        </li>
+                                        <li class="kt-nav__item">
+                                            <a href="#" class="kt-nav__link" id="export_print">
+                                                <i class="kt-nav__link-icon la la-print"></i>
+                                                <span class="kt-nav__link-text">چاپ</span>
+                                            </a>
+                                        </li>
+                                        <li class="kt-nav__item">
+                                            <a href="#" class="kt-nav__link" id="export_copy">
+                                                <i class="kt-nav__link-icon la la-copy"></i>
+                                                <span class="kt-nav__link-text">کپی</span>
+                                            </a>
+                                        </li>
+                                        <li class="kt-nav__item">
+                                            <a href="#" class="kt-nav__link" id="export_excel">
+                                                <i class="kt-nav__link-icon la la-file-excel-o"></i>
+                                                <span class="kt-nav__link-text">اکسل</span>
+                                            </a>
+                                        </li>
+                                        <li class="kt-nav__item">
+                                            <a href="#" class="kt-nav__link" id="export_csv">
+                                                <i class="kt-nav__link-icon la la-file-text-o"></i>
+                                                <span class="kt-nav__link-text">CSV</span>
+                                            </a>
+                                        </li>
+                                        <li class="kt-nav__item">
+                                            <a href="#" class="kt-nav__link" id="export_pdf">
+                                                <i class="kt-nav__link-icon la la-file-pdf-o"></i>
+                                                <span class="kt-nav__link-text">PDF</span>
+                                            </a>
+                                        </li>
+                                    </ul>
                                 </div>
                             </div>
                         </div>
-
-
                     </div>
+
+
+                </div>
+                <div class="kt-portlet__body">
+                    <!--begin: Datatable -->
                     <div class="kt-portlet__body">
                         <!--begin: Datatable -->
-                        <table style="font-family: iranyekan; width: 100%;" class="table table-striped table-bordered table-hover table-checkable display nowrap" id="m_table_2">
+                        <table style="font-family: iranyekan; width: 100%;" class="table table-striped table-bordered table-hover table-checkable display nowrap" id="m_table_1">
                             <thead style="font-family: BYekan">
                             <tr>
                                 <th>نام سرفصل هزینه</th>
                                 <th>توضیحات</th>
                                 <th>مبلغ</th>
                                 <th>نحوه پرداخت</th>
-                                <th>شماره فاکتور/سند</th>
+                                <th>شماره فاکتور/ سند</th>
                                 <th>تاریخ</th>
                                 <th>مستندات</th>
                                 <th>حذف</th>
-
                             </tr>
                             </thead>
                             <tbody>
 
                             <tr>
-                                <td>شارژ ماهیانه</td>
-                                <td>شارژ ماهیانه احمد رحمانی</td>
-                                <td class="borj-font">520,000</td>
+                                <td>نیروی انسانی</td>
+                                <td>هزینه حقوق پرسنل</td>
+                                <td class="borj-font">4,616,893,041</td>
                                 <td></td>
                                 <td></td>
-                                <td class="borj-font">1397/12/21</td>
                                 <td></td>
                                 <td></td>
-
+                                <td>حذف</td>
                             </tr>
                             <tr>
-                                <td>شارژ ماهیانه</td>
-                                <td class="borj-font">شارژ ماهیانه طبقه6 واحد16</td>
-                                <td class="borj-font">144,000</td>
-                                <td>نقدی</td>
-                                <td class="borj-font">f6u16</td>
-                                <td class="borj-font">1397/12/9</td>
+                                <td>نگهداری فضای سبز</td>
+                                <td>هزینه نگهداری از فضای سبز</td>
+                                <td class="borj-font">210,000,000</td>
                                 <td></td>
                                 <td></td>
-
+                                <td></td>
+                                <td></td>
+                                <td>حذف</td>
+                            </tr>
+                            <tr>
+                                <td>نگهداری تاسیسات</td>
+                                <td>هزینه نگهداری موتور خانه</td>
+                                <td class="borj-font">1,200,000,000</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>حذف</td>
                             </tr>
 
                             </tbody>
@@ -248,6 +258,117 @@
                 </div>
             </div>
         </div>
+    </div>
+
+
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="kt-portlet kt-portlet--mobile">
+                <div class="kt-portlet__head">
+                    <div class="kt-portlet__head-label">
+                        <h3 class="kt-portlet__head-title borj-color">
+                            سرفصل های درآمد
+                        </h3>
+                        <button data-toggle="modal" data-target=" #add" style="margin-right: 20px;font-size: 13px" type="button" class="btn btn-success btn-wide btn-elevate btn-elevate-air">افزودن سرفصل درآمد</button>
+                    </div>
+
+                    <div style="" class="kt-portlet__head-toolbar">
+
+                        <div class="kt-portlet__head-toolbar-wrapper">
+                            <div class="dropdown dropdown-inline">
+                                <button style="font-size: 14px" type="button" class="btn btn-brand btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="la la-plus"></i> ابزار ها و خروجی ها
+                                </button>
+                                <div class="dropdown-menu dropdown-menu-right">
+                                    <ul class="kt-nav">
+                                        <li class="kt-nav__section kt-nav__section--first">
+                                            <span class="kt-nav__section-text">انواع خروجی ها</span>
+                                        </li>
+                                        <li class="kt-nav__item">
+                                            <a href="#" class="kt-nav__link" id="export_print">
+                                                <i class="kt-nav__link-icon la la-print"></i>
+                                                <span class="kt-nav__link-text">چاپ</span>
+                                            </a>
+                                        </li>
+                                        <li class="kt-nav__item">
+                                            <a href="#" class="kt-nav__link" id="export_copy">
+                                                <i class="kt-nav__link-icon la la-copy"></i>
+                                                <span class="kt-nav__link-text">کپی</span>
+                                            </a>
+                                        </li>
+                                        <li class="kt-nav__item">
+                                            <a href="#" class="kt-nav__link" id="export_excel">
+                                                <i class="kt-nav__link-icon la la-file-excel-o"></i>
+                                                <span class="kt-nav__link-text">اکسل</span>
+                                            </a>
+                                        </li>
+                                        <li class="kt-nav__item">
+                                            <a href="#" class="kt-nav__link" id="export_csv">
+                                                <i class="kt-nav__link-icon la la-file-text-o"></i>
+                                                <span class="kt-nav__link-text">CSV</span>
+                                            </a>
+                                        </li>
+                                        <li class="kt-nav__item">
+                                            <a href="#" class="kt-nav__link" id="export_pdf">
+                                                <i class="kt-nav__link-icon la la-file-pdf-o"></i>
+                                                <span class="kt-nav__link-text">PDF</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="kt-portlet__body">
+                    <!--begin: Datatable -->
+                    <table style="font-family: iranyekan; width: 100%;" class="table table-striped table-bordered table-hover table-checkable display nowrap" id="m_table_2">
+                        <thead style="font-family: BYekan">
+                        <tr>
+                            <th>نام سرفصل هزینه</th>
+                            <th>کد سرفصل هزینه</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        <tr>
+                            <td>نگهداری آسانسور</td>
+                            <td>نگهداری آسانسور</td>
+
+                        </tr>
+                        <tr>
+                            <td>سرویس و نگهداری ژنراتور</td>
+                            <td>سرویس و نگهداری ژنراتور</td>
+
+
+                        </tr>
+                        <tr>
+
+                            <td>اقلام مصرفی</td>
+                            <td>اقلام مصرفی</td>
+
+
+                        </tr>
+                        <tr>
+
+                            <td>اقلام شوینده</td>
+                            <td>اقلام شوینده</td>
+
+
+
+                        </tr>
+
+                        </tbody>
+
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
 
 

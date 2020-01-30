@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Dashboard;
 
+use App\Invoice;
+use App\User;
 use Illuminate\Http\Request;
 
 class ChargeController extends \App\Http\Controllers\Controller
@@ -13,72 +15,28 @@ class ChargeController extends \App\Http\Controllers\Controller
      */
     public function index()
     {
-        return view('dashboard.charge');
+        $invoices = Invoice::with('user')->where('complex_id', \Auth::user()->complex_id)->get();
+        $units = User::where('complex_id', \Auth::user()->complex_id)->get();
+
+        return view('dashboard.accounting.charge', compact('invoices', 'units'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function report()
     {
-        //
+        $units = User::where('complex_id', \Auth::user()->complex_id)->get();
+
+        return view('dashboard.accounting.report', compact('units'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+
+    public function show(Request $request)
     {
-        //
+
+        $invoices = Invoice::with('user')->where('user_id', (int) $request->id)->get();
+        $units = User::where('complex_id', \Auth::user()->complex_id)->get();
+
+        return view('dashboard.accounting.report', compact('invoices', 'units'));
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }

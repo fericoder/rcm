@@ -14,6 +14,12 @@ class User extends Authenticatable
         return $this->belongsTo('App\Complex');
     }
 
+    public function invoices()
+    {
+        return $this->hasMany('App\Invoice');
+    }
+
+
 
     use Notifiable;
 
@@ -22,8 +28,8 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $fillable = [
-        'name', 'email', 'password',
+    protected $guarded = [
+        'id',
     ];
 
     /**

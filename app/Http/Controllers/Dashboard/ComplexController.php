@@ -14,7 +14,8 @@ class ComplexController extends \App\Http\Controllers\Controller
      */
     public function index()
     {
-        //
+        $complex = \Auth::user()->complex;
+        return view('dashboard.configuration', compact('complex'));
     }
 
     /**
