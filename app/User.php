@@ -19,6 +19,10 @@ class User extends Authenticatable
         return $this->hasMany('App\Invoice');
     }
 
+    public function residents()
+    {
+        return $this->hasMany('App\Resident');
+    }
 
 
     use Notifiable;

@@ -221,16 +221,16 @@
                     @endif
 
                     <!--begin: Datatable -->
-                        <table style="font-family: iranyekan; width: 100%;" class="table table-striped table-bordered table-hover table-checkable display nowrap" id="m_table_2">
-                            <thead style="font-family: BYekan">
+                        <table style="" class="table table-striped table-bordered table-hover table-checkable display nowrap" id="m_table_2">
+                            <thead>
                             <tr>
                                 <th>شماره مصوبه</th>
-                                <th>تاریخ جلسه</th>
+                                <th style="min-width: 140px">تاریخ جلسه</th>
                                 <th>شماره جلسه</th>
                                 <th>نوع جلسه</th>
                                 <th>شرح مصوبه</th>
                                 <th>اقدام کننده</th>
-                                <th>مهلت اقدام</th>
+                                <th style="min-width: 140px">مهلت اقدام</th>
                                 <th>وضعیت</th>
                                 <th>نتیجه</th>
                                 <th>حذف | ویرایش</th>
@@ -241,12 +241,12 @@
                             @foreach ($enactments as $enactment)
                                 <tr>
                                     <td>{{ $enactment->number }}</td>
-                                    <td style="font-family: BYekan; direction: ltr">{{ jdate($enactment->proceeding->date) }}</td>
+                                    <td style="font-family: BYekan; direction: ltr; min-width: 140px">{{ jdate($enactment->proceeding->date) }}</td>
                                     <td>{{ $enactment->proceeding->number }}</td>
                                     <td>{{ $enactment->proceeding->type }}</td>
                                     <td>{{ $enactment->description }}</td>
                                     <td>{{ $enactment->user->fName . ' ' . $enactment->user->lName }}</td>
-                                    <td style="font-family: BYekan; direction: ltr">{{ jdate($enactment->deadline) }}</td>
+                                    <td style="font-family: BYekan; direction: ltr;min-width: 140px">{{ jdate($enactment->deadline) }}</td>
                                     <td>{{ $enactment->status }}</td>
                                     <td>{{ $enactment->resualt }}</td>
                                     <td>
@@ -269,7 +269,7 @@
 
 
         <div class="row">
-            <div class="col-lg-6">
+            <div class="col-lg-12">
                 <div class="kt-portlet">
                     <div class="kt-portlet__head">
                         <div class="kt-portlet__head-label">
@@ -279,15 +279,14 @@
                         </div>
                     </div>
                     <div class="kt-portlet__body">
-                        <div id="container"></div>
+                        <div style="min-width: auto!important; max-width: auto!important; height: 400px!important; margin: 0 auto!important;" id="members"></div>
                     </div>
                 </div>
             </div>
 
 
 
-
-            <div class="col-lg-6">
+            <div class="col-lg-12">
                 <div class="kt-portlet">
                     <div class="kt-portlet__head">
                         <div class="kt-portlet__head-label">
@@ -297,12 +296,14 @@
                         </div>
                     </div>
                     <div class="kt-portlet__body">
-                            <div id="container2"></div>
+                            <div style="min-width: auto; max-width: auto; height: 400px; margin: 0 auto" id="status"></div>
                     </div>
                 </div>
             </div>
 
         </div>
+
+    </div>
 
 
 
@@ -372,7 +373,8 @@
 
     <script>
         // Create the chart
-        Highcharts.chart('container', {
+        Highcharts.chart('members', {
+            colors: ['#6996da','#a26bd9','#806bd9','#6bb8da','#6874d9', '#4572A7', '#89A54E', '#80699B', '#3D96AE', '#DB843D', '#92A8CD', '#A47D7C', '#B5CA92'],
             chart: {
                 type: 'pie'
             },
@@ -425,269 +427,20 @@
                     name: "names",
                     colorByPoint: true,
                     data: [
+                            @foreach($members as $member)
                         {
-                            name: "Chrome",
-                            y: 62.74,
-                            drilldown: "Chrome"
+                            name: "{{ $users->where('id', $member->user_id)->pluck('fullName')->first() }}", y: {{$member->count}}
                         },
-                        {
-                            name: "Firefox",
-                            y: 10.57,
-                            drilldown: "Firefox"
-                        },
-                        {
-                            name: "Internet Explorer",
-                            y: 7.23,
-                            drilldown: "Internet Explorer"
-                        },
-                        {
-                            name: "Safari",
-                            y: 5.58,
-                            drilldown: "Safari"
-                        },
-                        {
-                            name: "Edge",
-                            y: 4.02,
-                            drilldown: "Edge"
-                        },
-                        {
-                            name: "Opera",
-                            y: 1.92,
-                            drilldown: "Opera"
-                        },
-                        {
-                            name: "Other",
-                            y: 7.62,
-                            drilldown: null
-                        }
+                        @endforeach
                     ]
                 }
             ],
-            drilldown: {
-                series: [
-                    {
-                        name: "Chrome",
-                        id: "Chrome",
-                        data: [
-                            [
-                                "v65.0",
-                                0.1
-                            ],
-                            [
-                                "v64.0",
-                                1.3
-                            ],
-                            [
-                                "v63.0",
-                                53.02
-                            ],
-                            [
-                                "v62.0",
-                                1.4
-                            ],
-                            [
-                                "v61.0",
-                                0.88
-                            ],
-                            [
-                                "v60.0",
-                                0.56
-                            ],
-                            [
-                                "v59.0",
-                                0.45
-                            ],
-                            [
-                                "v58.0",
-                                0.49
-                            ],
-                            [
-                                "v57.0",
-                                0.32
-                            ],
-                            [
-                                "v56.0",
-                                0.29
-                            ],
-                            [
-                                "v55.0",
-                                0.79
-                            ],
-                            [
-                                "v54.0",
-                                0.18
-                            ],
-                            [
-                                "v51.0",
-                                0.13
-                            ],
-                            [
-                                "v49.0",
-                                2.16
-                            ],
-                            [
-                                "v48.0",
-                                0.13
-                            ],
-                            [
-                                "v47.0",
-                                0.11
-                            ],
-                            [
-                                "v43.0",
-                                0.17
-                            ],
-                            [
-                                "v29.0",
-                                0.26
-                            ]
-                        ]
-                    },
-                    {
-                        name: "Firefox",
-                        id: "Firefox",
-                        data: [
-                            [
-                                "v58.0",
-                                1.02
-                            ],
-                            [
-                                "v57.0",
-                                7.36
-                            ],
-                            [
-                                "v56.0",
-                                0.35
-                            ],
-                            [
-                                "v55.0",
-                                0.11
-                            ],
-                            [
-                                "v54.0",
-                                0.1
-                            ],
-                            [
-                                "v52.0",
-                                0.95
-                            ],
-                            [
-                                "v51.0",
-                                0.15
-                            ],
-                            [
-                                "v50.0",
-                                0.1
-                            ],
-                            [
-                                "v48.0",
-                                0.31
-                            ],
-                            [
-                                "v47.0",
-                                0.12
-                            ]
-                        ]
-                    },
-                    {
-                        name: "Internet Explorer",
-                        id: "Internet Explorer",
-                        data: [
-                            [
-                                "v11.0",
-                                6.2
-                            ],
-                            [
-                                "v10.0",
-                                0.29
-                            ],
-                            [
-                                "v9.0",
-                                0.27
-                            ],
-                            [
-                                "v8.0",
-                                0.47
-                            ]
-                        ]
-                    },
-                    {
-                        name: "Safari",
-                        id: "Safari",
-                        data: [
-                            [
-                                "v11.0",
-                                3.39
-                            ],
-                            [
-                                "v10.1",
-                                0.96
-                            ],
-                            [
-                                "v10.0",
-                                0.36
-                            ],
-                            [
-                                "v9.1",
-                                0.54
-                            ],
-                            [
-                                "v9.0",
-                                0.13
-                            ],
-                            [
-                                "v5.1",
-                                0.2
-                            ]
-                        ]
-                    },
-                    {
-                        name: "Edge",
-                        id: "Edge",
-                        data: [
-                            [
-                                "v16",
-                                2.6
-                            ],
-                            [
-                                "v15",
-                                0.92
-                            ],
-                            [
-                                "v14",
-                                0.4
-                            ],
-                            [
-                                "v13",
-                                0.1
-                            ]
-                        ]
-                    },
-                    {
-                        name: "Opera",
-                        id: "Opera",
-                        data: [
-                            [
-                                "v50.0",
-                                0.96
-                            ],
-                            [
-                                "v49.0",
-                                0.82
-                            ],
-                            [
-                                "v12.1",
-                                0.14
-                            ]
-                        ]
-                    }
-                ]
-            }
         });
     </script>
     <script>
         // Create the chart
-        Highcharts.chart('container2', {
+        Highcharts.chart('status', {
+            colors: ['#6996da','#a26bd9','#806bd9','#6bb8da','#6874d9', '#4572A7', '#89A54E', '#80699B', '#3D96AE', '#DB843D', '#92A8CD', '#A47D7C', '#B5CA92'],
             chart: {
                 type: 'pie'
             },
@@ -737,143 +490,19 @@
 
             series: [
                 {
-                    name: "Status",
+                    name: "status",
                     colorByPoint: true,
                     data: [
+                            @foreach($status as $sta)
                         {
-                            name: "بررسی نشده",
-                            y: 62.74,
-                            drilldown: "1"
+                            name: "{{ $sta->status }}", y: {{ $sta->count }}
                         },
-                        {
-                            name: "درحال انجام",
-                            y: 10.57,
-                            drilldown: "2"
-                        },
-                        {
-                            name: "انجام شده",
-                            y: 7.23,
-                            drilldown: "3"
-                        },
-                        {
-                            name: "معلق",
-                            y: 5.58,
-                            drilldown: "4"
-                        },
-                        {
-                            name: "لغو شده",
-                            y: 4.02,
-                            drilldown: "5"
-                        },
+                        @endforeach
                     ]
+
                 }
             ],
-            drilldown: {
-                series: [
-                    {
-                        name: "بررسی نشده",
-                        id: "1",
-                        data: [
-                            [
-                                "v65.0",
-                                0.1
-                            ],
-                            [
-                                "v65.0",
-                                0.1
-                            ]
-                        ]
-                    },
-                    {
-                        name: "درحال انجام",
-                        id: "2",
-                        data: [
-                            [
-                                "v58.0",
-                                1.02
-                            ],
-                            [
-                                "v65.0",
-                                0.1
-                            ]
-                            ]
-                    },
-                    {
-                        name: "انجام شده",
-                        id: "3",
-                        data: [
-                            [
-                                "v11.0",
-                                6.2
-                            ],
-                            [
-                                "v10.0",
-                                0.29
-                            ],
-                            [
-                                "v9.0",
-                                0.27
-                            ],
-                            [
-                                "v8.0",
-                                0.47
-                            ]
-                        ]
-                    },
-                    {
-                        name: "معلق",
-                        id: "4",
-                        data: [
-                            [
-                                "v11.0",
-                                3.39
-                            ],
-                            [
-                                "v10.1",
-                                0.96
-                            ],
-                            [
-                                "v10.0",
-                                0.36
-                            ],
-                            [
-                                "v9.1",
-                                0.54
-                            ],
-                            [
-                                "v9.0",
-                                0.13
-                            ],
-                            [
-                                "v5.1",
-                                0.2
-                            ]
-                        ]
-                    },
-                    {
-                        name: "لغو شده",
-                        id: "5",
-                        data: [
-                            [
-                                "v16",
-                                2.6
-                            ],
-                            [
-                                "v15",
-                                0.92
-                            ],
-                            [
-                                "v14",
-                                0.4
-                            ],
-                            [
-                                "v13",
-                                0.1
-                            ]
-                        ]
-                    }
-                ]
-            }
+
         });
     </script>
     <script src="/dashboard/assets/js/select2.js" type="text/javascript"></script>

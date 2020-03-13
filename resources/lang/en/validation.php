@@ -30,7 +30,7 @@ return [
         'array'   => 'The :attribute must have between :min and :max items.',
     ],
     'boolean'              => 'The :attribute field must be true or false.',
-    'confirmed'            => 'The :attribute confirmation does not match.',
+    'confirmed'            => 'رمز عبور با تایید مطابقت ندارد',
     'date'                 => 'مقدار :attribute باید تاریخ باشد.',
     'date_format'          => 'The :attribute does not match the format :format.',
     'different'            => 'The :attribute and :other must be different.',
@@ -75,7 +75,7 @@ return [
         'array'   => 'The :attribute must not have more than :value items.',
     ],
     'max'                  => [
-        'numeric' => 'The :attribute may not be greater than :max.',
+        'numeric' => 'فیلد :attribute نباید بیشتر از :max.',
         'file'    => 'The :attribute may not be greater than :max kilobytes.',
         'string'  => ' :attribute نمیتواند از :max کاراکتر بیشتر باشد.',
         'array'   => 'The :attribute may not have more than :max items.',
@@ -152,6 +152,9 @@ return [
       'priority' => 'اهمیت',
       'assignerAttachment' => 'فایل ضمیمه',
       'doerAttachment' => 'فایل ضمیمه',
+      'units' => 'تعداد واحد ها',
+      'address' => 'آدرس',
+      'type' => 'نوع',
     ],
 
 ];

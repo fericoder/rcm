@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers\Dashboard;
 
+use App\Http\Requests\UnitRequest;
+use App\Http\Requests\Units;
 use App\Invoice;
+use App\Unit;
 use App\User;
 use App\Warning;
 use Illuminate\Http\Request;
@@ -27,7 +30,7 @@ class UnitController extends \App\Http\Controllers\Controller
      */
     public function create()
     {
-        //
+        return view('dashboard.units.create');
     }
 
     /**
@@ -38,7 +41,12 @@ class UnitController extends \App\Http\Controllers\Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->except('_token');
+        $data['complex_id'] = \Auth::user()->complex_id;
+
+        $unit = User::create($data);
+        alert()->success('واحد باموفقیت اضافه شد', 'انجام شد');
+        return redirect()->route('units.index');
     }
 
     /**

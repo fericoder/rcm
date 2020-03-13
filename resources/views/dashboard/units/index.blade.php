@@ -8,6 +8,15 @@
         }
     </style>
 
+
+        <div class="alert alert-light alert-elevate" role="alert">
+            <div class="alert-icon"><i class="flaticon-warning kt-font-danger"></i></div>
+            <div class="alert-text">
+                <a href="{{ route('units.create') }}"> در این ماژول میتوانید واحد های متجمع خود را مدیریت نمایید. جهت افزودن واحد اینجا کلیک نمایید.</a>
+            </div>
+        </div>
+
+
     <div class="kt-portlet">
 
         <div class="kt-portlet__body">
@@ -87,6 +96,7 @@
                         <h3 class="kt-portlet__head-title borj-color">
                             لیست واحد ها و کارتابل شخصی
                         </h3>
+                        <a href="{{ route('units.create') }}"><button data-toggle="modal" data-target=" #add" style="margin-right: 20px;font-size: 13px" type="button" class="btn btn-success btn-wide btn-elevate btn-elevate-air">افزودن واحد</button></a>
                     </div>
 
                     <div style="" class="kt-portlet__head-toolbar">

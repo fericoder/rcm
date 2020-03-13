@@ -40,7 +40,7 @@ Route::namespace('Dashboard')->prefix('dashboard')->middleware('auth', 'configur
     Route::resource('traffic', 'TrafficController');
 
 
-    Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
+    Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout')->name('dashboard-logout');
 });
 
 Auth::routes();

@@ -90,7 +90,7 @@
                                                 <input type="checkbox" {{ old('remember') ? 'checked' : '' }} id="remember" name="remember"> مرا به خاطر بسپار
                                                 <span></span>
                                             </label>
-                                            <a style="display: none" href="javascript:;" id="kt_login_forgot">رمز عبور خود را فراموش کرده اید؟</a>
+                                            <a style="" href="javascript:;" id="kt_login_forgot">رمز عبور خود را فراموش کرده اید؟</a>
                                         </div>
                                         <div class="kt-login__actions">
                                             <button type="submit" class="btn btn-success btn-pill btn-elevate">ورود</button>
@@ -100,7 +100,7 @@
 
 
                                     </form>
-                                    <div style="padding-top: 20px" class="kt-login__actions">
+                                    <div style="padding-top: 20px; display: none;" class="kt-login__actions">
                                         <button  href="javascript:;" id="showSignUp"  class="btn btn-outline-brand btn-pill">عضو نیستید؟ نمایش فرم عضویت</button>
                                     </div>
                                 </div>
@@ -221,17 +221,27 @@
 
                             <div class="kt-login__forgot">
                                 <div class="kt-login__head">
-                                    <h3 class="kt-login__title">Forgotten Password ?</h3>
-                                    <div class="kt-login__desc">Enter your email to reset your password:</div>
+                                    <h3 class="kt-login__title">بازگردانی رمز عبور </h3>
+                                    <div style="font-family: iranyekan; direction: rtl" class="kt-login__desc">جهت بازگردانی رمز عبور، کد واحد را وارد نمایید:</div>
                                 </div>
                                 <div class="kt-login__form">
-                                    <form class="kt-form" action="">
+                                    <form class="kt-form" method="POST" action="{{ route('password.email') }}">
+                                        @csrf
                                         <div class="form-group">
-                                            <input class="form-control" type="text" placeholder="Email" name="email" id="kt_email" autocomplete="off">
+                                            <input style="direction: rtl; text-align: right" class="form-control form-control @error('code') is-invalid @enderror" type="text" placeholder="مثال: E201" name="code" autocomplete="off">
                                         </div>
+
+                                        @error('code')
+                                            <span style="display: block" class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                              </span>
+                                        @enderror
+
+
                                         <div class="kt-login__actions">
-                                            <button id="kt_login_forgot_submit" class="btn btn-brand btn-pill btn-elevate">Request</button>
-                                            <button id="kt_login_forgot_cancel" class="btn btn-outline-brand btn-pill">Cancel</button>
+                                            <p style="direction: rtl">درصورت وجود مشکل، کد واحد را به شماره 09201010328 پیامک کنید.</p><br><br>
+                                            <button  class="btn btn-brand btn-pill btn-elevate">بازگردانی رمز</button><br><br>
+                                            <button id="kt_login_forgot_cancel" class="btn btn-outline-brand btn-pill">بازگشت</button>
                                         </div>
                                     </form>
                                 </div>
@@ -276,8 +286,19 @@
         if (window.location.href.indexOf("signup") !== -1) {
             $("#showSignUp").trigger("click");
         }
+
+    @error('code')
+        $("#kt_login_forgot").trigger("click");
+    @enderror
+
+
     });
 
 </script>
+
+<script src="/dashboard/assets/js/sweetalert.min.js"></script>
+
+@include('sweet::alert')
+
 </body>
 </html>

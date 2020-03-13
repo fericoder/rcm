@@ -18,4 +18,10 @@ class Complex extends Model
         return $this->hasMany('App\Vote');
     }
 
+    public function residents()
+    {
+        return $this->hasMany('App\Resident');
+    }
+
+
 }

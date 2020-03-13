@@ -182,7 +182,7 @@
                                 <ul id="menu-main-menu" class="menu">
                                     <li id="menu-item-1474" class="menu-item menu-item-type-custom menu-item-object-custom  menu-item-1474"><a href="#contact">تماس باما</a></li>
                                     <li id="menu-item-1478" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1478"><a href="/login">ورود</a></li></li>
-                                    <li id="menu-item-1478" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1478"><a href="/login">عضویت</a></li></li>
+                                    <li id="menu-item-1478" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1478"><a href="/login?signup">عضویت</a></li></li>
                                     <li id="menu-item-1475" class="menu-item menu-item-type-custom menu-item-object-custom  menu-item-1475"><a href="#features">قابلیت های سامانه</a></li>
                                     <li id="menu-item-1475" class="menu-item menu-item-type-custom menu-item-object-custom  menu-item-1475"><a href="#services">خدمات شرکت</a></li>
                                     <li id="menu-item-1503" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1478 current-menu-ancestor current-menu-parent"><a href="/"><span>صفحه اصلی</span></a></li>
@@ -213,7 +213,7 @@
                                 <ul id="menu-main-menu-1" class="menu">
                                     <li id="menu-item-1474" class="menu-item menu-item-type-custom menu-item-object-custom  menu-item-1474"><a href="#contact">تماس باما</a></li>
                                     <li id="menu-item-1478" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1478"><a href="/login">ورود</a></li></li>
-                                    <li id="menu-item-1478" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1478"><a href="/login">عضویت</a></li></li>
+                                    <li id="menu-item-1478" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1478"><a href="/login?signup">عضویت</a></li></li>
                                     <li id="menu-item-1475" class="menu-item menu-item-type-custom menu-item-object-custom  menu-item-1475"><a href="#features">قابلیت های سامانه</a></li>
                                     <li id="menu-item-1475" class="menu-item menu-item-type-custom menu-item-object-custom  menu-item-1475"><a href="#services">خدمات شرکت</a></li>
                                     <li id="menu-item-1503" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1478 current-menu-ancestor current-menu-parent"><a href="/"><span>صفحه اصلی</span></a></li>
@@ -241,7 +241,7 @@
                                 <ul id="menu-main-menu-2" class="menu">
                                     <li id="menu-item-1474" class="menu-item menu-item-type-custom menu-item-object-custom  menu-item-1474"><a href="#contact">تماس باما</a></li>
                                     <li id="menu-item-1478" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1478"><a href="/login">ورود</a></li></li>
-                                    <li id="menu-item-1478" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1478"><a href="/login">عضویت</a></li></li>
+                                    <li id="menu-item-1478" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1478"><a href="/login?signup">عضویت</a></li></li>
                                     <li id="menu-item-1475" class="menu-item menu-item-type-custom menu-item-object-custom  menu-item-1475"><a href="#features">قابلیت های سامانه</a></li>
                                     <li id="menu-item-1475" class="menu-item menu-item-type-custom menu-item-object-custom  menu-item-1475"><a href="#services">خدمات شرکت</a></li>
                                     <li id="menu-item-1503" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1478 current-menu-ancestor current-menu-parent"><a href="/"><span>صفحه اصلی</span></a></li>
@@ -275,7 +275,7 @@
                                     <ul id="menu-main-menu-3" class="menu">
                                         <li id="menu-item-1474" class="menu-item menu-item-type-custom menu-item-object-custom  menu-item-1474"><a href="#contact">تماس باما</a></li>
                                         <li id="menu-item-1478" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1478"><a href="/login">ورود</a></li></li>
-                                        <li id="menu-item-1478" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1478"><a href="/login">عضویت</a></li></li>
+                                        <li id="menu-item-1478" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1478"><a href="/login?signup">عضویت</a></li></li>
                                         <li id="menu-item-1475" class="menu-item menu-item-type-custom menu-item-object-custom  menu-item-1475"><a href="#features">قابلیت های سامانه</a></li>
                                         <li id="menu-item-1475" class="menu-item menu-item-type-custom menu-item-object-custom  menu-item-1475"><a href="#services">خدمات شرکت</a></li>
                                         <li id="menu-item-1503" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1478 current-menu-ancestor current-menu-parent"><a href="/"><span>صفحه اصلی</span></a></li>
@@ -307,7 +307,7 @@
                                     <ul id="menu-main-menu-4" class="menu">
                                         <li id="menu-item-1474" class="menu-item menu-item-type-custom menu-item-object-custom  menu-item-1474"><a href="#contact">تماس باما</a></li>
                                         <li id="menu-item-1478" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1478"><a href="/login">ورود</a></li></li>
-                                        <li id="menu-item-1478" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1478"><a href="/login">عضویت</a></li></li>
+                                        <li id="menu-item-1478" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1478"><a href="/login?signup">عضویت</a></li></li>
                                         <li id="menu-item-1475" class="menu-item menu-item-type-custom menu-item-object-custom  menu-item-1475"><a href="#features">قابلیت های سامانه</a></li>
                                         <li id="menu-item-1475" class="menu-item menu-item-type-custom menu-item-object-custom  menu-item-1475"><a href="#services">خدمات شرکت</a></li>
                                         <li id="menu-item-1503" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1478 current-menu-ancestor current-menu-parent"><a href="/"><span>صفحه اصلی</span></a></li>
@@ -339,7 +339,7 @@
                                     <ul id="menu-main-menu-5" class="menu">
                                         <li id="menu-item-1474" class="menu-item menu-item-type-custom menu-item-object-custom  menu-item-1474"><a href="#contact">تماس باما</a></li>
                                         <li id="menu-item-1478" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1478"><a href="/login">ورود</a></li></li>
-                                        <li id="menu-item-1478" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1478"><a href="/login">عضویت</a></li></li>
+                                        <li id="menu-item-1478" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1478"><a href="/login?signup">عضویت</a></li></li>
                                         <li id="menu-item-1475" class="menu-item menu-item-type-custom menu-item-object-custom  menu-item-1475"><a href="#features">قابلیت های سامانه</a></li>
                                         <li id="menu-item-1475" class="menu-item menu-item-type-custom menu-item-object-custom  menu-item-1475"><a href="#services">خدمات شرکت</a></li>
                                         <li id="menu-item-1503" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1478 current-menu-ancestor current-menu-parent"><a href="/"><span>صفحه اصلی</span></a></li>
@@ -369,7 +369,7 @@
                             <ul class="sub-menu">
                                 <li id="menu-item-1474" class="menu-item menu-item-type-custom menu-item-object-custom  menu-item-1474"><a href="#contact">تماس باما</a></li>
                                 <li id="menu-item-1478" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1478"><a href="/login">ورود</a></li></li>
-                                <li id="menu-item-1478" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1478"><a href="/login">عضویت</a></li></li>
+                                <li id="menu-item-1478" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1478"><a href="/login?signup">عضویت</a></li></li>
                                 <li id="menu-item-1475" class="menu-item menu-item-type-custom menu-item-object-custom  menu-item-1475"><a href="#features">قابلیت های سامانه</a></li>
                                 <li id="menu-item-1475" class="menu-item menu-item-type-custom menu-item-object-custom  menu-item-1475"><a href="#services">خدمات شرکت</a></li>
                                 <li id="menu-item-1503" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1478 current-menu-ancestor current-menu-parent"><a href="/"><span>صفحه اصلی</span></a></li>
@@ -393,7 +393,7 @@
                 <ul>
                     <li id="menu-item-1474" class="menu-item menu-item-type-custom menu-item-object-custom  menu-item-1474"><a href="#contact">تماس باما</a></li>
                     <li id="menu-item-1478" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1478"><a href="/login">ورود</a></li></li>
-                    <li id="menu-item-1478" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1478"><a href="/login">عضویت</a></li></li>
+                    <li id="menu-item-1478" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1478"><a href="/login?signup">عضویت</a></li></li>
                     <li id="menu-item-1475" class="menu-item menu-item-type-custom menu-item-object-custom  menu-item-1475"><a href="#features">قابلیت های سامانه</a></li>
                     <li id="menu-item-1475" class="menu-item menu-item-type-custom menu-item-object-custom  menu-item-1475"><a href="#services">خدمات شرکت</a></li>
                     <li id="menu-item-1503" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1478 current-menu-ancestor current-menu-parent"><a href="/"><span>صفحه اصلی</span></a></li>

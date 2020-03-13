@@ -80,6 +80,8 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
+
+
                                                             <section class="elementor-element elementor-element-6d89f68 elementor-section-content-middle elementor-section-boxed elementor-section-height-default elementor-section-height-default elementor-section elementor-inner-section" data-id="6d89f68" data-element_type="section">
                                                                 <div class="elementor-container elementor-column-gap-default">
                                                                     <div class="elementor-row">
@@ -89,7 +91,7 @@
                                                                                     <div class="gt3-core-button--alignment_inline elementor-element elementor-element-42d950f elementor-widget elementor-widget-gt3-core-button" data-id="42d950f" data-element_type="widget" data-widget_type="gt3-core-button.default">
                                                                                         <div class="elementor-widget-container ">
                                                                                             <div class="gt3_module_button_elementor size_custom alignment_inline button_icon_none hover_type5 rounded">
-                                                                                                <a class="button_size_elementor_custom alignment_inline border_icon_none hover_type5 btn_icon_position_left" href="#"> <span class="gt3_module_button__container"> <span class="elementor_gt3_btn_text">عضویت</span> <span class="gt3_module_button__cover front"></span> <span class="gt3_module_button__cover back"></span> </span>
+                                                                                                <a class="button_size_elementor_custom alignment_inline border_icon_none hover_type5 btn_icon_position_left" href="/login?signup"> <span class="gt3_module_button__container"> <span class="elementor_gt3_btn_text">عضویت</span> <span class="gt3_module_button__cover front"></span> <span class="gt3_module_button__cover back"></span> </span>
                                                                                                 </a>
                                                                                             </div>
                                                                                         </div>

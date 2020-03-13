@@ -20,7 +20,9 @@ class EnactmentController extends \App\Http\Controllers\Controller
         $users = User::where('complex_id', \Auth::user()->complex_id)->get();
         $proceedings = Proceeding::where('complex_id', \Auth::user()->complex_id)->get();
         $enactments = Enactment::where('complex_id', \Auth::user()->complex_id)->get();
-        return view('dashboard.enactments', compact('enactments', 'proceedings', 'users'));
+        $members = \DB::table('enactments')->where('complex_id', \Auth::user()->complex_id)->select('user_id', \DB::raw('count(*) as count'))->groupBy('user_id')->get();
+        $status = \DB::table('enactments')->where('complex_id', \Auth::user()->complex_id)->select('status', \DB::raw('count(*) as count'))->groupBy('status')->get();
+        return view('dashboard.enactments', compact('enactments', 'proceedings', 'users', 'members', 'status'));
     }
 
     /**

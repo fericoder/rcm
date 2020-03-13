@@ -1,12 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Dashboard;
+namespace App\Http\Controllers;
 
-use App\Complex;
-use App\Http\Requests\ComplexRequest;
+use App\Resident;
 use Illuminate\Http\Request;
 
-class ComplexController extends \App\Http\Controllers\Controller
+class ResidentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +14,7 @@ class ComplexController extends \App\Http\Controllers\Controller
      */
     public function index()
     {
-        $complex = \Auth::user()->complex;
-        return view('dashboard.configuration', compact('complex'));
+        //
     }
 
     /**
@@ -43,10 +41,10 @@ class ComplexController extends \App\Http\Controllers\Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Complex  $complex
+     * @param  \App\Resident  $resident
      * @return \Illuminate\Http\Response
      */
-    public function show(Complex $complex)
+    public function show(Resident $resident)
     {
         //
     }
@@ -54,10 +52,10 @@ class ComplexController extends \App\Http\Controllers\Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Complex  $complex
+     * @param  \App\Resident  $resident
      * @return \Illuminate\Http\Response
      */
-    public function edit(Complex $complex)
+    public function edit(Resident $resident)
     {
         //
     }
@@ -66,29 +64,21 @@ class ComplexController extends \App\Http\Controllers\Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Complex  $complex
+     * @param  \App\Resident  $resident
      * @return \Illuminate\Http\Response
      */
-    public function update(ComplexRequest $request, Complex $complex)
+    public function update(Request $request, Resident $resident)
     {
-        $complex = Complex::find($request->id);
-        $complex->units = $request->units;
-        $complex->address = $request->address;
-        $complex->type = $request->type;
-        $complex->save();
-
-        alert()->success('اطلاعات مجتمع ثبت شد.', 'ثبت شد');
-        return redirect()->route('units.index');
-
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Complex  $complex
+     * @param  \App\Resident  $resident
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Complex $complex)
+    public function destroy(Resident $resident)
     {
         //
     }
