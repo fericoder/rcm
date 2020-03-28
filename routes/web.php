@@ -22,6 +22,7 @@ Route::get('/services', 'AppController@services')->name('app.services');
 Route::namespace('Dashboard')->prefix('dashboard')->middleware('auth', 'configuration')->group(function () {
     Route::resource('configuration', 'ComplexController');
     Route::get('index', 'IndexController@index')->name('dashboard.index');
+    Route::get('information', 'IndexController@information')->name('dashboard.information');
     Route::resource('units', 'UnitController');
     Route::resource('proceedings', 'ProceedingController');
     Route::get('proceedings/delete/{id}', 'ProceedingController@destroy')->name('proceedings.delete');
