@@ -250,9 +250,9 @@
                             @foreach ($invoices->where('status', 'notPaid')->groupBy('user_id') as $invoice)
                                 <tr>
                                     <td style="font-family: BYekan!important;"> {{ number_format($invoice->sum('amount')) }} </td>
-                                    <td> {{ $invoice->first()->user->code  }} </td>
-                                    <td> {{ $invoice->first()->user->fullName  }} </td>
-                                    <td style="font-family: BYekan!important;"> {{ $invoice->first()->user->mobile  }} </td>
+                                    <td> {{ isset($invoice->first()->user) ?  $invoice->first()->user->code : ''  }} </td>
+                                    <td> {{ isset($invoice->first()->user) ?  $invoice->first()->user->fullName : '' }} </td>
+                                    <td style="font-family: BYekan!important;"> {{ isset($invoice->first()->user) ?  $invoice->first()->user->mobile : ''  }} </td>
                                 </tr>
 
                             @endforeach

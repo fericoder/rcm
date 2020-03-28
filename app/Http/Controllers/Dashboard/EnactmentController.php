@@ -17,7 +17,7 @@ class EnactmentController extends \App\Http\Controllers\Controller
      */
     public function index()
     {
-        $users = User::where('complex_id', \Auth::user()->complex_id)->get();
+        $users = User::where('complex_id', \Auth::user()->complex_id)->where('userType', 'boardMember')->get();
         $proceedings = Proceeding::where('complex_id', \Auth::user()->complex_id)->get();
         $enactments = Enactment::where('complex_id', \Auth::user()->complex_id)->get();
         $members = \DB::table('enactments')->where('complex_id', \Auth::user()->complex_id)->select('user_id', \DB::raw('count(*) as count'))->groupBy('user_id')->get();

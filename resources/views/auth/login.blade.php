@@ -19,6 +19,11 @@
             direction: rtl!important;
             font-size: 16px!important;
         }
+        swal-text{
+            font-family: BYekan!important;
+            direction: rtl!important;
+            text-align: center;
+        }
     </style>
 
     <meta name="generator" content="WordPress 15.2.2"/>
@@ -222,7 +227,10 @@
                             <div class="kt-login__forgot">
                                 <div class="kt-login__head">
                                     <h3 class="kt-login__title">بازگردانی رمز عبور </h3>
-                                    <div style="font-family: iranyekan; direction: rtl" class="kt-login__desc">جهت بازگردانی رمز عبور، کد واحد را وارد نمایید:</div>
+                                    <div style="font-family: iranyekan; direction: rtl; text-align: justify" class="kt-login__desc">
+                                        توجه: لینک بازیابی رمز عبور برای شماره تلفن همراه مالک واحد پیامک میشود. جهت تغییر رمز عبور میبایست پس از واحد در فیلد زیر، برروی گزینه "ارسال پیامک لینک بازگردانی رمز" کرده و سپس برروی لینک پیامک شده کلیک نمایید.<br><br>
+                                        درصورت وجود مشکل، کد واحد را به شماره 09201010328 پیامک کنید.
+                                    </div>
                                 </div>
                                 <div class="kt-login__form">
                                     <form class="kt-form" method="POST" action="{{ route('password.email') }}">
@@ -239,8 +247,7 @@
 
 
                                         <div class="kt-login__actions">
-                                            <p style="direction: rtl">درصورت وجود مشکل، کد واحد را به شماره 09201010328 پیامک کنید.</p><br><br>
-                                            <button  class="btn btn-brand btn-pill btn-elevate">بازگردانی رمز</button><br><br>
+                                            <button  class="btn btn-success btn-pill btn-elevate">ارسال پیامک لینک بازگردانی رمز</button><br><br>
                                             <button id="kt_login_forgot_cancel" class="btn btn-outline-brand btn-pill">بازگشت</button>
                                         </div>
                                     </form>

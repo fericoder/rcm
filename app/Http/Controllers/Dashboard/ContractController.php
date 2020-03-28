@@ -14,7 +14,8 @@ class ContractController extends \App\Http\Controllers\Controller
      */
     public function index()
     {
-        return view('dashboard.contracts');
+        $contracts = Contract::where('complex_id', \Auth::user()->complex_id)->get();
+        return view('dashboard.contracts.index', compact('contracts'));
     }
 
     /**
@@ -35,7 +36,20 @@ class ContractController extends \App\Http\Controllers\Controller
      */
     public function store(Request $request)
     {
-        //
+        Contract::create([
+            'user_id' =>  \Auth::user()->id,
+            'complex_id' =>  \Auth::user()->complex_id,
+            'name' => $request->name,
+            'type' => $request->type,
+            'description' => $request->description,
+            'contractor' => $request->contractor,
+            'from' => $request->from,
+            'to' => $request->to,
+            'file' => $request->file,
+        ]);
+        alert()->success('واحد با موفقیت اضافه شد', 'اضافه شد');
+        return redirect()->back();
+
     }
 
     /**

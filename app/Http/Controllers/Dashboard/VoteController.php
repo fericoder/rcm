@@ -16,7 +16,8 @@ class VoteController extends \App\Http\Controllers\Controller
      */
     public function index()
     {
-        return view('dashboard.votes.index');
+        $votes = Vote::where('complex_id', \Auth::user()->complex_id)->get();
+        return view('dashboard.votes.index', compact('votes'));
     }
 
     /**
@@ -93,5 +94,11 @@ class VoteController extends \App\Http\Controllers\Controller
     public function destroy(Vote $vote)
     {
         //
+    }
+
+    public function optionsIndex(Request $request)
+    {
+        $vote = Vote::where('id', $request->id)->where('complex_id', \Auth::user()->complex_id)->first();
+        return view('dashboard.votes.options', compact('vote'));
     }
 }

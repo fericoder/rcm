@@ -9,7 +9,7 @@
 <head>
     <meta charset="utf-8" />
     <title>
-        سیستم مدیریت {{ \Auth::user()->complex->name }} |
+        سامانه مدیریت {{ \Auth::user()->complex->name }} |
         {{ $title }}</title>
 
     <meta name="description" content="Updates and statistics">
@@ -34,6 +34,18 @@
     <link href="/dashboard/assets/css/skins/header/menu/light.rtl.css" rel="stylesheet" type="text/css" />
     <link href="/dashboard/assets/css/skins/brand/dark.rtl.css" rel="stylesheet" type="text/css" />
     <link href="/dashboard/assets/css/skins/aside/dark.rtl.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="/dashboard/assets/css/icofont.min.css">
+
+
+    <link href='/vendors/datepicker/css/normalize.css' rel='stylesheet' />
+    <link href="/vendors/datepicker/css/vertical-responsive-menu.min.css" rel="stylesheet" />
+    <script src="/vendors/datepicker/js/vertical-responsive-menu.min.js"></script>
+    <link rel="stylesheet" href="/vendors/datepicker/css/persianDatepicker-default.css" />
+    <link rel="stylesheet" href="/vendors/datepicker/css/persianDatepicker-dark.css" />
+    <link rel="stylesheet" href="/vendors/datepicker/css/persianDatepicker-latoja.css" />
+    <link rel="stylesheet" href="/vendors/datepicker/css/persianDatepicker-melon.css" />
+    <link rel="stylesheet" href="/vendors/datepicker/css/persianDatepicker-lightorang.css" />
+    <script src="/vendors/datepicker/js/prism.js"></script>
 
     <!--end::Layout Skins -->
     <style>
@@ -143,10 +155,13 @@
                 <div id="kt_aside_menu" class="kt-aside-menu " data-ktmenu-vertical="1" data-ktmenu-scroll="1" data-ktmenu-dropdown-timeout="500">
 
                     <ul class="kt-menu__nav ">
-                        <li class="kt-menu__item  {{ request()->routeIs('dashboard.index') ? 'kt-menu__item--active' : ''  }}" aria-haspopup="true"><a href="{{ route('dashboard.index') }}" class="kt-menu__link "><span class="kt-menu__link-icon"><i class="fa fa-chart-bar"></i></span><span class="kt-menu__link-text">داشبورد اصلی</span></a></li>
+
+                        <li class="kt-menu__item  {{ request()->routeIs('dashboard.index') ? 'kt-menu__item--active' : ''  }}" aria-haspopup="true"><a href="{{ route('dashboard.index') }}" class="kt-menu__link "><span class="kt-menu__link-icon"><i class="fa fa-chart-bar"></i></span><span class="kt-menu__link-text">داشبورد واحد {{ \Auth::user()->code }}</span></a></li>
+
+                        <li class="kt-menu__item  {{ request()->routeIs('dashboard.index') ? 'kt-menu__item--active' : ''  }}" aria-haspopup="true"><a href="{{ route('dashboard.index') }}" class="kt-menu__link "><span class="kt-menu__link-icon"><i class="fa fa-chart-bar"></i></span><span class="kt-menu__link-text">اطلاعات کلی</span></a></li>
+
+
                         <li class="kt-menu__item  {{ request()->routeIs('units*') ? 'kt-menu__item--active' : ''  }}" aria-haspopup="true"><a href="{{ route('units.index') }}" class="kt-menu__link "><span class="kt-menu__link-icon"><i class="fa fa-users"></i></span><span class="kt-menu__link-text">مدیریت مالکین و ساکنین</span></a></li>
-
-
 
                         <li class="kt-menu__item  kt-menu__item--submenu {{ request()->routeIs('proceedings.index') ? 'kt-menu__item--active kt-menu__item--open' : ''  }} {{ request()->routeIs('enactments.index') ? 'kt-menu__item--active kt-menu__item--open' : ''  }}" aria-haspopup="true" data-ktmenu-submenu-toggle="hover">
                             <a href="javascript:;" class="kt-menu__link kt-menu__toggle"><span class="kt-menu__link-icon"><i class="fa fa-user-friends"></i></span><span class="kt-menu__link-text">هیات مدیره</span><i class="kt-menu__ver-arrow la la-angle-right"></i></a>
@@ -160,7 +175,7 @@
                                     </li>
                                     <li class="kt-menu__item {{ request()->routeIs('enactments.index') ? 'kt-menu__item--active' : ''  }}" aria-haspopup="true">
                                         <a href="{{ route('enactments.index') }}" class="kt-menu__link ">
-                                            <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">مصوبات</span>
+                                            <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">کاربرگ مصوبات</span>
                                         </a>
                                     </li>
 
@@ -181,53 +196,45 @@
                             </div>
                         </li>
                         <li class="kt-menu__item {{ request()->routeIs('contract*') ? 'kt-menu__item--active' : ''  }} " aria-haspopup="true" ><a href="{{ route('contracts.index') }}" class="kt-menu__link "><span class="kt-menu__link-icon"><i class="fa fa-tasks"></i></span><span class="kt-menu__link-text">قرارداد ها</span></a></li>
-                        <li class="kt-menu__item " aria-haspopup="true"><a href="{{ route('maintenances.index') }}" class="kt-menu__link "><span class="kt-menu__link-icon"><i class="fa fa-wrench"></i></span><span class="kt-menu__link-text">تعمییرات و نگهداری</span></a></li>
 
-                        <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true" ><a href="javascript:;" class="kt-menu__link kt-menu__toggle"><span class="kt-menu__link-icon"><i class="fa fa-lock"></i></span><span class="kt-menu__link-text">نظارت و امنیت</span></a></li>
-                        <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true" data-ktmenu-submenu-toggle="hover"><a href="javascript:;" class="kt-menu__link kt-menu__toggle"><span class="kt-menu__link-icon"><i class="fa fa-mug-hot"></i></span><span class="kt-menu__link-text">خدمات رفاهی</span><i class="kt-menu__ver-arrow la la-angle-right"></i></a>
+                        <li class="kt-menu__item  kt-menu__item--submenu   {{ request()->routeIs('*maintenance*') ? 'kt-menu__item--active kt-menu__item--open' : ''  }}" aria-haspopup="true" data-ktmenu-submenu-toggle="hover"><a href="javascript:;" class="kt-menu__link kt-menu__toggle"><span class="kt-menu__link-icon"><i class="fa fa-wrench"></i></span><span class="kt-menu__link-text">نگهداری</span><i class="kt-menu__ver-arrow la la-angle-right"></i></a>
                             <div class="kt-menu__submenu "><span class="kt-menu__arrow"></span>
                                 <ul class="kt-menu__subnav">
-                                    <li class="kt-menu__item  kt-menu__item--parent" aria-haspopup="true"><span class="kt-menu__link"><span class="kt-menu__link-text">خدمات رفاهی</span></span>
-                                    </li>
-                                    <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true" data-ktmenu-submenu-toggle="hover"><a href="javascript:;" class="kt-menu__link kt-menu__toggle"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">پارکینگ مهمان</span></a>
+                                    <li class="kt-menu__item  kt-menu__item--parent" aria-haspopup="true"><span class="kt-menu__link"><span class="kt-menu__link-text">نگهداری</span></span></li>
+                                    <li class="kt-menu__item  {{ request()->routeIs('maintenance.facility.index') ? 'kt-menu__item--active' : ''  }}" aria-haspopup="true"><a href="{{ route('maintenance.facility.index') }}" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">تاسیسات</span></a></li>
+                                    <li class="kt-menu__item  {{ request()->routeIs('maintenance.elevator.index') ? 'kt-menu__item--active' : ''  }}" aria-haspopup="true"><a href="{{ route('maintenance.elevator.index') }}" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">آسانسور</span></a></li>
 
-                                    </li>
-                                    <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true" data-ktmenu-submenu-toggle="hover"><a href="javascript:;" class="kt-menu__link kt-menu__toggle"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">استخر</span></a>
-
-                                    </li>
-                                    <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true" data-ktmenu-submenu-toggle="hover"><a href="javascript:;" class="kt-menu__link kt-menu__toggle"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">سینما</span></a>
-
-                                    </li>
-                                    <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true" data-ktmenu-submenu-toggle="hover"><a href="javascript:;" class="kt-menu__link kt-menu__toggle"><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">	اطلاعات واحد های تجاری</span><i class="kt-menu__ver-arrow la la-angle-right"></i></a>
-                                        <div class="kt-menu__submenu "><span class="kt-menu__arrow"></span>
-                                            <ul class="kt-menu__subnav">
-                                                <li class="kt-menu__item " aria-haspopup="true"><a href="crud/metronic-datatable/api/methods.html" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">API Methods</span></a></li>
-                                                <li class="kt-menu__item " aria-haspopup="true"><a href="crud/metronic-datatable/api/events.html" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">Events</span></a></li>
-                                            </ul>
-                                        </div>
-                                    </li>
                                 </ul>
                             </div>
                         </li>
 
-                        <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true" data-ktmenu-submenu-toggle="hover"><a href="javascript:;" class="kt-menu__link kt-menu__toggle"><span class="kt-menu__link-icon"><i class="fa fa-envelope-open-text"></i></span><span class="kt-menu__link-text">نظرسنجی</span><i class="kt-menu__ver-arrow la la-angle-right"></i></a>
+                        <li class="kt-menu__item {{ request()->routeIs('*security*') ? 'kt-menu__item--active' : ''  }}  kt-menu__item--submenu" aria-haspopup="true" ><a href="/dashboard/security" class="kt-menu__link kt-menu__toggle"><span class="kt-menu__link-icon"><i class="fa fa-lock"></i></span><span class="kt-menu__link-text">نظارت و امنیت</span></a></li>
+                        <li class="kt-menu__item {{ request()->routeIs('*monitoring*') ? 'kt-menu__item--active' : ''  }} kt-menu__item--submenu" aria-haspopup="true" ><a href="{{ route('monitoring.index') }}" class="kt-menu__link kt-menu__toggle"><span class="kt-menu__link-icon"><i class="icofont icofont-cc-camera"></i></span><span class="kt-menu__link-text">مانیتورینگ</span></a></li>
+
+                        <li class="kt-menu__item {{ request()->routeIs('*comfort*') ? 'kt-menu__item--active' : ''  }}  kt-menu__item--submenu" aria-haspopup="true" data-ktmenu-submenu-toggle="hover"><a href="{{ route('comfort.index')}}" class="kt-menu__link kt-menu__toggle"><span class="kt-menu__link-icon"><i class="fa fa-mug-hot"></i></span><span class="kt-menu__link-text">خدمات رفاهی</span></a></li>
+
+                        <li class="kt-menu__item {{ request()->routeIs('*vote*') ? 'kt-menu__item--active kt-menu__item--open' : ''  }} {{ request()->routeIs('*option*') ? 'kt-menu__item--active kt-menu__item--open' : ''  }}   kt-menu__item--submenu" aria-haspopup="true" data-ktmenu-submenu-toggle="hover"><a href="javascript:;" class="kt-menu__link kt-menu__toggle"><span class="kt-menu__link-icon"><i class="fa fa-envelope-open-text"></i></span><span class="kt-menu__link-text">نظرسنجی</span><i class="kt-menu__ver-arrow la la-angle-right"></i></a>
                             <div class="kt-menu__submenu "><span class="kt-menu__arrow"></span>
                                 <ul class="kt-menu__subnav">
                                     <li class="kt-menu__item  kt-menu__item--parent" aria-haspopup="true"><span class="kt-menu__link"><span class="kt-menu__link-text">نظرسنجی</span></span></li>
-                                    <li class="kt-menu__item " aria-haspopup="true"><a href="{{ route('votes.index') }}" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">مدیریت نظرسنجی ها</span></a></li>
-                                    <li class="kt-menu__item " aria-haspopup="true"><a href="{{ route('votes.create') }}" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">افزودن نظرسنجی</span></a></li>
+                                    <li class="kt-menu__item {{ request()->routeIs('votes.index') ? 'kt-menu__item--active' : ''  }}" aria-haspopup="true"><a href="{{ route('votes.index') }}" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">مدیریت نظرسنجی ها</span></a></li>
+                                    <li class="kt-menu__item {{ request()->routeIs('votes.create') ? 'kt-menu__item--active' : ''  }}" aria-haspopup="true"><a href="{{ route('votes.create') }}" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">افزودن نظرسنجی</span></a></li>
+                                    <li class="kt-menu__item {{ request()->routeIs('votes.index') ? 'kt-menu__item--active' : ''  }} " aria-haspopup="true"><a href="{{ route('votes.index') }}" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">لیست نظرسنجی ها</span></a></li>
                                 </ul>
                             </div>
                         </li>
 
-                        <li class="kt-menu__item" aria-haspopup="true" ><a href="{{ route('tickets.index') }}" class="kt-menu__link"><span class="kt-menu__link-icon"><i class="fa fa-pencil-alt"></i></span><span class="kt-menu__link-text">درخواست ها</span></a></li>
+                        <li class="kt-menu__item {{ request()->routeIs('*ticket*') ? 'kt-menu__item--active' : ''  }}" aria-haspopup="true" ><a href="{{ route('tickets.index') }}" class="kt-menu__link"><span class="kt-menu__link-icon"><i class="fa fa-pencil-alt"></i></span><span class="kt-menu__link-text">درخواست ها</span></a></li>
 
-                        <li class="kt-menu__item  kt-menu__item--submenu {{ request()->routeIs('configuration*') ? 'kt-menu__item--active kt-menu__item--open' : ''  }} {{ request()->routeIs('permission-requests.index') ? 'kt-menu__item--active kt-menu__item--open' : ''  }} {{ request()->routeIs('traffic.index') ? 'kt-menu__item--active kt-menu__item--open' : ''  }} " aria-haspopup="true" data-ktmenu-submenu-toggle="hover"><a href="javascript:;" class="kt-menu__link kt-menu__toggle"><span class="kt-menu__link-icon"><i class="fa fa-user-tie"></i></span><span class="kt-menu__link-text">مدیریت سیستم</span><i class="kt-menu__ver-arrow la la-angle-right"></i></a>
+                        <li class="kt-menu__item {{ request()->routeIs('*gallery*') ? 'kt-menu__item--active' : ''  }}" aria-haspopup="true" ><a href="{{ route('gallery.index') }}" class="kt-menu__link"><span class="kt-menu__link-icon"><i class="fa fa-images"></i></span><span class="kt-menu__link-text">گالری تصاویر</span></a></li>
+
+                        <li class="kt-menu__item  kt-menu__item--submenu {{ request()->routeIs('configuration*') ? 'kt-menu__item--active kt-menu__item--open' : ''  }} {{ request()->routeIs('permission-requests.index') ? 'kt-menu__item--active kt-menu__item--open' : ''  }} {{ request()->routeIs('traffic.index') ? 'kt-menu__item--active kt-menu__item--open' : ''  }} " aria-haspopup="true" data-ktmenu-submenu-toggle="hover"><a href="javascript:;" class="kt-menu__link kt-menu__toggle"><span class="kt-menu__link-icon"><i class="fa fa-user-tie"></i></span><span class="kt-menu__link-text">مدیریت سامانه</span><i class="kt-menu__ver-arrow la la-angle-right"></i></a>
                             <div class="kt-menu__submenu "><span class="kt-menu__arrow"></span>
                                 <ul class="kt-menu__subnav">
-                                    <li class="kt-menu__item  kt-menu__item--parent " aria-haspopup="true"><span class="kt-menu__link"><span class="kt-menu__link-text">مدیریت سیستم</span></span>
+                                    <li class="kt-menu__item  kt-menu__item--parent " aria-haspopup="true"><span class="kt-menu__link"><span class="kt-menu__link-text">مدیریت سامانه</span></span>
                                     </li>
                                     <li class="kt-menu__item {{ request()->routeIs('configuration*') ? 'kt-menu__item--active' : ''  }}" aria-haspopup="true"><a href="{{ route('configuration.index') }}" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">تنظیمات اولیه</span></a></li>
+                                    <li class="kt-menu__item {{ request()->routeIs('configuration*') ? 'kt-menu__item--active' : ''  }}" aria-haspopup="true"><a href="{{ route('configuration.index') }}" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">لیست جرایم</span></a></li>
                                     <li class="kt-menu__item {{ request()->routeIs('configuration*') ? 'kt-menu__item--active' : ''  }}" aria-haspopup="true"><a href="{{ route('configuration.index') }}" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">تنظیمات وبسایت</span></a></li>
                                     <li class="kt-menu__item {{ request()->routeIs('notifications.index') ? 'kt-menu__item--active' : ''  }}" aria-haspopup="true"><a href="{{ route('notifications.index') }}" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">اعلان ها</span></a></li>
                                     <li class="kt-menu__item {{ request()->routeIs('permission-requests.index') ? 'kt-menu__item--active' : ''  }}" aria-haspopup="true"><a href="{{ route('permission-requests.index') }}" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">مجوزها</span></a></li>
@@ -265,7 +272,7 @@
                         <div id="kt_header_menu" class="kt-header-menu kt-header-menu-mobile  kt-header-menu--layout-default ">
                             <div style="padding-top: 10px" class="kt-subheader__main">
 
-                                <h3 class="kt-subheader__title mr-3"> سیستم مدیریت {{ \Auth::user()->complex->name }}</h3>
+                                <h3 class="kt-subheader__title mr-3"> سامانه مدیریت {{ \Auth::user()->complex->name }}</h3>
                                 <span class="kt-subheader__separator kt-subheader__separator--v"></span>
                                 <h3 class="kt-subheader__title">{{ $title }}</h3>
 
@@ -1189,7 +1196,14 @@
 <script src="/dashboard/assets/plugins/custom/highcharts/solid-gauge.js"></script>
 
 <script src="/dashboard/assets/js/sweetalert.min.js"></script>
+<script src="/vendors/datepicker/js/persianDatepicker.js"></script>
 
+<script>
+    $(function() {
+        $(".date").persianDatepicker();
+    });
+
+</script>
 @include('sweet::alert')
 @yield('footerScripts')
 

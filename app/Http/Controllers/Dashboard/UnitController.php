@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Dashboard;
 use App\Http\Requests\UnitRequest;
 use App\Http\Requests\Units;
 use App\Invoice;
+use App\Penalty;
 use App\Unit;
 use App\User;
 use App\Warning;
@@ -59,8 +60,8 @@ class UnitController extends \App\Http\Controllers\Controller
     {
         $unit = User::where('id', $id)->first();
         $invoices = Invoice::where('user_id', $id)->get();
-        $warnings = Warning::all();
-        return view('dashboard.units.show', compact('unit', 'invoices', 'warnings'));
+        $penalties = Penalty::where('user_id', $id)->get();
+        return view('dashboard.units.show', compact('unit', 'invoices', 'penalties'));
     }
 
     /**

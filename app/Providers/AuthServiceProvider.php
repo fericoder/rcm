@@ -25,6 +25,26 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        //
+        \Gate::define('superAdmin', function(){
+            return \Auth::user()->userType == 'superAdmin';
+        });
+
+        \Gate::define('admin', function(){
+            return \Auth::user()->isAdmin == 1;
+        });
+
+        \Gate::define('boardMember', function(){
+            return \Auth::user()->userType == 'boardMember';
+        });
+
+        \Gate::define('finance', function(){
+            return \Auth::user()->userType == 'finance';
+        });
+
+
+        \Gate::define('dataEntry', function(){
+            return \Auth::user()->isDataEntry == 1;
+        });
+
     }
 }

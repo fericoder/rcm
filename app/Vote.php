@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Vote extends Model
 {
-    public function voteOptions()
+    public function options()
     {
         return $this->hasMany('App\VoteOption');
     }

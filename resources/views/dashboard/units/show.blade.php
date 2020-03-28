@@ -180,6 +180,97 @@
     </div>
 
 
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="kt-portlet kt-portlet--mobile">
+                <div class="kt-portlet__head">
+                    <div class="kt-portlet__head-label">
+                        <h3 class="kt-portlet__head-title kt-font-success"><i class="fa fa-vote-yea kt-font-success mr-2"></i>
+                            لیست پرداختی های واحد
+                        </h3>
+                    </div>
+
+                    <div style="" class="kt-portlet__head-toolbar">
+                        <div class="kt-portlet__head-toolbar-wrapper">
+                            <div class="dropdown dropdown-inline">
+                                <button style="font-size: 14px" type="button" class="btn btn-brand btn-sm" data-toggle="dropdown"
+                                        aria-haspopup="true" aria-expanded="false">
+                                    <i class="la la-plus"></i> ابزار ها و خروجی ها
+                                </button>
+                                <div class="dropdown-menu dropdown-menu-right">
+                                    <ul class="kt-nav">
+                                        <li class="kt-nav__section kt-nav__section--first">
+                                            <span class="kt-nav__section-text">انواع خروجی ها</span>
+                                        </li>
+                                        <li class="kt-nav__item">
+                                            <a href="#" class="kt-nav__link" id="export_print">
+                                                <i class="kt-nav__link-icon la la-print"></i>
+                                                <span class="kt-nav__link-text">چاپ</span>
+                                            </a>
+                                        </li>
+                                        <li class="kt-nav__item">
+                                            <a href="#" class="kt-nav__link" id="export_copy">
+                                                <i class="kt-nav__link-icon la la-copy"></i>
+                                                <span class="kt-nav__link-text">کپی</span>
+                                            </a>
+                                        </li>
+                                        <li class="kt-nav__item">
+                                            <a href="#" class="kt-nav__link" id="export_excel">
+                                                <i class="kt-nav__link-icon la la-file-excel-o"></i>
+                                                <span class="kt-nav__link-text">اکسل</span>
+                                            </a>
+                                        </li>
+                                        <li class="kt-nav__item">
+                                            <a href="#" class="kt-nav__link" id="export_csv">
+                                                <i class="kt-nav__link-icon la la-file-text-o"></i>
+                                                <span class="kt-nav__link-text">CSV</span>
+                                            </a>
+                                        </li>
+                                        <li class="kt-nav__item">
+                                            <a href="#" class="kt-nav__link" id="export_pdf">
+                                                <i class="kt-nav__link-icon la la-file-pdf-o"></i>
+                                                <span class="kt-nav__link-text">PDF</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="kt-portlet__body">
+                    <!--begin: Datatable -->
+                    <table style="font-family: iranyekan; width: 100%;" class="table table-striped table-bordered table-hover  display nowrap " id="m_table_3">
+                        <thead style="font-family: BYekan">
+                        <tr>
+                            <th style="min-width: 150px">عنوان صورتحساب</th>
+                            <th>مبلغ (ریال)</th>
+                            <th>کد</th>
+                            <th>تاریخ ایجاد</th>
+                            <th>تاریخ پرداخت</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        @foreach ($invoices->where('status', 'paid') as $invoice)
+                            <tr>
+                                <td>{{ $invoice->for }}</td>
+                                <td style="font-family: BYekan!important;">{{ number_format($invoice->amount) }}</td>
+                                <td>{{ $invoice->code }}</td>
+                                <td style="font-family: BYekan!important; direction: ltr">{{ jdate($invoice->created_at) }}</td>
+                                <td style="font-family: BYekan!important;direction: ltr">{{ jdate($invoice->updated_at) }}</td>
+                            </tr>
+                        @endforeach
+
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
     <div class="row">
@@ -281,97 +372,6 @@
 
 
 
-    <div class="row">
-        <div class="col-lg-12">
-            <div class="kt-portlet kt-portlet--mobile">
-                <div class="kt-portlet__head">
-                    <div class="kt-portlet__head-label">
-                        <h3 class="kt-portlet__head-title kt-font-success"><i class="fa fa-vote-yea kt-font-success mr-2"></i>
-                            لیست پرداختی های واحد
-                        </h3>
-                    </div>
-
-                    <div style="" class="kt-portlet__head-toolbar">
-                        <div class="kt-portlet__head-toolbar-wrapper">
-                            <div class="dropdown dropdown-inline">
-                                <button style="font-size: 14px" type="button" class="btn btn-brand btn-sm" data-toggle="dropdown"
-                                        aria-haspopup="true" aria-expanded="false">
-                                    <i class="la la-plus"></i> ابزار ها و خروجی ها
-                                </button>
-                                <div class="dropdown-menu dropdown-menu-right">
-                                    <ul class="kt-nav">
-                                        <li class="kt-nav__section kt-nav__section--first">
-                                            <span class="kt-nav__section-text">انواع خروجی ها</span>
-                                        </li>
-                                        <li class="kt-nav__item">
-                                            <a href="#" class="kt-nav__link" id="export_print">
-                                                <i class="kt-nav__link-icon la la-print"></i>
-                                                <span class="kt-nav__link-text">چاپ</span>
-                                            </a>
-                                        </li>
-                                        <li class="kt-nav__item">
-                                            <a href="#" class="kt-nav__link" id="export_copy">
-                                                <i class="kt-nav__link-icon la la-copy"></i>
-                                                <span class="kt-nav__link-text">کپی</span>
-                                            </a>
-                                        </li>
-                                        <li class="kt-nav__item">
-                                            <a href="#" class="kt-nav__link" id="export_excel">
-                                                <i class="kt-nav__link-icon la la-file-excel-o"></i>
-                                                <span class="kt-nav__link-text">اکسل</span>
-                                            </a>
-                                        </li>
-                                        <li class="kt-nav__item">
-                                            <a href="#" class="kt-nav__link" id="export_csv">
-                                                <i class="kt-nav__link-icon la la-file-text-o"></i>
-                                                <span class="kt-nav__link-text">CSV</span>
-                                            </a>
-                                        </li>
-                                        <li class="kt-nav__item">
-                                            <a href="#" class="kt-nav__link" id="export_pdf">
-                                                <i class="kt-nav__link-icon la la-file-pdf-o"></i>
-                                                <span class="kt-nav__link-text">PDF</span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-
-                </div>
-                <div class="kt-portlet__body">
-                    <!--begin: Datatable -->
-                    <table style="font-family: iranyekan; width: 100%;" class="table table-striped table-bordered table-hover  display nowrap " id="m_table_3">
-                        <thead style="font-family: BYekan">
-                        <tr>
-                            <th style="min-width: 150px">عنوان صورتحساب</th>
-                            <th>مبلغ (ریال)</th>
-                            <th>کد</th>
-                            <th>تاریخ ایجاد</th>
-                            <th>تاریخ پرداخت</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-
-                        @foreach ($invoices->where('status', 'paid') as $invoice)
-                            <tr>
-                                <td>{{ $invoice->for }}</td>
-                                <td style="font-family: BYekan!important;">{{ number_format($invoice->amount) }}</td>
-                                <td>{{ $invoice->code }}</td>
-                                <td style="font-family: BYekan!important; direction: ltr">{{ jdate($invoice->created_at) }}</td>
-                                <td style="font-family: BYekan!important;direction: ltr">{{ jdate($invoice->updated_at) }}</td>
-                            </tr>
-                        @endforeach
-
-
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </div>
 
 
 
@@ -383,9 +383,8 @@
                 <div class="kt-portlet__head">
                     <div class="kt-portlet__head-label">
                         <h3 class="kt-portlet__head-title kt-font-warning"><i class="la la-warning kt-font-warning mr-2"></i>
-                            لیست اخطاریه های واحد
+                            لیست جرایم واحد
                         </h3>
-                        <button style="margin-right: 20px; font-size: 14px" type="button" class="btn btn-sm btn-outline-success">ثبت اخطاریه</button>
                     </div>
 
                     <div style="" class="kt-portlet__head-toolbar">
@@ -439,27 +438,31 @@
 
                 </div>
                 <div class="kt-portlet__body">
+                    <p>جهت ویرایش و حذف صورتحساب صادر شده میتوانید از قسمت بالا اقدام فرمایید.</p>
                     <!--begin: Datatable -->
                     <table style="font-family: iranyekan; width: 100%;" class="table table-striped table-bordered table-hover  display nowrap " id="m_table_4">
                         <thead style="font-family: BYekan">
                         <tr>
-                            <th style="min-width: 150px">حوزه اخطاریه</th>
-                            <th>ارسال کتبی</th>
-                            <th>تاریخ ایجاد</th>
-                            <th>تاریخ آخرین ویرایش</th>
+                            <th style="min-width: 150px">نوع</th>
+                            <th>تاریخ </th>
+                            <th>ساعت </th>
+                            <th>توضیحات </th>
+                            <th>تصویر </th>
+                            <th>تاریخ ثبت در سامانه</th>
                             <th style="min-width: 90px;">ویرایش</th>
                         </tr>
                         </thead>
                         <tbody>
 
-                        @foreach ($warnings as $warning)
+                        @foreach ($penalties as $penalty)
                             <tr>
-                                <td>{{ $warning->for }}</td>
-                                <td>{{ $warning->amount }}</td>
-                                <td>{{ $warning->code }}</td>
-                                <td>{{ $warning->created_at }}</td>
-                                <td>{{ $warning->updated_at }}</td>
-                                <td><a href="{{ route('warnings.edit', $warning->id) }}"><i class="flaticon-edit"></i></a></td>
+                                <td>{{ $penalty->type }}</td>
+                                <td>{{ $penalty->date }}</td>
+                                <td>{{ $penalty->time }}</td>
+                                <td>{{ $penalty->description }}</td>
+                                <td>{{ $penalty->picture }}</td>
+                                <td>{{ $penalty->created_at }}</td>
+                                <td><a href="{{ route('penalty.edit', $penalty->id) }}"><i class="flaticon-edit"></i></a></td>
                             </tr>
                         @endforeach
 

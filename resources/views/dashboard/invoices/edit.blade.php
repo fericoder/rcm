@@ -56,7 +56,7 @@
                             </div>
                             <div class="form-group row">
                                 <div class="col-lg-6">
-                                    <label>مبلغ:</label>
+                                    <label>مبلغ: (ریال)</label>
                                     <input type="text" name="amount" class="form-control" value="{{ $invoice->amount }}">
                                 </div>
                                 <div class="col-lg-6">

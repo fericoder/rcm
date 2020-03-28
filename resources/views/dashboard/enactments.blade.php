@@ -27,7 +27,7 @@
 
                                 <select style="direction: rtl; text-align: right;width: 100%;" class="form-control m-select2" id="m_select2_1" name="proceeding_id">
                                   @foreach ($proceedings as $proceeding)
-                                        <option value="{{ $proceeding->id }}">{{ $proceeding->number . '|' . $proceeding->date }}</option>
+                                        <option value="{{ $proceeding->id }}">{{ ' شماره جلسه: ' .  $proceeding->number . ' | ' . ' تاریخ جلسه: ' . $proceeding->date }}</option>
                                     @endforeach
                                 </select>
                                 </div>
@@ -38,7 +38,7 @@
                                 <div class="kt-input-icon">
                                     <select style="direction: rtl; text-align: right;width: 100%;" class="form-control m-select2" id="m_select2_2" name="user_id">
                                         @foreach ($users as $user)
-                                            <option value="{{ $user->id }}">{{ $user->fName . ' ' . $user->lName }}</option>
+                                            <option value="{{ $user->id }}">{{ $user->fullName }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -100,7 +100,7 @@
 
                             <div class="kt-pricing-1__btn">
                                 <h1 class="text-primary borj-font">
-                                    10 مصوبه
+                                    {{ $enactments->where('status', 'درحال انجام')->count() }} مصوبه
                                 </h1>
                             </div>
                         </div>
@@ -116,7 +116,7 @@
 
                             <div class="kt-pricing-1__btn">
                                 <h1 class="text-success borj-font">
-                                    10 مصوبه
+                                    {{ $enactments->where('status', 'انجام شده')->count() }} مصوبه
                                 </h1>
                             </div>
                         </div>
@@ -128,11 +128,11 @@
                                   " style="font-size:3rem;"></i></span>
                             </div>
 
-                            <h2 class="kt-pricing-1__subtitle mt-4">تعداد مصوبات معلق</h2>
+                            <h2 class="kt-pricing-1__subtitle mt-4">تعداد مصوبات بررسی نشده</h2>
 
                             <div class="kt-pricing-1__btn">
                                 <h1 class="text-danger borj-font">
-                                    10 مصوبه
+                                    {{ $enactments->where('status', 'بررسی نشده')->count() }} مصوبه
                                 </h1>
                             </div>
                         </div>
@@ -269,7 +269,7 @@
 
 
         <div class="row">
-            <div class="col-lg-12">
+            <div class="col-lg-6">
                 <div class="kt-portlet">
                     <div class="kt-portlet__head">
                         <div class="kt-portlet__head-label">
@@ -279,14 +279,14 @@
                         </div>
                     </div>
                     <div class="kt-portlet__body">
-                        <div style="min-width: auto!important; max-width: auto!important; height: 400px!important; margin: 0 auto!important;" id="members"></div>
+                        <div style="min-width: auto!important; max-width: 100%!important; height: 400px!important; margin: 0 auto!important;" id="members"></div>
                     </div>
                 </div>
             </div>
 
 
 
-            <div class="col-lg-12">
+            <div class="col-lg-6">
                 <div class="kt-portlet">
                     <div class="kt-portlet__head">
                         <div class="kt-portlet__head-label">
@@ -296,7 +296,7 @@
                         </div>
                     </div>
                     <div class="kt-portlet__body">
-                            <div style="min-width: auto; max-width: auto; height: 400px; margin: 0 auto" id="status"></div>
+                            <div style="min-width: auto!important; max-width: 100%!important; height: 400px!important; margin: 0 auto!important;" id="status"></div>
                     </div>
                 </div>
             </div>
@@ -398,7 +398,7 @@
                 series: {
                     dataLabels: {
                         enabled: true,
-                        format: '\u202B' + '{point.name}: {point.y:.1f}%', // \u202B is RLE char for RTL support
+                        format: '\u202B' + '{point.name}: {point.y:f}', // \u202B is RLE char for RTL support
                         enabled: true,
                         y: -5, //Optional
                         style: {
@@ -419,7 +419,7 @@
                     direction: 'rtl',
                 },
                 headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
-                pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:.2f}%</b> از کل<br/>'
+                pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:f}</b> از کل<br/>'
             },
 
             series: [
@@ -464,7 +464,7 @@
                 series: {
                     dataLabels: {
                         enabled: true,
-                        format: '\u202B' + '{point.name}: {point.y:.1f}%', // \u202B is RLE char for RTL support
+                        format: '\u202B' + '{point.name}: {point.y:f}', // \u202B is RLE char for RTL support
                         enabled: true,
                         y: -5, //Optional
                         style: {
@@ -485,7 +485,7 @@
                     direction: 'rtl',
                 },
                 headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
-                pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:.2f}%</b> از کل<br/>'
+                pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:f}</b> از کل<br/>'
             },
 
             series: [

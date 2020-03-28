@@ -33,9 +33,7 @@
                         </div>
 
                         <div class="kt-widget24__action pt-2">
-						<span class="kt-widget24__change kt-font-brand">
-							جهت مشاهده لیست تمامی صورتحساب ها اینجا کلیک کنید
-						</span>
+                            <a href="#notPaid"><span class="kt-widget24__change kt-font-brand">جهت مشاهده لیست تمامی صورتحساب ها اینجا کلیک کنید</span></a>
                         </div>
                     </div>
                     <!--end::New Orders-->
@@ -65,9 +63,7 @@
                         </div>
 
                         <div class="kt-widget24__action pt-2">
-						<span class="kt-widget24__change kt-font-brand">
-							جهت مشاهده لیست تمامی صورتحساب ها اینجا کلیک کنید
-						</span>
+                            <a href="#paid"><span class="kt-widget24__change kt-font-brand">جهت مشاهده لیست تمامی صورتحساب ها اینجا کلیک کنید</span></a>
                         </div>
                     </div>
                     <!--end::New Users-->
@@ -582,7 +578,10 @@
         </div>
     </div>
 
-    <div style="max-height: 400px; overflow: scroll" class="kt-portlet">
+
+
+
+    <div style="max-height: 400px; overflow: scroll; display: none" class="kt-portlet">
         <div class="kt-portlet__head">
             <div class="kt-portlet__head-label">
                 <h3 class="kt-portlet__head-title"><i class="fa fa-file-alt mr-2 borj-size"></i>
@@ -595,8 +594,6 @@
                 <li class="nav-item ">
                     <a class="nav-link active" data-toggle="tab" href="#kt_tabs_3_1"><i class="fa fa-user kt-font-success"></i>اعلان های عمومی</a>
                 </li>
-
-
 
                 <li class="nav-item">
                     <a class="nav-link" data-toggle="tab" href="#kt_tabs_3_3"><i class="fa fa-user-friends kt-font-danger"></i>اعلان های شخصی</a>
@@ -700,7 +697,7 @@
         </div>
     </div>
 
-    <div class="row">
+    <div id="notPaid" class="row">
         <div class="col-xl-12">
             <!--begin:: Widgets/New Users-->
             <div class="kt-portlet kt-portlet--mobile">
@@ -748,7 +745,7 @@
 
 
 
-    <div class="row">
+    <div id="paid" class="row">
         <div class="col-xl-12">
             <!--begin:: Widgets/New Users-->
             <div class="kt-portlet kt-portlet--mobile">
@@ -794,6 +791,87 @@
         </div>
 
     </div>
+
+
+
+    <div class="row">
+        <div class="col-xl-6">
+            <!--begin:: Widgets/Support Tickets -->
+            <div class="kt-portlet kt-portlet--mobile">
+                <div class="kt-portlet__head">
+                    <div class="kt-portlet__head-label">
+                        <h3 class="kt-portlet__head-title">
+                            اخطاریه های ثبت شده واحد شما
+                        </h3>
+                    </div>
+                </div>
+                <div class="kt-portlet__body">
+                    <div class="kt-widget3">
+                        <div class="kt-widget3__item">
+                            <div class="kt-widget3__header">
+                                <div class="kt-widget3__info">
+                                    <a href="#" class="kt-widget3__username">عنوان: راندن دوچرخه</a><br>
+                                    <span class="kt-widget3__time">10/11/11</span>
+                                </div>
+                                <span class="kt-widget3__status kt-font-danger">50000 تومان</span>
+                            </div>
+                            <div class="kt-widget3__body">
+                                <p class="kt-widget3__text">جهت مشاهده تصویر اینجا کلیک کنید.</p>
+                            </div>
+                        </div>
+
+
+
+
+
+                    </div>
+                </div>
+            </div>
+            <!--end:: Widgets/Support Tickets -->
+        </div>
+
+
+
+        <div class="col-xl-6">
+            <!--begin:: Widgets/Support Tickets -->
+            <div class="kt-portlet kt-portlet--mobile">
+                <div class="kt-portlet__head">
+                    <div class="kt-portlet__head-label">
+                        <h3 class="kt-portlet__head-title">
+                            تابلو اعلانات
+                        </h3>
+                    </div>
+                </div>
+                <div class="kt-portlet__body">
+                    <div class="kt-widget3">
+                        <div class="kt-widget3__item">
+                            <div class="kt-widget3__header">
+                                <div class="kt-widget3__info">
+                                    <a href="#" class="kt-widget3__username">عنوان: پرداخت شارژ</a><br>
+                                    <span class="kt-widget3__time">10/11/11</span>
+                                </div>
+                                <span class="kt-widget3__status kt-font-success">اعلان عمومی</span>
+                            </div>
+                            <div class="kt-widget3__body">
+                                <p class="kt-widget3__text">
+                                    لطفا نسبت به پرداخت شارژ دیماه از طریق درگاه اقدام نمایید.
+                                </p>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+                </div>
+            </div>
+            <!--end:: Widgets/Support Tickets -->
+        </div>
+
+
+    </div>
+
+
+
 
 @endsection
 

@@ -2,84 +2,33 @@
 
 namespace App\Http\Controllers\Dashboard;
 
+use App\Equipment;
 use App\Maintenance;
 use Illuminate\Http\Request;
 
 class MaintenanceController extends \App\Http\Controllers\Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    public function facilityIndex()
     {
-        return view('dashboard.maintenances');
+        $equipments = Equipment::where('complex_id', \Auth::user()->complex_id)->get();
+        $maintnances = Maintenance::where('complex_id', \Auth::user()->complex_id)->where('type', 'fality')->get();
+        return view('dashboard.maintenance.facility.index', compact('equipments', 'maintnances'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function facilityStore(Request $request)
     {
-        //
-    }
+        $validatedData = $request->validate([
+            'name' => 'required|unique:equipment',
+            'location' => 'required',
+        ]);
+        Equipment::create([
+            'name' => $request->name,
+            'location' => $request->location,
+            'complex_id' => \Auth::user()->complex_id,
+            'user_id' => \Auth::user()->id,
+        ]);
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Maintenance  $maintenance
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Maintenance $maintenance)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Maintenance  $maintenance
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Maintenance $maintenance)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Maintenance  $maintenance
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Maintenance $maintenance)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Maintenance  $maintenance
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Maintenance $maintenance)
-    {
-        //
+        alert()->success('تجهیز باموفقیت اضافه شد', 'اضافه شد');
+        return redirect()->back();
     }
 }

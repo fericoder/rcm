@@ -16,7 +16,7 @@ class ProceedingController extends \App\Http\Controllers\Controller
     public function index()
     {
         $proceedings = Proceeding::where('complex_id', \Auth::user()->complex_id)->get();
-        return view('dashboard.proceedings', compact('proceedings'));
+        return view('dashboard.proceedings.index', compact('proceedings'));
     }
 
     /**
@@ -32,14 +32,14 @@ class ProceedingController extends \App\Http\Controllers\Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(ProceedingRequest $request)
     {
         $file = $this->uploadFile($request->file);
         $complex_id = \Auth::user()->complex->id;
-        $date =substr($request->date,0,10);
+        $date = substr($request->date, 0, 10);
 
         $proceeding = new Proceeding;
         $proceeding->date = date('Y-m-d H:i:s', (int)$date);
@@ -56,7 +56,7 @@ class ProceedingController extends \App\Http\Controllers\Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Proceeding  $proceeding
+     * @param  \App\Proceeding $proceeding
      * @return \Illuminate\Http\Response
      */
     public function show(Proceeding $proceeding)
@@ -67,19 +67,22 @@ class ProceedingController extends \App\Http\Controllers\Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Proceeding  $proceeding
+     * @param  \App\Proceeding $proceeding
      * @return \Illuminate\Http\Response
      */
     public function edit(Proceeding $proceeding)
     {
-        //
+
+        dd($proceeding);
+        return view('dashboard.proceedings.edit', compact('proceeding'));
+
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Proceeding  $proceeding
+     * @param  \Illuminate\Http\Request $request
+     * @param  \App\Proceeding $proceeding
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Proceeding $proceeding)
@@ -90,11 +93,28 @@ class ProceedingController extends \App\Http\Controllers\Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Proceeding  $proceeding
+     * @param  \App\Proceeding $proceeding
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Proceeding $proceeding)
+    public function destroy(Request $request)
     {
-        //
+
+        if (\Gate::denies('admin')) {
+            alert()->warning('عدم دسترسی');
+            return redirect()->back();
+        }
+
+        $proceeding = Proceeding::find($request->id);
+        if ($proceeding->complex_id == \Auth::user()->complex_id){
+            $proceeding->delete();
+            alert()->success('صورتجلسه با موفقیت حذف شد', 'حذف شد');
+            return redirect()->back();
+        }else{
+            alert()->warning('عدم دسترسی');
+            return redirect()->back();
+        }
+
     }
+
+
 }
