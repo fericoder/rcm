@@ -83,7 +83,7 @@
                         <h3 class="kt-portlet__head-title borj-color">
                             لیست واحد ها و کارتابل شخصی
                         </h3>
-                        <a style="display: none;" href="{{ route('units.create') }}"><button data-toggle="modal" data-target=" #add" style="margin-right: 20px;font-size: 13px" type="button" class="btn btn-success btn-wide btn-elevate btn-elevate-air">افزودن واحد</button></a>
+                        <a href="{{ route('units.create') }}"><button data-toggle="modal" data-target=" #add" style="margin-right: 20px;font-size: 13px" type="button" class="btn btn-success btn-wide btn-elevate btn-elevate-air">افزودن واحد</button></a>
                     </div>
 
                     <div style="" class="kt-portlet__head-toolbar">
