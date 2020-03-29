@@ -11,9 +11,5 @@ class IndexController extends \App\Http\Controllers\Controller
         return view('dashboard.index');
     }
 
-    public function information()
-    {
-        return view('dashboard.information');
-    }
 
 }

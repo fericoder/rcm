@@ -20,6 +20,8 @@ class CreateUsersTable extends Migration
             $table->string('floor');
             $table->string('unit');
             $table->string('code')->nullable();
+            $table->string('parking_code')->nullable();
+            $table->unsignedInteger('parking_count')->nullable();
             $table->unsignedInteger('complex_id');
             $table->float('area')->nullable();
             $table->unsignedInteger('charge')->nullable();

@@ -17,12 +17,21 @@ Route::get('/about', 'AppController@about')->name('app.about');
 Route::get('/contact', 'AppController@contact')->name('app.contact');
 Route::get('/services', 'AppController@services')->name('app.services');
 
+Route::get('/a/{complex}', 'WebsiteController@index')->name('website.index');
+
 
 // Add middleware auth
 Route::namespace('Dashboard')->prefix('dashboard')->middleware('auth', 'configuration')->group(function () {
+
+    // Website Configuratuon
+    Route::get('configuration/website', 'ComplexController@WebsiteForm')->name('dashboard.configuration.website');
+
     Route::resource('configuration', 'ComplexController');
+
+
+
     Route::get('index', 'IndexController@index')->name('dashboard.index');
-    Route::get('information', 'IndexController@information')->name('dashboard.information');
+    Route::get('information', 'InformationController@index')->name('dashboard.information');
     Route::resource('units', 'UnitController');
     Route::resource('proceedings', 'ProceedingController');
     Route::get('proceedings/delete/{id}', 'ProceedingController@destroy')->name('proceedings.delete');

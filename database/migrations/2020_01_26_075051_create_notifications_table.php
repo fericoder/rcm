@@ -15,6 +15,10 @@ class CreateNotificationsTable extends Migration
     {
         Schema::create('notifications', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->unsignedInteger('complex_id');
+            $table->unsignedInteger('user_id');
+            $table->text('content');
+            $table->enum('type', ['private', 'public']);
             $table->timestamps();
         });
     }
