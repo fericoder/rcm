@@ -31,7 +31,11 @@ Route::namespace('Dashboard')->prefix('dashboard')->middleware('auth', 'configur
 
 
     Route::get('index', 'IndexController@index')->name('dashboard.index');
+
+    //Information Routes
     Route::get('information', 'InformationController@index')->name('dashboard.information');
+
+
     Route::resource('units', 'UnitController');
     Route::resource('proceedings', 'ProceedingController');
     Route::get('proceedings/delete/{id}', 'ProceedingController@destroy')->name('proceedings.delete');
