@@ -9,7 +9,7 @@
     </style>
 
 
-        <div style="display: none" class="alert alert-light alert-elevate" role="alert">
+        <div style="" class="alert alert-light alert-elevate" role="alert">
             <div class="alert-icon"><i class="flaticon-warning kt-font-danger"></i></div>
             <div class="alert-text">
                 <a href="{{ route('units.create') }}"> در این ماژول میتوانید واحد های متجمع خود را مدیریت نمایید. جهت افزودن واحد اینجا کلیک نمایید.</a>
