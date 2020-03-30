@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>برج &mdash; ورود</title>
+    <title> {{ $complex->name }} </title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -55,11 +55,11 @@
                         <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
                             <li><a href="#home-section" class="nav-link">صفحه اصلی</a></li>
                             <li><a href="#about-section" class="nav-link">درباره</a></li>
-                            <li><a href="#howitworks-section" class="nav-link">خدمات</a></li>
-                            <li><a href="#gallery-section" class="nav-link">گالری تصاویر</a></li>
+                            <li><a href="#howitworks-section" class="nav-link">امکانات</a></li>
+                            <li><a href="#gallery-section" class="nav-link">تصاویر</a></li>
                             <li><a href="#team-section" class="nav-link">تیم اجرایی</a></li>
-                            <li><a href="#features-section" class="nav-link">امکانات</a></li>
                             <li><a href="#contact-section" class="nav-link">تماس باما</a></li>
+                            <li><a href="/login" class="nav-link">ورود به سامانه</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -74,15 +74,19 @@
 
 
 
-    <div class="site-blocks-cover overlay" style="background-image: url(images/hero_1.jpg);" data-aos="fade" id="home-section">
+    <div class="site-blocks-cover overlay" style="background-image: url(/website/images/1.jpg);" data-aos="fade" id="home-section">
 
 
         <div class="container">
             <div class="row align-items-center justify-content-center">
                 <div class="col-md-6 mt-lg-5 text-center">
-                    <h1>Buy and sell real estate properties</h1>
-                    <p class="mb-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam assumenda ea quo cupiditate facere deleniti fuga officia.</p>
-
+                    <h1>{{ $complex->name }}</h1>
+                    <p class="mb-5">اوج آرامش در بهترین برج منطقه ۲۲ تهران</p>
+                    <div class="row form-group">
+                        <div class="col-md-12">
+                            <a href="/login"></a><button class="btn btn-primary btn-md text-white" />ورود به سامانه مدیریت {{ $complex->name }}</div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -106,8 +110,8 @@
                     </div>
                     <div class="custom-direction">
 
-                        <a href="#" class="custom-next">بعدی</a>
-                        <a href="#" class="custom-prev">قبلی</a>
+                        <a href="#" class="custom-next"><بعدی | </a>
+                        <a href="#" class="custom-prev">قبلی></a>
                     </div>
 
                 </div>
@@ -116,12 +120,6 @@
                     <h2 class="section-title mb-3">درباره {{ $complex->name }}</h2>
                     <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
                     <p>Est qui eos quasi ratione nostrum excepturi id recusandae fugit omnis ullam pariatur itaque nisi voluptas impedit  Quo suscipit omnis iste velit maxime.</p>
-
-                    <ul class="list-unstyled ul-check success">
-                        <li>تراس</li>
-                        <li>گیم نت</li>
-                        <li>مهد کودک</li>
-                    </ul>
 
                 </div>
             </div>
@@ -138,49 +136,153 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-4 p-3 text-center">
+                <div class="col-md-4 p-3 text-center" data-aos="fade-up">
                     <div class="pr-5">
                         <i class="custom-icon fa fa-shopping-basket text-primary"></i>
                         <h3 class="text-dark">هایپرمارکت</h3>
                     </div>
                 </div>
 
-                <div class="col-md-4 p-3 text-center">
+                <div class="col-md-4 p-3 text-center" data-aos="fade-up">
                     <div class="pr-5">
                         <i class="custom-icon fa fa-film text-primary"></i>
                         <h3 class="text-dark">سینما</h3>
                     </div>
                 </div>
 
-                <div class="col-md-4 p-3 text-center">
+                <div class="col-md-4 p-3 text-center" data-aos="fade-up">
                     <div class="pr-5">
                         <i class="custom-icon fa fa-dribbble text-primary"></i>
-                        <h3 class="text-dark">سالن بدنسازی و بیلیارد</h3>
+                        <h3 class="text-dark">سالن بدنسازی</h3>
                     </div>
                 </div>
             </div>
+
+
+
+
             <div class="row">
-                <div class="col-md-4 p-3 text-center">
+                <div class="col-md-4 p-3 text-center" data-aos="fade-up">
                     <div class="pr-5">
                         <i class="custom-icon fa fa-child text-primary"></i>
                         <h3 class="text-dark">مهدکودک</h3>
                     </div>
                 </div>
 
-                <div class="col-md-4 p-3 text-center">
+                <div class="col-md-4 p-3 text-center" data-aos="fade-up">
                     <div class="pr-5">
                         <i class="custom-icon fa fa-plug text-primary"></i>
                         <h3 class="text-dark">برق اضطراری</h3>
                     </div>
                 </div>
 
-                <div class="col-md-4 p-3 text-center">
+                <div class="col-md-4 p-3 text-center" data-aos="fade-up">
                     <div class="pr-5">
                         <i class="custom-icon fa fa-coffee text-primary"></i>
                         <h3 class="text-dark">کافی شاپ</h3>
                     </div>
                 </div>
             </div>
+
+
+
+
+            <div class="row">
+                <div class="col-md-4 p-3 text-center" data-aos="fade-up">
+                    <div class="pr-5">
+                        <i class="custom-icon flaticon-home text-primary"></i>
+                        <h3 class="text-dark">لابی مجلل</h3>
+                    </div>
+                </div>
+
+                <div class="col-md-4 p-3 text-center" data-aos="fade-up">
+                    <div class="pr-5">
+                        <i class="custom-icon fa fa-female text-primary"></i>
+                        <h3 class="text-dark">آرایشگاه زنانه</h3>
+                    </div>
+                </div>
+
+                <div class="col-md-4 p-3 text-center" data-aos="fade-up">
+                    <div class="pr-5">
+                        <i class="custom-icon fa fa-male text-primary"></i>
+                        <h3 class="text-dark">آرایشگاه مردانه</h3>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="row">
+                <div class="col-md-4 p-3 text-center" data-aos="fade-up">
+                    <div class="pr-5">
+                        <i class="custom-icon fa fa-bed text-primary"></i>
+                        <h3 class="text-dark">اتاق ماساژ</h3>
+                    </div>
+                </div>
+
+                <div class="col-md-4 p-3 text-center" data-aos="fade-up">
+                    <div class="pr-5">
+                        <i class="custom-icon flaticon-flat text-primary"></i>
+                        <h3 class="text-dark">پنت هاوس</h3>
+                    </div>
+                </div>
+
+                <div class="col-md-4 p-3 text-center" data-aos="fade-up">
+                    <div class="pr-5">
+                        <i class="custom-icon fa fa-pencil text-primary"></i>
+                        <h3 class="text-dark">سالن تدریس خصوصی</h3>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-md-4 p-3 text-center" data-aos="fade-up">
+                    <div class="pr-5">
+                        <i class="custom-icon flaticon-mobile-phone text-primary"></i>
+                        <h3 class="text-dark">پرداخت شارژ از طریق موبایل</h3>
+                    </div>
+                </div>
+
+                <div class="col-md-4 p-3 text-center" data-aos="fade-up">
+                    <div class="pr-5">
+                        <i class="custom-icon fa fa-sign-language text-primary"></i>
+                        <h3 class="text-dark">سالن آمفی تئاتر</h3>
+                    </div>
+                </div>
+
+                <div class="col-md-4 p-3 text-center" data-aos="fade-up">
+                    <div class="pr-5">
+                        <i class="custom-icon fa fa-book text-primary"></i>
+                        <h3 class="text-dark">کتابخانه عمومی</h3>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-md-4 p-3 text-center" data-aos="fade-up">
+                    <div class="pr-5">
+                        <i class="custom-icon fa fa-trello text-primary"></i>
+                        <h3 class="text-dark">آسانسور باربری</h3>
+                    </div>
+                </div>
+
+                <div class="col-md-4 p-3 text-center" data-aos="fade-up">
+                    <div class="pr-5">
+                        <i class="custom-icon flaticon-home text-primary"></i>
+                        <h3 class="text-dark">سیستم BMS</</h3>
+                    </div>
+                </div>
+
+                <div class="col-md-4 p-3 text-center" data-aos="fade-up">
+                    <div class="pr-5">
+                        <i class="custom-icon fa fa-fire-extinguisher text-primary"></i>
+                        <h3 class="text-dark">سیستم اعلام و اطفا حریق</h3>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 
@@ -222,72 +324,23 @@
             <div class="row mb-5">
                 <div class="col-md-7 text-left">
                     <h2 class="section-title mb-3">تیم اجرایی</h2>
-                    <p class="lead">دراین قسمت لیست تیم اجرایی و هیات مدیره را مشاهده مینمایید</p>
                 </div>
             </div>
             <div class="row">
 
-
-                <div class="col-md-6 col-lg-3 mb-3">
-                    <div class="team-member">
-                        <figure>
-                            <img src="/website/images/person_5.jpg" alt="Image" class="img-fluid">
-                        </figure>
-                        <div class="p-3">
-                            <h3 class="mb-2">احمد رحمانی</h3>
-                            <span class="position">خزانه دار</span>
+                @foreach ($personnels as $personnel)
+                    <div class="col-md-6 col-lg-3 mb-3">
+                        <div class="team-member">
+                            <figure>
+                                <img src="{{ $personnel->picture }}" alt="Image" class="img-fluid">
+                            </figure>
+                            <div class="p-3">
+                                <h3 class="mb-2">{{ $personnel->fullName }}</h3>
+                                <span class="position">{{ $personnel->position }}</span>
+                            </div>
                         </div>
                     </div>
-                </div>
-
-
-                <div class="col-md-6 col-lg-3 mb-3">
-                    <div class="team-member">
-                        <figure>
-                            <img src="/website/images/person_5.jpg" alt="Image" class="img-fluid">
-                        </figure>
-                        <div class="p-3">
-                            <h3 class="mb-2">احمد رحمانی</h3>
-                            <span class="position">خزانه دار</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-6 col-lg-3 mb-3">
-                    <div class="team-member">
-                        <figure>
-                            <img src="/website/images/person_5.jpg" alt="Image" class="img-fluid">
-                        </figure>
-                        <div class="p-3">
-                            <h3 class="mb-2">احمد رحمانی</h3>
-                            <span class="position">خزانه دار</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-6 col-lg-3 mb-3">
-                    <div class="team-member">
-                        <figure>
-                            <img src="/website/images/person_5.jpg" alt="Image" class="img-fluid">
-                        </figure>
-                        <div class="p-3">
-                            <h3 class="mb-2">احمد رحمانی</h3>
-                            <span class="position">خزانه دار</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-6 col-lg-3 mb-3">
-                    <div class="team-member">
-                        <figure>
-                            <img src="/website/images/person_5.jpg" alt="Image" class="img-fluid">
-                        </figure>
-                        <div class="p-3">
-                            <h3 class="mb-2">احمد رحمانی</h3>
-                            <span class="position">خزانه دار</span>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
 
 
 
@@ -301,192 +354,6 @@
 
 
 
-    <section class="site-section border-bottom bg-light" id="features-section">
-        <div class="container">
-            <div class="row mb-5">
-                <div class="col-12 text-center">
-                    <h2 class="section-title mb-3">امکانات</h2>
-                </div>
-            </div>
-            <div class="row align-items-stretch">
-                <div class="col-md-6 col-lg-4 mb-4 mb-lg-4" data-aos="fade-up">
-                    <div class="unit-4 d-flex">
-                        <div class="unit-4-icon mr-4"><span class="text-primary flaticon-house" style="padding-left:10px;"></span></div>
-                        <div>
-                            <h3>تعداد واحدها</h3>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis quis molestiae vitae eligendi at.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 mb-4 mb-lg-4" data-aos="fade-up" data-aos-delay="100">
-                    <div class="unit-4 d-flex">
-                        <div class="unit-4-icon mr-4"><span class="text-primary flaticon-coin" style="padding-left:10px;"></span></div>
-                        <div>
-                            <h3>شارژ</h3>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis quis molestiae vitae eligendi at.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 mb-4 mb-lg-4" data-aos="fade-up" data-aos-delay="200">
-                    <div class="unit-4 d-flex">
-                        <div class="unit-4-icon mr-4"><span class="text-primary flaticon-home" style="padding-left:10px;"></span></div>
-                        <div>
-                            <h3>لابی</h3>
-                            <p>حضور لابی‌من یا نگهبان لابی برای افزایش امنیت ساختمان به شکل ۲۴ ساعته است.</p>
-                        </div>
-                    </div>
-                </div>
-
-
-                <div class="col-md-6 col-lg-4 mb-4 mb-lg-4" data-aos="fade-up" data-aos-delay="300">
-                    <div class="unit-4 d-flex">
-                        <div class="unit-4-icon mr-4"><i class="text-primary fa fa-female" style="padding-left:10px; font-size: 3rem;"></i></div>
-                        <div>
-                            <h3>آرایشگاه زنانه</h3>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis quis molestiae vitae eligendi at.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 mb-4 mb-lg-4" data-aos="fade-up" data-aos-delay="100">
-                    <div class="unit-4 d-flex">
-                        <div class="unit-4-icon mr-4"><i class="text-primary fa fa-male" style="padding-left:10px; font-size: 3rem;"></i></div>
-                        <div>
-                            <h3>آرایشگاه مردانه</h3>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis quis molestiae vitae eligendi at.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 mb-4 mb-lg-4" data-aos="fade-up" data-aos-delay="200">
-                    <div class="unit-4 d-flex">
-                        <div class="unit-4-icon mr-4"><i class="text-primary fa fa-bed" style="padding-left:10px; font-size: 3rem;"></i></div>
-                        <div>
-                            <h3>اتاق ماساژ</h3>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis quis molestiae vitae eligendi at.</p>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-            <div class="row align-items-stretch">
-                <div class="col-md-6 col-lg-4 mb-4 mb-lg-4" data-aos="fade-up">
-                    <div class="unit-4 d-flex">
-                        <div class="unit-4-icon mr-4"><span class="text-primary flaticon-flat" style="padding-left:10px;"></span></div>
-                        <div>
-                            <h3>پنت هاوس</h3>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis quis molestiae vitae eligendi at.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 mb-4 mb-lg-4" data-aos="fade-up" data-aos-delay="400">
-                    <div class="unit-4 d-flex">
-                        <div class="unit-4-icon mr-4"><span class="text-primary flaticon-location" style="padding-left:10px;"></span></div>
-                        <div>
-                            <h3>موقعیت جغرافیایی و دسترسی</h3>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis quis molestiae vitae eligendi at.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 mb-4 mb-lg-4" data-aos="fade-up" data-aos-delay="500">
-                    <div class="unit-4 d-flex">
-                        <div class="unit-4-icon mr-4"><span class="text-primary flaticon-mobile-phone" style="padding-left:10px;"></span></div>
-                        <div>
-                            <h3>پرداخت شارژ از طریق موبایل</h3>
-                            <p>حضور لابی‌من یا نگهبان لابی برای افزایش امنیت ساختمان به شکل ۲۴ ساعته است.</p>
-                        </div>
-                    </div>
-                </div>
-
-
-                <div class="col-md-6 col-lg-4 mb-4 mb-lg-4" data-aos="fade-up" data-aos-delay="300">
-                    <div class="unit-4 d-flex">
-                        <div class="unit-4-icon mr-4"><i class="text-primary fa fa-pencil" style="padding-left:10px; font-size: 3rem;"></i></div>
-                        <div>
-                            <h3>سالن تدریس خصوصی</h3>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis quis molestiae vitae eligendi at.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 mb-4 mb-lg-4" data-aos="fade-up" data-aos-delay="400">
-                    <div class="unit-4 d-flex">
-                        <div class="unit-4-icon mr-4"><i class="text-primary fa fa-sign-language" style="padding-left:10px; font-size: 3rem;"></i></div>
-                        <div>
-                            <h3>سالن آمفی تئاتر</h3>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis quis molestiae vitae eligendi at.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 mb-4 mb-lg-4" data-aos="fade-up" data-aos-delay="500">
-                    <div class="unit-4 d-flex">
-                        <div class="unit-4-icon mr-4"><i class="text-primary fa fa-book" style="padding-left:10px; font-size: 3rem;"></i></div>
-                        <div>
-                            <h3>کتابخانه عمومی</h3>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis quis molestiae vitae eligendi at.</p>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-            <div class="row align-items-stretch">
-                <div class="col-md-6 col-lg-4 mb-4 mb-lg-4" data-aos="fade-up">
-                    <div class="unit-4 d-flex">
-                        <div class="unit-4-icon mr-4"><i class="text-primary fa fa-columns" style="padding-left:10px; font-size: 3rem;"></i></div>
-                        <div>
-                            <h3>شش لاین آسانسور</h3>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis quis molestiae vitae eligendi at.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 mb-4 mb-lg-4" data-aos="fade-up" data-aos-delay="100">
-                    <div class="unit-4 d-flex">
-                        <div class="unit-4-icon mr-4"><i class="text-primary fa fa-trello" style="padding-left:10px; font-size: 3rem;"></i></div>
-                        <div>
-                            <h3>آسانسور باربری</h3>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis quis molestiae vitae eligendi at.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 mb-4 mb-lg-4" data-aos="fade-up" data-aos-delay="200">
-                    <div class="unit-4 d-flex">
-                        <div class="unit-4-icon mr-4"><span class="text-primary flaticon-home" style="padding-left:10px;"></span></div>
-                        <div>
-                            <h3>سیستم BMS</h3>
-                            <p>حضور لابی‌من یا نگهبان لابی برای افزایش امنیت ساختمان به شکل ۲۴ ساعته است.</p>
-                        </div>
-                    </div>
-                </div>
-
-
-                <div class="col-md-6 col-lg-4 mb-4 mb-lg-4" data-aos="fade-up" data-aos-delay="300">
-                    <div class="unit-4 d-flex">
-                        <div class="unit-4-icon mr-4"><i class="text-primary fa fa-fire-extinguisher" style="padding-left:10px;  font-size: 3rem;"></i></div>
-                        <div>
-                            <h3>سیستم اعلام و اطفا حریق</h3>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis quis molestiae vitae eligendi at.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 mb-4 mb-lg-4" data-aos="fade-up" data-aos-delay="400">
-                    <div class="unit-4 d-flex">
-                        <div class="unit-4-icon mr-4"><i class="text-primary fa fa-users" style="padding-left:10px; font-size: 3rem;"></i></div>
-                        <div>
-                            <h3>سالن اجتماعات مجهز</h3>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis quis molestiae vitae eligendi at.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 mb-4 mb-lg-4" data-aos="fade-up" data-aos-delay="500">
-                    <div class="unit-4 d-flex">
-                        <div class="unit-4-icon mr-4"><i class="text-primary fa fa-unlock" style="padding-left:10px; font-size: 3rem;"></i></div>
-                        <div>
-                            <h3>درب ورودی ریموت دار</h3>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis quis molestiae vitae eligendi at.</p>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
 
     <section class="site-section testimonial-wrap" id="testimonials-section">
         <div class="container">
@@ -574,24 +441,24 @@
 
                     <form action="#" class="p-5 bg-white">
 
-                        <h2 class="h4 text-black mb-3">تماس باما</h2>
+                        <h2 class="h4 text-black mb-5">تماس باما:</h2>
 
                         <div class="row form-group">
                             <div class="col-md-6 mb-3 mb-md-0">
                                 <label class="text-black" for="fname">نام و نام خانوادگی</label>
-                                <input type="text" id="fname" class="form-control">
+                                <input type="text" name="fullName" class="form-control">
                             </div>
                             <div class="col-md-6">
                                 <label class="text-black" for="lname">تلفن</label>
-                                <input type="text" id="lname" class="form-control">
+                                <input type="text" name="phone" class="form-control">
                             </div>
                         </div>
 
 
                         <div class="row form-group">
                             <div class="col-md-12">
-                                <label class="text-black" for="message">پیام</label>
-                                <textarea name="message" id="message" cols="30" rows="7" class="form-control" placeholder="لطفا پیام خود را وارد کنید"></textarea>
+                                <label class="text-black" for="message">متن پیام:</label>
+                                <textarea style="font-family: BYekan" name="message" cols="30" rows="7" class="form-control" placeholder="لطفا متن پیام خود را وارد کنید"></textarea>
                             </div>
                         </div>
 
@@ -607,15 +474,12 @@
                 <div class="col-md-5">
 
                     <div class="p-4 mb-3 bg-white">
-                        <p class="mb-0 font-weight-bold">آدرس</p>
+                        <p class="mb-0 font-weight-bold">آدرس:</p>
                         <p class="mb-4 byekan">{{ $complex->address }}</p>
 
-                        <p class="mb-0 font-weight-bold">Phone</p>
-                        <p class="mb-4"><a href="#">+1 232 3235 324</a></p>
+                        <p class="mb-4 font-weight-bold">نشانی {{ $complex->name }} در نقشه:</p>
 
-                        <p class="mb-0 font-weight-bold">Email Address</p>
-                        <p class="mb-0"><a href="#">youremail@domain.com</a></p>
-
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4166.674066118609!2d51.263574953699!3d35.744509970444035!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x893034dc88e3c66f!2sOlympic&#39;s%20Twin%20Towers!5e0!3m2!1sen!2s!4v1585482854029!5m2!1sen!2s" width="400" height="375" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
                     </div>
 
                 </div>
@@ -631,7 +495,7 @@
                     <div class="border-top pt-5">
                         <p>
                             <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                             تمامی حقوق محفوظ می باشد.  <br>
+                             تمامی حقوق محفوظ برای {{ $complex->name }}می باشد.  <br>
                             قدرت گرفته از سامانه: <a href="" target="_blank" >مدیریت محتمع مسکونی</a>
                             <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                         </p>

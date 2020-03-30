@@ -16,7 +16,7 @@ class CreateEnactmentsTable extends Migration
         Schema::create('enactments', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedInteger('complex_id');
-            $table->unsignedInteger('proceeding_id');
+            $table->bigInteger('proceeding_id')->unsigned();
             $table->unsignedInteger('number');
             $table->text('description');
             $table->unsignedInteger('user_id');
@@ -24,7 +24,13 @@ class CreateEnactmentsTable extends Migration
             $table->text('resualt')->nullable();
             $table->enum('status', ['انجام شده', 'درحال انجام', 'معلق', 'لغو شده', 'بررسی نشده'])->default('بررسی نشده');
             $table->timestamps();
+
+
+            $table->foreign('proceeding_id')->references('id')->on('proceedings')->onDelete('cascade');
+
         });
+
+
     }
 
     /**

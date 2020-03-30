@@ -81,6 +81,11 @@
             font-family: LineAwesome!important;
         }
 
+        .alert.alert-danger{
+            background: #ca1752!important;
+            border: 1px solid #ca1652!important;
+            color: #fff!important;
+        }
     </style>
 @yield('headerScripts')
 
@@ -228,14 +233,14 @@
 
                         <li class="kt-menu__item {{ request()->routeIs('*gallery*') ? 'kt-menu__item--active' : ''  }}" aria-haspopup="true" ><a href="{{ route('gallery.index') }}" class="kt-menu__link"><span class="kt-menu__link-icon"><i class="fa fa-images"></i></span><span class="kt-menu__link-text">گالری تصاویر</span></a></li>
 
-                        <li class="kt-menu__item  kt-menu__item--submenu {{ request()->routeIs('configuration*') ? 'kt-menu__item--active kt-menu__item--open' : ''  }} {{ request()->routeIs('permission-requests.index') ? 'kt-menu__item--active kt-menu__item--open' : ''  }} {{ request()->routeIs('traffic.index') ? 'kt-menu__item--active kt-menu__item--open' : ''  }} " aria-haspopup="true" data-ktmenu-submenu-toggle="hover"><a href="javascript:;" class="kt-menu__link kt-menu__toggle"><span class="kt-menu__link-icon"><i class="fa fa-user-tie"></i></span><span class="kt-menu__link-text">مدیریت سامانه</span><i class="kt-menu__ver-arrow la la-angle-right"></i></a>
+                        <li class="kt-menu__item  kt-menu__item--submenu {{ request()->routeIs('*configuration*') ? 'kt-menu__item--active kt-menu__item--open' : ''  }} {{ request()->routeIs('permission-requests.index') ? 'kt-menu__item--active kt-menu__item--open' : ''  }} {{ request()->routeIs('traffic.index') ? 'kt-menu__item--active kt-menu__item--open' : ''  }} " aria-haspopup="true" data-ktmenu-submenu-toggle="hover"><a href="javascript:;" class="kt-menu__link kt-menu__toggle"><span class="kt-menu__link-icon"><i class="fa fa-user-tie"></i></span><span class="kt-menu__link-text">مدیریت سامانه</span><i class="kt-menu__ver-arrow la la-angle-right"></i></a>
                             <div class="kt-menu__submenu "><span class="kt-menu__arrow"></span>
                                 <ul class="kt-menu__subnav">
                                     <li class="kt-menu__item  kt-menu__item--parent " aria-haspopup="true"><span class="kt-menu__link"><span class="kt-menu__link-text">مدیریت سامانه</span></span>
                                     </li>
                                     <li class="kt-menu__item {{ request()->routeIs('configuration*') ? 'kt-menu__item--active' : ''  }}" aria-haspopup="true"><a href="{{ route('configuration.index') }}" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">تنظیمات اولیه</span></a></li>
                                     <li class="kt-menu__item {{ request()->routeIs('configuration*') ? 'kt-menu__item--active' : ''  }}" aria-haspopup="true"><a href="{{ route('configuration.index') }}" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">لیست جرایم</span></a></li>
-                                    <li class="kt-menu__item {{ request()->routeIs('configuration/website*') ? 'kt-menu__item--active' : ''  }}" aria-haspopup="true"><a href="{{ route('dashboard.configuration.website') }}" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">تنظیمات وبسایت</span></a></li>
+                                    <li class="kt-menu__item {{ request()->routeIs('*website*') ? 'kt-menu__item--active' : ''  }}" aria-haspopup="true"><a href="{{ route('dashboard.configuration.website') }}" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">تنظیمات وبسایت</span></a></li>
                                     <li class="kt-menu__item {{ request()->routeIs('notifications.index') ? 'kt-menu__item--active' : ''  }}" aria-haspopup="true"><a href="{{ route('notifications.index') }}" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">اعلان ها</span></a></li>
                                     <li class="kt-menu__item {{ request()->routeIs('permission-requests.index') ? 'kt-menu__item--active' : ''  }}" aria-haspopup="true"><a href="{{ route('permission-requests.index') }}" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">مجوزها</span></a></li>
                                     <li class="kt-menu__item {{ request()->routeIs('traffic.index') ? 'kt-menu__item--active' : ''  }}" aria-haspopup="true"><a href="{{ route('traffic.index') }}" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">ترددها</span></a></li>
@@ -1196,13 +1201,23 @@
 <script src="/dashboard/assets/plugins/custom/highcharts/solid-gauge.js"></script>
 
 <script src="/dashboard/assets/js/sweetalert.min.js"></script>
-<script src="/vendors/datepicker/js/persianDatepicker.js"></script>
-
+<link rel="stylesheet" href="/dashboard/assets/css/persian-datepicker.min.css"/>
+<script src="/dashboard/assets/js/persian-date.min.js"></script>
+<script src="/dashboard/assets/js/persian-datepicker.min.js"></script>
+<script src="/dashboard/assets/js/persian-date.min.js" type="text/javascript"></script>
 <script>
-    $(function() {
-        $(".date").persianDatepicker();
-    });
+    $(document).ready(function() {
+        $(".dp").pDatepicker({
+            altField: '.observer',
+            timePicker: {
+                enabled: true,
+                meridiem: {
+                    enabled: true
+                }
+            }
 
+        });
+    });
 </script>
 @include('sweet::alert')
 @yield('footerScripts')

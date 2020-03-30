@@ -38,22 +38,23 @@
                 <!--begin: Datatable -->
                         <form action="{{ route('proceedings.update', $proceeding->id) }}" method="post" enctype="multipart/form-data">
                             @csrf
-
+                            @method('PATCH')
                             <div class="modal-body">
                                 <div class="form-group row">
                                     <div class="col-lg-6">
                                         <label>تاریخ جلسه:</label>
-                                        <input class="form-control dp" >
+                                        <input value="{{ $proceeding->date }}" class="form-control dp" >
                                         <input type="hidden" value="{{ $proceeding->date }}" name="date" class="observer" >
+                                        <input type="hidden" style="display: none;" value="{{ $proceeding->id }}" name="id"  >
                                     </div>
                                     <div class="col-lg-6">
                                         <label class="">نوع جلسه:</label>
 
                                         <div class="kt-input-icon">
                                             <select name="type" class="form-control" id="type">
-                                                <option value="هیات مدیره">هیات مدیره</option>
-                                                <option value="مجمع">مجمع</option>
-                                                <option value="سایر">سایر</option>
+                                                <option {{ $proceeding->type == 'هیات مدیره' ? 'selected' : '' }} value="هیات مدیره">هیات مدیره</option>
+                                                <option {{ $proceeding->type == 'مجمع' ? 'selected' : '' }} value="مجمع">مجمع</option>
+                                                <option {{ $proceeding->type == 'سایر' ? 'selected' : '' }} value="سایر">سایر</option>
                                             </select>
                                         </div>
                                     </div>
@@ -62,7 +63,7 @@
                                     <div class="col-lg-6">
                                         <label>شماره جلسه:</label>
                                         <div class="kt-input-icon">
-                                            <input type="text" name="number" class="form-control" placeholder="مثال: ۱۰۱ ">
+                                            <input value="{{ $proceeding->number }}" type="text" name="number" class="form-control" placeholder="مثال: ۱۰۱ ">
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
@@ -141,18 +142,6 @@
                 );
 
 
-            </script>
-
-            <link rel="stylesheet" href="/dashboard/assets/css/persian-datepicker.min.css"/>
-            <script src="/dashboard/assets/js/persian-date.min.js"></script>
-            <script src="/dashboard/assets/js/persian-datepicker.min.js"></script>
-            <script src="/dashboard/assets/js/persian-date.min.js" type="text/javascript"></script>
-            <script>
-                $(document).ready(function() {
-                    $(".dp").pDatepicker({
-                        altField: '.observer'
-                    });
-                });
             </script>
 
 @stop

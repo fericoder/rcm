@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Complex;
 use App\User;
 use App\Http\Controllers\Controller;
+use App\Website;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -68,6 +69,10 @@ class RegisterController extends Controller
     {
         $complex = Complex::create([
             'name' => $data['complex_nameReg'],
+        ]);
+
+        $website = Website::create([
+            'complex_id' => $complex->id,
         ]);
 
 

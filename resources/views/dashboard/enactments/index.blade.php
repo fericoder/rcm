@@ -152,7 +152,11 @@
                             <h3 class="kt-portlet__head-title borj-color">
                                 مصوبات هیات مدیره
                             </h3>
-                            <button data-toggle="modal" data-target=" #add" style="margin-right: 20px;font-size: 13px" type="button" class="btn btn-success btn-wide btn-elevate btn-elevate-air">افزودن مصوبه</button>
+                            @if($proceedings->count() == 0)
+                                <a href="{{ route('proceedings.index') }}"><p class="text-danger" style="margin: auto;margin-right: 10px;">جهت افزودن مصوبه، ابتدا صورتجلسه اضافه نمایید</p></a>
+                            @else
+                                <button data-toggle="modal" data-target=" #add" style="margin-right: 20px;font-size: 13px" type="button" class="btn btn-success btn-wide btn-elevate btn-elevate-air">افزودن مصوبه</button>
+                            @endif
                         </div>
 
                         <div style="" class="kt-portlet__head-toolbar">
@@ -245,13 +249,17 @@
                                     <td>{{ $enactment->proceeding->number }}</td>
                                     <td>{{ $enactment->proceeding->type }}</td>
                                     <td>{{ $enactment->description }}</td>
-                                    <td>{{ $enactment->user->fName . ' ' . $enactment->user->lName }}</td>
+                                    <td>{{ $enactment->user->fullName }}</td>
                                     <td style="font-family: BYekan; direction: ltr;min-width: 140px">{{ jdate($enactment->deadline) }}</td>
-                                    <td>{{ $enactment->status }}</td>
+                                    <td class="{{ $enactment->status == "معلق" ? "badge badge-warning" : '' }} {{ $enactment->status == "درحال انجام" ? "badge badge-primary" : '' }} {{ $enactment->status == "انجام شده" ? "badge badge-success" : '' }}    {{ $enactment->status == "بررسی نشده" ? "badge badge-danger" : '' }} {{ $enactment->status == "لغو شده" ? "badge badge-danger" : '' }} ">{{ $enactment->status }}</td>
                                     <td>{{ $enactment->resualt }}</td>
                                     <td>
-                                        <a href="" data-id="" class="m-portlet__nav-link btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill button" title="حذف"> <i style="color: darkred" class="fa fa-times"></i> </a>
-                                        <a href="" class="m-portlet__nav-link btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill" title="ویرایش"> <i style="color: green" class="la la-edit"></i> </a>
+                                        @can('admin')
+                                            <a href="{{ route('enactments.delete', ['id' => $enactment->id]) }}" class="m-portlet__nav-link btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill button" title="حذف مشتری "> <i style="color: darkred" class="fa fa-times"></i> </a>
+                                        @endcan
+                                        @can('admin', 'boardMember')
+                                            <a href="{{ route('enactments.edit', $enactment->id) }}" class="m-portlet__nav-link btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill" title="ویرایش"> <i style="color: green" class="la la-edit"></i> </a>
+                                        @endcan
                                     </td>
                                 </tr>
                             @endforeach
@@ -507,16 +515,6 @@
     </script>
     <script src="/dashboard/assets/js/select2.js" type="text/javascript"></script>
 
-    <link rel="stylesheet" href="/dashboard/assets/css/persian-datepicker.min.css"/>
-    <script src="/dashboard/assets/js/persian-date.min.js"></script>
-    <script src="/dashboard/assets/js/persian-datepicker.min.js"></script>
-    <script src="/dashboard/assets/js/persian-date.min.js" type="text/javascript"></script>
-    <script>
-        $(document).ready(function() {
-            $(".dp").pDatepicker({
-                altField: '.observer'
-            });
-        });
-    </script>
+
 
 @stop

@@ -84,6 +84,18 @@
     </div>
 
 
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
+
+
     <div class="row">
         <div class="col-lg-12">
 
@@ -117,12 +129,12 @@
                                 <i class="fa fa-users kt-font-success"> <span class="kt--visible-desktop-inline-block kt-font-info ml-2">اطلاعات ساکنین</span></i>
                             </a>
                         </li>
-                        <li class="nav-item">
+                        <li style="display: none" class="nav-item">
                             <a class="nav-link" data-toggle="tab" href="#kt_tabs_4">
                                 <i class="fa fa-thumbs-up kt-font-danger"> <span class="kt--visible-desktop-inline-block kt-font-info ml-2">درخواست مجوز ها</span></i>
                             </a>
                         </li>
-                        <li class="nav-item">
+                        <li style="display: none" class="nav-item">
                             <a class="nav-link" data-toggle="tab" href="#kt_tabs_5">
                                 <i class="fa fa-parking kt-font-success"> <span class="kt--visible-desktop-inline-block kt-font-info ml-2">هماهنگی تردد</span></i>
                             </a>
@@ -188,7 +200,6 @@
                                             <thead>
                                             <tr>
                                                 <th> کد پارکینگ</th>
-                                                <th>نوع وسیله نقلیه</th>
                                                 <th>سازنده</th>
                                                 <th>مدل</th>
                                                 <th>سال تولید</th>
@@ -198,19 +209,16 @@
                                             </tr>
                                             </thead>
                                             <tbody>
-                                            <tr>
-                                                <th scope="row">E_2/37</th>
-                                                <td>شرقی</td>
-                                                <td>خودرو</td>
-                                                <td>تویوتا</td>
-                                                <td>کرونا</td>
-                                                <td>1991</td>
-
-                                                <td><i class="fa fa-window-close kt-font-danger"></i></td>
-
-                                            </tr>
-
-
+                                                @foreach ($parkings as $parking)
+                                                    <tr>
+                                                        <td>{{ $parking->code }}</td>
+                                                        <td>{{ $parking->brand }}</td>
+                                                        <td>{{ $parking->model }}</td>
+                                                        <td>{{ $parking->year }}</td>
+                                                        <td>{{ $parking->plate }}</td>
+                                                        <td><i class="fa fa-window-close kt-font-danger"></i></td>
+                                                    </tr>
+                                                @endforeach
                                             </tbody>
                                         </table>
 
@@ -225,69 +233,92 @@
                                         <div class="modal-content">
                                             <div class="modal-header">
                                                 <h5 class="modal-title" id="modall">افزودن خودرو</h5>
-                                                <button type="button" class="close " data-dismiss="modal" aria-label="Close">
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
                                             </div>
                                             <div class="modal-body">
-                                                <div class="form-group row">
-                                                    <div class="col-lg-6">
-                                                        <label>کد پارکینگ:</label>
-                                                        <input type="email" class="form-control" placeholder="مثال: E_2/37">
-                                                        <span class="form-text text-muted">لطفا کد پارکینگ خود را وارد کنید</span>
-                                                    </div>
-                                                    <div class="col-lg-6">
-                                                        <label class="">نوع وسیله نقلیه:</label>
-
-                                                        <div class="kt-input-icon">
-                                                            <select class="form-control" id="exampleSelect1">
-                                                                <option>خودرو</option>
-                                                                <option>موتور سیکلت</option>
-
-
-                                                            </select>
+                                                <form action="{{ route('parking.store') }}" method="post">
+                                                    @csrf
+                                                    <div class="form-group row">
+                                                        <div class="col-lg-6">
+                                                            <label>کد پارکینگ:</label>
+                                                            <input type="text" disabled class="form-control" value="{{ Auth::user()->parking_code }}">
+                                                            <span class="form-text text-muted">لطفا کد پارکینگ خود را وارد کنید</span>
                                                         </div>
-                                                        <span class="form-text text-muted">لطفا نوع وسیله نقلیه خود را وارد کنید</span>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <div class="col-lg-6">
-                                                        <label>سازنده:</label>
-                                                        <div class="kt-input-icon">
-                                                            <input type="text" class="form-control" placeholder="مثال:هیوندای">
-                                                            <span class="kt-input-icon__icon kt-input-icon__icon--right"><span></span></span>
+                                                        <div class="col-lg-6">
+                                                            <label> سازنده: <span class="text-danger">*</span></label>
+                                                            <div class="kt-input-icon">
+                                                                <input type="text" name="brand" class="form-control" placeholder="مثال:هیوندای">
+                                                                <span class="kt-input-icon__icon kt-input-icon__icon--right"><span></span></span>
+                                                            </div>
+                                                            <span class="form-text text-muted">لطفا سازنده ی خودرو را مشخص کنید</span>
                                                         </div>
-                                                        <span class="form-text text-muted">لطفا سازنده ی خودرو را مشخص کنید</span>
-                                                    </div>
-                                                    <div class="col-lg-6">
-                                                        <label class="">مدل:</label>
-                                                        <div class="kt-input-icon">
-                                                            <input type="text" class="form-control" placeholder="مثال i30">
-                                                            <span class="kt-input-icon__icon kt-input-icon__icon--right"><span></span></span>
-                                                        </div>
-                                                        <span class="form-text text-muted">لطفا مدل خودرو خود را مشخص کنید</span>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row">
-                                                    <div class="col-lg-6">
-                                                        <label>سال تولید:</label>
-                                                        <input type="text" class="form-control" placeholder="مثال:2012">
-                                                        <span class="form-text text-muted">لطفا سال تولید خودرو خود را وارد کنید</span>
-                                                    </div>
-                                                    <div class="col-lg-6">
-                                                        <label class="">شماره پلاک:</label>
-                                                        <input type="text" class="form-control" placeholder="ایران33 333ن33">
-                                                        <span class="form-text text-muted">لطفا شماره پلاک خود را وارد کنید</span>
-                                                    </div>
-                                                </div>
 
+                                                    </div>
+                                                    <div class="form-group row">
+
+                                                        <div class="col-lg-6">
+                                                            <label class="">مدل:<span class="text-danger">*</span></label>
+                                                            <div class="kt-input-icon">
+                                                                <input type="text" name="model" class="form-control" placeholder="مثال i30">
+                                                                <span class="kt-input-icon__icon kt-input-icon__icon--right"><span></span></span>
+                                                            </div>
+                                                            <span class="form-text text-muted">لطفا مدل خودرو خود را مشخص کنید</span>
+                                                        </div>
+
+                                                        <div class="col-lg-6">
+                                                            <label>سال تولید:<span class="text-danger">*</span></label>
+                                                            <input type="text" name="year" class="form-control" placeholder="مثال:2012">
+                                                            <span class="form-text text-muted">لطفا سال تولید خودرو خود را وارد کنید</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+
+                                                        <div class="col-lg-12">
+                                                            <label class="text-danger">شماره پلاک: <span class="text-danger">*</span></label>
+                                                            <td style="vertical-align: middle;">
+                                                                <div class="form-group bg-plate" style="background-image: url(&quot;/dashboard/assets/img/plate.png&quot;);background-size: cover;height: 104px;width:500px;margin: auto">
+                                                                    <div class="row">
+                                                                        <input class="form-control" maxlength="2" minlength="2" name="irDigit" placeholder="مثال: ۱۱ " required="" style="display:inline-block; width:20%;margin:7% 3% 0 0;text-align:center" tabindex="5" type="text">
+                                                                        <input class="form-control" maxlength="3" minlength="3" name="threeDigit" placeholder="مثال: ۲۲۲" required="" style="display:inline-block; width:20%;margin:7% 6% 0 0;text-align:center" tabindex="4" type="text">
+                                                                        <select class="form-control ng-untouched ng-pristine ng-valid" id="letter" name="letter" style="display:inline-block; width:20%;margin:7% 0 0 0" tabindex="3">
+                                                                            <option value="0">انتخاب کنید</option>
+
+                                                                            <option value="الف"> الف </option>
+                                                                            <option value="ب"> ب </option>
+                                                                            <option value="ت"> ت </option>
+                                                                            <option value="ج"> ج </option>
+                                                                            <option value="چ"> چ </option>
+                                                                            <option value="ژ"> ژ </option>
+                                                                            <option value="د"> د </option>
+                                                                            <option value="س"> س </option>
+                                                                            <option value="ص"> ص </option>
+                                                                            <option value="ط"> ط </option>
+                                                                            <option value="ع"> ع </option>
+                                                                            <option value="ق"> ق </option>
+                                                                            <option value="گ"> گ </option>
+                                                                            <option value="ل"> ل </option>
+                                                                            <option value="م"> م </option>
+                                                                            <option value="ن"> ن </option>
+                                                                            <option value="و"> و </option>
+                                                                            <option value="ه"> ه </option>
+                                                                            <option value="ی"> ی </option>
+                                                                        </select>
+                                                                        <input class="form-control" name="twoDigit" pattern="\d\d" placeholder="مثال: ‌۱۱ " required="" style="display:inline-block; width:20%;margin:7% 0 0 0;text-align:center" tabindex="2" type="text">
+                                                                    </div>
+                                                                </div>
+                                                           </td>
+                                                         </div>
+                                                    </div>
                                             </div>
 
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-success btn-wide btn-elevate btn-elevate-air" data-toggle="modal" data-target=" #modall">افزودن وسایل نقلیه</button>
-                                                <button type="button" class="btn btn-danger" data-dismiss="modal">انصراف</button>
+                                                <div class="modal-footer">
+                                                    <button type="submit" class="btn btn-success btn-wide btn-elevate btn-elevate-air">افزودن وسایل نقلیه</button>
+                                                    <button type="button" class="btn btn-danger" data-dismiss="modal">انصراف</button>
 
-                                            </div>
+                                                </div>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
@@ -296,7 +327,11 @@
                                 <!--end::Section-->
                             </div>
                             <p class=text-center>
-                                <button type="button" class="btn btn-success btn-wide btn-elevate btn-elevate-air" data-toggle="modal" data-target=" #modall">افزودن وسیله نقلیه</button>
+                              @if($parkings->count() >= \Auth::user()->parking_count)
+                                  <p>تعداد پارکینگ های تعریف شده شما تکمیل شده است.</p>
+                                  @else
+                                    <button type="button" class="btn btn-success btn-wide btn-elevate btn-elevate-air" data-toggle="modal" data-target=" #modall">افزودن وسیله نقلیه</button>
+                               @endif
                             </p>
                         </div>
 
@@ -311,11 +346,20 @@
                                                 <th>جنسیت</th>
                                                 <th>سن</th>
                                                 <th>تلفن همراه</th>
-                                                <th>خذف</th>
+                                                <th>حذف</th>
 
                                             </tr>
                                             </thead>
                                             <tbody>
+                                            @foreach ($residences as $residence)
+                                                <tr>
+                                                    <td>{{ $residence->fullName }}</td>
+                                                    <td>{{ $residence->gender }}</td>
+                                                    <td>{{ $residence->age }}</td>
+                                                    <td>{{ $residence->phoneNumber }}</td>
+                                                    <td><i class="fa fa-window-close kt-font-danger"></i></td>
+                                                </tr>
+                                            @endforeach
                                             </tbody>
                                         </table>
 
@@ -323,64 +367,65 @@
                                 </div>
 
                                 <div class="modal" id="mymodal" tabindex="-1" role="dialog" aria-labelledby="mymodal" aria-hidden="true">
-                                    <div class="modal-dialog modal-lg" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="mymodal">اطلاعات ساکنین</h5>
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <div class="form-group row">
-                                                    <div class="col-lg-6">
-                                                        <label>نام و نام خانوادگی:</label>
-                                                        <input type="email" class="form-control" placeholder="مثال: علی رحمانی">
-                                                        <span class="form-text text-muted">لطفا نام و نام خانوادگی خود را وارد کنید</span>
-                                                    </div>
-                                                    <div class="col-lg-6">
-                                                        <label class="">جنسیت:</label>
-
-                                                        <div class="kt-input-icon">
-                                                            <select class="form-control" id="exampleSelect1">
-                                                                <option>مرد</option>
-                                                                <option>زن</option>
-
-
-                                                            </select>
-                                                        </div>
-                                                        <span class="form-text text-muted">لطفا جنسیت را وارد کنید</span>
-                                                    </div>
+                                    <form action="{{ route('residence.store') }}" method="post">
+                                    @csrf
+                                        <div class="modal-dialog modal-lg" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="mymodal">اطلاعات ساکنین</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
                                                 </div>
-                                                <div class="form-group row">
-                                                    <div class="col-lg-6">
-                                                        <label>سن:</label>
-                                                        <div class="kt-input-icon">
-                                                            <input type="text" class="form-control borj-font" placeholder="مثال: 18">
-                                                            <span class="kt-input-icon__icon kt-input-icon__icon--right"><span></span></span>
+                                                <div class="modal-body">
+                                                    <div class="form-group row">
+                                                        <div class="col-lg-6">
+                                                            <label>نام و نام خانوادگی: <span class="text-danger">*</span></label>
+                                                            <input type="text" name="fullName" class="form-control" placeholder="مثال: علی رحمانی">
+                                                            <span class="form-text text-muted">لطفا نام و نام خانوادگی خود را وارد کنید</span>
                                                         </div>
-                                                        <span class="form-text text-muted">لطفا سن خود را وارد کنید</span>
-                                                    </div>
-                                                    <div class="col-lg-6">
-                                                        <label class="">تلفن همراه:</label>
-                                                        <div class="kt-input-icon">
-                                                            <input type="text" class="form-control borj-font" placeholder="مثال: 09201010328">
-                                                            <span class="kt-input-icon__icon kt-input-icon__icon--right"><span></span></span>
+                                                        <div class="col-lg-6">
+                                                            <label class="">جنسیت:<span class="text-danger">*</span></label>
+
+                                                            <div class="kt-input-icon">
+                                                                <select name="gender" class="form-control" id="exampleSelect1">
+                                                                    <option value="مرد">مرد</option>
+                                                                    <option value="زن">زن</option>
+                                                                </select>
+                                                            </div>
+                                                            <span class="form-text text-muted">لطفا جنسیت را وارد کنید</span>
                                                         </div>
-                                                        <span class="form-text text-muted">لطفا مدل خودرو خود را مشخص کنید</span>
                                                     </div>
+                                                    <div class="form-group row">
+                                                        <div class="col-lg-6">
+                                                            <label>سن:<span class="text-danger">*</span></label>
+                                                            <div class="kt-input-icon">
+                                                                <input name="age" type="text" class="form-control borj-font" placeholder="مثال: 18">
+                                                                <span class="kt-input-icon__icon kt-input-icon__icon--right"><span></span></span>
+                                                            </div>
+                                                            <span class="form-text text-muted">لطفا سن خود را وارد کنید</span>
+                                                        </div>
+                                                        <div class="col-lg-6">
+                                                            <label class="">تلفن همراه:<span class="text-danger">*</span></label>
+                                                            <div class="kt-input-icon">
+                                                                <input name="phoneNumber" type="text" class="form-control borj-font" placeholder="مثال: 09201010328">
+                                                                <span class="kt-input-icon__icon kt-input-icon__icon--right"><span></span></span>
+                                                            </div>
+                                                            <span class="form-text text-muted">لطفا مدل خودرو خود را مشخص کنید</span>
+                                                        </div>
+                                                    </div>
+
+
                                                 </div>
+                                                <div class="modal-footer">
 
+                                                    <button type="submit" class="btn btn-success btn-wide btn-elevate btn-elevate-air" >افزودن ساکن</button>
+                                                    <button type="button" class="btn btn-danger" data-dismiss="modal">انصراف</button>
 
-                                            </div>
-                                            <div class="modal-footer">
-
-                                                <button type="button" class="btn btn-success btn-wide btn-elevate btn-elevate-air" data-toggle="modal" data-target=" #modall">افزودن ساکن</button>
-                                                <button type="button" class="btn btn-danger" data-dismiss="modal">انصراف</button>
-
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </form>
                                 </div>
 
                             </div>
@@ -405,14 +450,15 @@
                                             </tr>
                                             </thead>
                                             <tbody>
-                                            <tr>
-                                                <th scope="row">اثاث کشی</th>
-                                                <td>1398/7/14</td>
-                                                <td>1398_07_13  23:18:59</td>
-                                                <td>تایید شده</td>
-                                                <td><i class="fa fa-window-close kt-font-danger"></i></td>
-
-                                            </tr>
+                                            @foreach ($permissions as $permission)
+                                                <tr>
+                                                    <td>{{ $permission->subject }}</td>
+                                                    <td>{{ $permission->date }}</td>
+                                                    <td>{{ $permission->created_at }}</td>
+                                                    <td>{{ $permission->status }}</td>
+                                                    <td><i class="fa fa-window-close kt-font-danger"></i></td>
+                                                </tr>
+                                            @endforeach
 
 
                                             </tbody>
@@ -424,49 +470,53 @@
                                 <!-- Modal -->
                                 <div class="modal fade" id="modal2" tabindex="-1" role="dialog" aria-labelledby="modall" aria-hidden="true">
                                     <div class="modal-dialog modal-lg" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="modal2">ثبت درخواست مجوز</h5>
-                                                <button type="button" class="close " data-dismiss="modal" aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <div class="form-group row">
-                                                    <div class="col-lg-6">
-                                                        <label class="">عنوان مجوز:</label>
+                                        <form action="{{ route('permission.store') }}" method="post">
+                                            @csrf
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="modal2">ثبت درخواست مجوز</h5>
+                                                    <button type="button" class="close " data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="form-group row">
+                                                        <div class="col-lg-6">
+                                                            <label class="">
+                                                                عنوان مجوز:
+                                                            <span class="text-danger">*</span>
+                                                            </label>
 
-                                                        <div class="kt-input-icon">
-                                                            <select class="form-control" id="exampleSelect1">
-                                                                <option>اثاث کشی</option>
-                                                                <option>اجاره و فروش</option>
-                                                                <option>تغییرات در واحد</option>
-
-
-                                                            </select>
+                                                            <div class="kt-input-icon">
+                                                                <select name="subject" class="form-control" id="exampleSelect1">
+                                                                    <option value="اثاث کشی">اثاث کشی</option>
+                                                                    <option value="اجاره و فروش">اجاره و فروش</option>
+                                                                    <option value="تغییرات در واحد">تغییرات در واحد</option>
+                                                                </select>
+                                                            </div>
+                                                            <span class="form-text text-muted">لطفا عنوان مجوز را وارد کنید</span>
                                                         </div>
-                                                        <span class="form-text text-muted">لطفا عنوان مجوز را وارد کنید</span>
+
+
+                                                        <div class="col-lg-6">
+                                                            <label>تاریخ موردنظر<span class="text-danger">*</span></label>
+                                                            <div class="kt-input-icon">
+                                                                <input name="date" type="text" class="form-control date" placeholder="مثال: کلیک کنید">
+                                                                <span class="kt-input-icon__icon kt-input-icon__icon--right"><span></span></span>
+                                                            </div>
+                                                            <span class="form-text text-muted">لطفا تاریخ موردنظر خود را وارد کنید</span>
+                                                        </div>
                                                     </div>
 
-
-                                                    <div class="col-lg-6">
-                                                        <label>تاریخ موردنظر</label>
-                                                        <div class="kt-input-icon">
-                                                            <input type="text" class="form-control" placeholder="مثال: کلیک کنید">
-                                                            <span class="kt-input-icon__icon kt-input-icon__icon--right"><span></span></span>
-                                                        </div>
-                                                        <span class="form-text text-muted">لطفا تاریخ موردنظر خود را وارد کنید</span>
-                                                    </div>
                                                 </div>
 
-                                            </div>
+                                                <div class="modal-footer">
+                                                    <button type="submit" class="btn btn-success btn-wide btn-elevate btn-elevate-air" >ثبت درخواست</button>
+                                                    <button type="button" class="btn btn-danger" data-dismiss="modal">انصراف</button>
 
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-success btn-wide btn-elevate btn-elevate-air" data-toggle="modal" data-target=" #modall">ثبت درخواست</button>
-                                                <button type="button" class="btn btn-danger" data-dismiss="modal">انصراف</button>
-
+                                                </div>
                                             </div>
-                                        </div>
+                                        </form>
                                     </div>
                                 </div>
 
@@ -724,7 +774,7 @@
                             <tbody>
                             @foreach (\Auth::user()->invoices->where('status', 'notPaid') as $invoice)
                                 <tr>
-                                    <th scope="row"><a style="font-size: 16px" href="#" class="btn btn-sm btn-label-danger btn-bold"><i class="fa fa-credit-card"></i> پرداخت </a></th>
+                                    <th scope="row"><a style="font-size: 16px" href="/payment/{{Auth::user()->code}}/{{$invoice->amount}}/{{$invoice->id}}" class="btn btn-sm btn-label-danger btn-bold"><i class="fa fa-credit-card"></i> پرداخت </a></th>
                                     <td>{{ $invoice->for }}</td>
                                     <td style="font-family: BYekan!important;">{{ number_format($invoice->amount) }}</td>
                                     <td>{{ $invoice->code }}</td>

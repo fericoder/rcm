@@ -14,14 +14,18 @@ class CreateProceedingsTable extends Migration
     public function up()
     {
         Schema::create('proceedings', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->bigIncrements('id')->unsigned();
             $table->string('date');
             $table->string('type');
             $table->string('number');
             $table->string('file');
             $table->unsignedInteger('complex_id');
             $table->timestamps();
+
+
         });
+
+
     }
 
     /**

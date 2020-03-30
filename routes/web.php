@@ -25,12 +25,19 @@ Route::namespace('Dashboard')->prefix('dashboard')->middleware('auth', 'configur
 
     // Website Configuratuon
     Route::get('configuration/website', 'ComplexController@WebsiteForm')->name('dashboard.configuration.website');
+    Route::post('configuration/website', 'ComplexController@WebsiteFormStore')->name('configuration.WebsiteFormstore');
+    Route::post('configuration/website/personnel', 'ComplexController@personnel')->name('personnel.store');
 
     Route::resource('configuration', 'ComplexController');
 
 
 
     Route::get('index', 'IndexController@index')->name('dashboard.index');
+    //Modals
+    Route::post('parking', 'IndexController@parking')->name('parking.store');
+    Route::post('residence', 'IndexController@residenceMembers')->name('residence.store');
+    Route::post('permission', 'IndexController@permissionRequest')->name('permission.store');
+
 
     //Information Routes
     Route::get('information', 'InformationController@index')->name('dashboard.information');
@@ -38,8 +45,12 @@ Route::namespace('Dashboard')->prefix('dashboard')->middleware('auth', 'configur
 
     Route::resource('units', 'UnitController');
     Route::resource('proceedings', 'ProceedingController');
+    Route::get('proceedings/edit/{id}', 'ProceedingController@edit')->name('proceedings.edit');
     Route::get('proceedings/delete/{id}', 'ProceedingController@destroy')->name('proceedings.delete');
+
     Route::resource('enactments', 'EnactmentController');
+    Route::get('enactments/delete/{id}', 'EnactmentController@destroy')->name('enactments.delete');
+
     Route::resource('costs', 'CostController');
     Route::resource('incomes', 'IncomeController');
     Route::get('charge', 'ChargeController@index')->name('charge.index');
@@ -85,4 +96,5 @@ Route::namespace('Dashboard')->prefix('dashboard')->middleware('auth', 'configur
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/payment/{vahed}/{amount}/{id}/', 'PaymentController@pay');
+Route::any('/paid/{vahed}/{amount}/{id}', 'PaymentController@paid');
