@@ -35,7 +35,15 @@ class NotificationController extends \App\Http\Controllers\Controller
      */
     public function store(Request $request)
     {
-        //
+      Notification::create([
+          'user_id' =>  \Auth::user()->id,
+          'complex_id' =>  \Auth::user()->complex_id,
+          'content' => $request->content,
+          'type' => $request->type,
+
+      ]);
+      alert()->success('اعلان با موفقیت اضافه شد', 'اضافه شد');
+      return redirect()->back();
     }
 
     /**

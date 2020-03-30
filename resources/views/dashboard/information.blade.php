@@ -25,7 +25,7 @@
                         </div>
                     @endif
 
-                    <form style="font-family:Byekan" style="vertical-align:center;text-align:center" enctype="multipart/form-data" method="post" action="monitoring/store" class="form form-horizontal form-bordered striped-rows">
+                    <form style="font-family:Byekan" style="vertical-align:center;text-align:center" enctype="multipart/form-data" method="post" action="{{route('notifications.store')}}" class="form form-horizontal form-bordered striped-rows">
                         @csrf
                         <div class="form-body">
 
@@ -40,151 +40,23 @@
                             </div>
 
 
-                            <div class="form-group row">
-                                <label class="col-md-3 label-control" for="name">ساعت شروع شیفت</label>
-                                <div class="col-md-9">
-                                    <input type="text" id="hour_from" class="form-control" name="hour_from">
-                                </div>
-                            </div>
+
+                              <div class="form-group row">
+                                  <label class="col-md-3 label-control" for="content">نوع</label>
+                                  <div class="col-md-9">
+                                    <select class="form-control" name="type">
+                                        <option value="private">خصوصی</option>
+                                        <option value="public">عمومی</option>
+                                      </select>
+                                  </div>
+                              </div>
 
                             <div class="form-group row">
-                                <label class="col-md-3 label-control" for="name">ساعت پایان شیفت</label>
+                                <label class="col-md-3 label-control" for="content">متن اعلان</label>
                                 <div class="col-md-9">
-                                    <input type="text" id="hour_to" class="form-control" name="hour_to">
+                                    <input type="text" id="content" class="form-control" name="content">
                                 </div>
                             </div>
-
-
-                            <div class="form-group row">
-                                <label class="col-md-3 label-control" for="name">تعداد دوربین های فعال در شروع شیفت</label>
-                                <div class="col-md-9">
-                                    <input type="text" id="hour_to" class="form-control" name="camera_active_before">
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <label class="col-md-3 label-control" for="name">تعداد دوربین های غیرفعال شروع شیفت</label>
-                                <div class="col-md-9">
-                                    <input type="text" id="hour_to" class="form-control" name="camera_deactive_before">
-                                </div>
-                            </div>
-
-
-                            <div class="form-group row">
-                                <label class="col-md-3 label-control" for="name">تعداد دوربین های فعال در پایان شیفت</label>
-                                <div class="col-md-9">
-                                    <input type="text" id="hour_to" class="form-control" name="camera_active_after">
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <label class="col-md-3 label-control" for="name">تعداد دوربین های غیرفعال پایان شیفت</label>
-                                <div class="col-md-9">
-                                    <input type="text" id="hour_to" class="form-control" name="camera_deactive_after">
-                                </div>
-                            </div>
-
-
-                            <div class="form-group row">
-                                <label class="col-md-3 label-control" for="name">زمان و دلیل ازکارافتادگی دوربین ها</label>
-                                <div class="col-md-9">
-                                    <input type="text" id="hour_to" class="form-control" name="camera_fault">
-                                </div>
-                            </div>
-
-
-                            <div class="form-group row">
-                                <label class="col-md-3 label-control" for="name">اقدامات انجام شده جهت رفع خرابی</label>
-                                <div class="col-md-9">
-                                    <input type="text" id="hour_to" class="form-control" name="camera_actions">
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <label class="col-md-3 label-control" for="name">وضعیت پلاک خوان شروع شیفت</label>
-                                <div class="col-md-9">
-                                    <input type="text" id="hour_to" class="form-control" name="pelak_before">
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <label class="col-md-3 label-control" for="name">وضعیت پلاک خوان پایان شیفت</label>
-                                <div class="col-md-9">
-                                    <input type="text" id="hour_to" class="form-control" name="pelak_after">
-                                </div>
-                            </div>
-
-                            <div class="form-group row last">
-                                <label class="col-md-3 label-control" for="description">اقدامات پلاک خوان</label>
-                                <div class="col-md-9">
-                                    <input type="text" id="description" class="form-control" placeholder=" " name="pelak_actions">
-                                </div>
-                            </div>
-
-
-
-
-
-                            <div class="form-group row">
-                                <label class="col-md-3 label-control" for="name">تعداد داکتور فعال</label>
-                                <div class="col-md-9">
-                                    <input type="text" id="hour_to" class="form-control" name="detectors_enable">
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <label class="col-md-3 label-control" for="name">تعداد داکتور غیر فعال</label>
-                                <div class="col-md-9">
-                                    <input type="text" id="hour_to" class="form-control" name="detectors_disable">
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <label class="col-md-3 label-control" for="name">تعداد دفعات آژیر</label>
-                                <div class="col-md-9">
-                                    <input type="text" id="hour_to" class="form-control" name="sound_count">
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <label class="col-md-3 label-control" for="name">علل</label>
-                                <div class="col-md-9">
-                                    <input type="text" id="hour_to" class="form-control" name="detector_cause">
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <label class="col-md-3 label-control" for="name">محل وقوع</label>
-                                <div class="col-md-9">
-                                    <input type="text" id="hour_to" class="form-control" name="detector_location">
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <label class="col-md-3 label-control" for="name">اقدامات انجام شده</label>
-                                <div class="col-md-9">
-                                    <input type="text" id="hour_to" class="form-control" name="detector_actions">
-                                </div>
-                            </div>
-
-
-
-
-                            <div class="form-group row">
-                                <label class="col-md-3 label-control" for="name">تعداد جرایم ثبت شده</label>
-                                <div class="col-md-9">
-                                    <input type="text" id="hour_to" class="form-control" name="penalty_count">
-                                </div>
-                            </div>
-
-
-
-
-
-
-
-
-
 
 
 
@@ -355,7 +227,7 @@
                             <td>{{ $notification->id }}</td>
                             <td>{{ $notification->content }}</td>
                             <td>{{ $notification->user->fullName }}</td>
-                            <td style="direction: ltr; font-family: BYekan">{{ jdate($monitoring->created_at) }}</td>
+                            <td style="direction: ltr; font-family: BYekan">{{ jdate($notification->created_at) }}</td>
                             <td>ویرایش</td>
                         </tr>
                     @endforeach
