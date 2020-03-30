@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 29, 2020 at 06:44 AM
+-- Generation Time: Mar 30, 2020 at 03:55 PM
 -- Server version: 5.6.37
 -- PHP Version: 7.1.8
 
@@ -61,18 +61,19 @@ CREATE TABLE IF NOT EXISTS `complexes` (
   `type` enum('normal','multiBlock') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'normal',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `complexes`
 --
 
 INSERT INTO `complexes` (`id`, `name`, `url`, `address`, `units`, `type`, `created_at`, `updated_at`) VALUES
-(1, 'برج مسکونی المپیک', 'olympic', 'تهران - میدان المپیک', 343, 'multiBlock', '2020-01-29 14:48:11', NULL),
+(1, 'برج مسکونی المپیک', 'olympic', 'تهران - میدان المپیک - خیابان طبیعت - برج المپیک', 343, 'multiBlock', '2020-01-29 14:48:11', NULL),
 (7, 'مجتمع مسکونی یاس', NULL, 'هروی', 20, 'normal', '2020-01-30 13:35:46', '2020-02-01 12:51:31'),
 (8, 'مجتمع مسکونی حسین آباد', NULL, NULL, NULL, 'normal', '2020-01-30 14:55:10', '2020-01-30 14:55:10'),
 (9, 'یاس سیاه', NULL, 'تهران - پلاک ۲۰', 12, 'normal', '2020-02-07 08:11:45', '2020-02-07 08:12:29'),
-(10, 'مجتمع یاس', NULL, 'dfsdfsdf', 20, 'normal', '2020-02-11 15:42:22', '2020-02-11 15:42:40');
+(10, 'مجتمع یاس', NULL, 'dfsdfsdf', 20, 'normal', '2020-02-11 15:42:22', '2020-02-11 15:42:40'),
+(11, 'یاس', NULL, 'تست', 40, 'normal', '2020-03-29 02:41:44', '2020-03-29 02:43:35');
 
 -- --------------------------------------------------------
 
@@ -141,24 +142,24 @@ CREATE TABLE IF NOT EXISTS `elevators` (
 CREATE TABLE IF NOT EXISTS `enactments` (
   `id` bigint(20) unsigned NOT NULL,
   `complex_id` int(10) unsigned NOT NULL,
-  `proceeding_id` int(10) unsigned NOT NULL,
+  `proceeding_id` bigint(20) unsigned NOT NULL,
   `number` int(10) unsigned NOT NULL,
-  `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` text COLLATE utf8_unicode_ci NOT NULL,
   `user_id` int(10) unsigned NOT NULL,
-  `deadline` timestamp NULL DEFAULT '2020-01-25 17:30:13',
-  `resualt` text COLLATE utf8mb4_unicode_ci,
-  `status` enum('انجام شده','درحال انجام','معلق','لغو شده','بررسی نشده') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'بررسی نشده',
+  `deadline` timestamp NULL DEFAULT '2020-03-30 13:54:25',
+  `resualt` text COLLATE utf8_unicode_ci,
+  `status` enum('انجام شده','درحال انجام','معلق','لغو شده','بررسی نشده') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'بررسی نشده',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `enactments`
 --
 
 INSERT INTO `enactments` (`id`, `complex_id`, `proceeding_id`, `number`, `description`, `user_id`, `deadline`, `resualt`, `status`, `created_at`, `updated_at`) VALUES
-(1, 1, 2, 221, 'تست', 2, '2020-03-26 08:21:07', NULL, 'بررسی نشده', '2020-03-26 08:21:20', '2020-03-26 08:21:20'),
-(2, 1, 2, 34, 'asdasd', 328, '2020-03-26 08:37:56', NULL, 'بررسی نشده', '2020-03-26 08:38:05', '2020-03-26 08:38:05');
+(1, 1, 1, 2222, 'asdasdkkkk', 2, '2020-03-30 14:23:52', 'اوکیه', 'لغو شده', '2020-03-30 13:56:32', '2020-03-30 14:23:55'),
+(5, 1, 1, 444444, 'sdfsdf', 328, '2020-03-30 14:20:01', 'done', 'معلق', '2020-03-30 14:04:18', '2020-03-30 14:20:08');
 
 -- --------------------------------------------------------
 
@@ -239,6 +240,61 @@ INSERT INTO `galleries` (`id`, `user_id`, `complex_id`, `category`, `type`, `fil
 (1, 328, 1, 'نمای کلی مجتمع', 'Picture', '/storage/Gallery/1585040156_Screenshot 2020-03-24 at 1.10.02 PM.png', 'بالکن', NULL, '2020-03-24 04:25:56', '2020-03-24 04:25:56'),
 (2, 328, 1, 'نمای کلی مجتمع', 'Picture', '/storage/Gallery/1585040156_Screenshot 2020-03-24 at 1.09.56 PM.png', 'بالکن', '2020-03-24 04:26:48', '2020-03-24 04:25:56', '2020-03-24 04:26:48'),
 (3, 328, 1, 'بالکن', 'Picture', '/storage/Gallery/1585072669_Screenshot 2020-03-24 at 1.10.02 PM.png', 'توضیحا', NULL, '2020-03-24 13:27:49', '2020-03-24 13:27:49');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `gateway_transactions`
+--
+
+CREATE TABLE IF NOT EXISTS `gateway_transactions` (
+  `id` bigint(20) unsigned NOT NULL,
+  `port` enum('MELLAT','SADAD','ZARINPAL','PAYLINE','JAHANPAY','PARSIAN','PASARGAD','SAMAN','ASANPARDAKHT','PAYPAL','PAYIR','IRANKISH') COLLATE utf8_unicode_ci NOT NULL,
+  `price` decimal(15,2) NOT NULL,
+  `ref_id` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `tracking_code` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `card_number` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `status` enum('INIT','SUCCEED','FAILED') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'INIT',
+  `ip` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `description` text COLLATE utf8_unicode_ci,
+  `payment_date` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=158556581459 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `gateway_transactions`
+--
+
+INSERT INTO `gateway_transactions` (`id`, `port`, `price`, `ref_id`, `tracking_code`, `card_number`, `status`, `ip`, `description`, `payment_date`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(158556558299, 'SAMAN', 13422939.00, NULL, NULL, NULL, 'INIT', '127.0.0.1', NULL, NULL, '2020-03-30 10:53:02', '2020-03-30 10:53:02', NULL),
+(158556562224, 'SAMAN', 13422939.00, NULL, NULL, NULL, 'FAILED', '127.0.0.1', NULL, NULL, '2020-03-30 10:53:42', '2020-03-30 10:53:44', NULL),
+(158556578040, 'SAMAN', 4474313.00, NULL, NULL, NULL, 'FAILED', '127.0.0.1', NULL, NULL, '2020-03-30 10:56:20', '2020-03-30 10:56:21', NULL),
+(158556581458, 'SAMAN', 4474313.00, NULL, NULL, NULL, 'FAILED', '127.0.0.1', NULL, NULL, '2020-03-30 10:56:54', '2020-03-30 10:56:56', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `gateway_transactions_logs`
+--
+
+CREATE TABLE IF NOT EXISTS `gateway_transactions_logs` (
+  `id` int(10) unsigned NOT NULL,
+  `transaction_id` bigint(20) unsigned NOT NULL,
+  `result_code` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `result_message` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `log_date` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `gateway_transactions_logs`
+--
+
+INSERT INTO `gateway_transactions_logs` (`id`, `transaction_id`, `result_code`, `result_message`, `log_date`) VALUES
+(1, 158556562224, NULL, 'تراکنش توسط خریدار کنسل شد', '2020-03-30 10:53:44'),
+(2, 158556578040, NULL, 'تراکنش توسط خریدار کنسل شد', '2020-03-30 10:56:21'),
+(3, 158556581458, NULL, 'تراکنش توسط خریدار کنسل شد', '2020-03-30 10:56:56');
 
 -- --------------------------------------------------------
 
@@ -3842,7 +3898,7 @@ CREATE TABLE IF NOT EXISTS `migrations` (
   `id` int(10) unsigned NOT NULL,
   `migration` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=44 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=71 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `migrations`
@@ -3855,12 +3911,9 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (5, '2020_01_20_140912_create_complexes_table', 2),
 (6, '2020_01_24_113900_create_vote_options_table', 3),
 (7, '2020_01_23_121930_create_votes_table', 4),
-(9, '2020_01_23_121427_create_proceedings_table', 5),
-(12, '2020_01_23_121557_create_enactments_table', 6),
 (13, '2020_01_23_121623_create_costs_table', 6),
 (14, '2020_01_23_121631_create_incomes_table', 6),
 (19, '2020_01_23_121724_create_invoices_table', 7),
-(21, '2020_01_26_081500_create_permission_requests_table', 7),
 (22, '2020_01_26_082123_create_traffic_table', 7),
 (23, '2020_01_29_164423_create_warnings_table', 7),
 (24, '2020_02_02_074703_create_units_table', 8),
@@ -3876,7 +3929,18 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (40, '2020_01_23_121835_create_maintenances_table', 15),
 (41, '2020_03_28_152501_create_information_table', 16),
 (42, '2020_01_26_075051_create_notifications_table', 17),
-(43, '2020_03_28_160859_create_parkings_table', 18);
+(43, '2020_03_28_160859_create_parkings_table', 18),
+(45, '2020_03_29_122128_create_personnels_table', 19),
+(47, '2020_03_28_165831_create_websites_table', 20),
+(48, '2020_03_30_082636_create_residence_members_table', 21),
+(49, '2020_01_26_081500_create_permission_requests_table', 22),
+(50, '2020_03_30_091815_create_payments_table', 23),
+(60, '2016_05_02_193213_create_gateway_transactions_table', 24),
+(61, '2016_05_02_193229_create_gateway_status_log_table', 24),
+(62, '2017_04_05_103357_alter_id_in_transactions_table', 24),
+(63, '2018_03_04_224213_add_description_to_gateway_transactions', 24),
+(69, '2020_01_23_121427_create_proceedings_table', 25),
+(70, '2020_01_23_121557_create_enactments_table', 25);
 
 -- --------------------------------------------------------
 
@@ -3951,12 +4015,21 @@ CREATE TABLE IF NOT EXISTS `parkings` (
   `year` varchar(191) COLLATE utf8_unicode_ci NOT NULL,
   `plate` varchar(191) COLLATE utf8_unicode_ci NOT NULL,
   `irDigit` varchar(191) COLLATE utf8_unicode_ci NOT NULL,
+  `threeDigit` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `letter` varchar(191) COLLATE utf8_unicode_ci NOT NULL,
   `twoDigit` varchar(191) COLLATE utf8_unicode_ci NOT NULL,
+  `numberPlate` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `parkings`
+--
+
+INSERT INTO `parkings` (`id`, `user_id`, `complex_id`, `code`, `brand`, `model`, `year`, `plate`, `irDigit`, `threeDigit`, `letter`, `twoDigit`, `numberPlate`, `deleted_at`, `created_at`, `updated_at`) VALUES
+(1, 328, 1, 'E-2/37', 'هیوندای', 'i30', '2012', '', '99', '315', 'ه', '32', '323131599', NULL, '2020-03-30 03:51:54', '2020-03-30 03:51:54');
 
 -- --------------------------------------------------------
 
@@ -3970,6 +4043,18 @@ CREATE TABLE IF NOT EXISTS `password_resets` (
   `token` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `payments`
+--
+
+CREATE TABLE IF NOT EXISTS `payments` (
+  `id` bigint(20) unsigned NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -4009,9 +4094,49 @@ INSERT INTO `penalties` (`id`, `complex_id`, `user_id`, `added_by`, `type`, `dat
 
 CREATE TABLE IF NOT EXISTS `permission_requests` (
   `id` bigint(20) unsigned NOT NULL,
+  `user_id` int(10) unsigned NOT NULL,
+  `complex_id` int(10) unsigned NOT NULL,
+  `answer_id` int(10) unsigned DEFAULT NULL,
+  `subject` varchar(191) COLLATE utf8_unicode_ci NOT NULL,
+  `date` varchar(191) COLLATE utf8_unicode_ci NOT NULL,
+  `status` varchar(191) COLLATE utf8_unicode_ci NOT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `permission_requests`
+--
+
+INSERT INTO `permission_requests` (`id`, `user_id`, `complex_id`, `answer_id`, `subject`, `date`, `status`, `deleted_at`, `created_at`, `updated_at`) VALUES
+(1, 328, 1, NULL, 'اثاث کشی', '1399/1/19', 'بررسی نشده', NULL, '2020-03-30 04:35:21', '2020-03-30 04:35:21');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `personnels`
+--
+
+CREATE TABLE IF NOT EXISTS `personnels` (
+  `id` bigint(20) unsigned NOT NULL,
+  `user_id` int(10) unsigned NOT NULL,
+  `complex_id` int(10) unsigned NOT NULL,
+  `fullName` varchar(191) COLLATE utf8_unicode_ci NOT NULL,
+  `position` varchar(191) COLLATE utf8_unicode_ci NOT NULL,
+  `picture` text COLLATE utf8_unicode_ci NOT NULL,
+  `order` int(10) unsigned NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `personnels`
+--
+
+INSERT INTO `personnels` (`id`, `user_id`, `complex_id`, `fullName`, `position`, `picture`, `order`, `created_at`, `updated_at`) VALUES
+(1, 328, 1, 'علی رحمانی', 'مدیر اجرایی', '/storage/upload/2020/3/29/1585485776_1562995149_photo_2019-07-13_09-42-57 (1).jpg', 1, '2020-03-29 08:12:56', '2020-03-29 08:12:56'),
+(2, 328, 1, 'احمد رحمانی', 'خزانه دار', '/storage/upload/2020/3/29/1585508778_1562995149_photo_2019-07-13_09-42-57 (1).jpg', 1, '2020-03-29 14:36:18', '2020-03-29 14:36:18');
 
 -- --------------------------------------------------------
 
@@ -4021,39 +4146,48 @@ CREATE TABLE IF NOT EXISTS `permission_requests` (
 
 CREATE TABLE IF NOT EXISTS `proceedings` (
   `id` bigint(20) unsigned NOT NULL,
-  `date` timestamp NOT NULL,
-  `type` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `number` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `file` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `date` varchar(191) COLLATE utf8_unicode_ci NOT NULL,
+  `type` varchar(191) COLLATE utf8_unicode_ci NOT NULL,
+  `number` varchar(191) COLLATE utf8_unicode_ci NOT NULL,
+  `file` varchar(191) COLLATE utf8_unicode_ci NOT NULL,
   `complex_id` int(10) unsigned NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `proceedings`
 --
 
 INSERT INTO `proceedings` (`id`, `date`, `type`, `number`, `file`, `complex_id`, `created_at`, `updated_at`) VALUES
-(2, '2020-03-26 08:04:59', 'هیات مدیره', '200', '/storage/upload/2020/3/26/1585226109_Zollanvari Barcode Print2.pdf', 1, '2020-03-26 08:05:09', '2020-03-26 08:05:09');
+(1, '2020-03-31 18:05:20', 'هیات مدیره', '200', '/storage/upload/2020/3/30/1585576468_Zollanvari Barcode Print.pdf', 1, '2020-03-30 13:54:28', '2020-03-30 13:54:28');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `residents`
+-- Table structure for table `residence_members`
 --
 
-CREATE TABLE IF NOT EXISTS `residents` (
+CREATE TABLE IF NOT EXISTS `residence_members` (
   `id` bigint(20) unsigned NOT NULL,
   `user_id` int(10) unsigned NOT NULL,
   `complex_id` int(10) unsigned NOT NULL,
-  `fullName` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `gender` enum('خانم','آقا') COLLATE utf8mb4_unicode_ci NOT NULL,
-  `age` int(10) unsigned NOT NULL,
-  `mobile` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `fullName` varchar(191) COLLATE utf8_unicode_ci NOT NULL,
+  `gender` varchar(191) COLLATE utf8_unicode_ci NOT NULL,
+  `age` varchar(191) COLLATE utf8_unicode_ci NOT NULL,
+  `phoneNumber` varchar(191) COLLATE utf8_unicode_ci NOT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `residence_members`
+--
+
+INSERT INTO `residence_members` (`id`, `user_id`, `complex_id`, `fullName`, `gender`, `age`, `phoneNumber`, `deleted_at`, `created_at`, `updated_at`) VALUES
+(1, 328, 1, 'علی رحمانی', 'زن', '11', '09202020222', NULL, '2020-03-30 04:10:12', '2020-03-30 04:10:12'),
+(2, 328, 1, 'علی رحمانی', 'مرد', '11', '09201010333', NULL, '2020-03-30 04:10:41', '2020-03-30 04:10:41');
 
 -- --------------------------------------------------------
 
@@ -4131,7 +4265,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `avatar` text COLLATE utf8mb4_unicode_ci,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=342 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=343 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `users`
@@ -4466,7 +4600,7 @@ INSERT INTO `users` (`id`, `fullName`, `tower`, `floor`, `unit`, `code`, `parkin
 (325, 'مینو عابدی', 'شرقی', '19', '6', 'E196', NULL, NULL, 1, 150, 5257000, '09123271594', '', '', 'user', 0, 'enable', NULL, NULL, 'E196', '$2y$10$z71OVgseF1frnaXeqqAd/.Ohy2amDfydDUUdVmM.63CdweVCPS6Q2', NULL, NULL, '2020-01-29 11:22:54', NULL),
 (326, 'محمد رضا صدرایی', 'شرقی', '19', '7', 'E197', NULL, NULL, 1, 170, 5965750, '09120588029', '', '', 'user', 0, 'enable', NULL, NULL, 'E197', '$2y$10$N3JEalSF.sgMFBh6st54Q.KfyiYbJWHAUbUEItvRb77XL6AK.hy0m', NULL, NULL, '2020-01-29 11:22:54', NULL),
 (327, 'مهدی قدیمی', 'شرقی', '19', '8', 'E198', NULL, NULL, 1, 171, 5971700, '09127092808', '', '', 'user', 0, 'enable', NULL, NULL, 'E198', '$2y$10$4SwM2AX51C/DvaPYVl5dCOPSja.1QrE92hi8pyf864rD23wEvRYwe', NULL, NULL, '2020-01-29 11:22:55', NULL),
-(328, 'احمد رحمانی', 'شرقی', '20', '1', 'E201', NULL, NULL, 1, 162, 5681900, '09201010328', '40445649', '40445644', 'boardMember', 1, 'enable', NULL, NULL, 'E201', '$2y$10$VkSgwuhfuaQvJ9Vouc2uOuBN9zJd9xO.r/IkX8ANf.Na/xwXc/VRa', 'morDAvqFlqIVCaY0778HIvkcAZBiQ9NKvKae6s34LC8tGPvOlOCgx6l13JNg', NULL, '2020-01-29 11:22:55', '2020-03-22 11:07:49'),
+(328, 'احمد رحمانی', 'شرقی', '20', '1', 'E201', 'E-2/37', 2, 1, 162, 5681900, '09201010328', '40445649', '40445644', 'boardMember', 1, 'enable', NULL, NULL, 'E201', '$2y$10$VkSgwuhfuaQvJ9Vouc2uOuBN9zJd9xO.r/IkX8ANf.Na/xwXc/VRa', '8h0VcvqjXGNaDUr9Em2V5TP3VrjfUkYuqjacKYcx0meWc65rDVPeef4jAcsX', NULL, '2020-01-29 11:22:55', '2020-03-22 11:07:49'),
 (329, 'محمد علی صابرپور', 'شرقی', '20', '2', 'E202', NULL, NULL, 1, 159, 5551350, '09121977417', '', '', 'user', 0, 'enable', NULL, NULL, 'E202', '$2y$10$mVBVRSN8ab2THavbbkERHeaxLdQHYOBnHAHnEIHz9Pt2STXEV2WC6', NULL, NULL, '2020-01-29 11:22:55', NULL),
 (330, 'مریم السادات حسینی', 'شرقی', '20', '3', 'E203', NULL, NULL, 1, 167, 5845000, '09121989458', '40441657', '40441652', 'user', 0, 'enable', NULL, NULL, 'E203', '$2y$10$ltje4zyb2gfZQtb1F6TyLe3vVhdRlmnJVQ6tpje5WNbICtyOw.dv6', NULL, NULL, '2020-01-29 11:22:55', NULL),
 (331, 'حمید رضا جمشیدی', 'شرقی', '20', '4', 'E204', NULL, NULL, 1, 168, 5874400, '09121455412', '40445793', '40445790', 'user', 0, 'enable', NULL, NULL, 'E204', '$2y$10$5fLR310LdtAEe5boNHqYXuzzm5j0YH8BM6WXQiPsKzPWFUsDggdzC', NULL, NULL, '2020-01-29 11:22:55', NULL),
@@ -4479,7 +4613,8 @@ INSERT INTO `users` (`id`, `fullName`, `tower`, `floor`, `unit`, `code`, `parkin
 (338, 'ناصر هاشم پور', 'شرقی', '21', '3', 'E213', NULL, NULL, 1, 168, 5868800, '09127793694', '40440554', '40440507', 'user', 0, 'enable', NULL, NULL, 'E213', '$2y$10$DAGVs/Muz5KbNttEbhXfnO50VmFvXHI.CDE1pWwhXpYbWFdL0Lbp6', NULL, NULL, '2020-01-29 11:22:55', NULL),
 (339, 'سید ناصر خادم', 'شرقی', '21', '4', 'E214', NULL, NULL, 1, 255, 9867375, '09125935949', '40445963', '40445966', 'user', 0, 'enable', NULL, NULL, 'E214', '$2y$10$dl9YMLKeHSEnSQL1LO0hI..nojZ6HoNrgx0DqC3NOgjDv5VFDNJM.', NULL, NULL, '2020-01-29 11:22:55', NULL),
 (340, 'مهدی اعتصام', 'شرقی', '21', '5', 'E215', NULL, NULL, 1, 191, 6688850, '09121255541', '', '', 'user', 0, 'enable', NULL, NULL, 'E215', '$2y$10$BmiRxnXOi/xxKUfLEwob.eOZxE/CD1f6uux33jIHOa0v4S9rgIZk2', NULL, NULL, '2020-01-29 11:22:55', NULL),
-(341, 'علی صادقی', 'شرقی', '21', '6', 'E216', NULL, NULL, 1, 191, 6684300, '09122210880', '40445818', '40445815', 'user', 0, 'enable', NULL, NULL, 'E216', '$2y$10$N.NhrUT09M2ixZIk/lq1OewuVrtl4eoa.7BmW2kheAuX9l5fbkGnW', NULL, NULL, '2020-01-29 11:22:56', NULL);
+(341, 'علی صادقی', 'شرقی', '21', '6', 'E216', NULL, NULL, 1, 191, 6684300, '09122210880', '40445818', '40445815', 'user', 0, 'enable', NULL, NULL, 'E216', '$2y$10$N.NhrUT09M2ixZIk/lq1OewuVrtl4eoa.7BmW2kheAuX9l5fbkGnW', NULL, NULL, '2020-01-29 11:22:56', NULL),
+(342, 'رضا رضایی', NULL, NULL, NULL, NULL, NULL, NULL, 11, NULL, NULL, '09201010110', NULL, NULL, 'user', 0, 'enable', NULL, NULL, 'rezaei@yahoo.com', '$2y$10$RxHUwsgh3v.7hneoocisAuIHrGM3Nm4lyfN0.C9Wf8Y8O4NZwdPhi', NULL, NULL, '2020-03-29 02:41:44', '2020-03-29 02:41:44');
 
 -- --------------------------------------------------------
 
@@ -4539,6 +4674,46 @@ CREATE TABLE IF NOT EXISTS `warnings` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `websites`
+--
+
+CREATE TABLE IF NOT EXISTS `websites` (
+  `id` bigint(20) unsigned NOT NULL,
+  `complex_id` int(10) unsigned NOT NULL,
+  `slogan` text COLLATE utf8_unicode_ci NOT NULL,
+  `description` text COLLATE utf8_unicode_ci NOT NULL,
+  `hypermarket` varchar(191) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'off',
+  `cinema` varchar(191) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'off',
+  `salonbadansazi` varchar(191) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'off',
+  `mahdekoodak` varchar(191) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'off',
+  `barghezterari` varchar(191) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'off',
+  `coffeshop` varchar(191) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'off',
+  `labi` varchar(191) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'off',
+  `arayeshgahzanane` varchar(191) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'off',
+  `arayeshgahmardane` varchar(191) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'off',
+  `masaj` varchar(191) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'off',
+  `pent` varchar(191) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'off',
+  `salontadris` varchar(191) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'off',
+  `charge` varchar(191) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'off',
+  `amfi` varchar(191) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'off',
+  `ketabkhune` varchar(191) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'off',
+  `asansor` varchar(191) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'off',
+  `bms` varchar(191) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'off',
+  `harigh` varchar(191) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'off',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `websites`
+--
+
+INSERT INTO `websites` (`id`, `complex_id`, `slogan`, `description`, `hypermarket`, `cinema`, `salonbadansazi`, `mahdekoodak`, `barghezterari`, `coffeshop`, `labi`, `arayeshgahzanane`, `arayeshgahmardane`, `masaj`, `pent`, `salontadris`, `charge`, `amfi`, `ketabkhune`, `asansor`, `bms`, `harigh`, `created_at`, `updated_at`) VALUES
+(1, 1, '', '', 'on', 'off', 'off', 'off', 'off', 'off', 'off', 'off', 'off', 'off', 'off', 'off', 'off', 'off', 'off', 'off', 'off', 'off', NULL, NULL);
+
 --
 -- Indexes for dumped tables
 --
@@ -4577,7 +4752,8 @@ ALTER TABLE `elevators`
 -- Indexes for table `enactments`
 --
 ALTER TABLE `enactments`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `enactments_proceeding_id_foreign` (`proceeding_id`);
 
 --
 -- Indexes for table `equipment`
@@ -4602,6 +4778,19 @@ ALTER TABLE `failed_jobs`
 --
 ALTER TABLE `galleries`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `gateway_transactions`
+--
+ALTER TABLE `gateway_transactions`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `gateway_transactions_logs`
+--
+ALTER TABLE `gateway_transactions_logs`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `gateway_transactions_logs_transaction_id_foreign` (`transaction_id`);
 
 --
 -- Indexes for table `incomes`
@@ -4659,6 +4848,12 @@ ALTER TABLE `password_resets`
   ADD KEY `password_resets_email_index` (`email`);
 
 --
+-- Indexes for table `payments`
+--
+ALTER TABLE `payments`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `penalties`
 --
 ALTER TABLE `penalties`
@@ -4671,15 +4866,21 @@ ALTER TABLE `permission_requests`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `personnels`
+--
+ALTER TABLE `personnels`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `proceedings`
 --
 ALTER TABLE `proceedings`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `residents`
+-- Indexes for table `residence_members`
 --
-ALTER TABLE `residents`
+ALTER TABLE `residence_members`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -4720,6 +4921,12 @@ ALTER TABLE `warnings`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `websites`
+--
+ALTER TABLE `websites`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -4732,7 +4939,7 @@ ALTER TABLE `comforts`
 -- AUTO_INCREMENT for table `complexes`
 --
 ALTER TABLE `complexes`
-  MODIFY `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
+  MODIFY `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT for table `contracts`
 --
@@ -4752,7 +4959,7 @@ ALTER TABLE `elevators`
 -- AUTO_INCREMENT for table `enactments`
 --
 ALTER TABLE `enactments`
-  MODIFY `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `equipment`
 --
@@ -4773,6 +4980,16 @@ ALTER TABLE `failed_jobs`
 --
 ALTER TABLE `galleries`
   MODIFY `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT for table `gateway_transactions`
+--
+ALTER TABLE `gateway_transactions`
+  MODIFY `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=158556581459;
+--
+-- AUTO_INCREMENT for table `gateway_transactions_logs`
+--
+ALTER TABLE `gateway_transactions_logs`
+  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `incomes`
 --
@@ -4797,7 +5014,7 @@ ALTER TABLE `maintenances`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=44;
+  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=71;
 --
 -- AUTO_INCREMENT for table `monitorings`
 --
@@ -4812,12 +5029,17 @@ ALTER TABLE `notifications`
 -- AUTO_INCREMENT for table `parkings`
 --
 ALTER TABLE `parkings`
-  MODIFY `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `password_resets`
 --
 ALTER TABLE `password_resets`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `payments`
+--
+ALTER TABLE `payments`
+  MODIFY `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `penalties`
 --
@@ -4827,17 +5049,22 @@ ALTER TABLE `penalties`
 -- AUTO_INCREMENT for table `permission_requests`
 --
 ALTER TABLE `permission_requests`
-  MODIFY `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `personnels`
+--
+ALTER TABLE `personnels`
+  MODIFY `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `proceedings`
 --
 ALTER TABLE `proceedings`
+  MODIFY `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `residence_members`
+--
+ALTER TABLE `residence_members`
   MODIFY `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
---
--- AUTO_INCREMENT for table `residents`
---
-ALTER TABLE `residents`
-  MODIFY `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `tickets`
 --
@@ -4852,7 +5079,7 @@ ALTER TABLE `traffic`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=342;
+  MODIFY `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=343;
 --
 -- AUTO_INCREMENT for table `votes`
 --
@@ -4868,6 +5095,27 @@ ALTER TABLE `vote_options`
 --
 ALTER TABLE `warnings`
   MODIFY `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `websites`
+--
+ALTER TABLE `websites`
+  MODIFY `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `enactments`
+--
+ALTER TABLE `enactments`
+  ADD CONSTRAINT `enactments_proceeding_id_foreign` FOREIGN KEY (`proceeding_id`) REFERENCES `proceedings` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `gateway_transactions_logs`
+--
+ALTER TABLE `gateway_transactions_logs`
+  ADD CONSTRAINT `gateway_transactions_logs_transaction_id_foreign` FOREIGN KEY (`transaction_id`) REFERENCES `gateway_transactions` (`id`) ON DELETE CASCADE;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

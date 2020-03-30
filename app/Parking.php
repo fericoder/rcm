@@ -8,5 +8,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Parking extends Model
 {
     protected $guarded = ['id'];
-    use Illuminate\Database\Eloquent\SoftDeletes;
+    use SoftDeletes;
+
 }

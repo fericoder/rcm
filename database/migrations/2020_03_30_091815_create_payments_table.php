@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateResidentsTable extends Migration
+class CreatePaymentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,8 @@ class CreateResidentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('residents', function (Blueprint $table) {
+        Schema::create('payments', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedInteger('user_id');
-            $table->unsignedInteger('complex_id');
-            $table->string('fullName');
-            $table->enum('gender', ['خانم' , 'آقا']);
-            $table->unsignedInteger('age');
-            $table->string('mobile');
             $table->timestamps();
         });
     }
@@ -32,6 +26,6 @@ class CreateResidentsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('residents');
+        Schema::dropIfExists('payments');
     }
 }

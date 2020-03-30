@@ -4,17 +4,12 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Resident extends Model
+class Personnel extends Model
 {
-    public function user()
-    {
-        return $this->belongsTo('App\User');
-    }
+    protected $guarded = ['id'];
 
     public function complex()
     {
         return $this->belongsTo('App\Complex');
     }
-
-
 }

@@ -15,6 +15,13 @@ class CreatePermissionRequestsTable extends Migration
     {
         Schema::create('permission_requests', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->unsignedInteger('user_id');
+            $table->unsignedInteger('complex_id');
+            $table->unsignedInteger('answer_id');
+            $table->string('subject');
+            $table->string('date');
+            $table->string('status');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

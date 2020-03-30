@@ -158,7 +158,7 @@
                         @foreach ($proceedings as $proceeding)
                             <tr>
                                 <td>{{ $proceeding->number }}</td>
-                                <td>{{ $proceeding->date }}</td>
+                                <td>{{ jdate($proceeding->date) }}</td>
                                 <td><a target="_blank" href="{{ $proceeding->file }}"> <i class="fa fa-file-alt"></i> </a></td>
                                 <td>
                                     @can('admin')
@@ -241,16 +241,5 @@
 
     </script>
 
-    <link rel="stylesheet" href="/dashboard/assets/css/persian-datepicker.min.css"/>
-    <script src="/dashboard/assets/js/persian-date.min.js"></script>
-    <script src="/dashboard/assets/js/persian-datepicker.min.js"></script>
-    <script src="/dashboard/assets/js/persian-date.min.js" type="text/javascript"></script>
-    <script>
-        $(document).ready(function() {
-            $(".dp").pDatepicker({
-                altField: '.observer'
-            });
-        });
-    </script>
 
 @stop

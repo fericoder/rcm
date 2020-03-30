@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Complex;
 use App\Gallery;
+use App\Personnel;
 use Illuminate\Http\Request;
 
 class WebsiteController extends Controller
@@ -12,7 +13,8 @@ class WebsiteController extends Controller
     {
         $complex = Complex::where('url', $request->complex)->first();
         $pictures = Gallery::where('complex_id', $complex->id)->orderBy('id', 'DESC')->limit(10)->get();
-        return view('website.index', compact('complex', 'pictures'));
+        $personnels = Personnel::where('complex_id', $complex->id)->orderBy('order', 'ASC')->get();
+        return view('website.index', compact('complex', 'pictures', 'personnels'));
     }
 
 

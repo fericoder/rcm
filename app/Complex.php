@@ -23,5 +23,11 @@ class Complex extends Model
         return $this->hasMany('App\Resident');
     }
 
+    public function website()
+    {
+        return $this->belongsTo('App\Website');
+    }
+
+
 
 }
