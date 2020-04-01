@@ -81,7 +81,7 @@
             <div class="row align-items-center justify-content-center">
                 <div class="col-md-6 mt-lg-5 text-center">
                     <h1>{{ $complex->name }}</h1>
-                    <p class="mb-5">اوج آرامش در بهترین برج منطقه ۲۲ تهران</p>
+                    <p class="mb-5">{{ $website->slogan }}</p>
                     <div class="row form-group">
                         <div class="col-md-12">
                             <a href="/login"></a><button class="btn btn-primary btn-md text-white" />ورود به سامانه مدیریت {{ $complex->name }}</div>
@@ -118,8 +118,9 @@
                 <div class="col-lg-5 ml-auto">
 
                     <h2 class="section-title mb-3">درباره {{ $complex->name }}</h2>
-                    <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                    <p>Est qui eos quasi ratione nostrum excepturi id recusandae fugit omnis ullam pariatur itaque nisi voluptas impedit  Quo suscipit omnis iste velit maxime.</p>
+                    <p class="lead">
+                        {!! $website->description !!}
+                    </p>
 
                 </div>
             </div>
@@ -130,158 +131,197 @@
 
     <div class="py-5 bg-light site-section how-it-works" id="howitworks-section">
         <div class="container">
+
+
             <div class="row mb-5 justify-content-center">
                 <div class="col-md-7 text-center">
                     <h2 class="section-title mb-3">خدمات</h2>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-4 p-3 text-center" data-aos="fade-up">
-                    <div class="pr-5">
-                        <i class="custom-icon fa fa-shopping-basket text-primary"></i>
-                        <h3 class="text-dark">هایپرمارکت</h3>
-                    </div>
-                </div>
-
-                <div class="col-md-4 p-3 text-center" data-aos="fade-up">
-                    <div class="pr-5">
-                        <i class="custom-icon fa fa-film text-primary"></i>
-                        <h3 class="text-dark">سینما</h3>
-                    </div>
-                </div>
-
-                <div class="col-md-4 p-3 text-center" data-aos="fade-up">
-                    <div class="pr-5">
-                        <i class="custom-icon fa fa-dribbble text-primary"></i>
-                        <h3 class="text-dark">سالن بدنسازی</h3>
-                    </div>
-                </div>
-            </div>
-
 
 
 
             <div class="row">
-                <div class="col-md-4 p-3 text-center" data-aos="fade-up">
-                    <div class="pr-5">
-                        <i class="custom-icon fa fa-child text-primary"></i>
-                        <h3 class="text-dark">مهدکودک</h3>
+
+
+                @if($website->hypermarket == 'on')
+                    <div class="col-md-4 p-3 text-center" data-aos="fade-up">
+                        <div class="pr-5">
+                            <i class="custom-icon fa fa-shopping-basket text-primary"></i>
+                            <h3 class="text-dark">هایپرمارکت</h3>
+                        </div>
                     </div>
-                </div>
+                @endif
 
-                <div class="col-md-4 p-3 text-center" data-aos="fade-up">
-                    <div class="pr-5">
-                        <i class="custom-icon fa fa-plug text-primary"></i>
-                        <h3 class="text-dark">برق اضطراری</h3>
-                    </div>
-                </div>
-
-                <div class="col-md-4 p-3 text-center" data-aos="fade-up">
-                    <div class="pr-5">
-                        <i class="custom-icon fa fa-coffee text-primary"></i>
-                        <h3 class="text-dark">کافی شاپ</h3>
-                    </div>
-                </div>
-            </div>
+                    @if($website->cinema == 'on')
+                        <div class="col-md-4 p-3 text-center" data-aos="fade-up">
+                            <div class="pr-5">
+                                <i class="custom-icon fa fa-film text-primary"></i>
+                                <h3 class="text-dark">سینما</h3>
+                            </div>
+                        </div>
+                    @endif
 
 
-
-
-            <div class="row">
-                <div class="col-md-4 p-3 text-center" data-aos="fade-up">
-                    <div class="pr-5">
-                        <i class="custom-icon flaticon-home text-primary"></i>
-                        <h3 class="text-dark">لابی مجلل</h3>
-                    </div>
-                </div>
-
-                <div class="col-md-4 p-3 text-center" data-aos="fade-up">
-                    <div class="pr-5">
-                        <i class="custom-icon fa fa-female text-primary"></i>
-                        <h3 class="text-dark">آرایشگاه زنانه</h3>
-                    </div>
-                </div>
-
-                <div class="col-md-4 p-3 text-center" data-aos="fade-up">
-                    <div class="pr-5">
-                        <i class="custom-icon fa fa-male text-primary"></i>
-                        <h3 class="text-dark">آرایشگاه مردانه</h3>
-                    </div>
-                </div>
-            </div>
+                    @if($website->salonbadansazi == 'on')
+                        <div class="col-md-4 p-3 text-center" data-aos="fade-up">
+                            <div class="pr-5">
+                                <i class="custom-icon fa fa-dribbble text-primary"></i>
+                                <h3 class="text-dark">سالن بدنسازی</h3>
+                            </div>
+                        </div>
+                    @endif
 
 
 
-            <div class="row">
-                <div class="col-md-4 p-3 text-center" data-aos="fade-up">
-                    <div class="pr-5">
-                        <i class="custom-icon fa fa-bed text-primary"></i>
-                        <h3 class="text-dark">اتاق ماساژ</h3>
-                    </div>
-                </div>
-
-                <div class="col-md-4 p-3 text-center" data-aos="fade-up">
-                    <div class="pr-5">
-                        <i class="custom-icon flaticon-flat text-primary"></i>
-                        <h3 class="text-dark">پنت هاوس</h3>
-                    </div>
-                </div>
-
-                <div class="col-md-4 p-3 text-center" data-aos="fade-up">
-                    <div class="pr-5">
-                        <i class="custom-icon fa fa-pencil text-primary"></i>
-                        <h3 class="text-dark">سالن تدریس خصوصی</h3>
-                    </div>
-                </div>
-            </div>
+                    @if($website->mahdekoodak == 'on')
+                        <div class="col-md-4 p-3 text-center" data-aos="fade-up">
+                            <div class="pr-5">
+                                <i class="custom-icon fa fa-child text-primary"></i>
+                                <h3 class="text-dark">مهدکودک</h3>
+                            </div>
+                        </div>
+                    @endif
 
 
-            <div class="row">
-                <div class="col-md-4 p-3 text-center" data-aos="fade-up">
-                    <div class="pr-5">
-                        <i class="custom-icon flaticon-mobile-phone text-primary"></i>
-                        <h3 class="text-dark">پرداخت شارژ از طریق موبایل</h3>
-                    </div>
-                </div>
-
-                <div class="col-md-4 p-3 text-center" data-aos="fade-up">
-                    <div class="pr-5">
-                        <i class="custom-icon fa fa-sign-language text-primary"></i>
-                        <h3 class="text-dark">سالن آمفی تئاتر</h3>
-                    </div>
-                </div>
-
-                <div class="col-md-4 p-3 text-center" data-aos="fade-up">
-                    <div class="pr-5">
-                        <i class="custom-icon fa fa-book text-primary"></i>
-                        <h3 class="text-dark">کتابخانه عمومی</h3>
-                    </div>
-                </div>
-            </div>
+                    @if($website->barghezterari == 'on')
+                        <div class="col-md-4 p-3 text-center" data-aos="fade-up">
+                            <div class="pr-5">
+                                <i class="custom-icon fa fa-plug text-primary"></i>
+                                <h3 class="text-dark">برق اضطراری</h3>
+                            </div>
+                        </div>
+                    @endif
 
 
-            <div class="row">
-                <div class="col-md-4 p-3 text-center" data-aos="fade-up">
-                    <div class="pr-5">
-                        <i class="custom-icon fa fa-trello text-primary"></i>
-                        <h3 class="text-dark">آسانسور باربری</h3>
-                    </div>
-                </div>
+                    @if($website->coffeshop == 'on')
+                        <div class="col-md-4 p-3 text-center" data-aos="fade-up">
+                            <div class="pr-5">
+                                <i class="custom-icon fa fa-coffee text-primary"></i>
+                                <h3 class="text-dark">کافی شاپ</h3>
+                            </div>
+                        </div>
+                    @endif
 
-                <div class="col-md-4 p-3 text-center" data-aos="fade-up">
-                    <div class="pr-5">
-                        <i class="custom-icon flaticon-home text-primary"></i>
-                        <h3 class="text-dark">سیستم BMS</</h3>
-                    </div>
-                </div>
 
-                <div class="col-md-4 p-3 text-center" data-aos="fade-up">
-                    <div class="pr-5">
-                        <i class="custom-icon fa fa-fire-extinguisher text-primary"></i>
-                        <h3 class="text-dark">سیستم اعلام و اطفا حریق</h3>
-                    </div>
-                </div>
-            </div>
+
+                    @if($website->labi == 'on')
+                        <div class="col-md-4 p-3 text-center" data-aos="fade-up">
+                            <div class="pr-5">
+                                <i class="custom-icon flaticon-home text-primary"></i>
+                                <h3 class="text-dark">لابی مجلل</h3>
+                            </div>
+                        </div>
+                    @endif
+
+                    @if($website->arayeshgahzanane == 'on')
+                        <div class="col-md-4 p-3 text-center" data-aos="fade-up">
+                            <div class="pr-5">
+                                <i class="custom-icon fa fa-female text-primary"></i>
+                                <h3 class="text-dark">آرایشگاه زنانه</h3>
+                            </div>
+                        </div>
+                    @endif
+
+
+
+                    @if($website->arayeshgahmardane == 'on')
+                        <div class="col-md-4 p-3 text-center" data-aos="fade-up">
+                            <div class="pr-5">
+                                <i class="custom-icon fa fa-male text-primary"></i>
+                                <h3 class="text-dark">آرایشگاه مردانه</h3>
+                            </div>
+                        </div>
+                    @endif
+
+
+                    @if($website->masaj == 'on')
+                        <div class="col-md-4 p-3 text-center" data-aos="fade-up">
+                            <div class="pr-5">
+                                <i class="custom-icon fa fa-bed text-primary"></i>
+                                <h3 class="text-dark">اتاق ماساژ</h3>
+                            </div>
+                        </div>
+                    @endif
+
+
+                    @if($website->pent == 'on')
+                        <div class="col-md-4 p-3 text-center" data-aos="fade-up">
+                            <div class="pr-5">
+                                <i class="custom-icon flaticon-flat text-primary"></i>
+                                <h3 class="text-dark">پنت هاوس</h3>
+                            </div>
+                        </div>
+                    @endif
+
+                    @if($website->salontadris == 'on')
+                        <div class="col-md-4 p-3 text-center" data-aos="fade-up">
+                            <div class="pr-5">
+                                <i class="custom-icon fa fa-pencil text-primary"></i>
+                                <h3 class="text-dark">سالن تدریس خصوصی</h3>
+                            </div>
+                        </div>
+                    @endif
+
+
+                    @if($website->charge == 'on')
+                        <div class="col-md-4 p-3 text-center" data-aos="fade-up">
+                            <div class="pr-5">
+                                <i class="custom-icon flaticon-mobile-phone text-primary"></i>
+                                <h3 class="text-dark">سامانه هوشمند</h3>
+                            </div>
+                        </div>
+                    @endif
+
+                    @if($website->amfi == 'on')
+                        <div class="col-md-4 p-3 text-center" data-aos="fade-up">
+                            <div class="pr-5">
+                                <i class="custom-icon fa fa-sign-language text-primary"></i>
+                                <h3 class="text-dark">سالن آمفی تئاتر</h3>
+                            </div>
+                        </div>
+                    @endif
+
+                    @if($website->ketabkhune == 'on')
+                        <div class="col-md-4 p-3 text-center" data-aos="fade-up">
+                            <div class="pr-5">
+                                <i class="custom-icon fa fa-book text-primary"></i>
+                                <h3 class="text-dark">کتابخانه عمومی</h3>
+                            </div>
+                        </div>
+                    @endif
+
+
+                    @if($website->asansor == 'on')
+                        <div class="col-md-4 p-3 text-center" data-aos="fade-up">
+                            <div class="pr-5">
+                                <i class="custom-icon fa fa-trello text-primary"></i>
+                                <h3 class="text-dark">آسانسور باربری</h3>
+                            </div>
+                        </div>
+                    @endif
+
+
+                    @if($website->bms == 'on')
+                        <div class="col-md-4 p-3 text-center" data-aos="fade-up">
+                            <div class="pr-5">
+                                <i class="custom-icon flaticon-home text-primary"></i>
+                                <h3 class="text-dark">سیستم BMS</</h3>
+                            </div>
+                        </div>
+                    @endif
+
+
+                    @if($website->harigh == 'on')
+                        <div class="col-md-4 p-3 text-center" data-aos="fade-up">
+                            <div class="pr-5">
+                                <i class="custom-icon fa fa-fire-extinguisher text-primary"></i>
+                                <h3 class="text-dark">سیستم اعلام و اطفا حریق</h3>
+                            </div>
+                        </div>
+                    @endif
+
+
 
         </div>
     </div>
@@ -439,9 +479,18 @@
 
 
 
-                    <form action="#" class="p-5 bg-white">
-
+                    <form action="{{ route('website.massage', $complex->id) }}" method="post" class="p-5 bg-white">
+                        @csrf
                         <h2 class="h4 text-black mb-5">تماس باما:</h2>
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
 
                         <div class="row form-group">
                             <div class="col-md-6 mb-3 mb-md-0">
@@ -451,6 +500,7 @@
                             <div class="col-md-6">
                                 <label class="text-black" for="lname">تلفن</label>
                                 <input type="text" name="phone" class="form-control">
+                                <input style="display: none;" type="hidden" value="{{ $complex->id }}" name="cciiiddd" >
                             </div>
                         </div>
 
@@ -458,7 +508,7 @@
                         <div class="row form-group">
                             <div class="col-md-12">
                                 <label class="text-black" for="message">متن پیام:</label>
-                                <textarea style="font-family: BYekan" name="message" cols="30" rows="7" class="form-control" placeholder="لطفا متن پیام خود را وارد کنید"></textarea>
+                                <textarea style="font-family: BYekan" name="massage" cols="30" rows="7" class="form-control" placeholder="لطفا متن پیام خود را وارد کنید"></textarea>
                             </div>
                         </div>
 
@@ -524,6 +574,9 @@
 
 
 <script src="/website/js/main.js"></script>
+
+<script src="/dashboard/assets/js/sweetalert.min.js"></script>
+@include('sweet::alert')
 
 </body>
 </html>

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateVoteOptionsTable extends Migration
+class CreateCostHeadingsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,13 @@ class CreateVoteOptionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('vote_options', function (Blueprint $table) {
+        Schema::create('cost_headings', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedInteger('vote_id');
-            $table->string('title');
-            $table->bigInteger('count')->default(0);
+            $table->unsignedInteger('complex_id');
+            $table->unsignedInteger('user_id');
+            $table->string('name');
+            $table->string('code');
+            $table->softDeletes();
             $table->timestamps();
         });
     }
@@ -29,6 +31,6 @@ class CreateVoteOptionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('vote_options');
+        Schema::dropIfExists('cost_headings');
     }
 }

@@ -22,24 +22,6 @@ class ComplexController extends \App\Http\Controllers\Controller
     }
 
 
-    public function WebsiteForm()
-    {
-        $complex = \Auth::user()->complex;
-        $website = Website::where('complex_id', \Auth::user()->complex_id)->first();
-        $personnels = Personnel::where('complex_id', \Auth::user()->complex_id)->get();
-        return view('dashboard.configuration.website', compact('complex', 'personnels', 'website'));
-
-    }
-
-
-    public function WebsiteFormStore(Request $request)
-    {
-        dd($request->all());
-        $complex = \Auth::user()->complex;
-        $personnels = Personnel::where('complex_id', \Auth::user()->complex_id)->get();
-        return view('dashboard.configuration.website', compact('complex', 'personnels'));
-
-    }
 
 
     public function personnel(Request $request)
@@ -75,6 +57,50 @@ class ComplexController extends \App\Http\Controllers\Controller
         return redirect()->route('units.index');
 
     }
+
+
+
+    public function WebsiteForm()
+    {
+        $complex = \Auth::user()->complex;
+        $website = Website::where('complex_id', \Auth::user()->complex_id)->first();
+        $personnels = Personnel::where('complex_id', \Auth::user()->complex_id)->get();
+        return view('dashboard.configuration.website', compact('complex', 'personnels', 'website'));
+
+    }
+
+
+    public function WebsiteFormStore(Request $request)
+    {
+        $website = Website::where('complex_id', \Auth::user()->complex_id)->first();
+
+        $website->update([
+            'slogan' => $request->slogan,
+            'description' => $request->description,
+            'hypermarket' => $request->hypermarket,
+            'cinema' => $request->cinema,
+            'salonbadansazi' => $request->salonbadansazi,
+            'mahdekoodak' => $request->mahdekoodak,
+            'barghezterari' => $request->barghezterari,
+            'coffeshop' => $request->coffeshop,
+            'labi' => $request->labi,
+            'arayeshgahzanane' => $request->arayeshgahzanane,
+            'arayeshgahmardane' => $request->arayeshgahmardane,
+            'masaj' => $request->masaj,
+            'pent' => $request->pent,
+            'salontadris' => $request->salontadris,
+            'charge' => $request->charge,
+            'amfi' => $request->amfi,
+            'ketabkhune' => $request->ketabkhune,
+            'asansor' => $request->asansor,
+            'bms' => $request->bms,
+            'harigh' => $request->harigh,
+        ]);
+
+        alert()->success('اطلاعات مجتمع بروز شد.', 'بروز شد');
+        return redirect()->back();
+    }
+
 
 
 }

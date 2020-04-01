@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateVoteOptionsTable extends Migration
+class CreateExcelsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,13 @@ class CreateVoteOptionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('vote_options', function (Blueprint $table) {
+        Schema::create('excels', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedInteger('vote_id');
-            $table->string('title');
-            $table->bigInteger('count')->default(0);
+            $table->unsignedInteger('user_id');
+            $table->unsignedInteger('complex_id');
+            $table->enum('type', ['invoice']);
+            $table->text('file');
+            $table->enum('done', ['0', '1']);
             $table->timestamps();
         });
     }
@@ -29,6 +31,6 @@ class CreateVoteOptionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('vote_options');
+        Schema::dropIfExists('excels');
     }
 }

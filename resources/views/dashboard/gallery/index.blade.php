@@ -82,8 +82,20 @@
                     <div class="kt-portlet__body">
 
                         <div class="container" style="margin-top:10px;">
-                            <p style="direction: ltr!important;text-align: left;font-family:Arial!important" >About {{ count($photos) }} results ({{ (microtime(true) - LARAVEL_START) }} second)</p>
-                            <div class="row form-group">
+                            <p style="direction: rtl!important;text-align: left;font-family:BYekan!important" > {{ count($photos) }} تصویر پیدا شده در ({{ (microtime(true) - LARAVEL_START) }} ثانیه)</p>
+
+
+                            <div style="margin-right: 9%;" class="form-group mt-5 ">
+                                <form action="{{ route('gallery.search') }}" method="post">
+                                    @csrf
+                                    <label>جستجو بین تصاویر:</label>
+                                    <input style="display: inline; width: 35%" type="text" name="keyword" class="form-control"  {{ isset($keyword) ? "value=$keyword" : '' }}  placeholder="عبارت مورد نظر را وارد نمایید:">
+                                    <button style="font-size: 14px; display: inline" type="submit" class="btn btn-primary btn-sm" aria-haspopup="true" aria-expanded="false"><i class="fa fa-search"></i>جستجو</button>
+                                </form>
+                            </div>
+
+
+                            <div class="row form-group mt-5">
 
                                 @foreach($photos as $photo)
                                     <div class="col-xs-12 col-md-4">

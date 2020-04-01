@@ -257,9 +257,7 @@
                                         @can('admin')
                                             <a href="{{ route('enactments.delete', ['id' => $enactment->id]) }}" class="m-portlet__nav-link btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill button" title="حذف مشتری "> <i style="color: darkred" class="fa fa-times"></i> </a>
                                         @endcan
-                                        @can('admin', 'boardMember')
                                             <a href="{{ route('enactments.edit', $enactment->id) }}" class="m-portlet__nav-link btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill" title="ویرایش"> <i style="color: green" class="la la-edit"></i> </a>
-                                        @endcan
                                     </td>
                                 </tr>
                             @endforeach

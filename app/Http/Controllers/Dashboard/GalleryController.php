@@ -18,6 +18,14 @@ class GalleryController extends \App\Http\Controllers\Controller
         return view('dashboard.gallery.index', compact('photos'));
     }
 
+    public function search(Request $request)
+    {
+        $keyword = $request->keyword;
+        $photos = Gallery::where('complex_id', \Auth::user()->complex_id)->where('description', 'like', '%' . $keyword . '%')->paginate(20);
+        return view('dashboard.gallery.index', compact('photos', 'keyword'));
+    }
+
+
     /**
      * Show the form for creating a new resource.
      *

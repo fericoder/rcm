@@ -90,13 +90,14 @@ class EnactmentController extends \App\Http\Controllers\Controller
      */
     public function update(Request $request, Enactment $enactment)
     {
-        $date = substr($request->deadline, 0, 10);
 
+
+//        $date = substr($request->deadline, 0, 10);
         $enactment->update([
            'number' => $request->number,
            'description' => $request->description,
            'user_id' => $request->user_id,
-           'deadline' =>  date('Y-m-d H:i:s', (int) $date),
+//           'deadline' =>  date('Y-m-d H:i:s', (int) $date),
            'number' => $request->number,
            'status' => $request->status,
            'resualt' => $request->resualt,

@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Website extends Model
+class Massage extends Model
 {
     protected $guarded = ['id'];
 }

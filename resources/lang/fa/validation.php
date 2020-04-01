@@ -152,7 +152,7 @@ return [
       'priority' => 'اهمیت',
       'assignerAttachment' => 'فایل ضمیمه',
       'doerAttachment' => 'فایل ضمیمه',
-      'units' => 'تعداد واحد ها',
+      'units' => 'واحد ها',
       'address' => 'آدرس',
       'type' => 'نوع',
         'brand' => 'برند',
@@ -168,6 +168,14 @@ return [
         'status' => 'وضعیت',
         'date' => 'تاریخ',
         'date' => 'عنوان',
+        'date' => 'عنوان',
+        'phone' => 'شماره تماس',
+        'massage' => 'پیام',
+        'code' => 'کد صورتحساب',
+        'for' => 'بابت',
+        'amount' => 'مبلغ',
+        'excel' => 'فایل اکسل',
+        'content' => 'محتوی',
     ],
 
 ];

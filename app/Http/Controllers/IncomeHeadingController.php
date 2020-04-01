@@ -2,16 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\VoteOption;
+use App\IncomeHeading;
 use Illuminate\Http\Request;
 
-class VoteOptionController extends Controller
+class IncomeHeadingController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
+    public function index()
+    {
+        //
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -37,22 +41,21 @@ class VoteOptionController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\VoteOption  $voteOption
+     * @param  \App\IncomeHeading  $incomeHeading
      * @return \Illuminate\Http\Response
      */
-    public function show(Request $request)
+    public function show(IncomeHeading $incomeHeading)
     {
-        $vote = Vote::where('id', $request->id)->where('complex_id', \Auth::user()->complex_id)->first();
-        return view('dashboard.votes.options', compact('vote'));
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\VoteOption  $voteOption
+     * @param  \App\IncomeHeading  $incomeHeading
      * @return \Illuminate\Http\Response
      */
-    public function edit(VoteOption $voteOption)
+    public function edit(IncomeHeading $incomeHeading)
     {
         //
     }
@@ -61,10 +64,10 @@ class VoteOptionController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\VoteOption  $voteOption
+     * @param  \App\IncomeHeading  $incomeHeading
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, VoteOption $voteOption)
+    public function update(Request $request, IncomeHeading $incomeHeading)
     {
         //
     }
@@ -72,10 +75,10 @@ class VoteOptionController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\VoteOption  $voteOption
+     * @param  \App\IncomeHeading  $incomeHeading
      * @return \Illuminate\Http\Response
      */
-    public function destroy(VoteOption $voteOption)
+    public function destroy(IncomeHeading $incomeHeading)
     {
         //
     }

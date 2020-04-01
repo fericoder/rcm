@@ -59,7 +59,28 @@ class VoteController extends \App\Http\Controllers\Controller
      */
     public function show(Vote $vote)
     {
-        //
+        return view('dashboard.votes.show', compact('vote'));
+    }
+
+    public function submit(Request $request)
+    {
+        if(\DB::table('votes_polls')->select('id')->where('user_id', \Auth::user()->id)->where('vote_id', $request->id)->count() >= 1){
+            alert()->error('شما در این نظرسنجی شرکت کرده اید');
+            return redirect()->back();
+            exit;
+        }
+
+        $id = \DB::table('votes_polls')->insertGetId([
+            'user_id' => \Auth::user()->id,
+            'complex_id' => \Auth::user()->complex_id,
+            'vote_id' => $request->id,
+            'option_id' => $request->selectedOption,
+            'created_at' => now(),
+        ]);
+        alert()->success('نظر شما در نظرسنجی ثبت شد', 'ثبت شد');
+        return redirect()->back();
+
+
     }
 
     /**
