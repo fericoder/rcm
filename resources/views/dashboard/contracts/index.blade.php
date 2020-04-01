@@ -165,6 +165,7 @@
                                 <th>تاریخ شروع</th>
                                 <th>تاریخ پایان</th>
                                 <th>فایل قرارداد</th>
+                                <th>حذف | ویرایش</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -178,6 +179,15 @@
                                     <td>{{ $contract->from }}</td>
                                     <td>{{ $contract->to }}</td>
                                     <td>فایل</td>
+                                    <td>
+                                      @can('admin')
+                                          <a href="{{ route('contracts.delete', ['id' => $contract->id]) }}" class="m-portlet__nav-link btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill button" title="حذف قرارداد "> <i style="color: darkred" class="fa fa-times"></i> </a>
+                                      @endcan
+                                      @can('admin', 'boardMember')
+                                          <a href="{{ route('contracts.edit', $contract->id) }}" class="m-portlet__nav-link btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill" title="ویرایش"> <i style="color: green" class="la la-edit"></i> </a>
+                                      @endcan
+
+                                    </td>
                                 </tr>
                                 @endforeach
 

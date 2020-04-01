@@ -58,12 +58,14 @@ Route::namespace('Dashboard')->prefix('dashboard')->middleware('auth', 'configur
     Route::post('charge/report', 'ChargeController@show')->name('charge.report.show');
     Route::resource('invoices', 'InvoiceController');
     Route::resource('contracts', 'ContractController');
+    Route::get('contract/delete/{id}', 'ContractController@destroy')->name('contracts.delete');
     Route::resource('tickets', 'TicketController');
     Route::get('ticket/approve/{ticket_id}', 'TicketController@approve')->name('ticket.approve');
     Route::resource('notifications', 'NotificationController');
     Route::resource('permission-requests', 'PermissionRequestController');
     Route::resource('traffic', 'TrafficController');
     Route::resource('comfort', 'ComfortController');
+    Route::get('comfort/delete/{id}', 'ComfortController@destroy')->name('comfort.delete');
     Route::resource('gallery', 'GalleryController');
     Route::get('gallery/delete/{photo}', 'GalleryController@destroy')->name('gallery.delete');
 

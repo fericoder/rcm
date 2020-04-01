@@ -71,7 +71,8 @@ class ContractController extends \App\Http\Controllers\Controller
      */
     public function edit(Contract $contract)
     {
-        //
+
+      return view('dashboard.contracts.edit', compact('contract'));
     }
 
     /**
@@ -83,7 +84,22 @@ class ContractController extends \App\Http\Controllers\Controller
      */
     public function update(Request $request, Contract $contract)
     {
-        //
+      $contract->update([
+
+        'user_id' =>  \Auth::user()->id,
+        'complex_id' =>  \Auth::user()->complex_id,
+        'name' => $request->name,
+        'description' => $request->description,
+        'type' => $request->type,
+        'contractor' => $request->contractor,
+        'from' => $request->from,
+        'to' => $request->to,
+
+
+      ]);
+
+      alert()->success('درخواست شما با موفقیت انجام شد.', 'انجام شد');
+      return redirect()->route('contracts.index');
     }
 
     /**
@@ -92,8 +108,21 @@ class ContractController extends \App\Http\Controllers\Controller
      * @param  \App\Contract  $contract
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Contract $contract)
+    public function destroy(Request $request)
     {
-        //
+      if (\Gate::denies('admin')) {
+          alert()->warning('عدم دسترسی');
+          return redirect()->back();
+      }
+
+      $contract = Contract::find($request->id);
+      if ($contract->complex_id == \Auth::user()->complex_id){
+          $contract->delete();
+          alert()->success('قرارداد با موفقیت حذف شد', 'حذف شد');
+          return redirect()->back();
+      }else{
+          alert()->warning('عدم دسترسی');
+          return redirect()->back();
+      }
     }
 }

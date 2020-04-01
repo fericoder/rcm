@@ -67,7 +67,8 @@ class ComfortController extends \App\Http\Controllers\Controller
      */
     public function edit(Comfort $comfort)
     {
-        //
+
+            return view('dashboard.comforts.edit', compact('comfort'));
     }
 
     /**
@@ -79,7 +80,19 @@ class ComfortController extends \App\Http\Controllers\Controller
      */
     public function update(Request $request, Comfort $comfort)
     {
-        //
+        $comfort->update([
+
+              'user_id' =>  \Auth::user()->id,
+              'complex_id' =>  \Auth::user()->complex_id,
+              'title' => $request->title,
+              'location' => $request->location,
+              'responsive' => $request->responsive,
+              'phone' => $request->phone,
+
+            ]);
+
+            alert()->success('درخواست شما با موفقیت انجام شد.', 'انجام شد');
+            return redirect()->route('comforts.index');
     }
 
     /**
@@ -88,8 +101,21 @@ class ComfortController extends \App\Http\Controllers\Controller
      * @param  \App\Comfort  $comfort
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Comfort $comfort)
+    public function destroy(Request $request)
     {
-        //
+      if (\Gate::denies('admin')) {
+          alert()->warning('عدم دسترسی');
+          return redirect()->back();
+      }
+
+      $comfort = Comfort::find($request->id);
+      if ($comfort->complex_id == \Auth::user()->complex_id){
+          $comfort->delete();
+          alert()->success('واحد با موفقیت حذف شد', 'حذف شد');
+          return redirect()->back();
+      }else{
+          alert()->warning('عدم دسترسی');
+          return redirect()->back();
+      }
     }
 }
