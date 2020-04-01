@@ -8,7 +8,7 @@
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title" id="AddMonitoringReport">افزودن قرارداد</h4>
+                    <h4 class="modal-title" id="AddMonitoringReport">افزودن پرسنل</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -94,6 +94,9 @@
                     اطلاعات وبسایت
                 </h3>
             </div>
+            <div style="" class="kt-portlet__head-toolbar">
+                <a target="_blank" href="{{ route('website.index', \Auth::user()->complex->url)  }}"><button style="float: left;" class="btn btn-sm btn-info mr-1  ladda-button" ><span class="ladda-label">  <i class="fa fa-search"></i>  مشاهده وبسایت   </span></button></a>
+            </div>
         </div>
         <!--begin::Form-->
         <form action="{{ route('configuration.WebsiteFormstore', \Auth::user()->complex->id) }}" method="post" class="kt-form kt-form--fit kt-form--label-right">
@@ -131,7 +134,7 @@
                     <label class="col-lg-2 col-form-label">توضیحات:</label>
                     <div class="col-lg-8">
                         <div class="kt-input-icon">
-                            <textarea {{ $website->description }} class="form-control" cols="30" rows="5"></textarea>
+                            <textarea class="form-control" name="description" cols="30" rows="5">{{$website->description}}</textarea>
                             <span class="kt-input-icon__icon kt-input-icon__icon--right"><span><i class="la la-file"></i></span></span>
                         </div>
                         <span class="form-text text-muted">توضیحات مجتمع را وارد نمایید، بین ۳۰ تا ۱۰۰ کلمه</span>
@@ -174,12 +177,9 @@
                     </div>
               </div>
             <div class="kt-portlet__foot kt-portlet__foot--fit-x">
-                <div class="kt-form__actions">
+                <div class="kt-form__actions center">
                     <div class="row">
-                        <div class="col-lg-2"></div>
-                        <div class="col-lg-10">
                             <button style="font-size: 13px" type="submit" class="btn btn-success">بروزرسانی اطلاعات پایه وبسایت</button>
-                        </div>
                     </div>
                 </div>
             </div>

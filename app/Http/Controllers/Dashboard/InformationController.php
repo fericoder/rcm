@@ -20,69 +20,135 @@ class InformationController extends \App\Http\Controllers\Controller
         return view('dashboard.information', compact('informations', 'notifications'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+
+    public function notificationStore(Request $request)
     {
-        //
+        $request->validate([
+            'content' => 'required|min:3|max:1000',
+        ]);
+
+        Notification::create([
+            'content' => $request->content,
+            'user_id' => \Auth::user()->id,
+            'complex_id' => \Auth::user()->complex_id,
+        ]);
+
+        alert()->success('اعلان باموفقیت اضافه شد','انجام شد');
+        return redirect()->back();
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+
+    public function NotificationDestroy(Request $request)
     {
-        //
+        if (\Gate::denies('admin')) {
+            alert()->warning('عدم دسترسی');
+            return redirect()->back();
+        }
+
+        $notification = Notification::find($request->id);
+        if ($notification->complex_id == \Auth::user()->complex_id){
+            $notification->delete();
+            alert()->success('اعلان با موفقیت حذف شد', 'حذف شد');
+            return redirect()->back();
+        }else{
+            alert()->warning('عدم دسترسی');
+            return redirect()->back();
+        }
+
+
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Information  $information
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Information $information)
+
+    public function contactStore(Request $request)
     {
-        //
+        $request->validate([
+            'title' => 'required',
+            'content' => 'required',
+        ]);
+
+
+        Information::create([
+            'title' => $request->title,
+            'content' => $request->content,
+            'type' => 'contact',
+            'user_id' => \Auth::user()->id,
+            'complex_id' => \Auth::user()->complex_id,
+        ]);
+
+        alert()->success('اطلاعات تماس باموفقیت اضافه شد','انجام شد');
+        return redirect()->back();
+
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Information  $information
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Information $information)
+
+
+
+    public function contactDestroy(Request $request)
     {
-        //
+        if (\Gate::denies('admin')) {
+            alert()->warning('عدم دسترسی');
+            return redirect()->back();
+        }
+
+        $information = Information::find($request->id);
+        if ($information->complex_id == \Auth::user()->complex_id){
+            $information->delete();
+            alert()->success('اطلاعات تماس با موفقیت حذف شد', 'حذف شد');
+            return redirect()->back();
+        }else{
+            alert()->warning('عدم دسترسی');
+            return redirect()->back();
+        }
+
+
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Information  $information
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Information $information)
+
+
+    public function fileStore(Request $request)
     {
-        //
+        $request->validate([
+            'title' => 'required',
+            'file' => 'required|mimes:pdf,jpg,jpeg,PNG,png,doc,docx,xslx,xls,ppt,pptx',
+        ]);
+
+        $file = $this->uploadFile($request->file('file'));
+
+        Information::create([
+            'title' => $request->title,
+            'content' => $file,
+            'type' => 'file',
+            'user_id' => \Auth::user()->id,
+            'complex_id' => \Auth::user()->complex_id,
+        ]);
+
+        alert()->success('فایل باموفقیت اضافه شد','انجام شد');
+        return redirect()->back();
+
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Information  $information
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Information $information)
+
+
+
+    public function fileDestroy(Request $request)
     {
-        //
+        if (\Gate::denies('admin')) {
+            alert()->warning('عدم دسترسی');
+            return redirect()->back();
+        }
+
+        $information = Information::find($request->id);
+        if ($information->complex_id == \Auth::user()->complex_id){
+            $information->delete();
+            alert()->success('فایل با موفقیت حذف شد', 'حذف شد');
+            return redirect()->back();
+        }else{
+            alert()->warning('عدم دسترسی');
+            return redirect()->back();
+        }
+
+
     }
+
+
 }
