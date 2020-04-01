@@ -25,11 +25,7 @@
                         </div>
                     @endif
 
-<<<<<<< Updated upstream
                     <form style="font-family:Byekan" style="vertical-align:center;text-align:center" enctype="multipart/form-data" method="post" action="{{route('notifications.store')}}" class="form form-horizontal form-bordered striped-rows">
-=======
-                    <form style="font-family:Byekan" style="vertical-align:center;text-align:center"  method="post" action="{{ route('dashboard.notificationStore') }}" class="form form-horizontal form-bordered striped-rows">
->>>>>>> Stashed changes
                         @csrf
                         <div class="form-body">
 
@@ -44,23 +40,6 @@
                             </div>
 
 
-<<<<<<< Updated upstream
-
-                              <div class="form-group row">
-                                  <label class="col-md-3 label-control" for="content">نوع</label>
-                                  <div class="col-md-9">
-                                    <select class="form-control" name="type">
-                                        <option value="private">خصوصی</option>
-                                        <option value="public">عمومی</option>
-                                      </select>
-                                  </div>
-                              </div>
-
-                            <div class="form-group row">
-                                <label class="col-md-3 label-control" for="content">متن اعلان</label>
-                                <div class="col-md-9">
-                                    <input type="text" id="content" class="form-control" name="content">
-=======
                         </div>
 
                         <div class="form-actions">
@@ -127,17 +106,11 @@
                                     <div class="kt-input-icon">
                                         <input type="file" name="file" class="form-control" >
                                     </div>
->>>>>>> Stashed changes
                                 </div>
                             </div>
 
 
 
-<<<<<<< Updated upstream
-=======
-
-
->>>>>>> Stashed changes
                         </div>
 
                         <div class="form-actions">
@@ -272,16 +245,13 @@
                             <td>{{ $notification->content }}</td>
                             <td>{{ $notification->user->fullName }}</td>
                             <td style="direction: ltr; font-family: BYekan">{{ jdate($notification->created_at) }}</td>
-<<<<<<< Updated upstream
                             <td>ویرایش</td>
-=======
                             <td>
                                 @can('admin')
                                     <a href="{{ route('dashboard.NotificationDestroy', ['id' => $notification->id]) }}" class="m-portlet__nav-link btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill button" title="حذف مشتری "> <i style="color: darkred" class="fa fa-times"></i> </a>
                                 @endcan
 
                             </td>
->>>>>>> Stashed changes
                         </tr>
                     @endforeach
 
