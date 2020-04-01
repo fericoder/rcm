@@ -9,7 +9,7 @@
 
 
     <div class="modal fade text-left" id="AddVote" tabindex="-1" role="dialog" aria-labelledby="AddVote" aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-dialog modal-lg" role="document">۸
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title" id="AddVoteReport">افزودن نظرسنجی</h4>
@@ -178,6 +178,7 @@
                         <th>تاریخ ایجاد</th>
                         <th>تاریخ انقضا</th>
                         <th>وضعیت</th>
+                        <th>شرکت در نظرسنجی</th>
                         <th>گزارش</th>
                         @canany(['boardMember', 'admin'])
                             <th>گزینه ها</th>
@@ -200,6 +201,7 @@
                             <td style="direction: ltr">{{ jdate($vote->created_at) }}</td>
                             <td>{{ $vote->expired_at }}</td>
                             <td>{{ $vote->status }}</td>
+                            <td><a href="{{ route('votes.show', $vote->id) }}"><i class="fa fa-check"></i></a></td>
                             <td><a href="{{ route('votes.edit', $vote->id) }}"><i class="flaticon2-line-chart"></i></a></td>
 
                             @canany(['boardMember', 'admin'])

@@ -87,6 +87,8 @@ Route::namespace('Dashboard')->prefix('dashboard')->middleware('auth', 'configur
 
     Route::resource('votes', 'VoteController');
     Route::get('vote/options/{id}', 'VoteController@optionsIndex')->name('options.index');
+    Route::post('vote/submit/{id}', 'VoteController@submit')->name('vote.submit');
+    Route::post('vote/options', 'VoteController@optionsStore')->name('options.optionsStore');
 
 
     //Maintenance

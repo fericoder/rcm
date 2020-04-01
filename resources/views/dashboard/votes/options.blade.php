@@ -28,7 +28,7 @@
                         </div>
                     @endif
 
-                    <form style="font-family:Byekan" style="vertical-align:center;text-align:center" enctype="multipart/form-data" method="post" action="penalty/store" class="form form-horizontal form-bordered striped-rows">
+                    <form style="font-family:Byekan" style="vertical-align:center;text-align:center" enctype="multipart/form-data" method="post" action="{{ route('options.optionsStore') }}" class="form form-horizontal form-bordered striped-rows">
                         @csrf
                         <div class="form-body">
 
@@ -36,17 +36,11 @@
                             <div class="form-group row">
                                 <label class="col-md-3 label-control" for="date">عنوان گزینه: </label>
                                 <div class="col-md-9">
-                                    <input style="font-family:Byekan" class="form-control" style="" placeholder="مثال: رنگ درب آسانسور" name="date" type="text" />
+                                    <input style="font-family:Byekan" class="form-control" style="" name="title" type="text" />
+                                    <input style="display: none;" class="form-control" value="{{ $vote->id }}"  name="vote_id" type="hidden" />
                                 </div>
                             </div>
 
-
-                            <div class="form-group row">
-                                <label class="col-md-3 label-control" for="date">تاریخ انقضا گزینه: </label>
-                                <div class="col-md-9">
-                                    <input style="font-family:Byekan" class="form-control date" style="" placeholder="کلیک کنید" name="date" type="text" />
-                                </div>
-                            </div>
 
 
                         </div>
@@ -107,37 +101,44 @@
             <div class="kt-portlet__body">
                 <p>جهت افزودن گزینه به نظرسنجی، برروی گزینه سبز رنگ بالا کلیک نمایید.</p>
                 <!--begin::Accordion-->
-                <div class="accordion" id="accordionExample1">
 
 
-                    @foreach ($vote->options as $option)
-                        <div class="card">
-                            <div class="card-header" id="heading{{ $option->id }}">
-                                <div class="card-title collapsed" data-toggle="collapse" data-target="#collapse{{$option->id}}" aria-expanded="true" aria-controls="collapse{{$option->id}}">
-                                  عنوان گزینه:   {{ $option->title }}
-                                </div>
-                            </div>
-                            <div id="collapse{{$option->id}}" class="collapse" aria-labelledby="heading{{$option->id}}" data-parent="#accordionExample{{$option->id}}">
-                                <div class="card-body">
-                                    <ul>
-                                        <li style="padding: 10px"> عنوان گزینه: {{ $option->title }}</li>
-                                        <li style="padding: 10px"> نوع: {{ $option->title }} </li>
-                                    </ul>
 
-                                    <div class="modal-footer">
-                                        <button type="submit" class="btn btn-success btn-wide btn-elevate btn-elevate-air">ویرایش</button>
-                                        <a href=""><button type="button" class="btn btn-danger">حذف</button></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                <table style="font-family:Byekan; width: 100% !important;" class="table display nowrap table-striped table-bordered scroll-horizontal " id="m_table_2">
+                    <thead>
+                    <tr>
+                        <th>عنوان</th>
+                        <th>تاریخ ایجاد</th>
+                        <th>تعداد رای</th>
+
+                        @can('admin')
+                            <th>حذف</th>
+                        @endcan
+
+
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    @foreach ($vote->options as $vote)
+                        <tr>
+                            <td>{{ $vote->title }}</td>
+                            <td style="direction: ltr">{{ jdate($vote->created_at) }}</td>
+                            <td>{{ $vote->count }}</td>
+
+                            @can('admin')
+                                <td><a href="{{ route('votes.edit', $vote->id) }}"><i class="flaticon-delete"></i></a></td>
+                            @endcan
+
+
+                        </tr>
                     @endforeach
 
 
+                    </tbody>
 
+                </table>
 
-                </div>
-                <!--end::Accordion-->
             </div>
 
 

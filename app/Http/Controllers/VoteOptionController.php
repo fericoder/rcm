@@ -12,10 +12,6 @@ class VoteOptionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        //
-    }
 
     /**
      * Show the form for creating a new resource.
@@ -44,9 +40,10 @@ class VoteOptionController extends Controller
      * @param  \App\VoteOption  $voteOption
      * @return \Illuminate\Http\Response
      */
-    public function show(VoteOption $voteOption)
+    public function show(Request $request)
     {
-        //
+        $vote = Vote::where('id', $request->id)->where('complex_id', \Auth::user()->complex_id)->first();
+        return view('dashboard.votes.options', compact('vote'));
     }
 
     /**

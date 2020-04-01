@@ -219,16 +219,8 @@
 
                         <li class="kt-menu__item {{ request()->routeIs('*comfort*') ? 'kt-menu__item--active' : ''  }}  kt-menu__item--submenu" aria-haspopup="true" data-ktmenu-submenu-toggle="hover"><a href="{{ route('comfort.index')}}" class="kt-menu__link kt-menu__toggle"><span class="kt-menu__link-icon"><i class="fa fa-mug-hot"></i></span><span class="kt-menu__link-text">خدمات رفاهی</span></a></li>
 
-                        <li class="kt-menu__item {{ request()->routeIs('*vote*') ? 'kt-menu__item--active kt-menu__item--open' : ''  }} {{ request()->routeIs('*option*') ? 'kt-menu__item--active kt-menu__item--open' : ''  }}   kt-menu__item--submenu" aria-haspopup="true" data-ktmenu-submenu-toggle="hover"><a href="javascript:;" class="kt-menu__link kt-menu__toggle"><span class="kt-menu__link-icon"><i class="fa fa-envelope-open-text"></i></span><span class="kt-menu__link-text">نظرسنجی</span><i class="kt-menu__ver-arrow la la-angle-right"></i></a>
-                            <div class="kt-menu__submenu "><span class="kt-menu__arrow"></span>
-                                <ul class="kt-menu__subnav">
-                                    <li class="kt-menu__item  kt-menu__item--parent" aria-haspopup="true"><span class="kt-menu__link"><span class="kt-menu__link-text">نظرسنجی</span></span></li>
-                                    <li class="kt-menu__item {{ request()->routeIs('votes.index') ? 'kt-menu__item--active' : ''  }}" aria-haspopup="true"><a href="{{ route('votes.index') }}" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">مدیریت نظرسنجی ها</span></a></li>
-                                    <li class="kt-menu__item {{ request()->routeIs('votes.create') ? 'kt-menu__item--active' : ''  }}" aria-haspopup="true"><a href="{{ route('votes.create') }}" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">افزودن نظرسنجی</span></a></li>
-                                    <li class="kt-menu__item {{ request()->routeIs('votes.index') ? 'kt-menu__item--active' : ''  }} " aria-haspopup="true"><a href="{{ route('votes.index') }}" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">لیست نظرسنجی ها</span></a></li>
-                                </ul>
-                            </div>
-                        </li>
+
+                        <li class="kt-menu__item {{ request()->routeIs('*vote*') ? 'kt-menu__item--active' : ''  }}  kt-menu__item--submenu" aria-haspopup="true" data-ktmenu-submenu-toggle="hover"><a href="{{ route('votes.index')}}" class="kt-menu__link kt-menu__toggle"><span class="kt-menu__link-icon"><i class="fa fa-envelope-open-text"></i></span><span class="kt-menu__link-text">نظرسنجی ها</span></a></li>
 
                         <li class="kt-menu__item {{ request()->routeIs('*ticket*') ? 'kt-menu__item--active' : ''  }}" aria-haspopup="true" ><a href="{{ route('tickets.index') }}" class="kt-menu__link"><span class="kt-menu__link-icon"><i class="fa fa-pencil-alt"></i></span><span class="kt-menu__link-text">درخواست ها</span></a></li>
 
