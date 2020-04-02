@@ -64,6 +64,11 @@ Route::namespace('Dashboard')->prefix('dashboard')->middleware('auth', 'configur
 
     Route::resource('costs', 'CostController');
     Route::resource('incomes', 'IncomeController');
+
+    Route::resource('costHeading', 'CostHeadingController');
+    Route::resource('incomeHeading', 'IncomeHeadingController');
+
+
     Route::get('charge', 'ChargeController@index')->name('charge.index');
     Route::get('charge/report', 'ChargeController@report')->name('charge.report.index');
     Route::post('charge/report', 'ChargeController@show')->name('charge.report.show');

@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Dashboard;
 
-use App\CostHeading;
+use App\IncomeHeading;
 use Illuminate\Http\Request;
 
-class CostHeadingController extends Controller
+class IncomeHeadingController extends \App\Http\Controllers\Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class CostHeadingController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\CostHeading  $costHeading
+     * @param  \App\IncomeHeading  $incomeHeading
      * @return \Illuminate\Http\Response
      */
-    public function show(CostHeading $costHeading)
+    public function show(IncomeHeading $incomeHeading)
     {
         //
     }
@@ -52,10 +52,10 @@ class CostHeadingController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\CostHeading  $costHeading
+     * @param  \App\IncomeHeading  $incomeHeading
      * @return \Illuminate\Http\Response
      */
-    public function edit(CostHeading $costHeading)
+    public function edit(IncomeHeading $incomeHeading)
     {
         //
     }
@@ -64,10 +64,10 @@ class CostHeadingController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\CostHeading  $costHeading
+     * @param  \App\IncomeHeading  $incomeHeading
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, CostHeading $costHeading)
+    public function update(Request $request, IncomeHeading $incomeHeading)
     {
         //
     }
@@ -75,10 +75,10 @@ class CostHeadingController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\CostHeading  $costHeading
+     * @param  \App\IncomeHeading  $incomeHeading
      * @return \Illuminate\Http\Response
      */
-    public function destroy(CostHeading $costHeading)
+    public function destroy(IncomeHeading $incomeHeading)
     {
         //
     }

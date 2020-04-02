@@ -270,7 +270,54 @@
                         <h3 class="kt-portlet__head-title borj-color">
                             سرفصل های درآمد
                         </h3>
-                        <button data-toggle="modal" data-target=" #add" style="margin-right: 20px;font-size: 13px" type="button" class="btn btn-success btn-wide btn-elevate btn-elevate-air">افزودن سرفصل درآمد</button>
+
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="AddIncomes" tabindex="-1" role="dialog" aria-labelledby="add" aria-hidden="true">
+                                <div class="modal-dialog modal-lg" role="add">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="modall">افزودن سرفصل درآمد</h5>
+                                            <button type="button" class="close " data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <form action="{{ route('proceedings.store') }}" method="post" enctype="multipart/form-data">
+                                            @csrf
+
+                                        <div class="modal-body">
+
+                                            <div class="form-group row">
+                                                <div class="col-lg-6">
+                                                    <label>نام سرفصل هزینه:</label>
+                                                    <div class="kt-input-icon">
+                                                        <input type="text" name="fullName" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <label class="">کد سرفصل هزینه:</label>
+                                                    <div class="kt-input-icon">
+                                                        <input type="text" name="number" class="form-control">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="modal-footer">
+                                            <button type="submit" class="btn btn-success btn-wide btn-elevate btn-elevate-air">افزودن سرفصل درآمد</button>
+                                            <button type="button" class="btn btn-danger" data-dismiss="modal">انصراف</button>
+                                        </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <!--end::Modal-->
+
+
+
+                        <button data-toggle="modal" data-target=" #AddIncomes" style="margin-right: 20px;font-size: 13px" type="button" class="btn btn-success btn-wide btn-elevate btn-elevate-air">افزودن سرفصل درآمد</button>
                     </div>
 
                     <div style="" class="kt-portlet__head-toolbar">

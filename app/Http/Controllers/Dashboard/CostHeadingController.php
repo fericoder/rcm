@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Dashboard;
 
-use App\IncomeHeading;
+use App\CostHeading;
 use Illuminate\Http\Request;
 
-class IncomeHeadingController extends Controller
+class CostHeadingController extends \App\Http\Controllers\Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class IncomeHeadingController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\IncomeHeading  $incomeHeading
+     * @param  \App\CostHeading  $costHeading
      * @return \Illuminate\Http\Response
      */
-    public function show(IncomeHeading $incomeHeading)
+    public function show(CostHeading $costHeading)
     {
         //
     }
@@ -52,10 +52,10 @@ class IncomeHeadingController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\IncomeHeading  $incomeHeading
+     * @param  \App\CostHeading  $costHeading
      * @return \Illuminate\Http\Response
      */
-    public function edit(IncomeHeading $incomeHeading)
+    public function edit(CostHeading $costHeading)
     {
         //
     }
@@ -64,10 +64,10 @@ class IncomeHeadingController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\IncomeHeading  $incomeHeading
+     * @param  \App\CostHeading  $costHeading
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, IncomeHeading $incomeHeading)
+    public function update(Request $request, CostHeading $costHeading)
     {
         //
     }
@@ -75,10 +75,10 @@ class IncomeHeadingController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\IncomeHeading  $incomeHeading
+     * @param  \App\CostHeading  $costHeading
      * @return \Illuminate\Http\Response
      */
-    public function destroy(IncomeHeading $incomeHeading)
+    public function destroy(CostHeading $costHeading)
     {
         //
     }
