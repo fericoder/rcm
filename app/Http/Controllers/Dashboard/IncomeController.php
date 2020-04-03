@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Income;
+use App\IncomeHeading;
 use Illuminate\Http\Request;
 
 class IncomeController extends \App\Http\Controllers\Controller
@@ -15,7 +16,9 @@ class IncomeController extends \App\Http\Controllers\Controller
     public function index()
     {
       $incomes = Income::where('complex_id', \Auth::user()->complex_id)->get();
-       return view('dashboard.accounting.incomes', compact('incomes'));
+      $incomeHeadings = IncomeHeading::where('complex_id', \Auth::user()->complex_id)->get();
+
+       return view('dashboard.accounting.incomes', compact('incomes','incomeHeadings'));
     }
 
     /**

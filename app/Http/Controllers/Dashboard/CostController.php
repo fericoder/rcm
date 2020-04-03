@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Cost;
+use App\CostHeading;
 use Illuminate\Http\Request;
 
 class CostController extends \App\Http\Controllers\Controller
@@ -15,7 +16,9 @@ class CostController extends \App\Http\Controllers\Controller
     public function index()
     {
         $costs = Cost::where('complex_id', \Auth::user()->complex_id)->get();
-         return view('dashboard.accounting.costs', compact('costs'));
+        $costHeadings = CostHeading::where('complex_id', \Auth::user()->complex_id)->get();
+
+         return view('dashboard.accounting.costs', compact('costs', 'costHeadings'));
     }
 
     /**
@@ -97,7 +100,7 @@ class CostController extends \App\Http\Controllers\Controller
       ]);
 
       alert()->success('درخواست شما با موفقیت انجام شد.', 'انجام شد');
-      return redirect()->route('contracts.index');
+      return redirect()->route('costs.index');
     }
 
     /**

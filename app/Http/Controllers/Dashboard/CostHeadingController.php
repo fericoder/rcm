@@ -14,7 +14,6 @@ class CostHeadingController extends \App\Http\Controllers\Controller
      */
     public function index()
     {
-        //
     }
 
     /**
@@ -35,7 +34,16 @@ class CostHeadingController extends \App\Http\Controllers\Controller
      */
     public function store(Request $request)
     {
-        //
+        CostHeading::create([
+            'user_id' =>  \Auth::user()->id,
+            'complex_id' =>  \Auth::user()->complex_id,
+            'name' => $request->name,
+            'code' => $request->code,
+
+
+        ]);
+        alert()->success('سرفصل هزینه با موفقیت اضافه شد', 'اضافه شد');
+        return redirect()->back();
     }
 
     /**
@@ -57,8 +65,9 @@ class CostHeadingController extends \App\Http\Controllers\Controller
      */
     public function edit(CostHeading $costHeading)
     {
-        //
-    }
+      return view('dashboard.accounting.Costedit', compact('costHeading'));
+  }
+
 
     /**
      * Update the specified resource in storage.
@@ -67,9 +76,21 @@ class CostHeadingController extends \App\Http\Controllers\Controller
      * @param  \App\CostHeading  $costHeading
      * @return \Illuminate\Http\Response
      */
+
     public function update(Request $request, CostHeading $costHeading)
     {
-        //
+      $costHeading->update([
+
+        'user_id' =>  \Auth::user()->id,
+        'complex_id' =>  \Auth::user()->complex_id,
+        'name' => $request->name,
+        'code' => $request->code
+
+
+      ]);
+
+      alert()->success('درخواست شما با موفقیت انجام شد.', 'انجام شد');
+      return redirect()->route('costHeading.index');
     }
 
     /**
@@ -78,8 +99,21 @@ class CostHeadingController extends \App\Http\Controllers\Controller
      * @param  \App\CostHeading  $costHeading
      * @return \Illuminate\Http\Response
      */
-    public function destroy(CostHeading $costHeading)
+    public function destroy(Request $request)
     {
-        //
+      if (\Gate::denies('admin')) {
+          alert()->warning('عدم دسترسی');
+          return redirect()->back();
+      }
+
+      $costHeading = CostHeading::find($request->id);
+      if ($costHeading->complex_id == \Auth::user()->complex_id){
+          $costHeading->delete();
+          alert()->success('سرفصل هزینه با موفقیت حذف شد', 'حذف شد');
+          return redirect()->back();
+      }else{
+          alert()->warning('عدم دسترسی');
+          return redirect()->back();
+      }
     }
 }

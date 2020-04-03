@@ -35,7 +35,16 @@ class IncomeHeadingController extends \App\Http\Controllers\Controller
      */
     public function store(Request $request)
     {
-        //
+      IncomeHeading::create([
+          'user_id' =>  \Auth::user()->id,
+          'complex_id' =>  \Auth::user()->complex_id,
+          'name' => $request->name,
+          'code' => $request->code
+
+
+      ]);
+      alert()->success('سرفصل درآمد با وفقیت اضافه شد', 'اضافه شد');
+      return redirect()->back();
     }
 
     /**
@@ -57,7 +66,7 @@ class IncomeHeadingController extends \App\Http\Controllers\Controller
      */
     public function edit(IncomeHeading $incomeHeading)
     {
-        //
+          return view('dashboard.accounting.Incomeedit', compact('incomeHeading'));
     }
 
     /**
@@ -69,7 +78,18 @@ class IncomeHeadingController extends \App\Http\Controllers\Controller
      */
     public function update(Request $request, IncomeHeading $incomeHeading)
     {
-        //
+      $incomeHeading->update([
+
+        'user_id' =>  \Auth::user()->id,
+        'complex_id' =>  \Auth::user()->complex_id,
+        'name' => $request->name,
+        'code' => $request->code
+
+
+      ]);
+
+      alert()->success('درخواست شما با موفقیت انجام شد.', 'انجام شد');
+      return redirect()->route('incomeHeading.index');
     }
 
     /**
@@ -78,8 +98,21 @@ class IncomeHeadingController extends \App\Http\Controllers\Controller
      * @param  \App\IncomeHeading  $incomeHeading
      * @return \Illuminate\Http\Response
      */
-    public function destroy(IncomeHeading $incomeHeading)
+    public function destroy(Request $request)
     {
-        //
+      if (\Gate::denies('admin')) {
+          alert()->warning('عدم دسترسی');
+          return redirect()->back();
+      }
+
+      $incomeHeading = IncomeHeading::find($request->id);
+      if ($incomeHeading->complex_id == \Auth::user()->complex_id){
+          $incomeHeading->delete();
+          alert()->success('سرفصل درآمد با موفقیت حذف شد', 'حذف شد');
+          return redirect()->back();
+      }else{
+          alert()->warning('عدم دسترسی');
+          return redirect()->back();
+      }
     }
 }
