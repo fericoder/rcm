@@ -36,7 +36,9 @@ Route::namespace('Dashboard')->prefix('dashboard')->middleware('auth', 'configur
     Route::get('index', 'IndexController@index')->name('dashboard.index');
     //Modals
     Route::post('parking', 'IndexController@parking')->name('parking.store');
+    Route::post('parking/delete', 'IndexController@parkingDestroy')->name('parking.delete');
     Route::post('residence', 'IndexController@residenceMembers')->name('residence.store');
+    Route::post('residence/delete', 'IndexController@residenceDestroy')->name('residence.delete');
     Route::post('permission', 'IndexController@permissionRequest')->name('permission.store');
 
 
@@ -78,6 +80,7 @@ Route::namespace('Dashboard')->prefix('dashboard')->middleware('auth', 'configur
     Route::get('invoices/excel', 'InvoiceController@downloadExcel')->name('invoices.downloadExcel');
     Route::post('invoices/excel', 'InvoiceController@uploadExcel')->name('invoices.uploadExcel');
     Route::get('invoices/excel/approve/{id}', 'InvoiceController@excelApprove')->name('invoices.excelApprove');
+    Route::get('invoices/paid/{id}', 'InvoiceController@paid')->name('invoices.paid');
     Route::resource('invoices', 'InvoiceController');
 
 
@@ -95,8 +98,11 @@ Route::namespace('Dashboard')->prefix('dashboard')->middleware('auth', 'configur
     Route::post('gallery/search', 'GalleryController@search')->name('gallery.search');
 
     Route::resource('votes', 'VoteController');
-    Route::get('vote/options/{id}', 'VoteController@optionsIndex')->name('options.index');
+    Route::get('vote/delete/{id}', 'VoteController@voteDelete')->name('vote.delete');
     Route::post('vote/submit/{id}', 'VoteController@submit')->name('vote.submit');
+    Route::get('vote/report/{id}', 'VoteController@report')->name('votes.report');
+    Route::get('vote/options/{id}', 'VoteController@optionsIndex')->name('options.index');
+    Route::get('vote/options/delete/{id}', 'VoteController@optionsDelete')->name('options.delete');
     Route::post('vote/options', 'VoteController@optionsStore')->name('options.optionsStore');
 
 
@@ -119,6 +125,10 @@ Route::namespace('Dashboard')->prefix('dashboard')->middleware('auth', 'configur
         return view('dashboard.security');
     })->name('security');
 
+    //Profile
+    Route::get('profile', 'ProfileController@show')->name('profile.show');
+    Route::post('profile/password', 'ProfileController@password')->name('profile.password');
+    Route::post('profile/avatar', 'ProfileController@avatar')->name('profile.avatar');
 
     Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout')->name('dashboard-logout');
 });

@@ -28,7 +28,7 @@
                         </div>
                     @endif
 
-                    <form style="font-family:Byekan" style="vertical-align:center;text-align:center" enctype="multipart/form-data" method="post" action="penalty/store" class="form form-horizontal form-bordered striped-rows">
+                    <form style="font-family:Byekan" style="vertical-align:center;text-align:center" enctype="multipart/form-data" method="post" action="{{ route('votes.store') }}" class="form form-horizontal form-bordered striped-rows">
                         @csrf
                         <div class="form-body">
 
@@ -36,15 +36,22 @@
                             <div class="form-group row">
                                 <label class="col-md-3 label-control" for="date">عنوان نظرسنجی: </label>
                                 <div class="col-md-9">
-                                    <input style="font-family:Byekan" class="form-control" style="" placeholder="مثال: رنگ درب آسانسور" name="date" type="text" />
+                                    <input style="font-family:Byekan" class="form-control" placeholder="مثال: رنگ درب آسانسور" name="title" type="text" />
                                 </div>
                             </div>
 
+                            <div class="form-group row">
+                                <label class="col-md-3 label-control" for="date">سوال نظرسنجی: </label>
+                                <div class="col-md-9">
+                                    <input style="font-family:Byekan" class="form-control" style="" placeholder="مثال: بنظرشما رنگ درب آسانسور چه رنگی شود؟" name="question" type="text" />
+                                </div>
+                            </div>
 
                             <div class="form-group row">
                                 <label class="col-md-3 label-control" for="date">تاریخ انقضا نظرسنجی: </label>
-                                <div class="col-md-9">
-                                    <input style="font-family:Byekan" class="form-control date" style="" placeholder="کلیک کنید" name="date" type="text" />
+                                <div class="col-lg-9">
+                                    <input class="form-control dp" value="" >
+                                    <input type="hidden" name="expired_at" class="observer" >
                                 </div>
                             </div>
 
@@ -173,16 +180,13 @@
                 <table style="font-family:Byekan; width: 100% !important;" class="table display nowrap table-striped table-bordered scroll-horizontal " id="m_table_2">
                     <thead>
                     <tr>
-                        <th>ردیف</th>
                         <th>عنوان</th>
                         <th>تاریخ ایجاد</th>
                         <th>تاریخ انقضا</th>
-                        <th>وضعیت</th>
                         <th>شرکت در نظرسنجی</th>
                         <th>گزارش</th>
                         @canany(['boardMember', 'admin'])
                             <th>گزینه ها</th>
-                            <th>ویرایش</th>
                         @endcan
 
                         @can('admin')
@@ -196,21 +200,18 @@
 
                     @foreach ($votes as $vote)
                         <tr>
-                            <td>{{ $vote->id }}</td>
                             <td>{{ $vote->title }}</td>
                             <td style="direction: ltr">{{ jdate($vote->created_at) }}</td>
-                            <td>{{ $vote->expired_at }}</td>
-                            <td>{{ $vote->status }}</td>
+                            <td style="direction: ltr">{{ jdate($vote->expired_at) }}</td>
                             <td><a href="{{ route('votes.show', $vote->id) }}"><i class="fa fa-check"></i></a></td>
-                            <td><a href="{{ route('votes.edit', $vote->id) }}"><i class="flaticon2-line-chart"></i></a></td>
+                            <td><a href="{{ route('votes.report', $vote->id) }}"><i class="flaticon2-line-chart"></i></a></td>
 
                             @canany(['boardMember', 'admin'])
                                 <td><a href="{{ route('options.index', $vote->id) }}"><i class="flaticon-list-2"></i></a></td>
-                                <td><a href="{{ route('votes.edit', $vote->id) }}"><i class="flaticon-edit"></i></a></td>
                             @endcan
 
                             @can('admin')
-                                <td><a href="{{ route('votes.edit', $vote->id) }}"><i class="flaticon-delete"></i></a></td>
+                                <td><a href="{{ route('vote.delete', $vote->id) }}"><i class="flaticon-delete"></i></a></td>
                             @endcan
 
 
@@ -299,6 +300,22 @@
         );
 
 
+
+        $(document).ready(function() {
+            $(".dp").attr("value", "{{ Carbon\Carbon::now()->add(1,'month')->format('Y-m-d') }}");
+
+            $(".dp").pDatepicker({
+                altField: '.observer',
+                timePicker: {
+                    enabled: true,
+                    meridiem: {
+                        enabled: true
+                    }
+                }
+
+            });
+
+        });
 
 
     </script>

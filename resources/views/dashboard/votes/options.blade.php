@@ -109,7 +109,6 @@
                     <tr>
                         <th>عنوان</th>
                         <th>تاریخ ایجاد</th>
-                        <th>تعداد رای</th>
 
                         @can('admin')
                             <th>حذف</th>
@@ -124,10 +123,8 @@
                         <tr>
                             <td>{{ $vote->title }}</td>
                             <td style="direction: ltr">{{ jdate($vote->created_at) }}</td>
-                            <td>{{ $vote->count }}</td>
-
                             @can('admin')
-                                <td><a href="{{ route('votes.edit', $vote->id) }}"><i class="flaticon-delete"></i></a></td>
+                                <td><a href="{{ route('options.delete', $vote->id) }}"><i class="flaticon-delete"></i></a></td>
                             @endcan
 
 

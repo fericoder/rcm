@@ -149,6 +149,20 @@ class IndexController extends \App\Http\Controllers\Controller
 
     }
 
+    public function parkingDestroy(Request $request)
+    {
+        $parking = Parking::find($request->id);
+        if ($parking->complex_id == \Auth::user()->complex_id AND $parking->user_id == \Auth::user()->id){
+            $parking->delete();
+            alert()->success('پارکینگ با موفقیت حذف شد', 'حذف شد');
+            return redirect()->back();
+        }else{
+            alert()->warning('عدم دسترسی');
+            return redirect()->back();
+        }
+
+    }
+
     public function residenceMembers(Request $request)
     {
         $validatedData = $request->validate([
@@ -172,6 +186,20 @@ class IndexController extends \App\Http\Controllers\Controller
 
     }
 
+
+    public function residenceDestroy(Request $request)
+    {
+        $residence = ResidenceMember::find($request->id);
+        if ($residence->complex_id == \Auth::user()->complex_id AND $residence->user_id == \Auth::user()->id){
+            $residence->delete();
+            alert()->success('ساکن با موفقیت حذف شد', 'حذف شد');
+            return redirect()->back();
+        }else{
+            alert()->warning('عدم دسترسی');
+            return redirect()->back();
+        }
+
+    }
 
     public function permissionRequest(Request $request)
     {

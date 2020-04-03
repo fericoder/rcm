@@ -203,7 +203,7 @@
                                                 <th>سازنده</th>
                                                 <th>مدل</th>
                                                 <th>سال تولید</th>
-                                                <th>شماره پلاک</th>
+                                                <th style="max-width: 198px; width: 250px;">شماره پلاک</th>
                                                 <th>حذف</th>
 
                                             </tr>
@@ -215,8 +215,14 @@
                                                         <td>{{ $parking->brand }}</td>
                                                         <td>{{ $parking->model }}</td>
                                                         <td>{{ $parking->year }}</td>
-                                                        <td>{{ $parking->plate }}</td>
-                                                        <td><i class="fa fa-window-close kt-font-danger"></i></td>
+                                                        <td style="vertical-align: middle;max-width: 300px; float: right; ">
+                                                            <input type="text" style="width: 40px; text-align: center; float: right" value="{{ $parking->irDigit }}" disabled>
+                                                            <input type="text" style="width: 40px; text-align: center; float: right" value="ایران" disabled>
+                                                            <input type="text" style="width: 40px; text-align: center; float: right" value="{{ $parking->threeDigit }}" disabled>
+                                                            <input type="text" style="width: 40px; text-align: center; float: right" value="{{ $parking->letter }}" disabled>
+                                                            <input type="text" style="width: 40px; text-align: center; float: right" value="{{ $parking->twoDigit }}" disabled>
+                                                        </td>
+                                                        <td><a href=""></a><i data-id="{{$parking->id}}" class="fa fa-window-close kt-font-danger parkingDelete"></i></td>
                                                     </tr>
                                                 @endforeach
                                             </tbody>
@@ -357,7 +363,7 @@
                                                     <td>{{ $residence->gender }}</td>
                                                     <td>{{ $residence->age }}</td>
                                                     <td>{{ $residence->phoneNumber }}</td>
-                                                    <td><i class="fa fa-window-close kt-font-danger"></i></td>
+                                                    <td><a href=""></a><i data-id="{{$residence->id}}" class="fa fa-window-close kt-font-danger residenceDelete"></i></td>
                                                 </tr>
                                             @endforeach
                                             </tbody>
@@ -823,7 +829,7 @@
                             <tbody>
                             @foreach (\Auth::user()->invoices->where('status', 'paid') as $invoice)
                                 <tr>
-                                    <th scope="row"><a style="font-size: 16px" href="#" class="btn btn-sm btn-label-success btn-bold"><i class="fa fa-vote-yea"></i> پرداخت شده </a></th>
+                                    <th scope="row"><a style="font-size: 16px" href="{{ route('invoices.paid', $invoice->id) }}" class="btn btn-sm btn-label-success btn-bold"><i class="fa fa-vote-yea"></i> پرداخت شده </a></th>
                                     <td>{{ $invoice->for }}</td>
                                     <td style="font-family: BYekan!important;">{{ number_format($invoice->amount) }}</td>
                                     <td>{{ $invoice->code }}</td>
@@ -854,5 +860,66 @@
         $("#show").click(function () {
             $("#description").toggle('slow');
         });
+
+
+
+        $(document).on('click', '.parkingDelete', function (e) {
+            e.preventDefault();
+            var id = $(this).data('id');
+            swal({
+                title: "آیا مطمئن هستید؟",
+                type: "danger",
+                confirmButtonClass: "btn-danger",
+                confirmButtonText: "بله",
+                cancelButtonText: "خیر",
+                showCancelButton: true,
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+
+            })
+                .then((willDelete) => {
+                    $.ajax({
+                        type: "POST",
+                        url: "{{url('dashboard/parking/delete')}}",
+                        data: {id: id, "_token": "{{ csrf_token() }}"},
+                        success: function (data) {
+                            var url = document.location.origin + "/dashboard/index";
+                            location.href = url;
+                        }
+                    });
+                });
+        });
+
+
+
+        $(document).on('click', '.residenceDelete', function (e) {
+            e.preventDefault();
+            var id = $(this).data('id');
+            swal({
+                title: "آیا مطمئن هستید؟",
+                type: "danger",
+                confirmButtonClass: "btn-danger",
+                confirmButtonText: "بله",
+                cancelButtonText: "خیر",
+                showCancelButton: true,
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+
+            })
+                .then((willDelete) => {
+                    $.ajax({
+                        type: "POST",
+                        url: "{{url('dashboard/residence/delete')}}",
+                        data: {id: id, "_token": "{{ csrf_token() }}"},
+                        success: function (data) {
+                            var url = document.location.origin + "/dashboard/index";
+                            location.href = url;
+                        }
+                    });
+                });
+        });
+
     </script>
 @stop

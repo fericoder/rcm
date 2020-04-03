@@ -26,7 +26,7 @@ class VoteRequest extends FormRequest
         return [
             'title' => 'required|min:1|max:20',
             'question' => 'required|min:1|max:100',
-            'options' => 'required',
+            'expired_at' => 'required',
         ];
     }
 }

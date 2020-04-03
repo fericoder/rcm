@@ -180,6 +180,18 @@ class InvoiceController extends \App\Http\Controllers\Controller
         return redirect()->back();
     }
 
+
+    public function paid(Request $request)
+    {
+        $invoice = Invoice::where('id', $request->id)->where('complex_id', \Auth::user()->complex_id)->where('user_id', \Auth::user()->id)->where('status', 'paid')->first();
+        if (!$invoice){
+            alert()->warning('عدم دسترسی');
+            return redirect()->back();
+        }
+        return view('dashboard.invoices.paid', compact('invoice'));
+    }
+
+
     /**
      * Remove the specified resource from storage.
      *
