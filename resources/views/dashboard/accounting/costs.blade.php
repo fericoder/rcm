@@ -328,7 +328,7 @@
                     <span aria-hidden="true">&times;</span>
                   </button>
                 </div>
-                <form action="{{ route('proceedings.store') }}" method="post" enctype="multipart/form-data">
+                <form action="{{ route('costHeading.store') }}" method="post" enctype="multipart/form-data">
                   @csrf
 
                   <div class="modal-body">
@@ -337,13 +337,13 @@
                       <div class="col-lg-6">
                         <label>نام سرفصل هزینه:</label>
                         <div class="kt-input-icon">
-                          <input type="text" name="fullName" class="form-control">
+                          <input type="text" name="name" class="form-control">
                         </div>
                       </div>
                       <div class="col-lg-6">
                         <label class="">کد سرفصل هزینه:</label>
                         <div class="kt-input-icon">
-                          <input type="text" name="number" class="form-control">
+                          <input type="text" name="code" class="form-control">
                         </div>
                       </div>
                     </div>
@@ -423,36 +423,25 @@
             <tr>
               <th>نام سرفصل هزینه</th>
               <th>کد سرفصل هزینه</th>
+              <th> حذف | ویرایش</th>
             </tr>
           </thead>
           <tbody>
 
-            <tr>
-              <td>نگهداری آسانسور</td>
-              <td>نگهداری آسانسور</td>
 
-            </tr>
-            <tr>
-              <td>سرویس و نگهداری ژنراتور</td>
-              <td>سرویس و نگهداری ژنراتور</td>
+                            @foreach($costHeadings as $costHeading)
+                                <tr>
+                                    <td>{{ $costHeading->name }}</td>
+                                    <td>{{ $costHeading->code }}</td>
+                                    <td>
+                                        @can('admin')
+                                            <a href="{{ route('costHeading.delete', ['id' => $costHeading->id]) }}" class="m-portlet__nav-link btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill button" title="حذف مشتری "> <i style="color: darkred" class="fa fa-times"></i> </a>
+                                        @endcan
+                                            <a href="{{ route('costHeading.edit', $costHeading->id) }}" class="m-portlet__nav-link btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill" title="ویرایش"> <i style="color: green" class="la la-edit"></i> </a>
+                                    </td>
 
-
-            </tr>
-            <tr>
-
-              <td>اقلام مصرفی</td>
-              <td>اقلام مصرفی</td>
-
-
-            </tr>
-            <tr>
-
-              <td>اقلام شوینده</td>
-              <td>اقلام شوینده</td>
-
-
-
-            </tr>
+                                </tr>
+                            @endforeach
 
           </tbody>
 

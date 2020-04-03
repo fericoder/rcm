@@ -36,7 +36,7 @@
 
 
         <!--begin: Datatable -->
-        <form action="{{ route('costs.update', $cost->id) }}" method="post" enctype="multipart/form-data">
+        <form action="{{ route('costHeading.update', $costHeading->id) }}" method="post" enctype="multipart/form-data">
           @csrf
           @method('PATCH')
           <div class="modal-body">

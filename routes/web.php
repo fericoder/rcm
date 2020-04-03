@@ -70,7 +70,9 @@ Route::namespace('Dashboard')->prefix('dashboard')->middleware('auth', 'configur
     Route::get('incomes/delete/{id}', 'IncomeController@destroy')->name('incomes.delete');
 
     Route::resource('costHeading', 'CostHeadingController');
+    Route::get('costHeading/delete/{id}', 'CostHeadingController@destroy')->name('costHeading.delete');
     Route::resource('incomeHeading', 'IncomeHeadingController');
+    Route::get('incomeHeading/delete/{id}', 'IncomeHeadingController@destroy')->name('incomeHeading.delete');
 
 
     Route::get('charge', 'ChargeController@index')->name('charge.index');
