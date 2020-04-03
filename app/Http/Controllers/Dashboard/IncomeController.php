@@ -14,7 +14,8 @@ class IncomeController extends \App\Http\Controllers\Controller
      */
     public function index()
     {
-        return view('dashboard.accounting.incomes');
+      $incomes = Income::where('complex_id', \Auth::user()->complex_id)->get();
+       return view('dashboard.accounting.incomes', compact('incomes'));
     }
 
     /**
@@ -35,7 +36,19 @@ class IncomeController extends \App\Http\Controllers\Controller
      */
     public function store(Request $request)
     {
-        //
+      Income::create([
+          'user_id' =>  \Auth::user()->id,
+          'complex_id' =>  \Auth::user()->complex_id,
+          'title' => $request->title,
+          'date' => $request->date,
+          'amount' => $request->amount,
+          'trackNumber' => $request->trackNumber,
+          'description' => $request->description,
+          'paymentMethod' => $request->paymentMethod,
+          'attachment' => $request->attachment
+      ]);
+      alert()->success('درآمد با موفقیت اضافه شد', 'اضافه شد');
+      return redirect()->back();
     }
 
     /**
@@ -57,7 +70,7 @@ class IncomeController extends \App\Http\Controllers\Controller
      */
     public function edit(Income $income)
     {
-        //
+        return view('dashboard.accounting.Incomeedit', compact('income'));
     }
 
     /**
@@ -69,7 +82,22 @@ class IncomeController extends \App\Http\Controllers\Controller
      */
     public function update(Request $request, Income $income)
     {
-        //
+      $income->update([
+
+        'user_id' =>  \Auth::user()->id,
+        'complex_id' =>  \Auth::user()->complex_id,
+        'title' => $request->title,
+        'date' => $request->date,
+        'amount' => $request->amount,
+        'trackNumber' => $request->trackNumber,
+        'description' => $request->description,
+        'paymentMethod' => $request->paymentMethod,
+        'attachment' => $request->attachment
+
+      ]);
+
+      alert()->success('درخواست شما با موفقیت انجام شد.', 'انجام شد');
+      return redirect()->route('incomes.index');
     }
 
     /**
@@ -78,8 +106,21 @@ class IncomeController extends \App\Http\Controllers\Controller
      * @param  \App\Income  $income
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Income $income)
+    public function destroy(Request $request)
     {
-        //
+      if (\Gate::denies('admin')) {
+          alert()->warning('عدم دسترسی');
+          return redirect()->back();
+      }
+
+      $income = Income::find($request->id);
+      if ($income->complex_id == \Auth::user()->complex_id){
+          $income->delete();
+          alert()->success('سرفصل درآمد با موفقیت حذف شد', 'حذف شد');
+          return redirect()->back();
+      }else{
+          alert()->warning('عدم دسترسی');
+          return redirect()->back();
+      }
     }
 }

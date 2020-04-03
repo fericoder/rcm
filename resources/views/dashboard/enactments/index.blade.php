@@ -26,8 +26,8 @@
                                 <div class="kt-input-icon">
 
                                 <select style="direction: rtl; text-align: right;width: 100%;" class="form-control m-select2" id="m_select2_1" name="proceeding_id">
-                                  @foreach ($proceedings as $proceeding)
-                                        <option value="{{ $proceeding->id }}">{{ ' شماره جلسه: ' .  $proceeding->number . ' | ' . ' تاریخ جلسه: ' . $proceeding->date }}</option>
+                                  @foreach (enactments as enactmenting)
+                                        <option value="{{ enactments->id }}">{{ ' شماره جلسه: ' .  $proceeding->number . ' | ' . ' تاریخ جلسه: ' . $proceeding->date }}</option>
                                     @endforeach
                                 </select>
                                 </div>
@@ -68,8 +68,8 @@
                                 </div>
                             </div>
                         </div>
-                        
-                        
+
+
                     </div>
 
                     <div class="modal-footer">

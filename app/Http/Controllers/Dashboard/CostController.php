@@ -14,7 +14,8 @@ class CostController extends \App\Http\Controllers\Controller
      */
     public function index()
     {
-        return view('dashboard.accounting.costs');
+        $costs = Cost::where('complex_id', \Auth::user()->complex_id)->get();
+         return view('dashboard.accounting.costs', compact('costs'));
     }
 
     /**
@@ -35,7 +36,19 @@ class CostController extends \App\Http\Controllers\Controller
      */
     public function store(Request $request)
     {
-        //
+      Cost::create([
+          'user_id' =>  \Auth::user()->id,
+          'complex_id' =>  \Auth::user()->complex_id,
+          'title' => $request->title,
+          'date' => $request->date,
+          'amount' => $request->amount,
+          'trackNumber' => $request->trackNumber,
+          'description' => $request->description,
+          'paymentMethod' => $request->paymentMethod,
+          'attachment' => $request->attachment
+      ]);
+      alert()->success('سرفصل هزینه با موفقیت اضافه شد', 'اضافه شد');
+      return redirect()->back();
     }
 
     /**
@@ -57,7 +70,7 @@ class CostController extends \App\Http\Controllers\Controller
      */
     public function edit(Cost $cost)
     {
-        //
+        return view('dashboard.accounting.Costedit', compact('cost'));
     }
 
     /**
@@ -69,7 +82,22 @@ class CostController extends \App\Http\Controllers\Controller
      */
     public function update(Request $request, Cost $cost)
     {
-        //
+      $cost->update([
+
+        'user_id' =>  \Auth::user()->id,
+        'complex_id' =>  \Auth::user()->complex_id,
+        'title' => $request->title,
+        'date' => $request->date,
+        'amount' => $request->amount,
+        'trackNumber' => $request->trackNumber,
+        'description' => $request->description,
+        'paymentMethod' => $request->paymentMethod,
+        'attachment' => $request->attachment
+
+      ]);
+
+      alert()->success('درخواست شما با موفقیت انجام شد.', 'انجام شد');
+      return redirect()->route('contracts.index');
     }
 
     /**
@@ -78,8 +106,21 @@ class CostController extends \App\Http\Controllers\Controller
      * @param  \App\Cost  $cost
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Cost $cost)
+    public function destroy(Request $request)
     {
-        //
+      if (\Gate::denies('admin')) {
+          alert()->warning('عدم دسترسی');
+          return redirect()->back();
+      }
+
+      $cost = Cost::find($request->id);
+      if ($cost->complex_id == \Auth::user()->complex_id){
+          $cost->delete();
+          alert()->success('سرفصل هزینه با موفقیت حذف شد', 'حذف شد');
+          return redirect()->back();
+      }else{
+          alert()->warning('عدم دسترسی');
+          return redirect()->back();
+      }
     }
 }

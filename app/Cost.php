@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Cost extends Model
 {
+
+    protected $guarded = ['id'];
     use SoftDeletes;
 
 }

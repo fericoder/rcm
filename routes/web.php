@@ -63,7 +63,9 @@ Route::namespace('Dashboard')->prefix('dashboard')->middleware('auth', 'configur
     Route::get('enactments/delete/{id}', 'EnactmentController@destroy')->name('enactments.delete');
 
     Route::resource('costs', 'CostController');
+    Route::get('costs/delete/{id}', 'CostController@destroy')->name('costs.delete');
     Route::resource('incomes', 'IncomeController');
+    Route::get('incomes/delete/{id}', 'IncomeController@destroy')->name('incomes.delete');
 
     Route::resource('costHeading', 'CostHeadingController');
     Route::resource('incomeHeading', 'IncomeHeadingController');

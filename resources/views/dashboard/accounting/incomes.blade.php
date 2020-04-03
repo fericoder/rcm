@@ -147,7 +147,91 @@
                     <div class="kt-portlet__head-label">
                         <h3 class="kt-portlet__head-title borj-color">
                             درآمد ها بر اساس سرفصل <small>(ریال)</small>
-                            <button data-toggle="modal" data-target=" #add" style="margin-right: 20px;font-size: 13px" type="button" class="btn btn-success btn-wide btn-elevate btn-elevate-air">افزودن درآمد</button>
+
+
+
+                                                        <!-- Modal -->
+                                                        <div class="modal fade" id="AddIncomes" tabindex="-1" role="dialog" aria-labelledby="add" aria-hidden="true">
+                                                            <div class="modal-dialog modal-lg" role="add">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <h5 class="modal-title" id="modall">افزودن درآمد</h5>
+                                                                        <button type="button" class="close " data-dismiss="modal" aria-label="Close">
+                                                                            <span aria-hidden="true">&times;</span>
+                                                                        </button>
+                                                                    </div>
+                                                                    <form action="{{ route('incomes.store') }}" method="post" enctype="multipart/form-data">
+                                                                        @csrf
+
+                                                                    <div class="modal-body">
+
+                                                                        <div class="form-group row">
+                                                                            <div class="col-lg-6">
+                                                                                <label>نام سرفصل هزینه:</label>
+                                                                                <div class="kt-input-icon">
+                                                                                    <input type="text" name="title" class="form-control">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-lg-6">
+                                                                                <label class="">توضیحات:</label>
+                                                                                <div class="kt-input-icon">
+                                                                                    <input type="text" name="description" class="form-control">
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group row">
+                                                                            <div class="col-lg-6">
+                                                                                <label>مبلغ:</label>
+                                                                                <div class="kt-input-icon">
+                                                                                    <input type="text" name="amount" class="form-control">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-lg-6">
+                                                                                <label class="">نحوه پرداخت:</label>
+                                                                                <div class="kt-input-icon">
+                                                                                    <input type="text" name="paymentMethod" class="form-control">
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group row">
+                                                                            <div class="col-lg-6">
+                                                                                <label>شماره فاکتور/سند:</label>
+                                                                                <div class="kt-input-icon">
+                                                                                    <input type="text" name="trackNumber" class="form-control">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-lg-6">
+                                                                                <label class="">تاریخ:</label>
+                                                                                <div class="kt-input-icon">
+                                                                                  <input class="form-control dp" >
+                                                                                  <input type="hidden" name="date" class="observer" >
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="form-group row">
+                                                                            <div class="col-lg-6">
+                                                                                <label>مستندات:</label>
+                                                                                <div class="kt-input-icon">
+                                                                                    <input type="text" name="attachment" class="form-control">
+                                                                                </div>
+                                                                            </div>
+
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="modal-footer">
+                                                                        <button type="submit" class="btn btn-success btn-wide btn-elevate btn-elevate-air">افزودن درآمد</button>
+                                                                        <button type="button" class="btn btn-danger" data-dismiss="modal">انصراف</button>
+                                                                    </form>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+
+                                                        <!--end::Modal-->
+
+                            <button data-toggle="modal" data-target=" #AddIncomes" style="margin-right: 20px;font-size: 13px" type="button" class="btn btn-success btn-wide btn-elevate btn-elevate-air">افزودن درآمد</button>
                         </h3>
                     </div>
 
@@ -215,41 +299,30 @@
                                 <th>شماره فاکتور/ سند</th>
                                 <th>تاریخ</th>
                                 <th>مستندات</th>
-                                <th>حذف</th>
+                                <th>حذف | ویرایش</th>
                             </tr>
                             </thead>
+
                             <tbody>
 
-                            <tr>
-                                <td>نیروی انسانی</td>
-                                <td>هزینه حقوق پرسنل</td>
-                                <td class="borj-font">4,616,893,041</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td>حذف</td>
-                            </tr>
-                            <tr>
-                                <td>نگهداری فضای سبز</td>
-                                <td>هزینه نگهداری از فضای سبز</td>
-                                <td class="borj-font">210,000,000</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td>حذف</td>
-                            </tr>
-                            <tr>
-                                <td>نگهداری تاسیسات</td>
-                                <td>هزینه نگهداری موتور خانه</td>
-                                <td class="borj-font">1,200,000,000</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td>حذف</td>
-                            </tr>
+                                @foreach($incomes as $income)
+                                    <tr>
+                                        <td>{{ $income->title }}</td>
+                                        <td>{{ $income->description }}</td>
+                                        <td>{{ $income->amount }}</td>
+                                        <td>{{ $income->trackNumber }}</td>
+                                        <td>{{ $income->paymentMethod }}</td>
+                                        <td>{{ $income->date }}</td>
+                                        <td>{{ $income->attachment }}</td>
+                                        <td>
+                                            @can('admin')
+                                                <a href="{{ route('incomes.delete', ['id' => $income->id]) }}" class="m-portlet__nav-link btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill button" title="حذف مشتری "> <i style="color: darkred" class="fa fa-times"></i> </a>
+                                            @endcan
+                                                <a href="{{ route('incomes.edit', $income->id) }}" class="m-portlet__nav-link btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill" title="ویرایش"> <i style="color: green" class="la la-edit"></i> </a>
+                                        </td>
+
+                                    </tr>
+                                @endforeach
 
                             </tbody>
 
@@ -273,7 +346,7 @@
 
 
                             <!-- Modal -->
-                            <div class="modal fade" id="AddIncomes" tabindex="-1" role="dialog" aria-labelledby="add" aria-hidden="true">
+                            <div class="modal fade" id="AddIncomeHeadings" tabindex="-1" role="dialog" aria-labelledby="add" aria-hidden="true">
                                 <div class="modal-dialog modal-lg" role="add">
                                     <div class="modal-content">
                                         <div class="modal-header">
@@ -282,7 +355,7 @@
                                                 <span aria-hidden="true">&times;</span>
                                             </button>
                                         </div>
-                                        <form action="{{ route('proceedings.store') }}" method="post" enctype="multipart/form-data">
+                                        <form action="{{ route('incomes.store') }}" method="post" enctype="multipart/form-data">
                                             @csrf
 
                                         <div class="modal-body">
@@ -291,7 +364,7 @@
                                                 <div class="col-lg-6">
                                                     <label>نام سرفصل هزینه:</label>
                                                     <div class="kt-input-icon">
-                                                        <input type="text" name="fullName" class="form-control">
+                                                        <input type="text" name="title" class="form-control">
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-6">
@@ -317,7 +390,7 @@
 
 
 
-                        <button data-toggle="modal" data-target=" #AddIncomes" style="margin-right: 20px;font-size: 13px" type="button" class="btn btn-success btn-wide btn-elevate btn-elevate-air">افزودن سرفصل درآمد</button>
+                        <button data-toggle="modal" data-target=" #AddIncomeHeadings" style="margin-right: 20px;font-size: 13px" type="button" class="btn btn-success btn-wide btn-elevate btn-elevate-air">افزودن سرفصل درآمد</button>
                     </div>
 
                     <div style="" class="kt-portlet__head-toolbar">
