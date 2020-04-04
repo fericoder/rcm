@@ -6,6 +6,17 @@
     <link href="assets/plugins/custom/datatables/datatables.bundle.rtl.css" rel="stylesheet" type="text/css" />
 
 
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
+
         <div class="kt-portlet">
 
             <div class="row">
@@ -165,17 +176,29 @@
 
                                                                     <div class="modal-body">
 
+
+                                                                      @if ($errors->any())
+                                                                          <div class="alert alert-danger">
+                                                                              <ul>
+                                                                                  @foreach ($errors->all() as $error)
+                                                                                      <li>{{ $error }}</li>
+                                                                                  @endforeach
+                                                                              </ul>
+                                                                          </div>
+                                                                      @endif
+
+
                                                                         <div class="form-group row">
                                                                             <div class="col-lg-6">
                                                                                 <label>نام سرفصل هزینه:</label>
                                                                                 <div class="kt-input-icon">
-                                                                                    <input type="text" name="title" class="form-control">
+                                                                                    <input type="text" name="title"  value="{{old('title')}}" class="form-control">
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-lg-6">
                                                                                 <label class="">توضیحات:</label>
                                                                                 <div class="kt-input-icon">
-                                                                                    <input type="text" name="description" class="form-control">
+                                                                                    <input type="text" name="description" value="{{old('description')}}"  class="form-control">
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -183,13 +206,13 @@
                                                                             <div class="col-lg-6">
                                                                                 <label>مبلغ:</label>
                                                                                 <div class="kt-input-icon">
-                                                                                    <input type="text" name="amount" class="form-control">
+                                                                                    <input type="text" name="amount"  value="{{old('amount')}}" class="form-control">
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-lg-6">
                                                                                 <label class="">نحوه پرداخت:</label>
                                                                                 <div class="kt-input-icon">
-                                                                                    <input type="text" name="paymentMethod" class="form-control">
+                                                                                    <input type="text" name="paymentMethod" value="{{old('paymentMethod')}}"  class="form-control">
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -197,14 +220,14 @@
                                                                             <div class="col-lg-6">
                                                                                 <label>شماره فاکتور/سند:</label>
                                                                                 <div class="kt-input-icon">
-                                                                                    <input type="text" name="trackNumber" class="form-control">
+                                                                                    <input type="text" name="trackNumber" value="{{old('trackNumber')}}"  class="form-control">
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-lg-6">
                                                                                 <label class="">تاریخ:</label>
                                                                                 <div class="kt-input-icon">
                                                                                   <input class="form-control dp" >
-                                                                                  <input type="hidden" name="date" class="observer" >
+                                                                                  <input type="hidden" name="date"  value="{{old('date')}}" class="observer" >
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -212,7 +235,7 @@
                                                                             <div class="col-lg-6">
                                                                                 <label>مستندات:</label>
                                                                                 <div class="kt-input-icon">
-                                                                                    <input type="text" name="attachment" class="form-control">
+                                                                                    <input type="text" name="attachment"  value="{{old('attachment')}}" class="form-control">
                                                                                 </div>
                                                                             </div>
 
@@ -360,17 +383,29 @@
 
                                         <div class="modal-body">
 
+
+                                          @if ($errors->any())
+                                              <div class="alert alert-danger">
+                                                  <ul>
+                                                      @foreach ($errors->all() as $error)
+                                                          <li>{{ $error }}</li>
+                                                      @endforeach
+                                                  </ul>
+                                              </div>
+                                          @endif
+
+
                                             <div class="form-group row">
                                                 <div class="col-lg-6">
                                                     <label>نام سرفصل هزینه:</label>
                                                     <div class="kt-input-icon">
-                                                        <input type="text" name="name" class="form-control">
+                                                        <input type="text" name="name" value="{{old('name')}}"  class="form-control">
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-6">
                                                     <label class="">کد سرفصل هزینه:</label>
                                                     <div class="kt-input-icon">
-                                                        <input type="text" name="code" class="form-control">
+                                                        <input type="text" name="code"  value="{{old('code')}}"   class="form-control">
                                                     </div>
                                                 </div>
                                             </div>

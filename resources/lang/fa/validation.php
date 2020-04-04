@@ -176,6 +176,12 @@ return [
         'amount' => 'مبلغ',
         'excel' => 'فایل اکسل',
         'content' => 'محتوی',
+        'code' => 'کد سرفصل',
+        'title' => ' عنوان',
+        'paymentMethod' => 'نحوه پرداخت',
+        'trackNumber' => 'شماره فاکتور',
+        'attachment' => 'مستندات',
+
     ],
 
 ];
