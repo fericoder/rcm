@@ -39,6 +39,23 @@ class CostController extends \App\Http\Controllers\Controller
      */
     public function store(Request $request)
     {
+
+       $request->validate([
+             'title' => 'required',
+             'description' => 'required',
+             'amount' => 'required',
+             'paymentMethod' => 'required',
+             'trackNumber' => 'required',
+             'date' => 'required',
+             'attachment' => 'required'
+         ]);
+
+
+// validation ro bayad ghabl az create benevisi
+// code ha khat be khad ejra mishan
+//avval bayad validate TokyoTyrantIterator
+
+
       Cost::create([
           'user_id' =>  \Auth::user()->id,
           'complex_id' =>  \Auth::user()->complex_id,
@@ -52,6 +69,8 @@ class CostController extends \App\Http\Controllers\Controller
       ]);
       alert()->success('سرفصل هزینه با موفقیت اضافه شد', 'اضافه شد');
       return redirect()->back();
+
+
     }
 
     /**

@@ -35,6 +35,12 @@ class IncomeHeadingController extends \App\Http\Controllers\Controller
      */
     public function store(Request $request)
     {
+
+      $request->validate([
+            'name' => 'required',
+            'code' => 'required'
+        ]);
+
       IncomeHeading::create([
           'user_id' =>  \Auth::user()->id,
           'complex_id' =>  \Auth::user()->complex_id,

@@ -39,6 +39,17 @@ class IncomeController extends \App\Http\Controllers\Controller
      */
     public function store(Request $request)
     {
+
+      $request->validate([
+            'title' => 'required',
+            'description' => 'required',
+            'amount' => 'required',
+            'paymentMethod' => 'required',
+            'trackNumber' => 'required',
+            'date' => 'required',
+            'attachment' => 'required'
+        ]);
+
       Income::create([
           'user_id' =>  \Auth::user()->id,
           'complex_id' =>  \Auth::user()->complex_id,
