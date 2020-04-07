@@ -72,7 +72,7 @@ class IncomeHeadingController extends \App\Http\Controllers\Controller
      */
     public function edit(IncomeHeading $incomeHeading)
     {
-          return view('dashboard.accounting.Incomeedit', compact('incomeHeading'));
+          return view('dashboard.accounting.IncomeHeadingedit', compact('incomeHeading'));
     }
 
     /**
