@@ -71,7 +71,7 @@ class CostHeadingController extends \App\Http\Controllers\Controller
      */
     public function edit(CostHeading $costHeading)
     {
-      return view('dashboard.accounting.Costedit', compact('costHeading'));
+      return view('dashboard.accounting.CostHeadingedit', compact('costHeading'));
   }
 
 

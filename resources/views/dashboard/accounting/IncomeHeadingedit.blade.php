@@ -36,63 +36,26 @@
 
 
         <!--begin: Datatable -->
-        <form action="{{ route('costs.update', $cost->id) }}" method="post" enctype="multipart/form-data">
+        <form action="{{ route('incomeHeading.update', $incomeHeading->id) }}" method="post" enctype="multipart/form-data">
           @csrf
           @method('PATCH')
           <div class="modal-body">
 
             <div class="form-group row">
               <div class="col-lg-6">
-                <label>نام سرفصل هزینه:</label>
+                <label>نام سرفصل درآمد:</label>
                 <div class="kt-input-icon">
-                  <input type="text" name="title" class="form-control">
+                  <input type="text" name="name" class="form-control">
                 </div>
               </div>
               <div class="col-lg-6">
-                <label class="">توضیحات:</label>
+                <label class="">کد سرفصل درآمد:</label>
                 <div class="kt-input-icon">
-                  <input type="text" name="description" class="form-control">
+                  <input type="text" name="code" class="form-control">
                 </div>
               </div>
             </div>
-            <div class="form-group row">
-              <div class="col-lg-6">
-                <label>مبلغ:</label>
-                <div class="kt-input-icon">
-                  <input type="text" name="amount" class="form-control">
-                </div>
-              </div>
-              <div class="col-lg-6">
-                <label class="">نحوه پرداخت:</label>
-                <div class="kt-input-icon">
-                  <input type="text" name="paymentMethod" class="form-control">
-                </div>
-              </div>
-            </div>
-            <div class="form-group row">
-              <div class="col-lg-6">
-                <label>شماره فاکتور/سند:</label>
-                <div class="kt-input-icon">
-                  <input type="text" name="trackNumber" class="form-control">
-                </div>
-              </div>
-              <div class="col-lg-6">
-                <label class="">تاریخ:</label>
-                <div class="kt-input-icon">
-                  <input class="form-control dp" >
-                  <input type="hidden" name="date" class="observer" >
-                </div>
-              </div>
-            </div>
-            <div class="form-group row">
-              <div class="col-lg-6">
-                <label>مستندات:</label>
-                <div class="kt-input-icon">
-                  <input type="text" name="attachment" class="form-control">
-                </div>
-              </div>
 
-            </div>
           </div>
           <div class="modal-footer">
             <button type="submit" class="btn btn-success btn-wide btn-elevate btn-elevate-air">ویرایش خدمات</button>
