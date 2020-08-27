@@ -35,7 +35,7 @@
                             <div class="form-group row">
                                 <label class="col-md-3 label-control" for="date">تاریخ</label>
                                 <div class="col-md-9">
-                                    <input style="font-family:Byekan" class="form-control date" style="" placeholder="کلیک کنید" name="date" type="text" />
+                                    <input style="font-family:Byekan" class="form-control" style="" placeholder="کلیک کنید" name="date" type="text" id="input1" />
                                 </div>
                             </div>
 
@@ -146,12 +146,12 @@
                                 </div>
                             </div>
 
-                            <div class="form-group row">
-                                <label class="col-md-3 label-control" for="name">علل</label>
-                                <div class="col-md-9">
-                                    <input type="text" id="hour_to" class="form-control" name="detector_cause">
-                                </div>
-                            </div>
+                            {{--<div class="form-group row">--}}
+                                {{--<label class="col-md-3 label-control" for="name">علل</label>--}}
+                                {{--<div class="col-md-9">--}}
+                                    {{--<input type="text" id="hour_to" class="form-control" name="detector_cause">--}}
+                                {{--</div>--}}
+                            {{--</div>--}}
 
                             <div class="form-group row">
                                 <label class="col-md-3 label-control" for="name">محل وقوع</label>
@@ -243,7 +243,7 @@
                             <div class="form-group row">
                                 <label class="col-md-3 label-control" for="date">تاریخ</label>
                                 <div class="col-md-9">
-                                    <input style="font-family:Byekan" class="form-control date" style="" placeholder="کلیک کنید" name="date" type="text" />
+                                    <input style="font-family:Byekan" class="form-control" style="" placeholder="کلیک کنید" name="date" type="text" id="span1" />
                                 </div>
                             </div>
 
@@ -457,7 +457,7 @@
                         <th> دتکتور های فعال</th>
                         <th> دتکتور های غیرفعال</th>
                         <th> دفعات آژیر</th>
-                        <th>علت</th>
+                        {{--<th>علت</th>--}}
                         <th>محل</th>
                         <th>اقدامات</th>
                         <th>تعداد جرایم </th>
@@ -485,7 +485,7 @@
                             <td>{{ $monitoring->detectors_enable }}</td>
                             <td>{{ $monitoring->detectors_disable }}</td>
                             <td>{{ $monitoring->sound_count }}</td>
-                            <td>{{ $monitoring->detector_cause }}</td>
+{{--                            <td>{{ $monitoring->detector_cause }}</td>--}}
                             <td>{{ $monitoring->detector_location }}</td>
                             <td>{{ $monitoring->detector_actions }}</td>
                             <td>{{ $monitoring->penalty_count }}</td>
@@ -575,7 +575,11 @@
 
     <script src="assets/plugins/custom/datatables/datatables.bundle.js" type="text/javascript"></script>
     <script src="assets/js/pages/crud/datatables/extensions/buttons.js" type="text/javascript"></script>
+    <script src="/vendors/datepicker/js/persianDatepicker.js"></script>
+
     <script>
+        $("#input1, #span1").persianDatepicker();
+
         var DatatablesExtensionButtons = {
             init: function () {
 
@@ -588,7 +592,7 @@
 
                         scrollY:"",scrollX:!0,scrollCollapse:!0,
                         responsive: !0,
-
+                        "order": [[ 0,  "desc" ]],
                         buttons: ["print", "copyHtml5", "excelHtml5", "csvHtml5", "pdfHtml5"],
                     }
                 ),
@@ -626,7 +630,7 @@
 
                         scrollY:"",scrollX:!0,scrollCollapse:!0,
                         responsive: !0,
-
+                        "order": [[ 0,  "desc" ]],
                         buttons: ["print", "copyHtml5", "excelHtml5", "csvHtml5", "pdfHtml5"],
                     }
                 ),

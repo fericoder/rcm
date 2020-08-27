@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Auth;
+use Carbon\Carbon;
 
 class LoginController extends Controller
 {
@@ -43,5 +44,16 @@ class LoginController extends Controller
         \Auth::logout();
         return redirect('/login');
     }
+
+    protected function authenticated()
+    {
+        // Update Last Login TimeStamp In DataBase
+        $current_time = Carbon::now()->toDateTimeString();
+        $user = \Auth::user()->email;
+        \DB::update("update users set lastLogin = ? where email = ?", ["$current_time", "$user"]);
+    }
+
+
+
 
 }

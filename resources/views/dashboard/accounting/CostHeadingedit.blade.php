@@ -45,20 +45,20 @@
               <div class="col-lg-6">
                 <label>نام سرفصل هزینه:</label>
                 <div class="kt-input-icon">
-                  <input type="text" name="name" class="form-control">
+                  <input type="text" value="{{ old( 'name', $costHeading->name ) }}" name="name" class="form-control">
                 </div>
               </div>
               <div class="col-lg-6">
                 <label class="">کد سرفصل هزینه:</label>
                 <div class="kt-input-icon">
-                  <input type="text" name="code" class="form-control">
+                  <input type="text" value="{{ old( 'code', $costHeading->code ) }}" name="code" class="form-control">
                 </div>
               </div>
             </div>
 
           </div>
           <div class="modal-footer">
-            <button type="submit" class="btn btn-success btn-wide btn-elevate btn-elevate-air">ویرایش خدمات</button>
+            <button type="submit" class="btn btn-success btn-wide btn-elevate btn-elevate-air">ویرایش سرفصل هزینه</button>
           </form>
         </div>
       </div>

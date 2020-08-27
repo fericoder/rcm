@@ -77,16 +77,18 @@
             <h1 class="alert-text borj-font text-warning"> {{ number_format($invoices->where('status', 'notPaid')->sum('amount')) }}
             ریال</h1>
         </div>
+    <p>تعداد کاربران لاگین شده امروز: {{ \App\User::where('lastLogin', '>=', \Carbon\Carbon::today()->toDateString())->count() }}</p>
 
 
 
-        <div class="row">
+
+    <div class="row">
             <div class="col-lg-12">
                 <div class="kt-portlet kt-portlet--mobile">
                     <div class="kt-portlet__head">
                         <div class="kt-portlet__head-label">
                             <h3 class="kt-portlet__head-title borj-color">
-                                لیست ریز واریزی ها از طریق درگاه اینترنتی سامانه
+                                لیست ریز واریزی ها از طریق درگاه و کارتخوان
                             </h3>
                         </div>
 
@@ -126,12 +128,7 @@
                                                     <span class="kt-nav__link-text">CSV</span>
                                                 </a>
                                             </li>
-                                            <li class="kt-nav__item">
-                                                <a href="#" class="kt-nav__link" id="export_pdf">
-                                                    <i class="kt-nav__link-icon la la-file-pdf-o"></i>
-                                                    <span class="kt-nav__link-text">PDF</span>
-                                                </a>
-                                            </li>
+
                                         </ul>
                                     </div>
                                 </div>
@@ -150,17 +147,19 @@
                                 <th>کد واحد</th>
                                 <th>نام و نام خانوادگی</th>
                                 <th>بابت</th>
+                                <th>روش</th>
                             </tr>
                             </thead>
                             <tbody>
 
-                            @foreach ($invoices->where('status', 'paid')->take(1000) as $invoice)
+                            @foreach ($invoices->where('status', 'paid')->sortByDesc('id')->take(1000) as $invoice)
                                 <tr>
-                                    <td style="font-fami!important; direction: ltr">{{ jdate($invoice->updated_at) }}</td>
+                                    <td style="font-family: Byekan!important; direction: ltr">{{ jdate($invoice->updated_at) }}</td>
                                     <td style="font-family: BYekan!important;"> {{ number_format($invoice->amount) }} </td>
-                                    <td>{{ $invoice->user->code }}</td>
+                                    <td style="font-family: Arial!important;">{{ $invoice->user->code }}</td>
                                     <td>{{ $invoice->user->fullName }}</td>
                                     <td>{{ $invoice->for }}</td>
+                                    <td>{{ $invoice->paymentMethod == 'pos' ? 'کارتخوان' : 'درگاه'}}</td>
                                 </tr>
                             @endforeach
                             </tbody>
@@ -220,12 +219,7 @@
                                                     <span class="kt-nav__link-text">CSV</span>
                                                 </a>
                                             </li>
-                                            <li class="kt-nav__item">
-                                                <a href="#" class="kt-nav__link" id="export_pdf">
-                                                    <i class="kt-nav__link-icon la la-file-pdf-o"></i>
-                                                    <span class="kt-nav__link-text">PDF</span>
-                                                </a>
-                                            </li>
+
                                         </ul>
                                     </div>
                                 </div>

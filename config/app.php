@@ -230,6 +230,7 @@ return [
         'Alert' => UxWeb\SweetAlert\SweetAlert::class,
         'Gateway' => \Larabookir\Gateway\Gateway::class, // <-- add this line at the end of aliases array
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
+        'Input' => Illuminate\Support\Facades\Input::class,
 
     ],
 

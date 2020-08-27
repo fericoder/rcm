@@ -20,8 +20,14 @@ class UnitController extends \App\Http\Controllers\Controller
      */
     public function index()
     {
-        $units = User::where('complex_id', \Auth::user()->complex_id)->get();
-        return view('dashboard.units.index', compact('units'));
+        if( \Gate::allows('finance') OR \Gate::allows('admin') OR \Gate::allows('boardMember')) {
+            $units = User::where('complex_id', \Auth::user()->complex_id)->where('userType', 'unit')->get();
+            return view('dashboard.units.index', compact('units'));
+        }else{
+            alert()->warning('عدم دسترسی');
+            return redirect()->back();
+            exit;
+        }
     }
 
     /**
@@ -31,7 +37,14 @@ class UnitController extends \App\Http\Controllers\Controller
      */
     public function create()
     {
-        return view('dashboard.units.create');
+        if(\Gate::allows('admin')) {
+            return view('dashboard.units.create');
+        }else{
+            alert()->warning('عدم دسترسی');
+            return redirect()->back();
+            exit;
+        }
+
     }
 
     /**
@@ -42,12 +55,19 @@ class UnitController extends \App\Http\Controllers\Controller
      */
     public function store(Request $request)
     {
-        $data = $request->except('_token');
-        $data['complex_id'] = \Auth::user()->complex_id;
+        if( \Gate::allows('admin')) {
+            $data = $request->except('_token');
+            $data['complex_id'] = \Auth::user()->complex_id;
 
-        $unit = User::create($data);
-        alert()->success('واحد باموفقیت اضافه شد', 'انجام شد');
-        return redirect()->route('units.index');
+            $unit = User::create($data);
+            alert()->success('واحد باموفقیت اضافه شد', 'انجام شد');
+            return redirect()->route('units.index');
+        }else{
+            alert()->warning('عدم دسترسی');
+            return redirect()->back();
+            exit;
+        }
+
     }
 
     /**
@@ -58,10 +78,17 @@ class UnitController extends \App\Http\Controllers\Controller
      */
     public function show($id)
     {
-        $unit = User::where('id', $id)->first();
-        $invoices = Invoice::where('user_id', $id)->get();
-        $penalties = Penalty::where('user_id', $id)->get();
-        return view('dashboard.units.show', compact('unit', 'invoices', 'penalties'));
+        if( \Gate::allows('finance') OR \Gate::allows('admin') OR \Gate::allows('boardMember')) {
+            $unit = User::where('id', $id)->first();
+            $invoices = Invoice::where('user_id', $id)->get();
+            $penalties = Penalty::where('user_id', $id)->get();
+            return view('dashboard.units.show', compact('unit', 'invoices', 'penalties'));
+        }else{
+            alert()->warning('عدم دسترسی');
+            return redirect()->back();
+            exit;
+        }
+
     }
 
     /**

@@ -115,7 +115,7 @@
 
                                 <div class="form-group">
                                     <label for="description">توضیحات مربوط به درخواست:</label>
-                                    <textarea id="description" rows="3" class="form-control" name="description">{{ $ticket->description }}</textarea>
+                                    <textarea style="font-size: 18px" id="description" rows="3" class="form-control" name="description">{{ $ticket->description }}</textarea>
                                 </div>
 
                                 <div class="col-md-6">
@@ -135,7 +135,7 @@
 
                                 <div class="col-md-6">
 
-                                    @if($ticket->attachment == "storage/tickets/Nothing")
+                                    @if($ticket->attachment == "storage/Requisitions/Nothing")
                                         <td style="text-align:center;color: #808080; padding-top:20px"> مشاهده فایل ضمیمه فعلی:  <i
                                                     style="font-size: 20px" class="ft-file-text"></i></td>
                                     @else
@@ -149,7 +149,7 @@
 
 
 
-                                @can('boardMember')
+                                @canany(['admin', 'boardMember'])
                                     <br><h4 style="color: red" class="form-section"><i class="fa fa-file"></i> پاسخ متولی</h4>
 
                                     <div class="form-group">
@@ -179,7 +179,7 @@
 
 
 
-                                @endcan
+                                @endcanany
 
 
                                 @if($ticket->addedById == \Auth::user()->id)
@@ -201,10 +201,11 @@
 
                         </form>
 
+{{--                        @if($ticket->addedById === \Auth::user()->id)--}}
                         <div class="form-actions">
                             <a href="{{ route('ticket.approve', $ticket->id) }}"><button style="font-size: 15px" class="btn btn-primary"><i class="fa fa-check-square-o"></i> ثبت تاییدیه انجام درخواست</button></a>
                         </div>
-
+                        {{--@endif--}}
                     </div>
                 </div>
             </div>

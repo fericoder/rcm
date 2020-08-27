@@ -23,11 +23,11 @@
         <div class="kt-widget24__details">
           <div class="kt-widget24__info">
             <h3 class="kt-widget24__title">
-              ریز هزینه های پرداخت شده برج المپیک
+              مجموع هزینه های پرداخت شده
             </h3>
             <br>
             <h3 class="kt-widget24__title borj-font">
-              از تاریخ 98/01/01 تا 98/06/31
+              از تاریخ 98/01/01 تا 98/12/29
             </h3>
 
             <h5 class="kt-widget24__desc mt-4">
@@ -36,7 +36,7 @@
           </div>
 
           <h1 class="kt-widget24__stats kt-font-danger borj-font">
-            11,356,223,286
+            {{ number_format($costs->sum('amount')) }}
           </h1>
         </div>
 
@@ -54,15 +54,15 @@
           <div class="kt-widget24__info">
 
             <h3 class="kt-widget24__title">
-              پر هزینه ترین سرفصل:
+              بالاترین سرفصل هزینه:
             </h3>
             <h5 class="kt-widget24__desc mt-4">
-              نیروی انسانی
+              {{ $maxSpentHeading['0'] }}
             </h5>
           </div>
 
           <h1 class="kt-widget24__stats kt-font-success borj-font mt-5">
-            4,616,893,041
+            {{ number_format($maxSpentPrice) }}
           </h1>
         </div>
 
@@ -89,7 +89,7 @@
       <div class="kt-portlet__head">
         <div class="kt-portlet__head-label">
           <h3 class="kt-portlet__head-title borj-color">
-            هزینه ها بر اساس سرفصل <small>(ریال)</small>
+            هزینه ها بر اساس سرفصل <small>(ماه جاری - ریال)</small>
           </h3>
         </div>
       </div>
@@ -132,106 +132,117 @@
 
 
 
-            <!-- Modal -->
-            <div class="modal fade" id="AddCosts" tabindex="-1" role="dialog" aria-labelledby="add" aria-hidden="true">
-              <div class="modal-dialog modal-lg" role="add">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="modall">افزودن هزینه</h5>
-                    <button type="button" class="close " data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                  <form action="{{ route('costs.store') }}" method="post" enctype="multipart/form-data">
-                    @csrf
+            @canany(['admin', 'finance', 'superAdmin'])
+              <!-- Modal -->
+                <div class="modal fade" id="AddCosts" tabindex="-1" role="dialog" aria-labelledby="add" aria-hidden="true">
+                  <div class="modal-dialog modal-lg" role="add">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="modall">افزودن هزینه</h5>
+                        <button type="button" class="close " data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <form action="{{ route('costs.store') }}" method="post" enctype="multipart/form-data">
+                        @csrf
 
-                    <div class="modal-body">
+                        <div class="modal-body">
 
 
-                      @if ($errors->any())
-                          <div class="alert alert-danger">
+                          @if ($errors->any())
+                            <div class="alert alert-danger">
                               <ul>
-                                  @foreach ($errors->all() as $error)
-                                      <li>{{ $error }}</li>
-                                  @endforeach
+                                @foreach ($errors->all() as $error)
+                                  <li>{{ $error }}</li>
+                                @endforeach
                               </ul>
-                          </div>
-                      @endif
+                            </div>
+                          @endif
 
 
-                      <div class="form-group row">
-                        <div class="col-lg-6">
-                          <label>نام سرفصل هزینه:</label>
-                          <div class="kt-input-icon">
-                            <input type="text" name="title"  value="{{old('title')}}"  class="form-control">
+                          <div class="form-group row">
+                            <div class="col-lg-6">
+                              <label> سرفصل هزینه:</label>
+                              <div class="kt-input-icon">
+                                <select style="direction: rtl; text-align: right;width: 100%;" class="form-control m-select2" id="m_select2_1" name="cost_headings_id">
+                                  @foreach ($costHeadings as $costHeading)
+                                    <option disabled selected value> -- جهت انتخاب، کلیک نمایید. -- </option>
+                                    <option value="{{ $costHeading->id }}">{{ $costHeading->name }}</option>
+                                  @endforeach
+                                </select>
+                              </div>
+                            </div>
+                            <div class="col-lg-6">
+                              <label class="">توضیحات:</label>
+                              <div class="kt-input-icon">
+                                <input type="text" name="description" value="{{old('description')}}"   class="form-control">
+                              </div>
+                            </div>
                           </div>
-                        </div>
-                        <div class="col-lg-6">
-                          <label class="">توضیحات:</label>
-                          <div class="kt-input-icon">
-                            <input type="text" name="description" value="{{old('description')}}"   class="form-control">
+                          <div class="form-group row">
+                            <div class="col-lg-6">
+                              <label>مبلغ:</label>
+                              <div class="kt-input-icon">
+                                <input type="text" name="amount" id="delimiter" value="{{old('amount')}}"   class="form-control">
+                              </div>
+                            </div>
+                            <div class="col-lg-6">
+                              <label class="">نحوه پرداخت:</label>
+                              <div class="kt-input-icon">
+                                <input type="text" name="paymentMethod" value="{{old('paymentMethod')}}"   class="form-control">
+                              </div>
+                            </div>
                           </div>
-                        </div>
-                      </div>
-                      <div class="form-group row">
-                        <div class="col-lg-6">
-                          <label>مبلغ:</label>
-                          <div class="kt-input-icon">
-                            <input type="text" name="amount" value="{{old('amount')}}"   class="form-control">
+                          <div class="form-group row">
+                            <div class="col-lg-6">
+                              <label>شماره فاکتور/سند:</label>
+                              <div class="kt-input-icon">
+                                <input type="text" name="trackNumber" value="{{old('trackNumber')}}"   class="form-control">
+                              </div>
+                            </div>
+                            <div class="col-lg-6">
+                              <label class="">تاریخ:</label>
+                              <div class="kt-input-icon">
+                                <input class="form-control dp" >
+                                <input type="hidden" name="date" value="{{old('date')}}"   class="observer" >
+                              </div>
+                            </div>
                           </div>
-                        </div>
-                        <div class="col-lg-6">
-                          <label class="">نحوه پرداخت:</label>
-                          <div class="kt-input-icon">
-                            <input type="text" name="paymentMethod" value="{{old('paymentMethod')}}"   class="form-control">
-                          </div>
-                        </div>
-                      </div>
-                      <div class="form-group row">
-                        <div class="col-lg-6">
-                          <label>شماره فاکتور/سند:</label>
-                          <div class="kt-input-icon">
-                            <input type="text" name="trackNumber" value="{{old('trackNumber')}}"   class="form-control">
-                          </div>
-                        </div>
-                        <div class="col-lg-6">
-                          <label class="">تاریخ:</label>
-                          <div class="kt-input-icon">
-                            <input class="form-control dp" >
-                            <input type="hidden" name="date" value="{{old('date')}}"   class="observer" >
-                          </div>
-                        </div>
-                      </div>
-                      <div class="form-group row">
-                        <div class="col-lg-6">
-                          <label>مستندات:</label>
-                          <div class="kt-input-icon">
-                            <input type="text" name="attachment" value="{{old('attachment')}}"  class="form-control">
+                          <div class="form-group row">
+                            <div class="col-lg-6">
+                              <label>مستندات:</label>
+                              <div class="kt-input-icon">
+                                <input type="file" name="attachment" value="{{old('attachment')}}"  class="form-control">
+                              </div>
+                            </div>
+
                           </div>
                         </div>
 
-                      </div>
+                        <div class="modal-footer">
+
+
+
+
+                          <button type="submit" class="btn btn-success btn-wide btn-elevate btn-elevate-air">افزودن هزینه</button>
+                          <button type="button" class="btn btn-danger" data-dismiss="modal">انصراف</button>
+                      </form>
                     </div>
-
-                    <div class="modal-footer">
-
-
-
-
-                      <button type="submit" class="btn btn-success btn-wide btn-elevate btn-elevate-air">افزودن هزینه</button>
-                      <button type="button" class="btn btn-danger" data-dismiss="modal">انصراف</button>
-                    </form>
                   </div>
                 </div>
-              </div>
-            </div>
+        </div>
 
 
-            <!--end::Modal-->
+        <!--end::Modal-->
+        @endcan
 
 
 
-            <button data-toggle="modal" data-target=" #AddCosts" style="margin-right: 20px;font-size: 13px" type="button" class="btn btn-success btn-wide btn-elevate btn-elevate-air">افزودن هزینه</button>
+
+
+        @canany(['admin', 'finance', 'superAdmin'])
+          <button data-toggle="modal" data-target=" #AddCosts" style="margin-right: 20px;font-size: 13px" type="button" class="btn btn-success btn-wide btn-elevate btn-elevate-air">افزودن هزینه</button>
+        @endcan
           </h3>
         </div>
 
@@ -271,12 +282,7 @@
                       <span class="kt-nav__link-text">CSV</span>
                     </a>
                   </li>
-                  <li class="kt-nav__item">
-                    <a href="#" class="kt-nav__link" id="export_pdf">
-                      <i class="kt-nav__link-icon la la-file-pdf-o"></i>
-                      <span class="kt-nav__link-text">PDF</span>
-                    </a>
-                  </li>
+
                 </ul>
               </div>
             </div>
@@ -296,8 +302,8 @@
                 <th>توضیحات</th>
                 <th>مبلغ</th>
                 <th>نحوه پرداخت</th>
-                <th>شماره فاکتور/ سند</th>
-                <th>تاریخ</th>
+                {{--<th>شماره فاکتور/ سند</th>--}}
+                {{--<th>تاریخ</th>--}}
                 <th>مستندات</th>
                 <th>حذف | ویرایش</th>
               </tr>
@@ -306,13 +312,19 @@
 
                 @foreach($costs as $cost)
                     <tr>
-                        <td>{{ $cost->title }}</td>
+                        <td>{{ $costHeadings->where('id', $cost->cost_headings_id )->first()->name  }}</td>
                         <td>{{ $cost->description }}</td>
-                        <td>{{ $cost->amount }}</td>
+                        <td style="font-family: BYekan">{{ number_format($cost->amount) }}</td>
                         <td>{{ $cost->trackNumber }}</td>
-                        <td>{{ $cost->paymentMethod }}</td>
-                        <td>{{ $cost->date }}</td>
-                        <td>{{ $cost->attachment }}</td>
+{{--                        <td>{{ $cost->paymentMethod }}</td>--}}
+{{--                        <td style="direction: ltr; font-family: BYekan">{{ jdate($cost->date) }}</td>--}}
+                        <td>
+                          @if ($cost->attachment)
+                            <a target="_blank" href="{{ $cost->attachment }}"> <i class="fa fa-file-alt"></i> </a>
+                            @else
+                              <span> - </span>
+                          @endif
+                        </td>
                         <td>
                             @can('admin')
                                 <a href="{{ route('costs.delete', ['id' => $cost->id]) }}" class="m-portlet__nav-link btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill button" title="حذف مشتری "> <i style="color: darkred" class="fa fa-times"></i> </a>
@@ -400,7 +412,10 @@
 
 
 
+        @canany(['admin', 'finance', 'superAdmin'])
           <button data-toggle="modal" data-target=" #AddCostHeadings" style="margin-right: 20px;font-size: 13px" type="button" class="btn btn-success btn-wide btn-elevate btn-elevate-air">افزودن سرفصل هزینه</button>
+        @endcan
+
         </div>
 
         <div style="" class="kt-portlet__head-toolbar">
@@ -439,12 +454,7 @@
                       <span class="kt-nav__link-text">CSV</span>
                     </a>
                   </li>
-                  <li class="kt-nav__item">
-                    <a href="#" class="kt-nav__link" id="export_pdf">
-                      <i class="kt-nav__link-icon la la-file-pdf-o"></i>
-                      <span class="kt-nav__link-text">PDF</span>
-                    </a>
-                  </li>
+
                 </ul>
               </div>
             </div>
@@ -497,6 +507,7 @@
 
 
 @section('footerScripts')
+  <script src="/dashboard/assets/js/select2.js" type="text/javascript"></script>
 
 <script>
 
@@ -520,38 +531,15 @@ am4core.useTheme(am4themes_animated);
 var chart = am4core.create("costsHeading", am4charts.PieChart);
 chart.rtl = true;
 // Add data
-chart.data = [ {
-  "hazine": "نیروی انسانی",
-  "mablaq": 501.9
-}, {
-  "hazine": "نگهداری تاسیسات",
-  "mablaq": 301.9
-}, {
-  "hazine": "نگهداری آسانسورها",
-  "mablaq": 201.1
-}, {
-  "hazine": "آب، برق و گاز مصرفی",
-  "mablaq": 165.8
-}, {
-  "hazine": "نگهداری فضای سبز",
-  "mablaq": 139.9
-}, {
-  "hazine": "انواع بیمه های مورد نیاز",
-  "mablaq": 128.3
-}, {
-  "hazine": "سرویس و نگهداری ژنراتور",
-  "mablaq": 99
-}, {
-  "hazine": "اقلام مصرفی",
-  "mablaq": 60
-}, {
-  "hazine": "اقلام شوینده",
-  "mablaq": 50
-},{
-  "hazine": "آنتن مرکزی",
-  "mablaq": 50},{
-    "hazine": "سایر هزینه ها",
-    "mablaq": 50} ];
+chart.data = [ @foreach($headingsSum as $headingSum => $value)
+{
+  "hazine": '{{ $headingSum }}',
+  "mablaq": {{ $value }}
+},
+  @endforeach
+
+
+    ];
 
     // Add and configure Series
     var pieSeries = chart.series.push(new am4charts.PieSeries());
@@ -899,6 +887,7 @@ chart.data = [ {
 
           scrollY:"",scrollX:!0,scrollCollapse:!0,
           responsive: !0,
+          "order": [[ 5, "desc" ]],
 
           buttons: ["print", "copyHtml5", "excelHtml5", "csvHtml5", "pdfHtml5"],
         }

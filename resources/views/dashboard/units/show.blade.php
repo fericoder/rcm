@@ -226,12 +226,7 @@
                                                 <span class="kt-nav__link-text">CSV</span>
                                             </a>
                                         </li>
-                                        <li class="kt-nav__item">
-                                            <a href="#" class="kt-nav__link" id="export_pdf">
-                                                <i class="kt-nav__link-icon la la-file-pdf-o"></i>
-                                                <span class="kt-nav__link-text">PDF</span>
-                                            </a>
-                                        </li>
+
                                     </ul>
                                 </div>
                             </div>
@@ -319,12 +314,7 @@
                                                 <span class="kt-nav__link-text">CSV</span>
                                             </a>
                                         </li>
-                                        <li class="kt-nav__item">
-                                            <a href="#" class="kt-nav__link" id="export_pdf">
-                                                <i class="kt-nav__link-icon la la-file-pdf-o"></i>
-                                                <span class="kt-nav__link-text">PDF</span>
-                                            </a>
-                                        </li>
+
                                     </ul>
                                 </div>
                             </div>
@@ -343,7 +333,9 @@
                                 <th>کد</th>
                                 <th>تاریخ ایجاد</th>
                                 <th>تاریخ آخرین ویرایش</th>
-                                <th style="min-width: 90px;">ویرایش</th>
+                                @canany(['admin', 'finance'])
+                                    <th style="min-width: 90px;">ویرایش</th>
+                                @endcanany
                             </tr>
                             </thead>
                             <tbody>
@@ -355,7 +347,9 @@
                                     <td>{{ $invoice->code }}</td>
                                     <td style="font-family: BYekan!important; direction: ltr">{{ jdate($invoice->created_at) }}</td>
                                     <td style="font-family: BYekan!important; direction: ltr">{{ jdate($invoice->updated_at) }}</td>
-                                    <td><a href="{{ route('invoices.edit', $invoice->id) }}"><i class="flaticon-edit"></i></a></td>
+                                    @canany(['admin', 'finance'])
+                                        <td><a href="{{ route('invoices.edit', $invoice->id) }}"><i class="flaticon-edit"></i></a></td>
+                                    @endcanany
                                 </tr>
                             @endforeach
 
@@ -423,12 +417,7 @@
                                                 <span class="kt-nav__link-text">CSV</span>
                                             </a>
                                         </li>
-                                        <li class="kt-nav__item">
-                                            <a href="#" class="kt-nav__link" id="export_pdf">
-                                                <i class="kt-nav__link-icon la la-file-pdf-o"></i>
-                                                <span class="kt-nav__link-text">PDF</span>
-                                            </a>
-                                        </li>
+
                                     </ul>
                                 </div>
                             </div>
@@ -449,7 +438,9 @@
                             <th>توضیحات </th>
                             <th>تصویر </th>
                             <th>تاریخ ثبت در سامانه</th>
-                            <th style="min-width: 90px;">ویرایش</th>
+                            @canany(['admin', 'finance'])
+                                <th style="min-width: 90px;">ویرایش</th>
+                            @endcanany
                         </tr>
                         </thead>
                         <tbody>
@@ -462,7 +453,9 @@
                                 <td>{{ $penalty->description }}</td>
                                 <td>{{ $penalty->picture }}</td>
                                 <td>{{ $penalty->created_at }}</td>
-                                <td><a href="{{ route('penalty.edit', $penalty->id) }}"><i class="flaticon-edit"></i></a></td>
+                                @canany(['admin', 'finance'])
+                                    <td><a href="{{ route('penalty.edit', $penalty->id) }}"><i class="flaticon-edit"></i></a></td>
+                                @endcanany
                             </tr>
                         @endforeach
 

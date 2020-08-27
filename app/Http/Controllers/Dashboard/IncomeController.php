@@ -18,7 +18,16 @@ class IncomeController extends \App\Http\Controllers\Controller
       $incomes = Income::where('complex_id', \Auth::user()->complex_id)->get();
       $incomeHeadings = IncomeHeading::where('complex_id', \Auth::user()->complex_id)->get();
 
-       return view('dashboard.accounting.incomes', compact('incomes','incomeHeadings'));
+        foreach ($incomeHeadings as $incomeHeading) {
+            $headingName = $incomeHeading->name;
+            $headingId = $incomeHeading->id;
+            $headingsSum["$headingName"] = \App\Income::where('income_headings_id', $headingId)->sum('amount');
+        }
+        $maxIncomeHeading = array_keys($headingsSum, max($headingsSum));
+        $maxIncomePrice = max($headingsSum);
+
+
+        return view('dashboard.accounting.incomes', compact('incomes','incomeHeadings', 'maxIncomeHeading', 'maxIncomePrice', 'headingsSum'));
     }
 
     /**
@@ -39,30 +48,45 @@ class IncomeController extends \App\Http\Controllers\Controller
      */
     public function store(Request $request)
     {
-
-      $request->validate([
-            'title' => 'required',
-            'description' => 'required',
-            'amount' => 'required',
-            'paymentMethod' => 'required',
-            'trackNumber' => 'required',
-            'date' => 'required',
-            'attachment' => 'required'
+        $request->merge([
+            'amount' => $this->fa2en($request->amount),
         ]);
 
-      Income::create([
-          'user_id' =>  \Auth::user()->id,
-          'complex_id' =>  \Auth::user()->complex_id,
-          'title' => $request->title,
-          'date' => $request->date,
-          'amount' => $request->amount,
-          'trackNumber' => $request->trackNumber,
-          'description' => $request->description,
-          'paymentMethod' => $request->paymentMethod,
-          'attachment' => $request->attachment
-      ]);
-      alert()->success('درآمد با موفقیت اضافه شد', 'اضافه شد');
-      return redirect()->back();
+        $request->validate([
+            'description' => 'required',
+            'income_headings_id' => 'required',
+            'amount' => 'required|numeric',
+            'paymentMethod' => 'nullable',
+            'trackNumber' => 'nullable',
+            'date' => 'required',
+            'attachment' => 'nullable|mimes:jpeg,JPEG,png,PNG,pdf,excel,doc,docx'
+        ]);
+
+
+        if ($request->file('attachment')){
+            $attachment = $this->uploadFile($request->file('attachment'));
+        }else{
+            $attachment = '';
+        }
+
+
+        $date = substr($request->date, 0, 10);
+        $incomeDate = date('Y-m-d H:i:s', (int) $date) ;
+
+
+        Income::create([
+            'user_id' =>  \Auth::user()->id,
+            'complex_id' =>  \Auth::user()->complex_id,
+            'income_headings_id' => $request->income_headings_id,
+            'date' => $incomeDate,
+            'amount' => $request->amount,
+            'trackNumber' => $request->trackNumber,
+            'description' => $request->description,
+            'paymentMethod' => $request->paymentMethod,
+            'attachment' => $attachment
+        ]);
+        alert()->success(' درآمد با موفقیت اضافه شد', 'اضافه شد');
+        return redirect()->back();
     }
 
     /**
@@ -96,13 +120,26 @@ class IncomeController extends \App\Http\Controllers\Controller
      */
     public function update(Request $request, Income $income)
     {
-      $income->update([
+        $request->merge([
+            'amount' => $this->fa2en($request->amount),
+        ]);
 
+        $request->validate([
+            'description' => 'required',
+            'income_headings_id' => 'required',
+            'amount' => 'required|numeric',
+            'paymentMethod' => 'nullable',
+            'trackNumber' => 'nullable',
+            'date' => 'required',
+            'attachment' => 'nullable|mimes:jpeg,JPEG,png,PNG,pdf,excel,doc,docx'
+        ]);
+
+        $income->update([
         'user_id' =>  \Auth::user()->id,
         'complex_id' =>  \Auth::user()->complex_id,
         'title' => $request->title,
         'date' => $request->date,
-        'amount' => $request->amount,
+            'amount' => $request->amount,
         'trackNumber' => $request->trackNumber,
         'description' => $request->description,
         'paymentMethod' => $request->paymentMethod,

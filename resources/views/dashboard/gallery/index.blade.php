@@ -143,7 +143,7 @@
                                                             <td> {{ $photo->user->fullName }} </td>
                                                         </tr>
 
-                                                        @if(\Auth::user()->can('boardMember') OR $photo->user->id === \Auth::user()->id)
+                                                        @if(\Auth::user()->can('admin') OR \Auth::user()->can('boardMember') OR $photo->user->id === \Auth::user()->id)
                                                             <tr>
                                                                 <td>حذف:</td>
                                                                 <td><a style="font-size: 13px" href="{{ route('gallery.delete', ['photo' => $photo->id]) }}">جهت حذف اینجا کلیک کنید</a></td>

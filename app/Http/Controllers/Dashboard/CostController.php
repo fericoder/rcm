@@ -15,10 +15,20 @@ class CostController extends \App\Http\Controllers\Controller
      */
     public function index()
     {
-        $costs = Cost::where('complex_id', \Auth::user()->complex_id)->get();
-        $costHeadings = CostHeading::where('complex_id', \Auth::user()->complex_id)->get();
 
-         return view('dashboard.accounting.costs', compact('costs', 'costHeadings'));
+        $costs = Cost::where('complex_id', \Auth::user()->complex_id)->get();
+        $costHeadings = CostHeading::all();
+
+        foreach ($costHeadings as $costHeading) {
+            $headingName = $costHeading->name;
+            $headingId = $costHeading->id;
+            $headingsSum["$headingName"] = \App\Cost::where('cost_headings_id', $headingId)->sum('amount');
+        }
+        $maxSpentHeading = array_keys($headingsSum, max($headingsSum));
+        $maxSpentPrice = max($headingsSum);
+
+
+         return view('dashboard.accounting.costs', compact('costs', 'costHeadings', 'maxSpentHeading', 'maxSpentPrice', 'headingsSum'));
     }
 
     /**
@@ -39,35 +49,44 @@ class CostController extends \App\Http\Controllers\Controller
      */
     public function store(Request $request)
     {
+        $request->merge([
+            'amount' => $this->fa2en($request->amount),
+        ]);
 
-       $request->validate([
-             'title' => 'required',
+        $request->validate([
              'description' => 'required',
-             'amount' => 'required',
-             'paymentMethod' => 'required',
-             'trackNumber' => 'required',
+             'cost_headings_id' => 'required',
+             'amount' => 'required|numeric',
+             'paymentMethod' => 'nullable',
+             'trackNumber' => 'nullable',
              'date' => 'required',
-             'attachment' => 'required'
+             'attachment' => 'nullable|mimes:jpeg,JPEG,png,PNG,pdf,excel,doc,docx'
          ]);
 
 
-// validation ro bayad ghabl az create benevisi
-// code ha khat be khad ejra mishan
-//avval bayad validate TokyoTyrantIterator
+        if ($request->file('attachment')){
+            $attachment = $this->uploadFile($request->file('attachment'));
+        }else{
+            $attachment = '';
+        }
 
 
-      Cost::create([
+        $date = substr($request->date, 0, 10);
+        $costDate = date('Y-m-d H:i:s', (int) $date) ;
+
+
+        Cost::create([
           'user_id' =>  \Auth::user()->id,
           'complex_id' =>  \Auth::user()->complex_id,
-          'title' => $request->title,
-          'date' => $request->date,
+          'cost_headings_id' => $request->cost_headings_id,
+          'date' => $costDate,
           'amount' => $request->amount,
           'trackNumber' => $request->trackNumber,
           'description' => $request->description,
           'paymentMethod' => $request->paymentMethod,
-          'attachment' => $request->attachment
+          'attachment' => $attachment
       ]);
-      alert()->success('سرفصل هزینه با موفقیت اضافه شد', 'اضافه شد');
+      alert()->success(' هزینه با موفقیت اضافه شد', 'اضافه شد');
       return redirect()->back();
 
 
@@ -104,8 +123,21 @@ class CostController extends \App\Http\Controllers\Controller
      */
     public function update(Request $request, Cost $cost)
     {
-      $cost->update([
+        $request->merge([
+            'amount' => $this->fa2en($request->amount),
+        ]);
 
+        $request->validate([
+            'description' => 'required',
+            'cost_headings_id' => 'required',
+            'amount' => 'required|numeric',
+            'paymentMethod' => 'nullable',
+            'trackNumber' => 'nullable',
+            'date' => 'required',
+            'attachment' => 'nullable|mimes:jpeg,JPEG,png,PNG,pdf,excel,doc,docx'
+        ]);
+
+        $cost->update([
         'user_id' =>  \Auth::user()->id,
         'complex_id' =>  \Auth::user()->complex_id,
         'title' => $request->title,

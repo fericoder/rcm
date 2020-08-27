@@ -14,7 +14,7 @@ class GalleryController extends \App\Http\Controllers\Controller
      */
     public function index()
     {
-        $photos = Gallery::where('complex_id', \Auth::user()->complex_id)->paginate(20);
+        $photos = Gallery::where('complex_id', \Auth::user()->complex_id)->orderByDesc('id')->paginate(20);
         return view('dashboard.gallery.index', compact('photos'));
     }
 
@@ -119,7 +119,7 @@ class GalleryController extends \App\Http\Controllers\Controller
     public function destroy(Request $request)
     {
         $photo = Gallery::where('id', (int)$request->photo)->first();
-        if( !\Auth::user()->can('boardMember') AND $photo->user->id != \Auth::user()->id){
+        if( !\Auth::user()->can('boardMember') AND !\Auth::user()->can('admin') AND $photo->user->id != \Auth::user()->id){
             alert()->warning('عدم دسترسی');
             return redirect()->back();
             exit;

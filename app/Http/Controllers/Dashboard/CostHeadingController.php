@@ -36,8 +36,8 @@ class CostHeadingController extends \App\Http\Controllers\Controller
     {
 
       $request->validate([
-            'name' => 'required',
-            'code' => 'required'
+            'name' => 'required|min:3|max:255',
+            'code' => 'required|min:3|max:255'
         ]);
 
         CostHeading::create([
@@ -85,18 +85,20 @@ class CostHeadingController extends \App\Http\Controllers\Controller
 
     public function update(Request $request, CostHeading $costHeading)
     {
-      $costHeading->update([
+        $request->validate([
+            'name' => 'required|min:3|max:255',
+            'code' => 'required|min:3|max:255'
+        ]);
 
+        $costHeading->update([
         'user_id' =>  \Auth::user()->id,
         'complex_id' =>  \Auth::user()->complex_id,
         'name' => $request->name,
         'code' => $request->code
-
-
       ]);
 
       alert()->success('درخواست شما با موفقیت انجام شد.', 'انجام شد');
-      return redirect()->route('costHeading.index');
+      return redirect()->route('costs.index');
     }
 
     /**

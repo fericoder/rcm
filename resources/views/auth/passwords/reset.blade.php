@@ -34,22 +34,22 @@
 <div class="kt-grid kt-grid--ver kt-grid--root">
     <div class="kt-grid kt-grid--hor kt-grid--root  kt-login kt-login--v6 kt-login--signin" id="kt_login">
         <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--desktop kt-grid--ver-desktop kt-grid--hor-tablet-and-mobile">
-            <div class="kt-grid__item kt-grid__item--fluid kt-grid__item--center kt-grid kt-grid--ver kt-login__content" style="background-image: url(/dashboard/assets/media//bg/bg-4.jpg);">
-                <div class="kt-login__section">
-                    <div class="kt-login__block">
-                        <h5 style="font-size: 2.2em!important;direction: rtl!important;" class="kt-login__title">با عضویت در سامانه مدیریت مجتمع مسکونی از مزایای زیر بهره مند شوید:</h5>
-                        <div style="font-family: iranyekan;font-size: 1.4em!important; line-height: 3" class="kt-login__desc">
-                            <br> کاهش سیکل زمانی ارتباطات متقابل بین ساکنین و مدیریت مجتمع -
-                            <br>                         صرفه جویی در هزینه ها -
-                            <br>                          شفاف سازی فرآیندها، هزینه ها و درآمدها -
-                            <br>                           دسترسی سریع به گزارشات و آمارهای لازم -
-                            <br>                           نظارت همگانی بصورت برخط توسط کلیه مالکین و ساکنین مجتمع -
-                            <br>                           سهولت در امر محاسبه دقیق و سریع شارژ واحدهای مجتمع -
-                            <br>                           تسریع در محاسبه عملیات مالی مجتمع -
-                            <br>                           ... و  -
-                        </div>
-                    </div>
-                </div>
+            <div class="kt-grid__item kt-grid__item--fluid kt-grid__item--center kt-grid kt-grid--ver kt-login__content" style="background-image: url(/dashboard/assets/img/login.jpg);">
+                {{--<div class="kt-login__section">--}}
+                {{--<div class="kt-login__block">--}}
+                {{--<h5 style="font-size: 2.2em!important;direction: rtl!important;" class="kt-login__title"> سامانه مدیریت برج المپیک</h5>--}}
+                {{--<div style="font-family: iranyekan;font-size: 1.4em!important; line-height: 3" class="kt-login__desc">--}}
+                {{--<br> کاهش سیکل زمانی ارتباطات متقابل بین ساکنین و مدیریت مجتمع ---}}
+                {{--<br>                         صرفه جویی در هزینه ها ---}}
+                {{--<br>                          شفاف سازی فرآیندها، هزینه ها و درآمدها ---}}
+                {{--<br>                           دسترسی سریع به گزارشات و آمارهای لازم ---}}
+                {{--<br>                           نظارت همگانی بصورت برخط توسط کلیه مالکین و ساکنین مجتمع ---}}
+                {{--<br>                           سهولت در امر محاسبه دقیق و سریع شارژ واحدهای مجتمع ---}}
+                {{--<br>                           تسریع در محاسبه عملیات مالی مجتمع ---}}
+                {{--<br>                           ... و  ---}}
+                {{--</div>--}}
+                {{--</div>--}}
+                {{--</div>--}}
             </div>
 
             <div class="kt-grid__item  kt-grid__item--order-tablet-and-mobile-2  kt-grid kt-grid--hor kt-login__aside">
@@ -70,15 +70,26 @@
                                     <form style="direction: rtl" class="kt-form" method="POST" action="{{ route('password.update') }}">
                                         @csrf
 
+                                        @if ($errors->any())
+                                            <div class="alert alert-danger">
+                                                <ul>
+                                                    @foreach ($errors->all() as $error)
+                                                        <li>{{ $error }}</li>
+                                                    @endforeach
+                                                </ul>
+                                            </div>
+                                        @endif
+
+
                                         <input type="hidden" name="token" value="{{ $token }}">
 
                                         <div class="form-group row">
                                             <label for="email" class="col-md-4 col-form-label text-md-right">کد واحد</label>
 
                                             <div class="col-md-6">
-                                                <input id="code" type="text" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ $email ?? old('code') }}" required autocomplete="code" autofocus>
+                                                <input id="code" type="text" class="form-control @error('code') is-invalid @enderror" name="code" value="{{ $email ?? old('code') }}" required autocomplete="code" autofocus>
 
-                                                @error('email')
+                                                @error('code')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
                                                 </span>

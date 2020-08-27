@@ -28,6 +28,11 @@ class Complex extends Model
         return $this->belongsTo('App\Website');
     }
 
+    public function charge()
+    {
+        return $this->hasOne('App\Charge');
+    }
+
 
 
 }

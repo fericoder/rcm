@@ -49,15 +49,6 @@ return [
     ],
 
     //--------------------------------
-    // IranKish gateway
-    //--------------------------------
-    'irankish' => [
-        'merchantId' => 'xxxxxxxxxxxxxxxxxxxx',
-        'sha1key' => 'xxxxxxxxxxxxxxxxxxxx',
-        'callback-url' => '/'
-    ],
-
-    //--------------------------------
     // Sadad gateway
     //--------------------------------
     'sadad' => [

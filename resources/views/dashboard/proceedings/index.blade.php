@@ -113,12 +113,7 @@
                                                 <span class="kt-nav__link-text">CSV</span>
                                             </a>
                                         </li>
-                                        <li class="kt-nav__item">
-                                            <a href="#" class="kt-nav__link" id="export_pdf">
-                                                <i class="kt-nav__link-icon la la-file-pdf-o"></i>
-                                                <span class="kt-nav__link-text">PDF</span>
-                                            </a>
-                                        </li>
+
                                     </ul>
                                 </div>
                             </div>
@@ -157,16 +152,14 @@
 
                         @foreach ($proceedings as $proceeding)
                             <tr>
-                                <td>{{ $proceeding->number }}</td>
-                                <td>{{ jdate($proceeding->date) }}</td>
-                                <td><a target="_blank" href="{{ $proceeding->file }}"> <i class="fa fa-file-alt"></i> </a></td>
+                                <td style="font-family: BYekan">{{ $proceeding->number }}</td>
+                                <td style="font-family: BYekan">{{ jdate($proceeding->date)->format('Y/m/d') }}</td>
+                                <td><a target="_blank" href="{{ asset($proceeding->file) }}"> <i class="fa fa-file-alt"></i> </a></td>
                                 <td>
                                     @can('admin')
                                     <a href="{{ route('proceedings.delete', ['id' => $proceeding->id]) }}" class="m-portlet__nav-link btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill button" title="حذف مشتری "> <i style="color: darkred" class="fa fa-times"></i> </a>
-                                    @endcan
-                                     @can('admin', 'boardMember')
-                                        <a href="{{ route('proceedings.edit', $proceeding->id) }}" class="m-portlet__nav-link btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill" title="ویرایش"> <i style="color: green" class="la la-edit"></i> </a>
-                                @endcan
+                                    <a href="{{ route('proceedings.edit', $proceeding->id) }}" class="m-portlet__nav-link btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill" title="ویرایش"> <i style="color: green" class="la la-edit"></i> </a>
+                                     @endcan
 
                                 </td>
                             </tr>
@@ -205,7 +198,7 @@
 
                         scrollY:"",scrollX:!0,scrollCollapse:!0,
                         responsive: !0,
-
+                        "order": [[ 0,  "desc" ]],
                         buttons: ["print", "copyHtml5", "excelHtml5", "csvHtml5", "pdfHtml5"],
                     }
                 ),

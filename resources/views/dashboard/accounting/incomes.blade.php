@@ -20,50 +20,25 @@
         <div class="kt-portlet">
 
             <div class="row">
-                <div class="col-lg-4 border-right-blue-grey border-right-lighten-5">
 
+
+                <div class="col-lg-6 border-right-blue-grey border-right-lighten-5">
                     <div class="kt-widget24">
                         <div class="kt-widget24__details">
                             <div class="kt-widget24__info">
-
                                 <h3 class="kt-widget24__title">
-                                    مجموع درآمد ماه جاری
+                                    مجموع درآمدها
                                 </h3>
-                                <h5 class="kt-widget24__desc mt-4">
-                                    (تومان)
-                                </h5>
-                            </div>
-
-                            <h1 class="kt-widget24__stats kt-font-danger borj-font mt-5">
-                                0
-                            </h1>
-                        </div>
-
-                        <div class="progress progress--sm borj-top">
-                            <div class="progress-bar kt-bg-danger" role="progressbar" style="width: 100%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-
-
-                    </div>
-
-                </div>
-
-
-                <div class="col-lg-4 border-right-blue-grey border-right-lighten-5">
-                    <div class="kt-widget24">
-                        <div class="kt-widget24__details">
-                            <div class="kt-widget24__info">
-
-                                <h3 class="kt-widget24__title">
-                                    مجموع درآمد ماه گذشته
+                                <br>
+                                <h3 class="kt-widget24__title borj-font">
+                                    از تاریخ 98/01/01 تا 98/12/29
                                 </h3>
-                                <h5 class="kt-widget24__desc mt-4">
-                                    (تومان)
-                                </h5>
+
                             </div>
 
                             <h1 class="kt-widget24__stats kt-font-success borj-font mt-5">
-                                0
+                                {{ number_format($incomes->sum('amount')) }}
+
                             </h1>
                         </div>
 
@@ -76,21 +51,21 @@
 
                 </div>
 
-                <div class="col-lg-4">
+                <div class="col-lg-6">
                     <div class="kt-widget24">
                         <div class="kt-widget24__details">
                             <div class="kt-widget24__info">
 
                                 <h3 class="kt-widget24__title">
-                                    پر درآمرترین سرفصل
+                                    بالاترین سرفصل درآمد:
                                 </h3>
                                 <h5 class="kt-widget24__desc mt-4">
-                                    شارژ ماهیانه
+                                    {{ $maxIncomeHeading['0'] }}
                                 </h5>
                             </div>
 
                             <h1 class="kt-widget24__stats kt-font-primary borj-font mt-5">
-                                7,021,000
+                                {{ number_format($maxIncomePrice) }}
                             </h1>
                         </div>
 
@@ -190,9 +165,14 @@
 
                                                                         <div class="form-group row">
                                                                             <div class="col-lg-6">
-                                                                                <label>نام سرفصل هزینه:</label>
+                                                                                <label>نام سرفصل درآمد:</label>
                                                                                 <div class="kt-input-icon">
-                                                                                    <input type="text" name="title"  value="{{old('title')}}" class="form-control">
+                                                                                    <select style="direction: rtl; text-align: right;width: 100%;" class="form-control m-select2" id="m_select2_3" name="income_headings_id">
+                                                                                        <option disabled selected value> -- جهت انتخاب، کلیک نمایید. -- </option>
+                                                                                    @foreach ($incomeHeadings as $incomeHeading)
+                                                                                            <option value="{{ $incomeHeading->id }}">{{ $incomeHeading->name }}</option>
+                                                                                        @endforeach
+                                                                                    </select>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-lg-6">
@@ -206,15 +186,10 @@
                                                                             <div class="col-lg-6">
                                                                                 <label>مبلغ:</label>
                                                                                 <div class="kt-input-icon">
-                                                                                    <input type="text" name="amount"  value="{{old('amount')}}" class="form-control">
+                                                                                    <input type="text" name="amount" id="delimiter" value="{{old('amount')}}" class="form-control">
                                                                                 </div>
                                                                             </div>
-                                                                            <div class="col-lg-6">
-                                                                                <label class="">نحوه پرداخت:</label>
-                                                                                <div class="kt-input-icon">
-                                                                                    <input type="text" name="paymentMethod" value="{{old('paymentMethod')}}"  class="form-control">
-                                                                                </div>
-                                                                            </div>
+
                                                                         </div>
                                                                         <div class="form-group row">
                                                                             <div class="col-lg-6">
@@ -254,7 +229,10 @@
 
                                                         <!--end::Modal-->
 
-                            <button data-toggle="modal" data-target=" #AddIncomes" style="margin-right: 20px;font-size: 13px" type="button" class="btn btn-success btn-wide btn-elevate btn-elevate-air">افزودن درآمد</button>
+                    @canany(['admin', 'finance', 'superAdmin'])
+                        <button data-toggle="modal" data-target=" #AddIncomes" style="margin-right: 20px;font-size: 13px" type="button" class="btn btn-success btn-wide btn-elevate btn-elevate-air">افزودن درآمد</button>
+                    @endcan
+
                         </h3>
                     </div>
 
@@ -271,35 +249,30 @@
                                             <span class="kt-nav__section-text">انواع خروجی ها</span>
                                         </li>
                                         <li class="kt-nav__item">
-                                            <a href="#" class="kt-nav__link" id="export_print">
+                                            <a href="#" class="kt-nav__link" id="export_print1">
                                                 <i class="kt-nav__link-icon la la-print"></i>
                                                 <span class="kt-nav__link-text">چاپ</span>
                                             </a>
                                         </li>
                                         <li class="kt-nav__item">
-                                            <a href="#" class="kt-nav__link" id="export_copy">
+                                            <a href="#" class="kt-nav__link" id="export_copy1">
                                                 <i class="kt-nav__link-icon la la-copy"></i>
                                                 <span class="kt-nav__link-text">کپی</span>
                                             </a>
                                         </li>
                                         <li class="kt-nav__item">
-                                            <a href="#" class="kt-nav__link" id="export_excel">
+                                            <a href="#" class="kt-nav__link" id="export_excel1">
                                                 <i class="kt-nav__link-icon la la-file-excel-o"></i>
                                                 <span class="kt-nav__link-text">اکسل</span>
                                             </a>
                                         </li>
                                         <li class="kt-nav__item">
-                                            <a href="#" class="kt-nav__link" id="export_csv">
+                                            <a href="#" class="kt-nav__link" id="export_csv1">
                                                 <i class="kt-nav__link-icon la la-file-text-o"></i>
                                                 <span class="kt-nav__link-text">CSV</span>
                                             </a>
                                         </li>
-                                        <li class="kt-nav__item">
-                                            <a href="#" class="kt-nav__link" id="export_pdf">
-                                                <i class="kt-nav__link-icon la la-file-pdf-o"></i>
-                                                <span class="kt-nav__link-text">PDF</span>
-                                            </a>
-                                        </li>
+
                                     </ul>
                                 </div>
                             </div>
@@ -315,12 +288,11 @@
                         <table style="font-family: iranyekan; width: 100%;" class="table table-striped table-bordered table-hover table-checkable display nowrap" id="m_table_1">
                             <thead style="font-family: BYekan">
                             <tr>
-                                <th>نام سرفصل هزینه</th>
+                                <th>نام سرفصل درآمد</th>
                                 <th>توضیحات</th>
                                 <th>مبلغ</th>
-                                <th>نحوه پرداخت</th>
                                 <th>شماره فاکتور/ سند</th>
-                                <th>تاریخ</th>
+                                {{--<th>تاریخ</th>--}}
                                 <th>مستندات</th>
                                 <th>حذف | ویرایش</th>
                             </tr>
@@ -330,12 +302,11 @@
 
                                 @foreach($incomes as $income)
                                     <tr>
-                                        <td>{{ $income->title }}</td>
+                                        <td>{{ $incomeHeadings->where('id', $income->income_headings_id )->first()->name  }}</td>
                                         <td>{{ $income->description }}</td>
-                                        <td>{{ $income->amount }}</td>
+                                        <td style="font-family: BYekan">{{ number_format($income->amount) }}</td>
                                         <td>{{ $income->trackNumber }}</td>
-                                        <td>{{ $income->paymentMethod }}</td>
-                                        <td>{{ $income->date }}</td>
+                                        {{--<td>{{ $income->date }}</td>--}}
                                         <td>{{ $income->attachment }}</td>
                                         <td>
                                             @can('admin')
@@ -368,7 +339,10 @@
                         </h3>
 
 
-                            <!-- Modal -->
+
+                    @canany(['admin', 'finance', 'superAdmin'])
+
+                        <!-- Modal -->
                             <div class="modal fade" id="AddIncomeHeadings" tabindex="-1" role="dialog" aria-labelledby="add" aria-hidden="true">
                                 <div class="modal-dialog modal-lg" role="add">
                                     <div class="modal-content">
@@ -381,51 +355,51 @@
                                         <form action="{{ route('incomeHeading.store') }}" method="post" enctype="multipart/form-data">
                                             @csrf
 
-                                        <div class="modal-body">
+                                            <div class="modal-body">
 
 
-                                          @if ($errors->any())
-                                              <div class="alert alert-danger">
-                                                  <ul>
-                                                      @foreach ($errors->all() as $error)
-                                                          <li>{{ $error }}</li>
-                                                      @endforeach
-                                                  </ul>
-                                              </div>
-                                          @endif
-
-
-                                            <div class="form-group row">
-                                                <div class="col-lg-6">
-                                                    <label>نام سرفصل هزینه:</label>
-                                                    <div class="kt-input-icon">
-                                                        <input type="text" name="name" value="{{old('name')}}"  class="form-control">
+                                                @if ($errors->any())
+                                                    <div class="alert alert-danger">
+                                                        <ul>
+                                                            @foreach ($errors->all() as $error)
+                                                                <li>{{ $error }}</li>
+                                                            @endforeach
+                                                        </ul>
                                                     </div>
-                                                </div>
-                                                <div class="col-lg-6">
-                                                    <label class="">کد سرفصل هزینه:</label>
-                                                    <div class="kt-input-icon">
-                                                        <input type="text" name="code"  value="{{old('code')}}"   class="form-control">
+                                                @endif
+
+
+                                                <div class="form-group row">
+                                                    <div class="col-lg-6">
+                                                        <label>نام سرفصل درآمد:</label>
+                                                        <div class="kt-input-icon">
+                                                            <input type="text" name="name" value="{{old('name')}}"  class="form-control">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        <label class="">کد سرفصل هزینه:</label>
+                                                        <div class="kt-input-icon">
+                                                            <input type="text" name="code"  value="{{old('code')}}"   class="form-control">
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
 
-                                        <div class="modal-footer">
-                                            <button type="submit" class="btn btn-success btn-wide btn-elevate btn-elevate-air">افزودن سرفصل درآمد</button>
-                                            <button type="button" class="btn btn-danger" data-dismiss="modal">انصراف</button>
+                                            <div class="modal-footer">
+                                                <button type="submit" class="btn btn-success btn-wide btn-elevate btn-elevate-air">افزودن سرفصل درآمد</button>
+                                                <button type="button" class="btn btn-danger" data-dismiss="modal">انصراف</button>
                                         </form>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
+                    </div>
 
 
-                            <!--end::Modal-->
+                    <!--end::Modal-->
 
+                    <button data-toggle="modal" data-target=" #AddIncomeHeadings" style="margin-right: 20px;font-size: 13px" type="button" class="btn btn-success btn-wide btn-elevate btn-elevate-air">افزودن سرفصل درآمد</button>
+                    @endcan
 
-
-                        <button data-toggle="modal" data-target=" #AddIncomeHeadings" style="margin-right: 20px;font-size: 13px" type="button" class="btn btn-success btn-wide btn-elevate btn-elevate-air">افزودن سرفصل درآمد</button>
                     </div>
 
                     <div style="" class="kt-portlet__head-toolbar">
@@ -441,35 +415,30 @@
                                             <span class="kt-nav__section-text">انواع خروجی ها</span>
                                         </li>
                                         <li class="kt-nav__item">
-                                            <a href="#" class="kt-nav__link" id="export_print">
+                                            <a href="#" class="kt-nav__link" id="export_print2">
                                                 <i class="kt-nav__link-icon la la-print"></i>
                                                 <span class="kt-nav__link-text">چاپ</span>
                                             </a>
                                         </li>
                                         <li class="kt-nav__item">
-                                            <a href="#" class="kt-nav__link" id="export_copy">
+                                            <a href="#" class="kt-nav__link" id="export_copy2">
                                                 <i class="kt-nav__link-icon la la-copy"></i>
                                                 <span class="kt-nav__link-text">کپی</span>
                                             </a>
                                         </li>
                                         <li class="kt-nav__item">
-                                            <a href="#" class="kt-nav__link" id="export_excel">
+                                            <a href="#" class="kt-nav__link" id="export_excel2">
                                                 <i class="kt-nav__link-icon la la-file-excel-o"></i>
                                                 <span class="kt-nav__link-text">اکسل</span>
                                             </a>
                                         </li>
                                         <li class="kt-nav__item">
-                                            <a href="#" class="kt-nav__link" id="export_csv">
+                                            <a href="#" class="kt-nav__link" id="export_csv2">
                                                 <i class="kt-nav__link-icon la la-file-text-o"></i>
                                                 <span class="kt-nav__link-text">CSV</span>
                                             </a>
                                         </li>
-                                        <li class="kt-nav__item">
-                                            <a href="#" class="kt-nav__link" id="export_pdf">
-                                                <i class="kt-nav__link-icon la la-file-pdf-o"></i>
-                                                <span class="kt-nav__link-text">PDF</span>
-                                            </a>
-                                        </li>
+
                                     </ul>
                                 </div>
                             </div>
@@ -483,7 +452,7 @@
                     <table style="font-family: iranyekan; width: 100%;" class="table table-striped table-bordered table-hover table-checkable display nowrap" id="m_table_2">
                         <thead style="font-family: BYekan">
                         <tr>
-                            <th>نام سرفصل هزینه</th>
+                            <th>نام سرفصل درآمد</th>
                             <th>کد سرفصل هزینه</th>
                             <th>حذف | ویرایش</th>
                         </tr>
@@ -558,38 +527,16 @@
         var chart = am4core.create("chartdiv", am4charts.PieChart);
         chart.rtl = true;
         // Add data
-        chart.data = [ {
-            "hazine": "نیروی انسانی",
-            "mablaq": 501.9
-        }, {
-            "hazine": "نگهداری تاسیسات",
-            "mablaq": 301.9
-        }, {
-            "hazine": "نگهداری آسانسورها",
-            "mablaq": 201.1
-        }, {
-            "hazine": "آب، برق و گاز مصرفی",
-            "mablaq": 165.8
-        }, {
-            "hazine": "نگهداری فضای سبز",
-            "mablaq": 139.9
-        }, {
-            "hazine": "انواع بیمه های مورد نیاز",
-            "mablaq": 128.3
-        }, {
-            "hazine": "سرویس و نگهداری ژنراتور",
-            "mablaq": 99
-        }, {
-            "hazine": "اقلام مصرفی",
-            "mablaq": 60
-        }, {
-            "hazine": "اقلام شوینده",
-            "mablaq": 50
-        },{
-            "hazine": "آنتن مرکزی",
-            "mablaq": 50},{
-            "hazine": "سایر هزینه ها",
-            "mablaq": 50} ];
+        chart.data = [ @foreach($headingsSum as $headingSum => $value)
+        {
+            "hazine": '{{ $headingSum }}',
+            "mablaq": {{ $value }}
+        },
+            @endforeach
+
+
+        ];
+
 
         // Add and configure Series
         var pieSeries = chart.series.push(new am4charts.PieSeries());
@@ -941,29 +888,61 @@
                         buttons: ["print", "copyHtml5", "excelHtml5", "csvHtml5", "pdfHtml5"],
                     }
                 ),
-                    $("#export_print").on("click", function (e) {
+                    $("#export_print2").on("click", function (e) {
                             e.preventDefault(), t.button(0).trigger()
                         }
                     ),
-                    $("#export_copy").on("click", function (e) {
+                    $("#export_copy2").on("click", function (e) {
                             e.preventDefault(), t.button(1).trigger()
                         }
                     ),
-                    $("#export_excel").on("click", function (e) {
+                    $("#export_excel2").on("click", function (e) {
                             e.preventDefault(), t.button(2).trigger()
                         }
                     ),
-                    $("#export_csv").on("click", function (e) {
+                    $("#export_csv2").on("click", function (e) {
                             e.preventDefault(), t.button(3).trigger()
                         }
                     ),
-                    $("#export_pdf").on("click", function (e) {
+                    $("#export_pdf2").on("click", function (e) {
                             e.preventDefault(), t.button(4).trigger()
                         }
                     )
 // end data table m_table_2
 
 
+
+                // start data table m_table_2
+                var p;
+                p = $("#m_table_1").DataTable({
+
+                        scrollY:"",scrollX:!0,scrollCollapse:!0,
+                        responsive: !0,
+
+                        buttons: ["print", "copyHtml5", "excelHtml5", "csvHtml5", "pdfHtml5"],
+                    }
+                ),
+                    $("#export_print1").on("click", function (e) {
+                            e.preventDefault(), p.button(0).trigger()
+                        }
+                    ),
+                    $("#export_copy1").on("click", function (e) {
+                            e.preventDefault(), p.button(1).trigger()
+                        }
+                    ),
+                    $("#export_excel1").on("click", function (e) {
+                            e.preventDefault(), p.button(2).trigger()
+                        }
+                    ),
+                    $("#export_csv1").on("click", function (e) {
+                            e.preventDefault(), p.button(3).trigger()
+                        }
+                    ),
+                    $("#export_pdf1").on("click", function (e) {
+                            e.preventDefault(), p.button(4).trigger()
+                        }
+                    )
+// end data table m_table_1
 
 
 

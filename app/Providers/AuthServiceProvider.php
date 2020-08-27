@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Providers;
+use App\Permission;
+use App\User;
 
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
@@ -30,7 +32,7 @@ class AuthServiceProvider extends ServiceProvider
         });
 
         \Gate::define('admin', function(){
-            return \Auth::user()->isAdmin == 1;
+            return \Auth::user()->userType == 'admin';
         });
 
         \Gate::define('boardMember', function(){
@@ -41,10 +43,26 @@ class AuthServiceProvider extends ServiceProvider
             return \Auth::user()->userType == 'finance';
         });
 
-
-        \Gate::define('dataEntry', function(){
-            return \Auth::user()->isDataEntry == 1;
+        \Gate::define('monitoring', function(){
+            return \Auth::user()->userType == 'monitoring';
         });
 
+
+        \Gate::define('dataEntry', function(){
+            return \Auth::user()->userType == 'dataEntry';
+        });
+
+        foreach ($this->getPermission() as $permission){
+            \Gate::define($permission->name, function ($user) use ($permission) {
+                return $user->hasRole($permission->roles);
+            });
+        }
+
     }
+
+    protected function getPermission()
+    {
+        return Permission::with('roles')->get();
+    }
+
 }

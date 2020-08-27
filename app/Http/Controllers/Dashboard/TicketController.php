@@ -44,7 +44,7 @@ class TicketController extends \App\Http\Controllers\Controller
         if ($request->file('attachment')) {
             $attachmentFile = $request->file('attachment');
             $attachmentFileName = time() . "_" . $attachmentFile->getClientOriginalName();
-            $attachmentFile->move('storage/tickets', $attachmentFileName);
+            $attachmentFile->move('storage/Requisitions', $attachmentFileName);
         } else {
             $attachmentFileName = "Nothing";
         }
@@ -58,7 +58,7 @@ class TicketController extends \App\Http\Controllers\Controller
             'addedByName' => \Auth::user()->fullName,
             'scope' => $request->scope,
             'status' => 'بررسی نشده',
-            'attachment' => 'storage/Tickets/' . $attachmentFileName,
+            'attachment' => 'storage/Requisitions/' . $attachmentFileName,
         ]);
 
         alert()->success('درخواست با موفقیت ثبت شد', 'ثبت شد');
@@ -84,7 +84,8 @@ class TicketController extends \App\Http\Controllers\Controller
      */
     public function edit(Ticket $ticket)
     {
-        if( !\Auth::user()->can('boardMember') AND $Ticket->addedById != \Auth::user()->id){
+        if( !\Auth::user()->can('boardMember') AND !\Auth::user()->can('admin') AND $Ticket->addedById != \Auth::user()->id){
+            alert()->warning('عدم دسترسی');
             return redirect()->back();
             exit;
         }else{
@@ -106,14 +107,14 @@ class TicketController extends \App\Http\Controllers\Controller
         if ($request->file('attachment')) {
             $attachmentFile = $request->file('attachment');
             $attachmentFileName = time() . "_" . $attachmentFile->getClientOriginalName();
-            $attachmentFile->move('storage/tickets', $attachmentFileName);
+            $attachmentFile->move('storage/Requisitions', $attachmentFileName);
 
             $Ticket->title = $request->title;
             $Ticket->description = $request->description;
             $Ticket->requestedFrom = $request->requestedFrom;
             $Ticket->scope = $request->scope;
             $Ticket->status = $request->status;
-            $Ticket->attachment = 'storage/tickets/' . $attachmentFileName;
+            $Ticket->attachment = 'storage/Requisitions/' . $attachmentFileName;
             $Ticket->doerDescription = $request->doerDescription;
             $Ticket->doerfullName = \Auth::user()->fullName;
             $Ticket->doerUserId = \Auth::user()->id;

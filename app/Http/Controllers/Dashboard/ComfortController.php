@@ -86,13 +86,13 @@ class ComfortController extends \App\Http\Controllers\Controller
               'complex_id' =>  \Auth::user()->complex_id,
               'title' => $request->title,
               'location' => $request->location,
-              'responsive' => $request->responsive,
+              'responsible' => $request->responsible,
               'phone' => $request->phone,
 
             ]);
 
             alert()->success('درخواست شما با موفقیت انجام شد.', 'انجام شد');
-            return redirect()->route('comforts.index');
+            return redirect()->route('comfort.index');
     }
 
     /**

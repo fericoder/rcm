@@ -24,8 +24,8 @@ class InvoiceUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'for' => 'required|min:4|max:65',
-            'amount' => 'required|min:0|max:99999999|integer',
+//            'for' => 'required|min:4|max:65',
+//            'amount' => 'required|min:0|max:99999999|integer',
             'status' => 'required|in:paid,notPaid',
         ];
     }

@@ -12,20 +12,17 @@
         <div class="kt-portlet__body  kt-portlet__body--fit">
             <div class="row row-no-padding row-col-separator-lg">
 
-                <div class="col-md-12 col-lg-6 col-xl-6">
+                <div class="col-md-12 col-lg-4 col-xl-4">
                     <!--begin::New Orders-->
                     <div class="kt-widget24">
                         <div class="kt-widget24__details">
                             <div class="kt-widget24__info">
                                 <h4 class="kt-widget24__title">
                                     <i class="fa fa-wallet kt-font-danger mr-2"></i>
-                                    بدهی سررسید شده شما
+                                    بدهی پرداخت نشده
                                 </h4>
-                                <span class="kt-widget24__desc">
-					            مربوط به تمامی صورتحساب ها
-					        </span>
                             </div>
-                            <h1 class="font-large-1 text-bold-300 text-danger float-right kt-font-bold borj-font mt-5">{{ number_format(\Auth::user()->invoices->where('status', 'notPaid')->sum('amount')) }} ریال </h1>
+                            <h1 style="font-size: 22px;" class="font-large-1 text-bold-300 text-danger float-right kt-font-bold borj-font mt-5">{{ number_format(\Auth::user()->invoices->where('status', 'notPaid')->sum('amount')) }} ریال </h1>
                         </div>
 
                         <div class="progress progress--sm">
@@ -33,7 +30,7 @@
                         </div>
 
                         <div class="kt-widget24__action pt-2">
-                            <a href="#notPaid"><span class="kt-widget24__change kt-font-brand">جهت مشاهده لیست تمامی صورتحساب ها اینجا کلیک کنید</span></a>
+                            <a href="#notPaid"><span class="kt-widget24__change kt-font-brand"> مشاهده لیست تمامی صورتحساب ها </span></a>
                         </div>
                     </div>
                     <!--end::New Orders-->
@@ -41,21 +38,20 @@
 
 
 
-                <div class="col-md-12 col-lg-6 col-xl-6">
+                <div class="col-md-12 col-lg-4 col-xl-4">
                     <!--begin::New Users-->
                     <div class="kt-widget24">
                         <div class="kt-widget24__details">
                             <div class="kt-widget24__info">
                                 <h4 class="kt-widget24__title">
                                     <i class="fa fa-vote-yea kt-font-success mr-2"></i>
-                                    پرداختی این ماه شما
+                                    پرداختی
+                                    {{ jdate()->format('F') }}
+                                    ماه
                                 </h4>
-                                <span class="kt-widget24__desc">
-					            فقط این ماه
-					        </span>
                             </div>
 
-                            <h1 class="font-large-1 text-bold-300 text-success float-right kt-font-bold borj-font mt-5">{{ number_format(\Auth::user()->invoices->where('status', 'paid')->where('created_at', '>=', \Carbon\Carbon::today()->subDays(jdate()->now()->getDay()-1)->toDateString())->sum('amount')) }} ریال</h1>
+                            <h1 style="font-size: 22px;" class="font-large-1 text-bold-300 text-success float-right kt-font-bold borj-font mt-5">{{ number_format(\Auth::user()->invoices->where('status', 'paid')->where('created_at', '>=', \Carbon\Carbon::today()->subDays(jdate()->now()->getDay()-1)->toDateString())->sum('amount')) }} ریال</h1>
                         </div>
 
                         <div class="progress progress--sm">
@@ -63,11 +59,38 @@
                         </div>
 
                         <div class="kt-widget24__action pt-2">
-                            <a href="#paid"><span class="kt-widget24__change kt-font-brand">جهت مشاهده لیست تمامی صورتحساب ها اینجا کلیک کنید</span></a>
+                            <a href="#paid"><span class="kt-widget24__change kt-font-brand"> مشاهده لیست تمامی صورتحساب ها</span></a>
                         </div>
                     </div>
                     <!--end::New Users-->
                 </div>
+
+                <div class="col-md-12 col-lg-4 col-xl-4">
+                    <!--begin::New Users-->
+                    <div class="kt-widget24">
+                        <div class="kt-widget24__details">
+                            <div class="kt-widget24__info">
+                                <h4 class="kt-widget24__title">
+                                    <i class="fa fa-vote-yea kt-font-brand mr-2"></i>
+                                    مجموع پرداختی
+                                </h4>
+                            </div>
+
+                            <h1 style="font-size: 22px;" class="font-large-1 text-bold-300 text-brand float-right kt-font-bold borj-font mt-5">{{ number_format(\Auth::user()->invoices->where('status', 'paid')->sum('amount')) }} ریال</h1>
+                        </div>
+
+                        <div class="progress progress--sm">
+                            <div class="progress-bar kt-bg-brand" role="progressbar" style="width: 100%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+
+                        <div class="kt-widget24__action pt-2">
+                            <a href="#paid"><span class="kt-widget24__change kt-font-brand"> مشاهده لیست تمامی صورتحساب ها </span></a>
+                        </div>
+                    </div>
+                    <!--end::New Users-->
+                </div>
+
+
 
             </div>
         </div>
@@ -103,9 +126,9 @@
                 <div class="kt-portlet__head">
                     <div class="kt-portlet__head-label">
                         <h3 style="color: #48465b" class="kt-portlet__head-title"><i style="color: #74788d" class="fa fa-home mr-2"></i>
-                            اطلاعات واحد شما
+                            اطلاعات واحد
                         </h3>
-                        <button id="show" style="margin-right: 20px; font-size: 14px" type="button" class="btn btn-sm btn-outline-success">مشاهده توضیحات</button>
+                        <button id="show" style="margin-right: 20px; font-size: 14px" type="button" class="btn btn-sm btn-outline-success"> توضیحات</button>
                     </div>
                 </div>
                 <div class="kt-portlet__body">
@@ -129,12 +152,12 @@
                                 <i class="fa fa-users kt-font-success"> <span class="kt--visible-desktop-inline-block kt-font-info ml-2">اطلاعات ساکنین</span></i>
                             </a>
                         </li>
-                        <li style="display: none" class="nav-item">
+                        <li style="" class="nav-item">
                             <a class="nav-link" data-toggle="tab" href="#kt_tabs_4">
                                 <i class="fa fa-thumbs-up kt-font-danger"> <span class="kt--visible-desktop-inline-block kt-font-info ml-2">درخواست مجوز ها</span></i>
                             </a>
                         </li>
-                        <li style="display: none" class="nav-item">
+                        <li style="" class="nav-item">
                             <a class="nav-link" data-toggle="tab" href="#kt_tabs_5">
                                 <i class="fa fa-parking kt-font-success"> <span class="kt--visible-desktop-inline-block kt-font-info ml-2">هماهنگی تردد</span></i>
                             </a>
@@ -414,7 +437,7 @@
                                                         <div class="col-lg-6">
                                                             <label class="">تلفن همراه:<span class="text-danger">*</span></label>
                                                             <div class="kt-input-icon">
-                                                                <input name="phoneNumber" type="text" class="form-control borj-font" placeholder="مثال: 09201010328">
+                                                                <input name="phoneNumber" type="text" class="form-control borj-font" placeholder="مثال: ">
                                                                 <span class="kt-input-icon__icon kt-input-icon__icon--right"><span></span></span>
                                                             </div>
                                                             <span class="form-text text-muted">لطفا مدل خودرو خود را مشخص کنید</span>
@@ -761,13 +784,13 @@
                     <div class="kt-portlet__head-label">
                         <h3 class="kt-portlet__head-title">
                             <i class="fa fa-wallet kt-font-danger mr-2"></i>
-                            صورتحساب های پرداخت نشده واحد شما
+                            صورتحساب های پرداخت نشده
                         </h3>
                     </div>
                 </div>
                 <div class="kt-portlet__body">
                     <div class="table-responsive">
-                        <table class="table table-striped table-bordered table-hover">
+                        <table style="" class="table table-striped table-bordered table-hover table-checkable display nowrap" id="m_table_3">
                             <thead class="thead-light">
                             <tr>
                                 <th style="min-width: 120px;">لینک پرداخت</th>
@@ -809,13 +832,13 @@
                     <div class="kt-portlet__head-label">
                         <h3 class="kt-portlet__head-title">
                             <i class="fa fa-vote-yea kt-font-success mr-2"></i>
-                            صورتحساب های پرداخت شده واحد شما
+                            صورتحساب های پرداخت شده
                         </h3>
                     </div>
                 </div>
                 <div class="kt-portlet__body">
                     <div class="table-responsive">
-                        <table class="table table-striped table-bordered table-hover">
+                        <table style="" class="table table-striped table-bordered table-hover table-checkable display nowrap" id="m_table_2">
                             <thead class="thead-light">
                             <tr>
                                 <th style="min-width: 170px;">لینک پرداخت</th>
@@ -856,6 +879,99 @@
 @endsection
 
 @section('footerScripts')
+
+
+    <script>
+        var DatatablesExtensionButtons = {
+            init: function () {
+
+
+
+
+                // start data table m_table_2
+                var t;
+                t = $("#m_table_2").DataTable({
+                        "pageLength": 5,
+                        scrollY:"",scrollX:!0,scrollCollapse:!0,
+                        responsive: !0,
+
+                        buttons: ["print", "copyHtml5", "excelHtml5", "csvHtml5", "pdfHtml5"],
+                    }
+                ),
+                    $("#export_print2").on("click", function (e) {
+                            e.preventDefault(), t.button(0).trigger()
+                        }
+                    ),
+                    $("#export_copy2").on("click", function (e) {
+                            e.preventDefault(), t.button(1).trigger()
+                        }
+                    ),
+                    $("#export_excel2").on("click", function (e) {
+                            e.preventDefault(), t.button(2).trigger()
+                        }
+                    ),
+                    $("#export_csv2").on("click", function (e) {
+                            e.preventDefault(), t.button(3).trigger()
+                        }
+                    ),
+                    $("#export_pdf2").on("click", function (e) {
+                            e.preventDefault(), t.button(4).trigger()
+                        }
+                    )
+                // end data table m_table_2
+
+
+
+                // start data table m_table_3
+                var q;
+                q = $("#m_table_3").DataTable({
+                        "pageLength": 5,
+                        scrollY:"",scrollX:!0,scrollCollapse:!0,
+                        responsive: !0,
+
+                        buttons: ["print", "copyHtml5", "excelHtml5", "csvHtml5", "pdfHtml5"],
+                    }
+                ),
+                    $("#export_print3").on("click", function (e) {
+                            e.preventDefault(), q.button(0).trigger()
+                        }
+                    ),
+                    $("#export_copy3").on("click", function (e) {
+                            e.preventDefault(), q.button(1).trigger()
+                        }
+                    ),
+                    $("#export_excel3").on("click", function (e) {
+                            e.preventDefault(), q.button(2).trigger()
+                        }
+                    ),
+                    $("#export_csv3").on("click", function (e) {
+                            e.preventDefault(), q.button(3).trigger()
+                        }
+                    ),
+                    $("#export_pdf3").on("click", function (e) {
+                            e.preventDefault(), q.button(4).trigger()
+                        }
+                    )
+                // end data table m_table_3
+
+
+
+
+
+            }
+        };
+
+
+        jQuery(document).ready(function () {
+                DatatablesExtensionButtons.init()
+            }
+        );
+
+
+    </script>
+
+
+
     <script>
         $("#show").click(function () {
             $("#description").toggle('slow');

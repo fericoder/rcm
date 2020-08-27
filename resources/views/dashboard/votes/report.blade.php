@@ -48,48 +48,50 @@
 
 
 
-            <div class="kt-portlet kt-portlet--mobile">
-                <div class="kt-portlet__head">
-                    <div class="kt-portlet__head-label">
-                        <h3 class="kt-portlet__head-title">
-                            شرکت کنندگان در نظرسنجی
-                        </h3>
+            @canany(['admin', 'boardMember'])
+                <div class="kt-portlet kt-portlet--mobile">
+                    <div class="kt-portlet__head">
+                        <div class="kt-portlet__head-label">
+                            <h3 class="kt-portlet__head-title">
+                                شرکت کنندگان در نظرسنجی
+                            </h3>
+                        </div>
+
+                        <div style="" class="kt-portlet__head-toolbar">
+                            <button  style="float: right;margin-right: 40px!important;"   class="btn btn-success btn-min-width mr-1 mb-1 ladda-button"  data-target="#AddVote" data-toggle="modal" ><span class="ladda-label">  <i class="la la-plus"></i>  افزودن نظرسنجی جدید  </span></button>
+                        </div>
                     </div>
 
-                    <div style="" class="kt-portlet__head-toolbar">
-                        <button  style="float: right;margin-right: 40px!important;"   class="btn btn-success btn-min-width mr-1 mb-1 ladda-button"  data-target="#AddVote" data-toggle="modal" ><span class="ladda-label">  <i class="la la-plus"></i>  افزودن نظرسنجی جدید  </span></button>
-                    </div>
-                </div>
+                    <div class="kt-portlet__body">
+                        <p class="card-text">در این قسمت لیست ساکنین شرکت کننده در نظرسنجی را مشاهده میکنید.</p>
 
-                <div class="kt-portlet__body">
-                    <p class="card-text">در این قسمت لیست ساکنین شرکت کننده در نظرسنجی را مشاهده میکنید.</p>
-
-                    <table style="font-family:Byekan; width: 100% !important;" class="table display nowrap table-striped table-bordered scroll-horizontal " id="m_table_2">
-                        <thead>
-                        <tr>
-                            <th>کد واحد</th>
-                            <th>نام و نام خانوادگی</th>
-                            <th>نظر</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-
-                        @foreach ($pollsUsers as $pollsUser)
+                        <table style="font-family:Byekan; width: 100% !important;" class="table display nowrap table-striped table-bordered scroll-horizontal " id="m_table_2">
+                            <thead>
                             <tr>
-                                <td>{{ $pollsUser->user->code }}</td>
-                                <td>{{ $pollsUser->user->fullName }}</td>
-                                <td>{{ $pollsUser->option->title }}</td>
-
+                                <th>کد واحد</th>
+                                <th>نام و نام خانوادگی</th>
+                                <th>نظر</th>
                             </tr>
-                        @endforeach
+                            </thead>
+                            <tbody>
+
+                            @foreach ($pollsUsers as $pollsUser)
+                                <tr>
+                                    <td>{{ $pollsUser->user->code }}</td>
+                                    <td>{{ $pollsUser->user->fullName }}</td>
+                                    <td>{{ $pollsUser->option->title }}</td>
+
+                                </tr>
+                            @endforeach
 
 
-                        </tbody>
+                            </tbody>
 
-                    </table>
+                        </table>
 
+                    </div>
                 </div>
-            </div>
+                @endcan
 
 
 

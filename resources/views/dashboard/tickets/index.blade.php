@@ -286,12 +286,7 @@
                                                     <span class="kt-nav__link-text">CSV</span>
                                                 </a>
                                             </li>
-                                            <li class="kt-nav__item">
-                                                <a href="#" class="kt-nav__link" id="export_pdf">
-                                                    <i class="kt-nav__link-icon la la-file-pdf-o"></i>
-                                                    <span class="kt-nav__link-text">PDF</span>
-                                                </a>
-                                            </li>
+
                                         </ul>
                                     </div>
                                 </div>
@@ -304,6 +299,7 @@
                         <table style="font-family:Byekan; width: 100% !important;" class="table display nowrap table-striped table-bordered scroll-horizontal " id="m_table_2">
                             <thead style="text-align:center">
                             <tr style="text-align:center">
+                                <th>شناسه</th>
                                 <th>عنوان درخواست</th>
                                 <th>درخواست شده از</th>
                                 <th>درخواست توسط</th>
@@ -318,23 +314,25 @@
                             <tbody>
                             @foreach($tickets as $ticket)
                                 <tr>
+                                    <td>{{ $ticket->id }}</td>
                                     <td>{{ $ticket->title }}</td>
                                     <td>{{ $ticket->requestedFrom }}</td>
                                     <td>{{ $ticket->addedByName }}</td>
                                     <td>{{ $ticket->scope }}</td>
                                     <td><span class=" {{ $ticket->status == "درحال پیگیری" ? "badge badge-info" : '' }} {{ $ticket->status == "درحال انجام" ? "badge badge-primary" : '' }} {{ $ticket->status == "پاسخ داده شده" ? "badge badge-success" : '' }} {{ $ticket->status == "انجام شده" ? "badge badge-success" : '' }}  {{ $ticket->status == "تایید شده" ? "badge badge-success" : '' }}  {{ $ticket->status == "بررسی نشده" ? "badge badge-warning" : '' }} " >{{ $ticket->status }}</span></td>
-                                    @if($ticket->attachment == "storage/tickets/Nothing")
-                                        <td style="color: #808080"><i style="font-size: 20px" class="fa fa-text"></i></td>
+                                    @if($ticket->attachment == "storage/Requisitions/Nothing")
+                                        <td style="color: #808080">-</td>
                                     @else
-                                        <td style="color: #3BAFDA"><a target="_blank" href="{{ $ticket->attachment }}"><i style="font-size: 20px" class="fa fa-file"></i></a></td>
+                                        <td style="color: #3BAFDA"><a target="_blank" href="{{ asset($ticket->attachment) }}"><i style="font-size: 20px" class="fa fa-file"></i></a></td>
                                     @endif
-                                    <td style="direction: ltr!important;">{{ jdate($ticket->created_at) }}</td>
-                                    <td style="direction: ltr!important;">{{ jdate($ticket->updated_at) }}</td>
+                                    <td style="direction: rtl!important;font-family: BYekan">{{ jdate($ticket->created_at) }}</td>
+                                    <td style="direction: ltr!important;font-family: BYekan">{{ jdate($ticket->updated_at) }}</td>
                                     <td style="color: #3BAFDA"><a href="{{ route('tickets.edit', $ticket->id) }}"><i style="font-size: 20px" class="fa fa-edit"></i></a></td>
                                 </tr>
                             @endforeach
                             <tfoot>
                             <tr>
+                                <th>شناسه</th>
                                 <th>عنوان درخواست</th>
                                 <th>درخواست شده از</th>
                                 <th>درخواست توسط</th>
@@ -377,6 +375,7 @@
                         responsive: !0,
 
                         buttons: ["print", "copyHtml5", "excelHtml5", "csvHtml5", "pdfHtml5"],
+                        "order": [[ 0, "desc" ]]
                     }
                 ),
                     $("#export_print").on("click", function (e) {

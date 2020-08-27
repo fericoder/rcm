@@ -6,6 +6,7 @@ use App\Invoice;
 use App\Payment;
 use App\User;
 use Illuminate\Http\Request;
+use App\Notifications\InvoicePaid;
 
 class PaymentController extends Controller
 {
@@ -76,14 +77,15 @@ class PaymentController extends Controller
             $invoice = Invoice::findOrFail($id);
 
             if ($invoice->amount == $amount) {
-
+                \Auth::loginUsingId($invoice->user_id);
                 //Update Invoice Status
                 $invoice->status = 'paid';
+                $invoice->paymentMethod = 'gateway';
                 $invoice->save();
 
                 // Add Payment
                 $payment = Payment::create(['trackingCode' => $trackingCode, 'refId' => $refId, 'cardNumber' => $cardNumber, 'amount' => $amount, 'vahed' => $vahed, 'user_id' => \Auth::user()->id, 'invoice_id' => $id]);
-
+                \Auth::user()->notify(new InvoicePaid($invoice));
                 // Send SMS
 //                $vahed = User::where('email', trim($vahed))->first();
 //                if (strlen($vahed->tenantMobileNumber) > 8 ){

@@ -5,50 +5,51 @@
 
     <link href="assets/plugins/custom/datatables/datatables.bundle.rtl.css" rel="stylesheet" type="text/css" />
 
-    <div class="modal fade text-left" id="AddFacilityReport" tabindex="-1" role="dialog" aria-labelledby="AddFacilityReport" aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title" id="AddFacilityReport">افزودن گزارش نگهداری تاسیسات</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    @if ($errors->any())
-                        <div class="alert alert-danger">
-                            <ul>
-                                @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    @endif
+    @canany(['admin', 'monitoring', 'superAdmin'])
+        <div class="modal fade text-left" id="AddFacilityReport" tabindex="-1" role="dialog" aria-labelledby="AddFacilityReport" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="AddFacilityReport">افزودن گزارش نگهداری تاسیسات</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
 
-                    <form style="font-family:Byekan" style="vertical-align:center;text-align:center" enctype="multipart/form-data" method="post" action="monitoring/store" class="form form-horizontal form-bordered striped-rows">
-                        @csrf
-                        <div class="form-body">
+                        <form style="font-family:Byekan" style="vertical-align:center;text-align:center" enctype="multipart/form-data" method="post" action="monitoring/store" class="form form-horizontal form-bordered striped-rows">
+                            @csrf
+                            <div class="form-body">
 
 
 
-                            @foreach ($equipments as $equipment)
-                                <div class="form-group row">
-                                    <label class="col-md-3 label-control" for="{{ $equipment->name }}">{{ $equipment->name }}:</label>
-                                    <div class="col-md-9">
-                                        <div class="col-lg-3">
-                                            <div class="input-group">
-                                                <div class="input-group-append"><span class="input-group-text">دما:</span></div>
-                                                <input type="text" class="form-control" name="{{ $equipment->id }}" >
+                                @foreach ($equipments as $equipment)
+                                    <div class="form-group row">
+                                        <label class="col-md-3 label-control" for="{{ $equipment->name }}">{{ $equipment->name }}:</label>
+                                        <div class="col-md-9">
+                                            <div class="col-lg-3">
+                                                <div class="input-group">
+                                                    <div class="input-group-append"><span class="input-group-text">دما:</span></div>
+                                                    <input type="text" class="form-control" name="{{ $equipment->id }}" >
+                                                </div>
                                             </div>
+
                                         </div>
-
                                     </div>
-                                </div>
 
 
 
 
-                            @endforeach
+                                @endforeach
 
 
 
@@ -56,29 +57,24 @@
 
 
 
-                        </div>
+                            </div>
 
-                        <div class="form-actions">
-                            <center>
-                                <button type="submit" class="btn btn-success">
-                                    <i class="fa fa-check-square-o"></i> ثبت
-                                </button>
+                            <div class="form-actions">
+                                <center>
+                                    <button type="submit" class="btn btn-success">
+                                        <i class="fa fa-check-square-o"></i> ثبت
+                                    </button>
 
-                                <button data-dismiss="modal" type="button" class="btn btn-warning mr-1"><i class="ft-x"></i> لغو</button>
-                            </center>
-                        </div>
-                    </form>
+                                    <button data-dismiss="modal" type="button" class="btn btn-warning mr-1"><i class="ft-x"></i> لغو</button>
+                                </center>
+                            </div>
+                        </form>
 
 
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-
-
-
-
-
 
 
 
@@ -145,6 +141,8 @@
             </div>
         </div>
     </div>
+
+    @endcan
 
     <div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid">
 
@@ -259,7 +257,10 @@
                 </div>
 
                 <div style="" class="kt-portlet__head-toolbar">
-                    <button  style="float: right;margin-right: 40px!important;"   class="btn btn-success btn-min-width mr-1 mb-1 ladda-button"  data-target="#AddFacilityReport" data-toggle="modal" ><span class="ladda-label">  <i class="la la-plus"></i>  افزودن گزارش نگهداری تاسیسات  </span></button>
+                    @canany(['admin', 'monitoring', 'superAdmin'])
+                        <button  style="float: right;margin-right: 40px!important;"   class="btn btn-success btn-min-width mr-1 mb-1 ladda-button"  data-target="#AddFacilityReport" data-toggle="modal" ><span class="ladda-label">  <i class="la la-plus"></i>  افزودن گزارش نگهداری تاسیسات  </span></button>
+                    @endcan
+
                 </div>
             </div>
 
@@ -310,7 +311,10 @@
                 </div>
 
                 <div style="" class="kt-portlet__head-toolbar">
-                    <button  style="float: right;margin-right: 40px!important;"   class="btn btn-success btn-min-width mr-1 mb-1 ladda-button"  data-target="#AddEquipmentReport" data-toggle="modal" ><span class="ladda-label">  <i class="la la-plus"></i>  افزودن تجهیز  </span></button>
+                    @canany(['admin', 'monitoring', 'superAdmin'])
+                        <button  style="float: right;margin-right: 40px!important;"   class="btn btn-success btn-min-width mr-1 mb-1 ladda-button"  data-target="#AddEquipmentReport" data-toggle="modal" ><span class="ladda-label">  <i class="la la-plus"></i>  افزودن تجهیز  </span></button>
+                    @endcan
+
 
                 </div>
             </div>

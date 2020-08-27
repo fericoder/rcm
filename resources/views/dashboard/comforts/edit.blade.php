@@ -45,7 +45,7 @@
                                 <div class="form-group row">
                                     <label class="col-md-3 label-control" for="date">نام واحد:</label>
                                     <div class="col-md-9">
-                                        <input class="form-control" placeholder="مثال: سوپر مارکت" name="title" type="text" />
+                                        <input class="form-control" placeholder="مثال: سوپر مارکت" value="{{ $comfort->title }}" name="title" type="text" />
                                     </div>
                                 </div>
 
@@ -53,7 +53,7 @@
                                 <div class="form-group row">
                                     <label class="col-md-3 label-control" for="name">موقعیت:</label>
                                     <div class="col-md-9">
-                                        <input type="text" id="location" placeholder="مثال: طبقه منفی ۱" class="form-control" name="location">
+                                        <input type="text" id="location" placeholder="مثال: طبقه منفی ۱" value="{{ $comfort->location }}" class="form-control" name="location">
                                     </div>
                                 </div>
 
@@ -61,14 +61,14 @@
                                 <div class="form-group row">
                                     <label class="col-md-3 label-control" for="name">نام مدیر:</label>
                                     <div class="col-md-9">
-                                        <input type="text" id="responsible" placeholder="مثال: رضا رضایی" class="form-control" name="responsible">
+                                        <input type="text" id="responsible" placeholder="مثال: رضا رضایی"  value="{{ $comfort->responsible }}" class="form-control" name="responsible">
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
                                     <label class="col-md-3 label-control" for="name">تلفن تماس:</label>
                                     <div class="col-md-9">
-                                        <input type="text" id="location" placeholder="مثال: 40441414" class="form-control" name="phone">
+                                        <input type="text" id="location" placeholder="مثال: 40441414" value="{{ $comfort->phone }}" class="form-control" name="phone">
                                     </div>
                                 </div>
 

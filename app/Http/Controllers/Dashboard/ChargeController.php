@@ -15,27 +15,46 @@ class ChargeController extends \App\Http\Controllers\Controller
      */
     public function index()
     {
-        $invoices = Invoice::with('user')->where('complex_id', \Auth::user()->complex_id)->get();
-        $units = User::where('complex_id', \Auth::user()->complex_id)->get();
+        if( \Gate::allows('finance') OR \Gate::allows('admin') OR \Gate::allows('boardMember')) {
+            $invoices = Invoice::with('user')->where('complex_id', \Auth::user()->complex_id)->get();
+            $units = User::where('complex_id', \Auth::user()->complex_id)->get();
+            return view('dashboard.accounting.charge', compact('invoices', 'units'));
+        }else{
+            alert()->warning('عدم دسترسی');
+            return redirect()->back();
+            exit;
+        }
 
-        return view('dashboard.accounting.charge', compact('invoices', 'units'));
     }
 
     public function report()
     {
-        $units = User::where('complex_id', \Auth::user()->complex_id)->get();
+        if( \Gate::allows('finance') OR \Gate::allows('admin') OR \Gate::allows('boardMember')) {
+            $units = User::where('complex_id', \Auth::user()->complex_id)->get();
+            return view('dashboard.accounting.report', compact('units'));
+        }else{
+            alert()->warning('عدم دسترسی');
+            return redirect()->back();
+            exit;
+        }
 
-        return view('dashboard.accounting.report', compact('units'));
     }
 
 
     public function show(Request $request)
     {
 
-        $invoices = Invoice::with('user')->where('user_id', (int) $request->id)->get();
-        $units = User::where('complex_id', \Auth::user()->complex_id)->get();
+        if( \Gate::allows('finance') OR \Gate::allows('admin') OR \Gate::allows('boardMember')) {
+            $invoices = Invoice::with('user')->where('user_id', (int) $request->id)->get();
+            $units = User::where('complex_id', \Auth::user()->complex_id)->get();
 
-        return view('dashboard.accounting.report', compact('invoices', 'units'));
+            return view('dashboard.accounting.report', compact('invoices', 'units'));
+        }else{
+            alert()->warning('عدم دسترسی');
+            return redirect()->back();
+            exit;
+        }
+
     }
 
 

@@ -11,23 +11,35 @@
 |
 */
 
-// App Routes
-Route::get('/', 'AppController@index')->name('app.index');
-Route::get('/about', 'AppController@about')->name('app.about');
-Route::get('/contact', 'AppController@contact')->name('app.contact');
-Route::get('/services', 'AppController@services')->name('app.services');
+if (request()->getHttpHost() === 'olympictower.ir'){
+    Route::get('/', 'WebsiteController@index')->name('website.index');
+    Route::post('/massage', 'WebsiteController@massage')->name('website.massage');
+}else{
+    Route::get('/', 'AppController@index')->name('app.index');
+    Route::get('/about', 'AppController@about')->name('app.about');
+    Route::get('/contact', 'AppController@contact')->name('app.contact');
+    Route::get('/services', 'AppController@services')->name('app.services');
 
-Route::get('/a/{complex}', 'WebsiteController@index')->name('website.index');
-Route::post('/a/{complex}/massage', 'WebsiteController@massage')->name('website.massage');
+    Route::get('/a/{complex}', 'WebsiteController@index')->name('website.index');
+    Route::post('/a/{complex}/massage', 'WebsiteController@massage')->name('website.massage');
+
+}
+
+
+
 
 
 // Add middleware auth
-Route::namespace('Dashboard')->prefix('dashboard')->middleware('auth', 'configuration')->group(function () {
+Route::namespace('Dashboard')->prefix('dashboard')->middleware('auth', 'configuration', 'monitoring')->group(function () {
 
     // Website Configuratuon
     Route::get('configuration/website', 'ComplexController@WebsiteForm')->name('dashboard.configuration.website');
     Route::post('configuration/website', 'ComplexController@WebsiteFormStore')->name('configuration.WebsiteFormstore');
     Route::post('configuration/website/personnel', 'ComplexController@personnel')->name('personnel.store');
+
+    // Charge Configuratuon
+    Route::get('configuration/charge', 'ChargeManagementController@index')->name('dashboard.charge.index');
+    Route::post('configuration/charge/update/{id}', 'ChargeManagementController@update')->name('dashboard.charge.update');
 
     Route::resource('configuration', 'ComplexController');
 
@@ -107,6 +119,15 @@ Route::namespace('Dashboard')->prefix('dashboard')->middleware('auth', 'configur
     Route::get('vote/options/delete/{id}', 'VoteController@optionsDelete')->name('options.delete');
     Route::post('vote/options', 'VoteController@optionsStore')->name('options.optionsStore');
 
+    Route::resource('users', 'UsersController');
+    Route::post('user/delete', 'UsersController@destroy');
+
+    //Permissions
+    Route::resource('roles', 'RoleController');
+    Route::resource('permissions', 'PermissionController');
+    Route::post('role/delete', 'RoleController@destroy');
+    Route::post('permission/delete', 'PermissionController@destroy');
+
 
     //Maintenance
     Route::get('maintenance/facility', 'MaintenanceController@facilityIndex')->name('maintenance.facility.index');
@@ -126,6 +147,11 @@ Route::namespace('Dashboard')->prefix('dashboard')->middleware('auth', 'configur
     Route::get('/security', function(){
         return view('dashboard.security');
     })->name('security');
+
+
+    //BalanceSheetController
+    Route::get('balance-sheet', 'BalanceSheetController@index')->name('balance.index');
+
 
     //Profile
     Route::get('profile', 'ProfileController@show')->name('profile.show');

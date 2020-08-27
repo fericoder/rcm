@@ -49,7 +49,7 @@
 
                                 <div class="col-lg-6">
                                     <label>بابت:</label>
-                                    <input type="text" name="for" class="form-control" value="{{ $invoice->for }}">
+                                    <input type="text" disabled name="for" class="form-control" value="{{ $invoice->for }}">
                                 </div>
 
 
@@ -57,7 +57,7 @@
                             <div class="form-group row">
                                 <div class="col-lg-6">
                                     <label>مبلغ: (ریال)</label>
-                                    <input type="text" name="amount" class="form-control" value="{{ $invoice->amount }}">
+                                    <input type="text" disabled name="amount" class="form-control" value="{{ number_format($invoice->amount) }}">
                                 </div>
                                 <div class="col-lg-6">
                                     <label class="">وضعیت:</label>

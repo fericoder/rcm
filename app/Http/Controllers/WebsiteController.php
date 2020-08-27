@@ -13,6 +13,7 @@ class WebsiteController extends Controller
 {
     public function index(Request $request)
     {
+        if (request()->getHttpHost() === 'olympictower.ir') {$request->merge(['complex' => 'olympic']);}
         $complex = Complex::where('url', $request->complex)->first();
         $website = Website::where('complex_id', $complex->id)->first();
         $pictures = Gallery::where('complex_id', $complex->id)->orderBy('id', 'DESC')->limit(10)->get();

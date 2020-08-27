@@ -218,7 +218,7 @@
                 </div>
 
                 <div style="" class="kt-portlet__head-toolbar">
-                    @can('admin', 'boardMember')
+                    @can('information_create')
                         <button  style="float: right;margin-right: 40px!important;"   class="btn btn-success btn-min-width mr-1 mb-1 ladda-button"  data-target="#AddMonitoringReport" data-toggle="modal" ><span class="ladda-label">  <i class="la la-plus"></i>  افزودن اعلان  </span></button>
                     @endcan
                 </div>
@@ -233,7 +233,7 @@
                         <th>متن</th>
                         <th>توسط</th>
                         <th>تاریخ ثبت </th>
-                        @can('admin')
+                        @can('information_delete')
                             <th>حذف </th>
                         @endcan
                     </tr>
@@ -247,7 +247,7 @@
                             <td style="direction: ltr; font-family: BYekan">{{ jdate($notification->created_at) }}</td>
                             <td>ویرایش</td>
                             <td>
-                                @can('admin')
+                                @can('information_delete')
                                     <a href="{{ route('dashboard.NotificationDestroy', ['id' => $notification->id]) }}" class="m-portlet__nav-link btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill button" title="حذف مشتری "> <i style="color: darkred" class="fa fa-times"></i> </a>
                                 @endcan
 
@@ -277,7 +277,7 @@
                 </div>
 
                 <div style="" class="kt-portlet__head-toolbar">
-                    @can('admin', 'boardMember')
+                    @can('information_create')
                         <button  style="float: right;margin-right: 40px!important;"   class="btn btn-success btn-min-width mr-1 mb-1 ladda-button"  data-target="#AddAsasnameReport" data-toggle="modal" ><span class="ladda-label">  <i class="la la-plus"></i>  افزودن اساسنامه، آیین نامه  </span></button>
                     @endcan
                 </div>
@@ -293,7 +293,7 @@
                         <th> توسط</th>
                         <th>لینک دریافت</th>
                         <th>زمان ثبت</th>
-                        @can('admin')
+                        @can('information_delete')
                             <th>حذف </th>
                         @endcan
                     </tr>
@@ -307,7 +307,7 @@
                             <td><a target="_blank" href="{{ url($information->content) }}"><i class="fa fa-file"></i></a></td>
                             <td style="direction: ltr;">{{ jdate($information->created_at) }}</td>
                             <td>
-                                @can('admin')
+                                @can('information_delete')
                                     <a href="{{ route('dashboard.fileDestroy', ['id' => $information->id]) }}" class="m-portlet__nav-link btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill button" title="حذف مشتری "> <i style="color: darkred" class="fa fa-times"></i> </a>
                                 @endcan
 
@@ -335,7 +335,7 @@
                     </div>
 
                     <div style="" class="kt-portlet__head-toolbar">
-                        @can('admin', 'boardMember')
+                        @can('information_create')
                             <button  style="float: right;margin-right: 40px!important;"   class="btn btn-success btn-min-width mr-1 mb-1 ladda-button"  data-target="#AddEttelaateTamas" data-toggle="modal" ><span class="ladda-label">  <i class="la la-plus"></i>  اطلاعات تماس  </span></button>
                         @endcan
 
@@ -353,7 +353,7 @@
                             <th>عنوان</th>
                             <th>شماره تماس</th>
                             <th>زمان ثبت</th>
-                            @can('admin')
+                            @can('information_delete')
                                 <th>حذف </th>
                             @endcan
                         </tr>
@@ -367,7 +367,7 @@
                                 <td>{{ $information->content }}</td>
                                 <td style="direction: ltr;">{{ jdate($information->created_at) }}</td>
                                 <td>
-                                    @can('admin')
+                                    @can('information_delete')
                                         <a href="{{ route('dashboard.contactDestroy', ['id' => $information->id]) }}" class="m-portlet__nav-link btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill button" title="حذف مشتری "> <i style="color: darkred" class="fa fa-times"></i> </a>
                                     @endcan
 

@@ -95,7 +95,7 @@
                 </h3>
             </div>
             <div style="" class="kt-portlet__head-toolbar">
-                <a target="_blank" href="{{ route('website.index', \Auth::user()->complex->url)  }}"><button style="float: left;" class="btn btn-sm btn-info mr-1  ladda-button" ><span class="ladda-label">  <i class="fa fa-search"></i>  مشاهده وبسایت   </span></button></a>
+                <a target="_blank" href=""><button style="float: left;" class="btn btn-sm btn-info mr-1  ladda-button" ><span class="ladda-label">  <i class="fa fa-search"></i>  مشاهده وبسایت   </span></button></a>
             </div>
         </div>
         <!--begin::Form-->
@@ -238,12 +238,7 @@
                                                     <span class="kt-nav__link-text">CSV</span>
                                                 </a>
                                             </li>
-                                            <li class="kt-nav__item">
-                                                <a href="#" class="kt-nav__link" id="export_pdf">
-                                                    <i class="kt-nav__link-icon la la-file-pdf-o"></i>
-                                                    <span class="kt-nav__link-text">PDF</span>
-                                                </a>
-                                            </li>
+
                                         </ul>
                                     </div>
                                 </div>

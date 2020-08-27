@@ -7,72 +7,74 @@
 
 
 
-    <div class="modal fade text-left" id="AddUnit" tabindex="-1" role="dialog" aria-labelledby="AddUnit" aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title" id="AddMonitoringReport">افزودن واحد</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
+    @canany(['admin', 'boardMember'])
+        <div class="modal fade text-left" id="AddUnit" tabindex="-1" role="dialog" aria-labelledby="AddUnit" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="AddMonitoringReport">افزودن واحد</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
 
-                    <form style="font-family:Byekan" style="vertical-align:center;text-align:center" enctype="multipart/form-data" method="post" action="{{ route('comfort.store') }}" class="form form-horizontal form-bordered striped-rows">
-                        @csrf
-                        <div class="form-body">
+                        <form style="font-family:Byekan" style="vertical-align:center;text-align:center" enctype="multipart/form-data" method="post" action="{{ route('comfort.store') }}" class="form form-horizontal form-bordered striped-rows">
+                            @csrf
+                            <div class="form-body">
 
 
-                            <div class="form-group row">
-                                <label class="col-md-3 label-control" for="date">نام واحد</label>
-                                <div class="col-md-9">
-                                    <input class="form-control" placeholder="مثال: سوپر مارکت" name="title" type="text" />
+                                <div class="form-group row">
+                                    <label class="col-md-3 label-control" for="date">نام واحد</label>
+                                    <div class="col-md-9">
+                                        <input class="form-control" placeholder="مثال: سوپر مارکت" name="title" type="text" />
+                                    </div>
                                 </div>
+
+
+                                <div class="form-group row">
+                                    <label class="col-md-3 label-control" for="name">موقعیت</label>
+                                    <div class="col-md-9">
+                                        <input type="text" id="location" placeholder="مثال: طبقه منفی ۱" class="form-control" name="location">
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group row">
+                                    <label class="col-md-3 label-control" for="name">نام مدیر</label>
+                                    <div class="col-md-9">
+                                        <input type="text" id="responsible" placeholder="مثال: رضا رضایی" class="form-control" name="responsible">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-md-3 label-control" for="name">تلفن تماس</label>
+                                    <div class="col-md-9">
+                                        <input type="text" id="location" placeholder="مثال: 40441414" class="form-control" name="phone">
+                                    </div>
+                                </div>
+
+
                             </div>
 
+                            <div class="form-actions">
+                                <center>
+                                    <button type="submit" class="btn btn-success">
+                                        <i class="fa fa-check-square-o"></i> ثبت
+                                    </button>
 
-                            <div class="form-group row">
-                                <label class="col-md-3 label-control" for="name">موقعیت</label>
-                                <div class="col-md-9">
-                                    <input type="text" id="location" placeholder="مثال: طبقه منفی ۱" class="form-control" name="location">
-                                </div>
+                                    <button type="button" data-dismiss="modal" class="btn btn-warning mr-1"><i class="ft-x"></i> لغو
+                                    </button>
+                                </center>
                             </div>
+                        </form>
 
 
-                            <div class="form-group row">
-                                <label class="col-md-3 label-control" for="name">نام مدیر</label>
-                                <div class="col-md-9">
-                                    <input type="text" id="responsible" placeholder="مثال: رضا رضایی" class="form-control" name="responsible">
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <label class="col-md-3 label-control" for="name">تلفن تماس</label>
-                                <div class="col-md-9">
-                                    <input type="text" id="location" placeholder="مثال: 40441414" class="form-control" name="phone">
-                                </div>
-                            </div>
-
-
-                        </div>
-
-                        <div class="form-actions">
-                            <center>
-                                <button type="submit" class="btn btn-success">
-                                    <i class="fa fa-check-square-o"></i> ثبت
-                                </button>
-
-                                <button type="button" data-dismiss="modal" class="btn btn-warning mr-1"><i class="ft-x"></i> لغو
-                                </button>
-                            </center>
-                        </div>
-                    </form>
-
-
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+        @endcanany
 
 
     <div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid">
@@ -87,8 +89,9 @@
                         </div>
 
                         <div style="" class="kt-portlet__head-toolbar">
+                            @canany(['admin', 'boardMember'])
                             <button  style="float: right;"   class="btn btn-sm btn-success mr-1  ladda-button"  data-target="#AddUnit" data-toggle="modal" ><span class="ladda-label">  <i class="la la-plus"></i>  افزودن واحد  </span></button>
-
+                            @endcanany
                             <div class="kt-portlet__head-toolbar-wrapper">
                                 <div class="dropdown dropdown-inline">
                                     <button style="font-size: 14px" type="button" class="btn btn-brand btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -123,12 +126,7 @@
                                                     <span class="kt-nav__link-text">CSV</span>
                                                 </a>
                                             </li>
-                                            <li class="kt-nav__item">
-                                                <a href="#" class="kt-nav__link" id="export_pdf">
-                                                    <i class="kt-nav__link-icon la la-file-pdf-o"></i>
-                                                    <span class="kt-nav__link-text">PDF</span>
-                                                </a>
-                                            </li>
+
                                         </ul>
                                     </div>
                                 </div>
@@ -155,7 +153,7 @@
                             <tr>
                                 <th>نام</th>
                                 <th>موقعیت</th>
-                                <th>مدیر</th>
+                                {{--<th>مدیر</th>--}}
                                 <th>تلفن تماس</th>
                                 <th>حذف | ویرایش</th>
                             </tr>
@@ -165,8 +163,8 @@
                                 <tr>
                                     <td>{{ $comfort->title }}</td>
                                     <td>{{ $comfort->location }}</td>
-                                    <td>{{ $comfort->responsible }}</td>
-                                    <td>{{ $comfort->phone }}</td>
+{{--                                    <td>{{ $comfort->responsible }}</td>--}}
+                                    <td style="font-family: BYekan!important;"><a style="font-family: BYekan!important;" href="tel:9821{{ $comfort->phone }}">{{ $comfort->phone }}</td></a>
                                     <td>
                                       @can('admin')
                                           <a href="{{ route('comfort.delete', ['id' => $comfort->id]) }}" class="m-portlet__nav-link btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill button" title="حذف قرارداد "> <i style="color: darkred" class="fa fa-times"></i> </a>

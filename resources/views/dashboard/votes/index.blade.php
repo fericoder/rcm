@@ -5,76 +5,80 @@
 
     <link href="assets/plugins/custom/datatables/datatables.bundle.rtl.css" rel="stylesheet" type="text/css" />
 
-    
 
 
-    <div class="modal fade text-left" id="AddVote" tabindex="-1" role="dialog" aria-labelledby="AddVote" aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">۸
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title" id="AddVoteReport">افزودن نظرسنجی</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    @if ($errors->any())
-                        <div class="alert alert-danger">
-                            <ul>
-                                @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    @endif
 
-                    <form style="font-family:Byekan" style="vertical-align:center;text-align:center" enctype="multipart/form-data" method="post" action="{{ route('votes.store') }}" class="form form-horizontal form-bordered striped-rows">
-                        @csrf
-                        <div class="form-body">
+    @canany(['admin', 'boardMember'])
+        <div class="modal fade text-left" id="AddVote" tabindex="-1" role="dialog" aria-labelledby="AddVote" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">۸
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="AddVoteReport">افزودن نظرسنجی</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+
+                        <form style="font-family:Byekan" style="vertical-align:center;text-align:center" enctype="multipart/form-data" method="post" action="{{ route('votes.store') }}" class="form form-horizontal form-bordered striped-rows">
+                            @csrf
+                            <div class="form-body">
 
 
-                            <div class="form-group row">
-                                <label class="col-md-3 label-control" for="date">عنوان نظرسنجی: </label>
-                                <div class="col-md-9">
-                                    <input style="font-family:Byekan" class="form-control" placeholder="مثال: رنگ درب آسانسور" name="title" type="text" />
+                                <div class="form-group row">
+                                    <label class="col-md-3 label-control" for="date">عنوان نظرسنجی: </label>
+                                    <div class="col-md-9">
+                                        <input style="font-family:Byekan" class="form-control" placeholder="مثال: رنگ درب آسانسور" name="title" type="text" />
+                                    </div>
                                 </div>
+
+                                <div class="form-group row">
+                                    <label class="col-md-3 label-control" for="date">سوال نظرسنجی: </label>
+                                    <div class="col-md-9">
+                                        <input style="font-family:Byekan" class="form-control" style="" placeholder="مثال: بنظرشما رنگ درب آسانسور چه رنگی شود؟" name="question" type="text" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-md-3 label-control" for="date">تاریخ انقضا نظرسنجی: </label>
+                                    <div class="col-lg-9">
+                                        <input class="form-control dp" value="" >
+                                        <input type="hidden" name="expired_at" class="observer" >
+                                    </div>
+                                </div>
+
+
                             </div>
 
-                            <div class="form-group row">
-                                <label class="col-md-3 label-control" for="date">سوال نظرسنجی: </label>
-                                <div class="col-md-9">
-                                    <input style="font-family:Byekan" class="form-control" style="" placeholder="مثال: بنظرشما رنگ درب آسانسور چه رنگی شود؟" name="question" type="text" />
-                                </div>
+                            <div class="form-actions">
+                                <center>
+                                    <button type="submit" class="btn btn-success">
+                                        <i class="fa fa-check-square-o"></i> ثبت
+                                    </button>
+
+                                    <button type="button" data-dismiss="modal" class="btn btn-warning mr-1"><i class="ft-x"></i> لغو
+                                    </button>
+                                </center>
                             </div>
-
-                            <div class="form-group row">
-                                <label class="col-md-3 label-control" for="date">تاریخ انقضا نظرسنجی: </label>
-                                <div class="col-lg-9">
-                                    <input class="form-control dp" value="" >
-                                    <input type="hidden" name="expired_at" class="observer" >
-                                </div>
-                            </div>
+                        </form>
 
 
-                        </div>
-
-                        <div class="form-actions">
-                            <center>
-                                <button type="submit" class="btn btn-success">
-                                    <i class="fa fa-check-square-o"></i> ثبت
-                                </button>
-
-                                <button type="button" data-dismiss="modal" class="btn btn-warning mr-1"><i class="ft-x"></i> لغو
-                                </button>
-                            </center>
-                        </div>
-                    </form>
-
-
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    @endcan
+
+
 
     <div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid">
 
@@ -170,7 +174,9 @@
                 </div>
 
                 <div style="" class="kt-portlet__head-toolbar">
-                    <button  style="float: right;margin-right: 40px!important;"   class="btn btn-success btn-min-width mr-1 mb-1 ladda-button"  data-target="#AddVote" data-toggle="modal" ><span class="ladda-label">  <i class="la la-plus"></i>  افزودن نظرسنجی جدید  </span></button>
+                    @canany(['admin', 'boardMember'])
+                        <button  style="float: right;margin-right: 40px!important;"   class="btn btn-success btn-min-width mr-1 mb-1 ladda-button"  data-target="#AddVote" data-toggle="modal" ><span class="ladda-label">  <i class="la la-plus"></i>  افزودن نظرسنجی جدید  </span></button>
+                    @endcan
                 </div>
             </div>
 
@@ -185,7 +191,7 @@
                         <th>تاریخ انقضا</th>
                         <th>شرکت در نظرسنجی</th>
                         <th>گزارش</th>
-                        @canany(['boardMember', 'admin'])
+                        @can('admin')
                             <th>گزینه ها</th>
                         @endcan
 

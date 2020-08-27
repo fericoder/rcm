@@ -40,7 +40,7 @@ class MonitoringController extends \App\Http\Controllers\Controller
             'detectors_disable' => $request->detectors_disable,
             'sound_count' => $request->sound_count,
             'detector_location' => $request->detector_location,
-            'detector_cause' => $request->detector_cause,
+//            'detector_cause' => $request->detector_cause,
             'detector_actions' => $request->detector_actions,
             'penalty_count' => $request->penalty_count,
         ]);

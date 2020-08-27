@@ -5,9 +5,11 @@ namespace App;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class User extends Authenticatable
 {
+    use SoftDeletes;
 
     public function complex()
     {
@@ -24,6 +26,26 @@ class User extends Authenticatable
         return $this->hasMany('App\Resident');
     }
 
+
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class);
+    }
+
+
+    public function hasRole($role)
+    {
+        if (is_string($role)){
+            return $this->roles->contain('name', $role);
+        }
+        return !! $role->intersect($this->roles)->count();
+    }
+
+
+    public function assignRole(Role $role)
+    {
+        return $this->roles()->save($role);
+    }
 
     use Notifiable;
 

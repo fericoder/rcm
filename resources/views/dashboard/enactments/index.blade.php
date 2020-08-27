@@ -26,8 +26,8 @@
                                 <div class="kt-input-icon">
 
                                 <select style="direction: rtl; text-align: right;width: 100%;" class="form-control m-select2" id="m_select2_1" name="proceeding_id">
-                                  @foreach (enactments as enactmenting)
-                                        <option value="{{ enactments->id }}">{{ ' شماره جلسه: ' .  $proceeding->number . ' | ' . ' تاریخ جلسه: ' . $proceeding->date }}</option>
+                                  @foreach ($proceedings as $proceeding)
+                                        <option value="{{ $proceeding->id }}">{{ ' شماره جلسه: ' .  $proceeding->number . ' | ' . ' تاریخ جلسه: ' . jdate($proceeding->date)->format('Y/m/d') }}</option>
                                     @endforeach
                                 </select>
                                 </div>
@@ -195,12 +195,7 @@
                                                     <span class="kt-nav__link-text">CSV</span>
                                                 </a>
                                             </li>
-                                            <li class="kt-nav__item">
-                                                <a href="#" class="kt-nav__link" id="export_pdf">
-                                                    <i class="kt-nav__link-icon la la-file-pdf-o"></i>
-                                                    <span class="kt-nav__link-text">PDF</span>
-                                                </a>
-                                            </li>
+
                                         </ul>
                                     </div>
                                 </div>
@@ -251,7 +246,7 @@
                                     <td>{{ $enactment->description }}</td>
                                     <td>{{ $enactment->user->fullName }}</td>
                                     <td style="font-family: BYekan; direction: ltr;min-width: 140px">{{ jdate($enactment->deadline) }}</td>
-                                    <td class="{{ $enactment->status == "معلق" ? "badge badge-warning" : '' }} {{ $enactment->status == "درحال انجام" ? "badge badge-primary" : '' }} {{ $enactment->status == "انجام شده" ? "badge badge-success" : '' }}    {{ $enactment->status == "بررسی نشده" ? "badge badge-danger" : '' }} {{ $enactment->status == "لغو شده" ? "badge badge-danger" : '' }} ">{{ $enactment->status }}</td>
+                                    <td style="color: white;" class="{{ $enactment->status == "معلق" ? "badge badge-warning" : '' }} {{ $enactment->status == "درحال انجام" ? "badge badge-primary" : '' }} {{ $enactment->status == "انجام شده" ? "badge badge-success" : '' }}    {{ $enactment->status == "بررسی نشده" ? "badge badge-danger" : '' }} {{ $enactment->status == "لغو شده" ? "badge badge-danger" : '' }} ">{{ $enactment->status }}</td>
                                     <td>{{ $enactment->resualt }}</td>
                                     <td>
                                         @can('admin')
@@ -275,7 +270,7 @@
 
 
         <div class="row">
-            <div class="col-lg-6">
+            <div class="col-lg-12">
                 <div class="kt-portlet">
                     <div class="kt-portlet__head">
                         <div class="kt-portlet__head-label">
@@ -285,14 +280,14 @@
                         </div>
                     </div>
                     <div class="kt-portlet__body">
-                        <div style="min-width: auto!important; max-width: 100%!important; height: 400px!important; margin: 0 auto!important;" id="members"></div>
+                        <div style="min-width: 500!important; max-width: 600px!important; height: 500px!important; margin: 0 auto!important;" id="members"></div>
                     </div>
                 </div>
             </div>
 
 
 
-            <div class="col-lg-6">
+            <div class="col-lg-12">
                 <div class="kt-portlet">
                     <div class="kt-portlet__head">
                         <div class="kt-portlet__head-label">
@@ -302,7 +297,7 @@
                         </div>
                     </div>
                     <div class="kt-portlet__body">
-                            <div style="min-width: auto!important; max-width: 100%!important; height: 400px!important; margin: 0 auto!important;" id="status"></div>
+                            <div style="min-width: 500px!important; max-width: 600px!important; height: 500px!important; margin: 0 auto!important;" id="status"></div>
                     </div>
                 </div>
             </div>

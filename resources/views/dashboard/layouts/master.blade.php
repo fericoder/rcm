@@ -10,7 +10,8 @@
     <meta charset="utf-8" />
     <title>
         سامانه مدیریت {{ \Auth::user()->complex->name }} |
-        {{ $title }}</title>
+        {{ $title }}
+    </title>
 
     <meta name="description" content="Updates and statistics">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -101,15 +102,13 @@
 
 <div id="kt_header_mobile" class="kt-header-mobile  kt-header-mobile--fixed ">
     <div class="kt-header-mobile__logo">
-        <a href="index.html">
-            <img alt="Logo" src="/dashboard/assets/media/logos/logo-light.png" />
+        <a href="{{ route('dashboard.index') }}">
+            <img style="height: 55px" alt="Logo" src="/dashboard/assets/media/logos/logo.png" />
+            <span style="color: #fff;">برج مسکونی المپیک</span>
         </a>
     </div>
     <div class="kt-header-mobile__toolbar">
         <button class="kt-header-mobile__toggler kt-header-mobile__toggler--left" id="kt_aside_mobile_toggler"><span></span></button>
-
-        <button class="kt-header-mobile__toggler" id="kt_header_mobile_toggler"><span></span></button>
-
         <button class="kt-header-mobile__topbar-toggler" id="kt_header_mobile_topbar_toggler"><i class="flaticon-more"></i></button>
     </div>
 </div>
@@ -126,8 +125,9 @@
             <!-- begin:: Aside -->
             <div class="kt-aside__brand kt-grid__item " id="kt_aside_brand">
                 <div class="kt-aside__brand-logo">
-                    <a href="index.html">
-                        <img alt="Logo" src="/dashboard/assets/media/logos/logo-light.png" />
+                    <a href="{{ route('dashboard.index') }}">
+                        <img style="height: 55px" alt="Logo" src="/dashboard/assets/media/logos/logo.png" />
+                        <span style="color: #fff;">برج مسکونی المپیک</span>
                     </a>
                 </div>
 
@@ -166,42 +166,54 @@
                         <li class="kt-menu__item  {{ request()->routeIs('dashboard.information') ? 'kt-menu__item--active' : ''  }}" aria-haspopup="true"><a href="{{ route('dashboard.information') }}" class="kt-menu__link "><span class="kt-menu__link-icon"><i class="fa fa-file-alt"></i></span><span class="kt-menu__link-text">اطلاعات کلی</span></a></li>
 
 
-                        <li class="kt-menu__item  {{ request()->routeIs('units*') ? 'kt-menu__item--active' : ''  }}" aria-haspopup="true"><a href="{{ route('units.index') }}" class="kt-menu__link "><span class="kt-menu__link-icon"><i class="fa fa-users"></i></span><span class="kt-menu__link-text">مدیریت مالکین و ساکنین</span></a></li>
+                        @canany(['admin', 'finance', 'boardMember'])
+                            <li class="kt-menu__item  {{ request()->routeIs('units*') ? 'kt-menu__item--active' : ''  }}" aria-haspopup="true"><a href="{{ route('units.index') }}" class="kt-menu__link "><span class="kt-menu__link-icon"><i class="fa fa-users"></i></span><span class="kt-menu__link-text">مدیریت مالکین و ساکنین</span></a></li>
+                        @endcan
 
-                        <li class="kt-menu__item  kt-menu__item--submenu {{ request()->routeIs('proceedings.index') ? 'kt-menu__item--active kt-menu__item--open' : ''  }} {{ request()->routeIs('enactments.index') ? 'kt-menu__item--active kt-menu__item--open' : ''  }}" aria-haspopup="true" data-ktmenu-submenu-toggle="hover">
-                            <a href="javascript:;" class="kt-menu__link kt-menu__toggle"><span class="kt-menu__link-icon"><i class="fa fa-user-friends"></i></span><span class="kt-menu__link-text">هیات مدیره</span><i class="kt-menu__ver-arrow la la-angle-right"></i></a>
-                            <div class="kt-menu__submenu "><span class="kt-menu__arrow"></span>
-                                <ul class="kt-menu__subnav">
+                        @canany(['admin', 'superAdmin', 'boardMember'])
+                            <li class="kt-menu__item  kt-menu__item--submenu {{ request()->routeIs('proceedings.index') ? 'kt-menu__item--active kt-menu__item--open' : ''  }} {{ request()->routeIs('enactments.index') ? 'kt-menu__item--active kt-menu__item--open' : ''  }}" aria-haspopup="true" data-ktmenu-submenu-toggle="hover">
+                                <a href="javascript:;" class="kt-menu__link kt-menu__toggle"><span class="kt-menu__link-icon"><i class="fa fa-user-friends"></i></span><span class="kt-menu__link-text">هیات مدیره</span><i class="kt-menu__ver-arrow la la-angle-right"></i></a>
+                                <div class="kt-menu__submenu "><span class="kt-menu__arrow"></span>
+                                    <ul class="kt-menu__subnav">
 
-                                    <li class="kt-menu__item {{ request()->routeIs('proceedings.index') ? 'kt-menu__item--active' : ''  }}" aria-haspopup="true">
-                                        <a href="{{ route('proceedings.index') }}" class="kt-menu__link ">
-                                            <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">صورت جلسات</span>
-                                        </a>
-                                    </li>
-                                    <li class="kt-menu__item {{ request()->routeIs('enactments.index') ? 'kt-menu__item--active' : ''  }}" aria-haspopup="true">
-                                        <a href="{{ route('enactments.index') }}" class="kt-menu__link ">
-                                            <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">کاربرگ مصوبات</span>
-                                        </a>
-                                    </li>
+                                        <li class="kt-menu__item {{ request()->routeIs('proceedings.index') ? 'kt-menu__item--active' : ''  }}" aria-haspopup="true">
+                                            <a href="{{ route('proceedings.index') }}" class="kt-menu__link ">
+                                                <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">صورت جلسات</span>
+                                            </a>
+                                        </li>
+                                        <li class="kt-menu__item {{ request()->routeIs('enactments.index') ? 'kt-menu__item--active' : ''  }}" aria-haspopup="true">
+                                            <a href="{{ route('enactments.index') }}" class="kt-menu__link ">
+                                                <i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">کاربرگ مصوبات</span>
+                                            </a>
+                                        </li>
 
 
-                                </ul>
-                            </div>
-                        </li>
-                        <li class="kt-menu__item  kt-menu__item--submenu {{ request()->routeIs('invoices.create') ? 'kt-menu__item--active kt-menu__item--open' : ''  }}   {{ request()->routeIs('costs.index') ? 'kt-menu__item--active kt-menu__item--open' : ''  }} {{ request()->routeIs('incomes.index') ? 'kt-menu__item--active kt-menu__item--open' : ''  }} {{ request()->routeIs('charge*') ? 'kt-menu__item--active kt-menu__item--open' : ''  }}" aria-haspopup="true" data-ktmenu-submenu-toggle="hover"><a href="javascript:;" class="kt-menu__link kt-menu__toggle"><span class="kt-menu__link-icon"><i class="fa fa-money-bill-alt"></i></span><span class="kt-menu__link-text">حسابداری</span><i class="kt-menu__ver-arrow la la-angle-right"></i></a>
+                                    </ul>
+                                </div>
+                            </li>
+                        @endcan
+
+                        <li class="kt-menu__item  kt-menu__item--submenu {{ request()->routeIs('invoices.create') ? 'kt-menu__item--active kt-menu__item--open' : ''  }} {{ request()->routeIs('balance.index') ? 'kt-menu__item--active kt-menu__item--open' : ''  }}   {{ request()->routeIs('costs.index') ? 'kt-menu__item--active kt-menu__item--open' : ''  }} {{ request()->routeIs('incomes.index') ? 'kt-menu__item--active kt-menu__item--open' : ''  }} {{ request()->routeIs('charge*') ? 'kt-menu__item--active kt-menu__item--open' : ''  }}" aria-haspopup="true" data-ktmenu-submenu-toggle="hover"><a href="javascript:;" class="kt-menu__link kt-menu__toggle"><span class="kt-menu__link-icon"><i class="fa fa-money-bill-alt"></i></span><span class="kt-menu__link-text">حسابداری</span><i class="kt-menu__ver-arrow la la-angle-right"></i></a>
                             <div class="kt-menu__submenu "><span class="kt-menu__arrow"></span>
                                 <ul class="kt-menu__subnav">
                                     <li class="kt-menu__item  kt-menu__item--parent" aria-haspopup="true"><span class="kt-menu__link"><span class="kt-menu__link-text">حسابداری</span></span></li>
                                     <li class="kt-menu__item  {{ request()->routeIs('costs.index') ? 'kt-menu__item--active' : ''  }}" aria-haspopup="true"><a href="{{ route('costs.index') }}" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">هزینه ها</span></a></li>
                                     <li class="kt-menu__item  {{ request()->routeIs('incomes.index') ? 'kt-menu__item--active' : ''  }}" aria-haspopup="true"><a href="{{ route('incomes.index') }}" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">درآمدها</span></a></li>
-                                    <li class="kt-menu__item  {{ request()->routeIs('charge.index') ? 'kt-menu__item--active' : ''  }}" aria-haspopup="true"><a href="{{ route('charge.index') }}" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">مدیریت شارژ و پرداختها</span></a></li>
-                                    <li class="kt-menu__item  {{ request()->routeIs('charge.report*') ? 'kt-menu__item--active' : ''  }}" aria-haspopup="true"><a href="{{ route('charge.report.index') }}" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">گزارش براساس واحد</span></a></li>
-                                    <li class="kt-menu__item  {{ request()->routeIs('invoices.create') ? 'kt-menu__item--active' : ''  }}" aria-haspopup="true"><a href="{{ route('invoices.create') }}" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">ایجاد صورتحساب</span></a></li>
+
+                                    @canany(['admin', 'superAdmin', 'boardMember', 'finance'])
+                                        <li class="kt-menu__item  {{ request()->routeIs('charge.index') ? 'kt-menu__item--active' : ''  }}" aria-haspopup="true"><a href="{{ route('charge.index') }}" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">مدیریت شارژ و پرداختها</span></a></li>
+                                        <li class="kt-menu__item  {{ request()->routeIs('charge.report*') ? 'kt-menu__item--active' : ''  }}" aria-haspopup="true"><a href="{{ route('charge.report.index') }}" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">گزارش براساس واحد</span></a></li>
+                                        <li class="kt-menu__item  {{ request()->routeIs('invoices.create') ? 'kt-menu__item--active' : ''  }}" aria-haspopup="true"><a href="{{ route('invoices.create') }}" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">ایجاد صورتحساب</span></a></li>
+                                        <li class="kt-menu__item  {{ request()->routeIs('balance.index') ? 'kt-menu__item--active' : ''  }}" aria-haspopup="true"><a href="{{ route('balance.index') }}" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">صورت هزینه و درآمد</span></a></li>
+                                    @endcan
 
                                 </ul>
                             </div>
                         </li>
-                        <li class="kt-menu__item {{ request()->routeIs('contract*') ? 'kt-menu__item--active' : ''  }} " aria-haspopup="true" ><a href="{{ route('contracts.index') }}" class="kt-menu__link "><span class="kt-menu__link-icon"><i class="fa fa-tasks"></i></span><span class="kt-menu__link-text">قرارداد ها</span></a></li>
+
+                        @canany(['admin', 'superAdmin', 'boardMember'])
+                            <li class="kt-menu__item {{ request()->routeIs('contract*') ? 'kt-menu__item--active' : ''  }} " aria-haspopup="true" ><a href="{{ route('contracts.index') }}" class="kt-menu__link "><span class="kt-menu__link-icon"><i class="fa fa-tasks"></i></span><span class="kt-menu__link-text">قرارداد ها</span></a></li>
+                        @endcan
 
                         <li class="kt-menu__item  kt-menu__item--submenu   {{ request()->routeIs('*maintenance*') ? 'kt-menu__item--active kt-menu__item--open' : ''  }}" aria-haspopup="true" data-ktmenu-submenu-toggle="hover"><a href="javascript:;" class="kt-menu__link kt-menu__toggle"><span class="kt-menu__link-icon"><i class="fa fa-wrench"></i></span><span class="kt-menu__link-text">نگهداری</span><i class="kt-menu__ver-arrow la la-angle-right"></i></a>
                             <div class="kt-menu__submenu "><span class="kt-menu__arrow"></span>
@@ -215,7 +227,14 @@
                         </li>
 
                         <li class="kt-menu__item {{ request()->routeIs('*security*') ? 'kt-menu__item--active' : ''  }}  kt-menu__item--submenu" aria-haspopup="true" ><a href="/dashboard/security" class="kt-menu__link kt-menu__toggle"><span class="kt-menu__link-icon"><i class="fa fa-lock"></i></span><span class="kt-menu__link-text">نظارت و امنیت</span></a></li>
-                        <li class="kt-menu__item {{ request()->routeIs('*monitoring*') ? 'kt-menu__item--active' : ''  }} kt-menu__item--submenu" aria-haspopup="true" ><a href="{{ route('monitoring.index') }}" class="kt-menu__link kt-menu__toggle"><span class="kt-menu__link-icon"><i class="icofont icofont-cc-camera"></i></span><span class="kt-menu__link-text">مانیتورینگ</span></a></li>
+
+                        @canany(['admin', 'superAdmin', 'boardMember'])
+                            <li class="kt-menu__item {{ request()->routeIs('contract*') ? 'kt-menu__item--active' : ''  }} " aria-haspopup="true" ><a href="{{ route('contracts.index') }}" class="kt-menu__link "><span class="kt-menu__link-icon"><i class="fa fa-tasks"></i></span><span class="kt-menu__link-text">قرارداد ها</span></a></li>
+                        @endcan
+
+                        @canany(['admin', 'superAdmin', 'monitoring', 'boardMember'])
+                          <li class="kt-menu__item {{ request()->routeIs('*monitoring*') ? 'kt-menu__item--active' : ''  }} kt-menu__item--submenu" aria-haspopup="true" ><a href="{{ route('monitoring.index') }}" class="kt-menu__link kt-menu__toggle"><span class="kt-menu__link-icon"><i class="icofont icofont-cc-camera"></i></span><span class="kt-menu__link-text">مانیتورینگ</span></a></li>
+                        @endcan
 
                         <li class="kt-menu__item {{ request()->routeIs('*comfort*') ? 'kt-menu__item--active' : ''  }}  kt-menu__item--submenu" aria-haspopup="true" data-ktmenu-submenu-toggle="hover"><a href="{{ route('comfort.index')}}" class="kt-menu__link kt-menu__toggle"><span class="kt-menu__link-icon"><i class="fa fa-mug-hot"></i></span><span class="kt-menu__link-text">خدمات رفاهی</span></a></li>
 
@@ -226,19 +245,40 @@
 
                         <li class="kt-menu__item {{ request()->routeIs('*gallery*') ? 'kt-menu__item--active' : ''  }}" aria-haspopup="true" ><a href="{{ route('gallery.index') }}" class="kt-menu__link"><span class="kt-menu__link-icon"><i class="fa fa-images"></i></span><span class="kt-menu__link-text">گالری تصاویر</span></a></li>
 
-                        <li class="kt-menu__item  kt-menu__item--submenu {{ request()->routeIs('*configuration*') ? 'kt-menu__item--active kt-menu__item--open' : ''  }} {{ request()->routeIs('permission-requests.index') ? 'kt-menu__item--active kt-menu__item--open' : ''  }} {{ request()->routeIs('traffic.index') ? 'kt-menu__item--active kt-menu__item--open' : ''  }} " aria-haspopup="true" data-ktmenu-submenu-toggle="hover"><a href="javascript:;" class="kt-menu__link kt-menu__toggle"><span class="kt-menu__link-icon"><i class="fa fa-user-tie"></i></span><span class="kt-menu__link-text">مدیریت سامانه</span><i class="kt-menu__ver-arrow la la-angle-right"></i></a>
-                            <div class="kt-menu__submenu "><span class="kt-menu__arrow"></span>
-                                <ul class="kt-menu__subnav">
-                                    <li class="kt-menu__item  kt-menu__item--parent " aria-haspopup="true"><span class="kt-menu__link"><span class="kt-menu__link-text">مدیریت سامانه</span></span></li>
-                                    <li class="kt-menu__item {{ request()->routeIs('configuration*') ? 'kt-menu__item--active' : ''  }}" aria-haspopup="true"><a href="{{ route('configuration.index') }}" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">تنظیمات اولیه</span></a></li>
-                                    <li class="kt-menu__item {{ request()->routeIs('configuration*') ? 'kt-menu__item--active' : ''  }}" aria-haspopup="true"><a href="{{ route('configuration.index') }}" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">لیست جرایم</span></a></li>
-                                    <li class="kt-menu__item {{ request()->routeIs('*website*') ? 'kt-menu__item--active' : ''  }}" aria-haspopup="true"><a href="{{ route('dashboard.configuration.website') }}" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">تنظیمات وبسایت</span></a></li>
-                                    <li class="kt-menu__item {{ request()->routeIs('permission-requests.index') ? 'kt-menu__item--active' : ''  }}" aria-haspopup="true"><a href="{{ route('permission-requests.index') }}" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">مجوزها</span></a></li>
-                                    <li class="kt-menu__item {{ request()->routeIs('traffic.index') ? 'kt-menu__item--active' : ''  }}" aria-haspopup="true"><a href="{{ route('traffic.index') }}" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">ترددها</span></a></li>
+                        @canany(['admin', 'superAdmin'])
+                            <li class="kt-menu__item  kt-menu__item--submenu {{ request()->routeIs('*configuration*') ? 'kt-menu__item--active kt-menu__item--open' : ''  }} {{ request()->routeIs('permission-requests.index') ? 'kt-menu__item--active kt-menu__item--open' : ''  }} {{ request()->routeIs('traffic.index') ? 'kt-menu__item--active kt-menu__item--open' : ''  }} " aria-haspopup="true" data-ktmenu-submenu-toggle="hover"><a href="javascript:;" class="kt-menu__link kt-menu__toggle"><span class="kt-menu__link-icon"><i class="fa fa-user-tie"></i></span><span class="kt-menu__link-text">مدیریت سامانه</span><i class="kt-menu__ver-arrow la la-angle-right"></i></a>
+                                <div class="kt-menu__submenu "><span class="kt-menu__arrow"></span>
+                                    <ul class="kt-menu__subnav">
+                                        <li class="kt-menu__item  kt-menu__item--parent " aria-haspopup="true"><span class="kt-menu__link"><span class="kt-menu__link-text">مدیریت سامانه</span></span></li>
+                                        <li class="kt-menu__item {{ request()->routeIs('*configuration.index*') ? 'kt-menu__item--active' : ''  }}" aria-haspopup="true"><a href="{{ route('configuration.index') }}" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">تنظیمات اولیه</span></a></li>
+                                        <li class="kt-menu__item {{ request()->routeIs('*configuration/chrge*') ? 'kt-menu__item--active' : ''  }}" aria-haspopup="true"><a href="{{ route('dashboard.charge.index') }}" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">فرمول محاسبه شارژ</span></a></li>
+                                        <li class="kt-menu__item {{ request()->routeIs('*website*') ? 'kt-menu__item--active' : ''  }}" aria-haspopup="true"><a href="{{ route('dashboard.configuration.website') }}" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">تنظیمات وبسایت</span></a></li>
+                                        <li class="kt-menu__item {{ request()->routeIs('permission-requests.index') ? 'kt-menu__item--active' : ''  }}" aria-haspopup="true"><a href="{{ route('permission-requests.index') }}" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">مجوزها</span></a></li>
+                                        <li class="kt-menu__item {{ request()->routeIs('traffic.index') ? 'kt-menu__item--active' : ''  }}" aria-haspopup="true"><a href="{{ route('traffic.index') }}" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">ترددها</span></a></li>
 
-                                </ul>
-                            </div>
-                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                        @endcan
+
+
+                        @canany(['admin', 'superAdmin'])
+                            <li class="kt-menu__item  kt-menu__item--submenu {{ request()->routeIs('*users*') ? 'kt-menu__item--active kt-menu__item--open' : ''  }} {{ request()->routeIs('*permission*') ? 'kt-menu__item--active kt-menu__item--open' : ''  }} {{ request()->routeIs('*roles*') ? 'kt-menu__item--active kt-menu__item--open' : ''  }} " aria-haspopup="true" data-ktmenu-submenu-toggle="hover"><a href="javascript:;" class="kt-menu__link kt-menu__toggle"><span class="kt-menu__link-icon"><i class="fa fa-users"></i></span><span class="kt-menu__link-text">مدیریت کاربران</span><i class="kt-menu__ver-arrow la la-angle-right"></i></a>
+                                <div class="kt-menu__submenu "><span class="kt-menu__arrow"></span>
+                                    <ul class="kt-menu__subnav">
+                                        <li class="kt-menu__item {{ request()->routeIs('*users') ? 'kt-menu__item--active' : ''  }} kt-menu__item--parent " aria-haspopup="true"><span class="kt-menu__link"><span class="kt-menu__link-text">مدیریت کاربران</span></span></li>
+                                        <li class="kt-menu__item {{ request()->routeIs('*users.index') ? 'kt-menu__item--active' : ''  }}" aria-haspopup="true"><a href="{{ route('users.index') }}" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">لیست کاربران</span></a></li>
+                                        <li class="kt-menu__item {{ request()->routeIs('*users.create*') ? 'kt-menu__item--active' : ''  }}" aria-haspopup="true"><a href="{{ route('users.create') }}" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">افزودن کاربر</span></a></li>
+                                        <li class="kt-menu__item {{ request()->routeIs('*roles*') ? 'kt-menu__item--active' : ''  }}" aria-haspopup="true"><a href="{{ route('roles.index') }}" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">گروه های دسترسی</span></a></li>
+                                        <li class="kt-menu__item {{ request()->routeIs('*permissions*') ? 'kt-menu__item--active' : ''  }}" aria-haspopup="true"><a href="{{ route('permissions.index') }}" class="kt-menu__link "><i class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span class="kt-menu__link-text">سطوح دسترسی</span></a></li>
+
+                                    </ul>
+                                </div>
+                            </li>
+                        @endcan
+
+
+
 
                         <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                             <rect x="0" y="0" width="24" height="24"/>
@@ -268,7 +308,13 @@
 
                                 <h3 class="kt-subheader__title mr-3"> سامانه مدیریت {{ \Auth::user()->complex->name }}</h3>
                                 <span class="kt-subheader__separator kt-subheader__separator--v"></span>
-                                <h3 class="kt-subheader__title">{{ $title }}</h3>
+
+                                @if (request()->routeIs('dashboard.index'))
+                                    <h3 class="kt-subheader__title">کارتابل واحد {{ \Auth::user()->code }} | مالک: {{ \Auth::user()->fullName }} </h3>
+                                @else
+                                    <h3 class="kt-subheader__title">{{ $title }}</h3>
+
+                                @endif
 
                             </div>
                         </div>
@@ -939,7 +985,7 @@
                                 <div class="kt-header__topbar-user">
                                     <span class="kt-header__topbar-welcome kt-hidden-mobile">{{ \Auth::user()->fullName }}،</span>
                                     <span class="kt-header__topbar-username kt-hidden-mobile">خوش آمدید</span>
-                                    <img src="{{ isset(\Auth::user()->avatar) ? \Auth::user()->avatar : "/dashboard/assets/img/avatar.png" }}" />
+                                    <img src="{{ isset(\Auth::user()->avatar) ? asset(\Auth::user()->avatar) : "/storage/Avatars/no-avatar.png" }}" />
 
                                 </div>
                             </div>
@@ -948,7 +994,7 @@
                                 <!--begin: Head -->
                                 <div class="kt-user-card kt-user-card--skin-dark kt-notification-item-padding-x" style="background-image: url(/dashboard/assets/media/misc/bg-1.jpg)">
                                     <div class="kt-user-card__avatar">
-                                        <img src="{{ isset(\Auth::user()->avatar) ? \Auth::user()->avatar : "/dashboard/assets/img/avatar.png" }}" />
+                                        <img src="{{ isset(\Auth::user()->avatar) ? asset(\Auth::user()->avatar) : "/storage/Avatars/no-avatar.png" }}" />
                                     </div>
                                     <div class="kt-user-card__name">
                                         {{ \Auth::user()->fullName . ' | ' . \Auth::user()->code }}
@@ -1072,8 +1118,8 @@
 <ul class="kt-sticky-toolbar" style="margin-top: 30px;">
 
 
-    <li class="kt-sticky-toolbar__item kt-sticky-toolbar__item--danger" id="kt_sticky_toolbar_chat_toggler" data-toggle="kt-tooltip" title="" data-placement="left" data-original-title="Chat Example">
-        <a href="#" data-toggle="modal" data-target="#kt_chat_modal"><i class="flaticon2-chat-1"></i></a>
+    <li class="kt-sticky-toolbar__item kt-sticky-toolbar__item--danger" id="kt_sticky_toolbar_chat_toggler" data-toggle="kt-tooltip" title="" data-placement="left" data-original-title="پشتیبانی">
+        <a href="whatsapp://send?phone=989127259562"><i class="flaticon2-chat-1"></i></a>
     </li>
 </ul>
 <!-- end::Sticky Toolbar -->
@@ -1143,7 +1189,11 @@
 <script src="/dashboard/assets/js/persian-date.min.js"></script>
 <script src="/dashboard/assets/js/persian-datepicker.min.js"></script>
 <script src="/dashboard/assets/js/persian-date.min.js" type="text/javascript"></script>
+
 <script>
+
+
+
     $(document).ready(function() {
         $(".dp").pDatepicker({
             altField: '.observer',
@@ -1157,9 +1207,30 @@
         });
 
     });
+
+    $('input#delimiter').keyup(function(event) {
+        if(event.which >= 37 && event.which <= 40){
+            event.preventDefault();
+        }
+        $(this).val(function(index, value) {
+            value = value.replace(/,/g,''); // remove commas from existing input
+            return numberWithCommas(value); // add commas back in
+        });
+    });
+
+    function numberWithCommas(x) {
+        var parts = x.toString().split(".");
+        parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        return parts.join(".");
+    }
+
+
+
 </script>
 @include('sweet::alert')
 @yield('footerScripts')
+
+
 
 </body>
 <!-- end::Body -->

@@ -19,7 +19,14 @@ class InvoiceController extends \App\Http\Controllers\Controller
      */
     public function index()
     {
-        return view('dashboard.invoices');
+        if( \Gate::allows('finance') OR \Gate::allows('admin')) {
+            return view('dashboard.invoices');
+        }else{
+            alert()->warning('عدم دسترسی');
+            return redirect()->back();
+            exit;
+        }
+
     }
 
     /**
@@ -29,8 +36,14 @@ class InvoiceController extends \App\Http\Controllers\Controller
      */
     public function create()
     {
-        $units = User::where('complex_id', \Auth::user()->complex_id)->get();
-        return view('dashboard.invoices.create', compact('units'));
+        if( \Gate::allows('finance') OR \Gate::allows('admin')) {
+            $units = User::where('complex_id', \Auth::user()->complex_id)->get();
+            return view('dashboard.invoices.create', compact('units'));
+        }else{
+            alert()->warning('عدم دسترسی');
+            return redirect()->back();
+            exit;
+        }
     }
 
     /**
@@ -41,6 +54,10 @@ class InvoiceController extends \App\Http\Controllers\Controller
      */
     public function store(Request $request)
     {
+        $request->merge([
+            'amount' => $this->fa2en($request->amount),
+        ]);
+
         $request->validate([
             'code' => 'required',
             'for' => 'required',
@@ -58,7 +75,7 @@ class InvoiceController extends \App\Http\Controllers\Controller
                 Invoice::create([
                     'code' => $request->code,
                     'for' => $request->for,
-                    'amount' => $this->fa2en($request->amount),
+                    'amount' => $request->amount,
                     'user_id' => $user->id,
                     'complex_id' => \Auth::user()->complex_id,
                     'status' => 'notPaid',
@@ -122,7 +139,7 @@ class InvoiceController extends \App\Http\Controllers\Controller
             foreach($invoices->first() as $key => $invoice){
                 if ($key < 1) continue;
                 $inv = Invoice::create([
-                    'amount' => $this->fa2en($invoice[3]),
+                    'amount' => $this->comma($this->fa2en($invoice[3])),
                     'for' => $invoice[4],
                     'code' => $invoice[5],
                     'user_id' => User::where('complex_id', \Auth::user()->complex_id)->where('code',  $invoice[1])->get()->pluck('id')->first(),
@@ -158,7 +175,14 @@ class InvoiceController extends \App\Http\Controllers\Controller
      */
     public function edit(Invoice $invoice)
     {
-        return view('dashboard.invoices.edit', compact('invoice'));
+        if( \Gate::allows('finance') OR \Gate::allows('admin')) {
+            return view('dashboard.invoices.edit', compact('invoice'));
+        }else{
+            alert()->warning('عدم دسترسی');
+            return redirect()->back();
+            exit;
+        }
+
     }
 
     /**
@@ -170,14 +194,24 @@ class InvoiceController extends \App\Http\Controllers\Controller
      */
     public function update(InvoiceUpdateRequest $request, Invoice $invoice)
     {
-        $invoice->for = $request->for;
-        $invoice->amount = $request->amount;
-        $invoice->for = $request->for;
-        $invoice->status = $request->status;
-        $invoice->save();
+        if( \Gate::allows('finance') OR \Gate::allows('admin')) {
+//            $invoice->for = $request->for;
+//            $invoice->amount = $request->amount;
+//            $invoice->for = $request->for;
+            $invoice->status = $request->status;
+            $invoice->paymentMethod = 'pos';
+            $invoice->save();
 
-        alert()->success('تغییر صورتحساب انجام شد.', 'انجام شد');
-        return redirect()->back();
+            $invoice->user->notify(new InvoicePaid($invoice));
+
+            alert()->success('تغییر صورتحساب انجام شد.', 'انجام شد');
+            return redirect()->back();
+        }else{
+            alert()->warning('عدم دسترسی');
+            return redirect()->back();
+            exit;
+        }
+
     }
 
 
